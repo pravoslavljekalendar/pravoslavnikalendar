@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="keywords" content="црквени календар, православни календар, молитвеник, свето писмо, православље">
 <meta name="description" content="Православни црквени календар за 2026, молитвеник и свето писмо. Традиционални православни ресурси на српском језику.">
-<title>Православни Календар 2026 - Црквени Календар | Молитвеник | Свето Писмо| Псалтир| Добротољубље</title>
+<title>Православни Календар 2026 - Црквени Календар | Молитвеник | Свето Писмо| Псалтир</title>
 
 <!-- Prikaz preko celog ekrana (bez browser trake) -->
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -60,21 +60,42 @@ font-family: "Times New Roman", serif;
         }
 
         .krst {
-            font-size: 40px;
-text-align: center;
-            margin-bottom: 10px;
-margin: -5px auto -20px auto;  /* Centriranje i razmak */
-            background: linear-gradient(45deg, #c9a23f, #f3e3a1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
+    font-family: "Arial Unicode MS", "Segoe UI Symbol", sans-serif;
+    font-size: 40px;
+}
         .potpis {
             font-size: 14px;
             margin-top: 20px;
             color: #4A3728;
             font-style: italic;
         }
+/* MOBILNI: Da ne budu sitna slova */
+@media (max-width: 600px) {
+        body {
+            background-color: #EED69F !important; /* Tvoja bledo-žuta boja */
+            background-image: none !important;
+            padding: 0; /* Brišemo razmak oko celog tela */   
+        }
+.container { padding: 10px; width: 100%; }
+    .dan, .zaglavlje-kolone {
+        grid-template-columns: 20px 20px 20px 1fr !important;
+        width: 100% !important; /* Širi se skroz do ivica */
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 40px 10px; /* Malo prostora samo da dugmići ne dodiruju ekran */
+        background-color: transparent !important; /* Ubija belinu */
+        box-shadow: none !important; /* Skida senku ako je ima */
+ }
+.svetitelj { font-size: 18px; }
+.sadrzaj { font-size: 21px; }
+.praznik { font-size: 18px; }
+.opis { font-size: 20px; }
+.obicno { font-size: 18px; }
+  .dan {
+        padding: 8px 2px; /* Još malo širimo prostor za tekst unutar dana */ 
+   
+ }
+}
     </style>
 </head>
 <body>
