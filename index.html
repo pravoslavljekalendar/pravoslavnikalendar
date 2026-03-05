@@ -42,37 +42,38 @@ max-width: 430px;
 text-align: center;
 }
 
-.datum {
+/* Datum gore */
+#datum {
 font-size: 20px;
 font-weight: bold;
 margin-bottom: 15px;
 }
 
-.logo {
-width: 70px;
-height: 70px;
-border-radius: 50%;
-box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-margin-top: 15px;
+/* Krst */
+.krst {
+font-size: 40px;
+margin-bottom: 10px;
+background: linear-gradient(45deg, #080808);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
 }
 
+/* Dugmici */
 .dugme {
 display: block;
-background: rgba(242, 230, 201, 0.88); /*  sa providnošću */
+background: rgba(242, 230, 201, 0.88);
 padding: 18px;
-margin: 15px 0;
+margin: 10px 0;
 text-decoration: none;
 color: #4A3728;
 font-size: 22px;
 border-radius: 10px;
 border: 1px solid #8b6f47;
-/* NOVO: unutrašnja i spoljašnja senka za “reljef” efekt */
 box-shadow: inset 0 2px 6px rgba(255,255,255,0.25),
 inset 0 -2px 4px rgba(0,0,0,0.15),
 0 6px 12px rgba(0,0,0,0.25);
 transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
 }
-
 
 .dugme:hover {
 transform: translateY(-2px) scale(1.05);
@@ -82,99 +83,49 @@ inset 0 -3px 6px rgba(0,0,0,0.2),
 background: rgba(242, 230, 201, 0.95);
 }
 
-.krst {
-font-size: 40px;
-text-align: center;
-margin-bottom: 10px;
-margin: -5px auto -20px auto;  /* Centriranje i razmak */
-background: linear-gradient(45deg, #080808);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
+/* Logo dole */
+.logo {
+width: 80px;
+height: 80px;
+border-radius: 50%;
+box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+margin-top: 15px;
 }
 
-.potpis {
-font-size: 14px;
-margin-top: 20px;
-color: #4A3728;
-font-style: italic;
-}
-
-/* MOBILNI:  */
-
+/* MOBILNI: sve centrirano */
 @media (max-width: 430px) {
 .container {
 width: 100%;
 max-width: 100%;
 padding: 5px;
 }
-
-.dan, .zaglavlje-kolone {
-grid-template-columns: 20px 20px 20px 1fr;
 }
 
-.svetitelj { font-size: 18px; }
-.sadrzaj { font-size: 21px; }
-.praznik { font-size: 18px; }
-.opis { font-size: 20px; }
-.obicno { font-size: 18px; }
-
-@media (prefers-color-scheme: dark) {
-   body {
-padding: 0; /* Brišemo razmak oko celog tela */
-}
-
+/* LAPTOP: dugmici levo */
+@media (min-width: 600px) {
 .container {
-width: 90%;
-max-width: 430px;
-padding: 20px; /* Smanjen padding da stane na manje ekrane */
-text-align: center;
-margin: 0;
+align-items: flex-start;
+text-align: left;
+padding-left: 50px;
 }
-.dugme {
-display: block;
-background: rgba(242, 230, 201, 0.88); /*  sa providnošću */
-padding: 18px;
-margin: 15px 0;
-text-decoration: none;
-color: #4A3728;
-font-size: 22px;
-border-radius: 10px;
-border: 1px solid #8b6f47;
-/* NOVO: unutrašnja i spoljašnja senka za “reljef” efekt */
-box-shadow: inset 0 2px 6px rgba(255,255,255,0.25),
-inset 0 -2px 4px rgba(0,0,0,0.15),
-0 6px 12px rgba(0,0,0,0.25);
-transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
 }
-
-.dan {
-padding: 8px 2px; /* Još malo širimo prostor za tekst unutar dana */
-}
-
-}
-
-
- </style>
-
+</style>
 </head>
-
 <body>
 
-
-
-<div class="container">
 <div class="container">
 <!-- Datum automatski -->
 <div id="datum"></div>
 
+<!-- Krst -->
+<div class="krst">☦</div>
 
-<div class="krst">☦</div>   
+<!-- Dugmici -->
 <a href="januar-2026.html" class="dugme">Православни календар</a>
 <a href="psaltir.html" class="dugme">Псалтир</a>
 <a href="molitvenik.html" class="dugme">Молитвеник</a>
 <a href="sveto-pismo.html" class="dugme">Свето писмо</a>
 <a href="dobrotoljublje.html" class="dugme">Добротољубље</a>
-<p class="potpis">ПРАВОСЛАВНИ КАЛЕНДАР - Љубав Православље</p>
 
 <!-- Logo -->
 <img src="ikona.png" alt="Ljubav Pravoslavlje Logo" class="logo">
@@ -187,9 +138,6 @@ const opcije = { day: 'numeric', month: 'long', year: 'numeric' };
 document.getElementById('datum').innerText = datum.toLocaleDateString('sr-RS', opcije);
 </script>
 
-
-
 </body>
-
 </html>
 
