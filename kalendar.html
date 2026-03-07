@@ -1,15 +1,124 @@
 <!DOCTYPE html>
 <html lang="sr">
 <head>
-<meta charset="UTF-8">
-<title>Pravoslavni kalendar</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Црквени Календар</title>
+    <style>
+        body {
+            margin: 0;
+            /* Tvoja "srećna" boja peska, sive i purpurne */
+            backgroung: #EED69F linear-gradient(135deg, #d3d3d3 0%, #e6e6fa 100%);
+            background-image: url("papir.jpg");
+            background-size: cover;
+            background-attachment: fixed;
+            font-family: "Times New Roman", Georgia, serif;
+            color: #4A3728;
+            text-align: center;
+        }
+
+        .container {
+            width: 95%;
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            padding-top: 60px;
+        }
+
+        /* Tabela kalendara */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(242, 230, 201, 0.7);
+            border: 1px solid #8b6f47;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        th, td {
+            padding: 12px 5px;
+            border: 1px solid rgba(139, 111, 71, 0.3);
+            font-size: 18px;
+        }
+
+        th { background: rgba(139, 111, 71, 0.2); }
+
+        .nedelja { color: #8b0000; font-weight: bold; } /* Crvena za nedelju */
+        
+        .danasnji { 
+            background: rgba(139, 111, 71, 0.4); 
+            border: 2px solid #8b0000 !important;
+            font-weight: bold;
+        }
+
+        .home-dugme {
+            position: fixed; top: 15px; left: 15px;
+            background: rgba(242, 230, 201, 0.9);
+            padding: 10px 15px; border-radius: 8px;
+            border: 1px solid #8b6f47; text-decoration: none; color: #4A3728;
+            font-size: 20px; z-index: 100;
+        }
+
+        h2 { margin-bottom: 20px; color: #4A3728; }
+    </style>
 </head>
-<body style="background-color:#EED69F; font-family:Georgia; text-align:center; padding-top:50px; color:#4A3728;">
+<body>
 
-<h1>Црквени календар</h1>
-<p>Pravoslavni kalendar tekst.</p>
+<a href="index.html" class="home-dugme">🏠</a>
 
-<a href="index.html">Nazad</a>
+<div class="container">
+    <h2 id="naslovMeseca">Учитавам...</h2>
+    <div id="kalendarTabela"></div>
+    
+    <br>
+    <a href="index.html" style="text-decoration:none; color:#8b6f47; font-weight:bold;">⬅ Назад на почетну</a>
+</div>
+
+<script>
+    // Magija koja čita koji je mesec izabran u meniju na početnoj
+    const params = new URLSearchParams(window.location.search);
+    let izabraniMesec = params.get('mesec');
+    let danas = new Date();
+    let m = (izabraniMesec !== null) ? parseInt(izabraniMesec) : danas.getMonth();
+    let g = danas.getFullYear();
+
+    function generisiKalendar(mesec, godina) {
+        const imena = ["Јануар", "Фебруар", "Март", "Април", "Мај", "Јун", "Јул", "Август", "Септембар", "Октобар", "Новембар", "Децембар"];
+        document.getElementById('naslovMeseca').innerText = `${imena[mesec]} ${godina}.`;
+
+        let prviDan = new Date(godina, mesec, 1).getDay();
+        if (prviDan === 0) prviDan = 7; // Da nedelja bude zadnja (evropski sistem)
+
+        let brojDana = new Date(godina, mesec + 1, 0).getDate();
+        let html = "<table><tr><th>П</th><th>У</th><th>С</th><th>Ч</th><th>П</th><th>С</th><th class='nedelja'>Н</th></tr><tr>";
+
+        // Prazna polja do prvog dana u mesecu
+        for (let i = 1; i < prviDan; i++) {
+            html += "<td></td>";
+        }
+
+        // Popunjavanje dana
+        for (let dan = 1; dan <= brojDana; dan++) {
+            let trenutniDatum = new Date(godina, mesec, dan);
+            let klasa = "";
+            
+            if (trenutniDatum.getDay() === 0) klasa = "class='nedelja'";
+            if (trenutniDatum.toDateString() === danas.toDateString()) klasa = "class='danasnji'";
+
+            html += `<td ${klasa}>${dan}</td>`;
+
+            if (trenutniDatum.getDay() === 0) {
+                html += "</tr><tr>";
+            }
+        }
+
+        html += "</table>";
+        document.getElementById('kalendarTabela').innerHTML = html;
+    }
+
+    generisiKalendar(m, g);
+</script>
 
 </body>
 </html>
