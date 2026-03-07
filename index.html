@@ -190,19 +190,37 @@ document.getElementById('datum').innerText = datum.toLocaleDateString('sr-RS', o
 </script>
 
 <script>
-const danas = new Date();
+async function ucitajSvetitelja() {
+    const danas = new Date();
+    
+    // 1. Prikaz datuma na srpskom (Ovo popravlja tvoj "Četvrtak")
+    const opcijeDatum = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
+    document.getElementById('datum').innerText = danas.toLocaleDateString('sr-RS', opcijeDatum);
 
-const opcije = {
-weekday: 'long',
-year: 'numeric',
-month: 'long',
-day: 'numeric'
-};
+    // 2. Uzimanje svetitelja
+    const dan = danas.getDate();
+    const mesec = danas.getMonth() + 1;
+    const kljuc = `${dan}-${mesec}`;
 
-document.getElementById("datum").innerHTML =
-danas.toLocaleDateString("sr-RS", opcije);
+    try {
+        const res = await fetch('svetitelji.json');
+        const data = await res.json();
+        
+        if (data[kljuc]) {
+            document.getElementById('svetitelj').innerHTML = "<b>Данас славимо:</b><br>" + data[kljuc];
+        } else {
+            // Ako nema u tvom fajlu, probaj internet bazu
+            const internetRes = await fetch(`https://orthocal.info{danas.getFullYear()}/${mesec}/${dan}/`);
+            const internetData = await internetRes.json();
+            document.getElementById('svetitelj').innerHTML = "<b>Данас:</b><br>" + internetData.saints[0];
+        }
+    } catch (e) {
+        document.getElementById('svetitelj').innerText = "Православни подсетник";
+        console.log("Greška: Proveri svetitelji.json fajl!");
+    }
+}
 
-document.getElementById("svetitelj").innerHTML =
+ucitajSvetitelja();
 
 </script>
 </body>
