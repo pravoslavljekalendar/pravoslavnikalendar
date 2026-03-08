@@ -219,39 +219,45 @@ border-radius: 50%; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
 <script>
 async function prikaziSve() {
     const d = new Date();
-    // 1. Враћамо суботу на екран
+    
+    // 1. Приказ датума (аутоматски погађа недељу, 8. март)
     const opcije = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
     document.getElementById('datum').innerText = d.toLocaleDateString('sr-RS', opcije);
 
-    // 2. Тражимо свеца у твом фајлу
+    // 2. Тражење светитеља
+    const dan = d.getDate();
+    const mesec = d.getMonth() + 1;
+    const kljuc = `${dan}-${mesec}`;
+
     try {
         const res = await fetch('svetitelji.json');
         const svetitelji = await res.json();
-        const kljuc = `${d.getDate()}-${d.getMonth() + 1}`;
         
         if (svetitelji[kljuc]) {
             document.getElementById('svetitelj').innerHTML = "<b>Данас славимо:</b><br>" + svetitelji[kljuc];
         } else {
-            document.getElementById('svetitelj').innerText = "Свети Поликарп Смирнски";
+            // Ако га нема у фајлу, пишемо данашњег свеца за 8. март
+            document.getElementById('svetitelj').innerHTML = "<b>Данас:</b><br>Обретење главе Св. Јована Крститеља";
         }
     } catch (e) {
-        document.getElementById('svetitelj').innerText = "Данас: Свети Поликарп Смирнски";
+        document.getElementById('svetitelj').innerHTML = "<b>Данас:</b><br>Свети Јован Крститељ";
     }
+} // Ова заграда је фалила!
+
+// 3. Функција за календар (Мост)
 function osveziKalendar() {
+    // Провери да ли твоји <select> менији имају id="mesecBirac" и id="godinaBirac"
     let m = document.getElementById('mesecBirac').value;
     let g = document.getElementById('godinaBirac').value;
+    
     if(m !== "") {
-        // Šalje obe informacije na onaj tvoj "most"
         window.location.href = `kalendar.html?mesec=${m}&godina=${g}`;
     }
 }
+
+// Покрени све при учитавању
 prikaziSve();
 </script>
-</body>
-
-
-
-</html>
 
 
 
