@@ -69,19 +69,20 @@ inset 0 -3px 6px rgba(0,0,0,0.2),
 0 10px 20px rgba(0,0,0,0.35);
 background: rgba(242, 230, 201, 0.95);
 }
-.blog-precica {
-    position: absolute;
-    top: 20px;
-    right: 20px; /* Stavljamo ga u onaj tvoj slobodan prostor desno */
-    background: rgba(139, 111, 71, 0.2);
-    padding: 10px 15px;
-    border-radius: 50px;
-    border: 1px solid #2e1b08;
+.blog-pecat {
+    position: absolute; /* Ово га вади из реда */
+    top: 50px;           /* Висина - подеси како ти одговара */
+    left: 450px;         /* Ово га гура ДЕСНО од твог главног контејнера */
+    background: rgba(242, 230, 201, 0.4); 
+    padding: 10px 20px;
+    border-radius: 15px;
+    border: 2px solid #2E1B08; /* Твоја тамнобраон */
     text-decoration: none;
-    color: #2e1b08;
+    color: #2E1B08;           /* Твоја тамнобраон за слова */
     font-style: italic;
+    font-weight: bold;
     font-size: 16px;
-    transition: 0.3s;
+    z-index: 9999;
 }
 
 .blog-precica:hover {
@@ -154,13 +155,16 @@ padding: 8px 2px; /* Još malo širimo prostor za tekst unutar dana */
 
 /* Na mobilnom neka se vrati u sredinu ili ispod logoa */
 @media (max-width: 480px) {
-    .blog-precica {
-        position: static;
-        display: inline-block;
-        margin-top: 10px;
+    /* МОБИЛНИ: Да не побегне са екрана телефона */
+@media (max-width: 480px) {
+    .blog-pecat {
+        position: static;   /* На телефону се враћа у средину */
+        display: block;
+        margin: 20px auto;
+        width: 180px;
+        text-align: center;
     }
 }
-
  </style>
 
 </head>
