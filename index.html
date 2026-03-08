@@ -116,17 +116,17 @@ padding: 5px 5px; /* Minimalni razmak tek da slova ne udaraju u ivicu stakla */
 margin: 0;
 }
 @media (max-width: 480px) {
-    .meseci { 
-        width: 30px; /* Smanji na 28% ako i dalje skače u novi red */
-        font-size: 30px; /* Malo sitnija slova da sve stane horizontalno */
-        text: align center;
-       padding: 5px 2px;
+     .meseci {
+        width: 45%; /* Povećavamo sa 30% na 45% da budu komotni */
+        font-size: 16px; /* Krupnija slova da se lakše čita */
+        padding: 10px 5px;
+        min-width: 140px; /* Ne damo im da se skupe ispod ove granice */
     }
     .gornja-traka {
-        justify-content: no-space-between;
-        gap: 3px;
+        justify-content: center; /* Centriramo ih na sredini ekrana */
+        gap: 10px; /* Razmak između menija */
+        padding: 10px;
     }
-}
 .dan {
 padding: 8px 2px; /* Još malo širimo prostor za tekst unutar dana */
  }
