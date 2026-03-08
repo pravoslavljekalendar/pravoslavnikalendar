@@ -138,62 +138,34 @@ padding: 8px 2px; /* Još malo širimo prostor za tekst unutar dana */
 </head>
 
 <body>
-<div class="gornja-traka">
-    <!-- Biranje godine -->
-<select id="godinaBirac" class="meseci" onchange="osveziKalendar()">
-<option value="2022">2022</option>
-<option value="2023">2023</option>
-<option value="2024">2024</option>
-<option value="2025">2025</option>
-<option value="2026">2026</option>
-<option value="2027">2027</option>
-<option value="2028">2028</option>
-<option value="2029">2029</option>
-<option value="2030">2030</option>
-<option value="2031">2031</option>
-<option value="2032">2032</option>
-<option value="2033">2033</option>
 
+<div class="gornja-traka">
+    <!-- 1. Бирање године -->
+    <select id="godinaBirac" class="meseci" onchange="osveziKalendar()">
+        <option value="2025">2025</option>
+        <option value="2026" selected>2026</option>
         <option value="2027">2027</option>
         <option value="2028">2028</option>
+        <option value="2029">2029</option>
+        <option value="2030">2030</option>
     </select>
 
-    <!-- Biranje meseca -->
+    <!-- 2. Бирање месеца (Паметни мени који иде на Кalendar.html) -->
     <select id="mesecBirac" class="meseci" onchange="osveziKalendar()">
         <option value="">Изабери месец</option>
-<option value="1">Јануар</option>
-<option value="2">Фебруар</option>
-<option value="3">Март</option>
-<option value="4">Април</option>
-<option value="5">Мај</option>
-<option value="6">Јун</option>
-<option value="7">Јул</option>
-<option value="8">Август</option>
-<option value="9">Септембар</option>
-<option value="10">Октобар</option>
-<option value="11">Новембар</option>
-<option value="12">Децембар</option>
-        <!-- ... ostali meseci ... -->
+        <option value="0">Јануар</option>
+        <option value="1">Фебруар</option>
+        <option value="2">Март</option>
+        <option value="3">Април</option>
+        <option value="4">Мај</option>
+        <option value="5">Јун</option>
+        <option value="6">Јул</option>
+        <option value="7">Август</option>
+        <option value="8">Септембар</option>
+        <option value="9">Октобар</option>
+        <option value="10">Новембар</option>
+        <option value="11">Децембар</option>
     </select>
-</div>
-<div class="gornja-traka">
-<select onchange="window.location.href=this.value" class="meseci">
-<option value="">Изабери месец</option>
-
-<option value="januar-2026.html">Јануар 2026</option>
-<option value="februar-2026.html">Фебруар 2026</option>
-<option value="mart-2026.html">Март 2026</option>
-<option value="april-2026.html">Април 2026</option>
-<option value="maj-2026.html">Мај 2026</option>
-<option value="jun-2026.html">Јун 2026</option>
-<option value="jul-2026.html">Јул 2026</option>
-<option value="avgust-2026.html">Август 2026</option>
-<option value="septembar-2026.html">Септембар 2026</option>
-<option value="oktobar-2026.html">Октобар 2026</option>
-<option value="novembar-2026.html">Новембар 2026</option>
-<option value="decembar-2026.html">Децембар 2026</option>
-</select>
-
 </div>
 
 <div class="container">
