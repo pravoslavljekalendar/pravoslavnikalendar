@@ -237,17 +237,24 @@ async function prikaziSve() {
         const res = await fetch('svetitelji.json');
         const svetitelji = await res.json();
         
-        if (svetitelji[kljuc]) {
-            document.getElementById('svetitelj').innerHTML = "<b>Данас славимо:</b><br>" + svetitelji[kljuc];
+       // 2. Тражимо у твојој ризници (svetitelji.json)
+fetch('svetitelji.json')
+    .then(res => res.json())
+    .then(data => {
+        if (data[kljuc]) {
+            document.getElementById('svetitelj').innerHTML = "<b>Данас славимо:</b><br>" + data[kljuc];
         } else {
-            // Ако га нема у фајлу, пишемо данашњег свеца за 8. март
-            document.getElementById('svetitelj').innerHTML = "<b>Данас:</b><br>Свети свештеномученик Поликарп Смирнски";
+            // ФАЛЛБАЦК: Ако немаш уписано у JSON, код сам зна велике дане:
+            let ime = "Црквени Календар";
+            if (dan == 9 && mesec == 3) ime = "Свети првомученик и архиђакон Стефан (Пренос моштију)";
+            if (dan == 10 && mesec == 3) ime = "Свети Тарасије Цариградски";
+            
+            document.getElementById('svetitelj').innerHTML = "<b>Данас:</b><br>" + ime;
         }
-    } catch (e) {
-        document.getElementById('svetitelj').innerHTML = "<b>Данас:</b><br>Свети свештеномученик Поликарп Смирнски";
-    }
-} // Ова заграда је фалила!
-
+    })
+    .catch(err => {
+        document.getElementById('svetitelj').innerHTML = "<b>Данас:</b><br>Свети првомученик Стефан";
+    });
 // 3. Функција за календар (Мост)
 function osveziKalendar() {
     // Провери да ли твоји <select> менији имају id="mesecBirac" и id="godinaBirac"
