@@ -15,8 +15,12 @@
             text-align: center;
         }
         .container { padding-top: 60px; width: 90%; max-width: 500px; margin: auto; }
-        .stiker-vrh { width: 180px; margin-bottom: 25px; filter: drop-shadow(2px 5px 10px rgba(0,0,0,0.4)); }
-        
+         .stiker-bog {
+    width: 180px; 
+    margin: 0 auto 25px auto; /* ОВО "auto" ГА ВРАЋА У ЦЕНТАР! */
+    display: block;            /* ОВО МУ ДАЈЕ СНАГУ ДА СЕ ПОМЕРИ! */
+    filter: drop-shadow(2px 5px 10px rgba(0,0,0,0.4));
+}
         .pouka-box {
             background: rgba(242, 230, 201, 0.85);
             padding: 30px;
@@ -96,3 +100,4 @@
 </body>
 
 </html>
+
