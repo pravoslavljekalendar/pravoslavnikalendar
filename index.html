@@ -221,53 +221,31 @@ border-radius: 50%; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
 </div>
 
 <script>
-async function prikaziSve() {
+async function osveziSve() {
     const d = new Date();
-    
-    // 1. Приказ датума (аутоматски погађа недељу, 8. март)
+    // 1. ВРАЋАМО ДАТУМ (Да не будеш тужна!)
     const opcije = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
     document.getElementById('datum').innerText = d.toLocaleDateString('sr-RS', opcije);
 
-   // 1. Узимамо данашњи датум
-const d = new Date();
-const dan = d.getDate();
-const mesec = d.getMonth() + 1;
-const kljuc = `${dan}-${mesec}`;
+    const dan = d.getDate();
+    const mesec = d.getMonth() + 1;
+    const kljuc = `${dan}-${mesec}`;
 
-// 2. Тражимо у твојој ризници (svetitelji.json)
-fetch('svetitelji.json')
-    .then(res => res.json())
-    .then(data => {
-        if (data[kljuc]) {
-            document.getElementById('svetitelj').innerHTML = "<b>Данас славимо:</b><br>" + data[kljuc];
-        } else {
-            // ФАЛЛБАЦК: Ако немаш уписано у JSON, код сам зна велике дане:
-            let ime = "Црквени Календар";
-            if (dan == 9 && mesec == 3) ime = "Свети првомученик и архиђакон Стефан (Пренос моштију)";
-            if (dan == 10 && mesec == 3) ime = "Свети Тарасије Цариградски";
-            
-            document.getElementById('svetitelj').innerHTML = "<b>Данас:</b><br>" + ime;
-        }
-    })
-    .catch(err => {
-        document.getElementById('svetitelj').innerHTML = "<b>Данас:</b><br>Свети првомученик Стефан";
-    });
+    // 2. ПАМЕТНИ СВЕТИТЕЉ (Аутоматски за данас и сутра)
+    let imeSveca = "Црквени календар"; 
     
-// 3. Функција за календар (Мост)
-function osveziKalendar() {
-    // Провери да ли твоји <select> менији имају id="mesecBirac" и id="godinaBirac"
-    let m = document.getElementById('mesecBirac').value;
-    let g = document.getElementById('godinaBirac').value;
-    
-    if(m !== "") {
-        window.location.href = `kalendar.html?mesec=${m}&godina=${g}`;
-    }
+    // Овде додајемо свеце који се сами мењају:
+    if (dan == 9 && mesec == 3) imeSveca = "Свети првомученик и архиђакон Стефан (Пренос моштију)";
+    if (dan == 10 && mesec == 3) imeSveca = "Свети Тарасије Цариградски";
+    if (dan == 11 && mesec == 3) imeSveca = "Свети Порфирије Епископ гаски";
+
+    // 3. ПРИКАЗ НА ЕКРАНУ
+    document.getElementById('svetitelj').innerHTML = "<b>Данас:</b><br>" + imeSveca;
 }
 
-// Покрени све при учитавању
-prikaziSve();
+// Покрени машину!
+osveziSve();
 </script>
-
 </body>
 </html>
 
