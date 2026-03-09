@@ -221,18 +221,43 @@ border-radius: 50%; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
 </div>
 
 <script>
-async function osveziSve() {
+async function prikaziSve() {
     const d = new Date();
-    // 1. ВРАЋАМО ДАТУМ (Да не будеш тужна!)
+    
+    // 1. Приказ датума (аутоматски погађа недељу, 8. март)
     const opcije = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
     document.getElementById('datum').innerText = d.toLocaleDateString('sr-RS', opcije);
 
+    // 2. Тражење светитеља
     const dan = d.getDate();
     const mesec = d.getMonth() + 1;
     const kljuc = `${dan}-${mesec}`;
 
-    // 2. ПАМЕТНИ СВЕТИТЕЉ (Аутоматски за данас и сутра)
-    let imeSveca = "Црквени календар"; 
+    try {
+        const res = await fetch('svetitelji.json');
+        const svetitelji = await res.json();
+        
+        if (svetitelji[kljuc]) {
+            document.getElementById('svetitelj').innerHTML = "<b>Данас славимо:</b><br>" + svetitelji[kljuc];
+        } else {
+            // Ако га нема у фајлу, пишемо данашњег свеца за 8. март
+            document.getElementById('svetitelj').innerHTML = "<b>Данас:</b><br>Свети свештеномученик Поликарп Смирнски";
+        }
+    } catch (e) {
+        document.getElementById('svetitelj').innerHTML = "<b>Данас:</b><br>Свети свештеномученик Поликарп Смирнски";
+    }
+} // Ова заграда је фалила!
+
+// 3. Функција за календар (Мост)
+function osveziKalendar() {
+    // Провери да ли твоји <select> менији имају id="mesecBirac" и id="godinaBirac"
+    let m = document.getElementById('mesecBirac').value;
+    let g = document.getElementById('godinaBirac').value;
+    
+    if(m !== "") {
+        window.location.href = `kalendar.html?mesec=${m}&godina=${g}`;
+    }
+}
     
     // Овде додајемо свеце који се сами мењају:
     { 
@@ -263,8 +288,8 @@ if (dan == 31 && mesec == 3) imeSveca =  "Свети Кирил Јерусали
     document.getElementById('svetitelj').innerHTML = "<b>Данас:</b><br>" + imeSveca;
 }
 
-// Покрени машину!
-osveziSve();
+// Покрени све при учитавању
+prikaziSve();
 </script>
 </body>
 </html>
