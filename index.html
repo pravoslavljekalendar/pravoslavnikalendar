@@ -293,7 +293,7 @@ fetch('svetitelji.json')
     .then(res => res.json())
     .then(ризница => {
         let име = ризинца[кључ] || "Црквени календар";
-        document.getElementById('svetitelj').innerHTML = "<b>:</b><br>" + име;
+        document.getElementById('svetitelj').innerHTML = "<b></b><br>" + име;
     })
     .catch(err => {
         // Ако фајл нестане, ово је "план Б" за Среду 11. март:
@@ -303,7 +303,7 @@ fetch('svetitelji.json')
             document.getElementById('svetitelj').innerHTML = "<b>:</b><br>" + svetitelji[kljuc];
         } else {
             // Ако га нема у фајлу, пишемо данашњег свеца за 8. март
-            document.getElementById('svetitelj').innerHTML = "<b>:</b><br>";
+            document.getElementById('svetitelj').innerHTML = "<b></b><br>";
         }
     
 } // Ова заграда је фалила!
