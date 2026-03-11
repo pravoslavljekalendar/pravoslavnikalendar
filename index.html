@@ -293,7 +293,7 @@ fetch('svetitelji.json')
     .then(res => res.json())
     .then(ризница => {
         let име = ризинца[кључ] || "Црквени календар";
-        document.getElementById('svetitelj').innerHTML = "<b>Данас славимо:</b><br>" + име;
+        document.getElementById('svetitelj').innerHTML = "<b>Данас:</b><br>" + име;
     })
     .catch(err => {
         // Ако фајл нестане, ово је "план Б" за Среду 11. март:
