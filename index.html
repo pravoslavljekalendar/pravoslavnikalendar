@@ -288,19 +288,24 @@ async function prikaziSve() {
     const mesec = d.getMonth() + 1;
     const kljuc = `${dan}-${mesec}`;
 
-    try {
-        const res = await fetch('svetitelji.json');
-        const svetitelji = await res.json();
-        
+   // 2. Аутоматски вучемо свеца из твоје ризнице (svetitelji.json)
+fetch('svetitelji.json')
+    .then(res => res.json())
+    .then(ризница => {
+        let име = ризинца[кључ] || "Црквени календар";
+        document.getElementById('svetitelj').innerHTML = "<b>Данас славимо:</b><br>" + име;
+    })
+    .catch(err => {
+        // Ако фајл нестане, ово је "план Б" за Среду 11. март:
+        document.getElementById('svetitelj').innerHTML = "<b>Данас славимо:</b><br>";
+    });
         if (svetitelji[kljuc]) {
             document.getElementById('svetitelj').innerHTML = "<b>Данас славимо:</b><br>" + svetitelji[kljuc];
         } else {
             // Ако га нема у фајлу, пишемо данашњег свеца за 8. март
             document.getElementById('svetitelj').innerHTML = "<b>Данас:</b><br>";
         }
-    } catch (e) {
-        document.getElementById('svetitelj').innerHTML = "<b>Данас:</b><br>Прво и друго обретање главе светог Јована Крститеља";
-    }
+    
 } // Ова заграда је фалила!
 
 // 3. Функција за календар (Мост)
