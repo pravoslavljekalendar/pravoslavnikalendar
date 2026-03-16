@@ -285,7 +285,46 @@ padding: 8px 2px; /* Još malo širimo prostor za tekst unutar dana */
 
 <!-- ОВДЕ ЈЕ МАГИЈА: Додао сам https: и сад ће ГитХуб да га пусти! -->
 
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'sr',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+</script>
 
+<!-- ОВДЕ ЈЕ МАГИЈА: Додао сам https: и сад ће ГитХуб да га пусти! -->
+<script type="text/javascript" src="https://translate.google.com"></script>
+
+
+
+
+ai da zamenim ono sto radi za datum danas i sveca
+<script language="javascript">
+var thedate=new Date();
+var themonth=thedate.getMonth()+1;
+var theday=thedate.getDate();
+
+function get_today(){
+    // Овај део прави чист приказ без тачкица и ружних линија
+    var html='<div class="danas" id="output_danas"></div>' +
+             '<textarea name="template_danas" id="template_danas" style="display:none;">' +
+             '<div class="dat"><section class="block-of-text">' +
+             '{for k in kalendar}{if k.me == (themonth) && k.d == (theday)}' +
+             '${k.di} ${k.d}. ${k.m} ${k.st}<hr>${k.pr}<br><b>${k.p}</b>' +
+             '{/if}{/for}</section></div></textarea>';
+             
+    var outputAll=document.getElementById("output");
+    if(outputAll) {
+        outputAll.innerHTML=html;
+        TrimPath.processDOMTemplate("template_danas", data);
+        var outputE1=document.getElementById("output_danas");
+        outputE1.innerHTML=TrimPath.processDOMTemplate("template_danas",data);
+    }
+}
+get_today();
+</script>
 
     
  <script>   
