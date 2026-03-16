@@ -301,9 +301,23 @@ padding: 8px 2px; /* Još malo širimo prostor za tekst unutar dana */
     <a href="molitvenik.html" class="dugme">МОЛИТВЕНИК</a>
     <a href="novi-zavet.html" class="dugme">НОВИ ЗАВЕТ</a>
     <a href="duhovne-pouke.html" class="dugme">ДУХОВНЕ ПОУКЕ</a>
+
+       
+       <script>     
+ // 3. Функција за календар (Мост)
+function osveziKalendar() {
+    // Провери да ли твоји <select> менији имају id="mesecBirac" и id="godinaBirac"
+    let m = document.getElementById('mesecBirac').value;
+    let g = document.getElementById('godinaBirac').value;
     
-    
-  
+    if(m !== "") {
+        window.location.href = `kalendar.html?mesec=${m}&godina=${g}`;
+    }
+}   
+
+// Покрени све при учитавању
+prikaziSve();
+</script>  
 
 
 
