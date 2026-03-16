@@ -311,8 +311,7 @@ padding: 8px 2px; /* Još malo širimo prostor za tekst unutar dana */
 
 
 
- <script>   
-    <div class="danas" id="output_danas"><div class="dat">
+<div class="danas" id="output_danas"><div class="dat">
 <section class="block-of-text">понедељак 16. март (3.мар)<hr>Свети мученици Евтропије, Клеоник и Василиск<br><b>пост</b></section></div>
 <table class="danas"></table></div><textarea name="template_danas" 
 id="template_danas" style="display:none;">&lt;TABLE class="danas"&gt;&lt;div 
@@ -333,7 +332,6 @@ id="template_danas" style="display:none;">'+'<TABLE class="danas">
 {if k.s == 2}'+'${k.di} </FONT>${k.d}. ${k.m} ${k.st}</b><hr>'+'<FONT COLOR="#c40000"><b>${k.pr}</b></FONT><br><b>${k.p}</b>'+'{/if}
 {/if}{/for}'+'</section></textarea>';var outputAll=document.getElementById("output");outputAll.innerHTML=html;
 var outputE1=document.getElementById("output_danas");outputE1.innerHTML=TrimPath.processDOMTemplate("template_danas",data)}get_today();</script></div></a>
-</script>   
 
 
 
