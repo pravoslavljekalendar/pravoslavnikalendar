@@ -282,50 +282,22 @@ padding: 8px 2px; /* Još malo širimo prostor za tekst unutar dana */
     <img src="mojstiker.png" class="stiker-dugme" title="Кликни за моје стикере!">
 
 <script>
-async function prikaziSve() {
-    const d = new Date();
-    
-    // 1. Приказ датума (аутоматски погађа недељу, 8. март)
-    const opcije = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
-    document.getElementById('datum').innerText = d.toLocaleDateString('sr-RS', opcije);
 
-    // 2. Тражење светитеља
-    const dan = d.getDate();
-    const mesec = d.getMonth() + 1;
-    const kljuc = `${dan}-${mesec}`;
-
-
-        }
-    
-} // Ова заграда је фалила!
-
-// 3. Функција за календар (Мост)
-function osveziKalendar() {
-    // Провери да ли твоји <select> менији имају id="mesecBirac" и id="godinaBirac"
-    let m = document.getElementById('mesecBirac').value;
-    let g = document.getElementById('godinaBirac').value;
-    
-    if(m !== "") {
-        window.location.href = `kalendar.html?mesec=${m}&godina=${g}`;
-    }
-}
-
-// Покрени све при учитавању
-prikaziSve();
-</script>
-
-<!-- Yandex.Metrika counter -->
-<script type="text/javascript">
-    (function(m,e,t,r,i,k,a){
-        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=107224917', 'ym');
 
     ym(107224917, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
 </script>
+<div id="google_translate_element" style="text-align:center; padding:15px; border-top:1px dotted #B22222; margin-top:20px;"></div>
 
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'sr',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+</script>
+
+<!-- ОВДЕ ЈЕ МАГИЈА: Додао сам https: и сад ће ГитХуб да га пусти! -->
 
 
 
