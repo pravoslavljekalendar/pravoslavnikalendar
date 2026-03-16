@@ -209,21 +209,23 @@ padding: 8px 2px; /* Još malo širimo prostor za tekst unutar dana */
 /* На телефону нека буде у центру испод Ризнице */
 @media (max-width: 480px) {
     .blog-pecat {
-        position: absolute;   
-        right: 30px;
-         width: 40px;
-        display: block;
-        margin: 10px auto;
-        width: fit-content;
-    }
-
+      justify-content: center; /* Centriramo ih na sredini ekrana */  
+      display: block;
+        margin: 20px auto;
+        width: 12px;
+       justify-content: center; /* Centriramo ih na sredini ekrana */
+        gap: 10px; /* Razmak između menija */
+        padding: 20px;
+}        width:12px;
+    
+     
      .audio-psaltir {
-        position: absolute;   
-        left: 30px;
-         width: 40px;
+      justify-content: center; /* Centriramo ih na sredini ekrana */
+        gap: 10px; /* Razmak između menija */
+        padding: 20px;
         display: block;
-        margin: 10px auto;
-        width: fit-content;
+        margin: 20px auto;
+        width:12px;
     }
 
 
