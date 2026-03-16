@@ -239,12 +239,20 @@ padding: 8px 2px; /* Još malo širimo prostor za tekst unutar dana */
     }
    
  /* --- МОБИЛНИ --- */
-@media (max-width: 480px) {
+@media (max-width: 480px)  position: relative !important; /* Да не лебде преко текста */{
     .container { width: 100%; max-width: 100%; padding: 5px; margin: 0; }
    
       @media screen and (max-width: 600px) {
     /* Ово смањује твоје велике печате на телефону */ 
-    .blog-pecat, .audio-psaltir, .stiker-dugme {
+    .blog-pecat,  { 
+  width: 12px
+    position: relative !important; /* Да не лебде преко текста */        
+  }
+         .audio-psaltir, {  
+   width: 12px 
+     position: relative !important; /* Да не лебде преко текста */       
+  }
+              .stiker-dugme {
      width: 40px !important; /* Да буду мали и симпатични */
         position: relative !important; /* Да не лебде преко текста */
         display: inline-block;
