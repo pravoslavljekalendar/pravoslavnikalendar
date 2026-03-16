@@ -226,9 +226,15 @@ padding: 8px 2px; /* Još malo širimo prostor za tekst unutar dana */
 @media (max-width: 480px)  position: relative !important; /* Да не лебде преко текста */{
     .container { width: 100%; max-width: 100%; padding: 5px; margin: 0; }
    
-    /* --- МОБИЛНИ --- */
+ /* --- МОБИЛНИ --- */
 @media (max-width: 480px) {
     .container { width: 100%; max-width: 100%; padding: 5px; margin: 0; }
+    .blog-pecat, .pouke-pecat, .stiker-dugme {
+        position: static !important;   
+        display: block !important;
+        margin: 15px auto !important;
+        width: fit-content !important;
+        text-align: center;
     
     /* Ово гура Свеца мало ниже да продише */
     #output_danas { 
