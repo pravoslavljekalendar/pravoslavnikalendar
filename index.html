@@ -70,15 +70,16 @@ inset 0 -3px 6px rgba(0,0,0,0.2),
 background: rgba(242, 230, 201, 0.95);
 }
 .blog-pecat {
-     position: absolute;
-    top: 60px;         /* Исто као за Ризницу, само на левој страни */
-    right: 60px;        /* Твој слободан простор лево на лаптопу */
+    position: fixed;
+    top: 50px;         /* Исто као за Ризницу, само на левој страни */
+    left: 30px;        /* Твој слободан простор лево на лаптопу */
     background: rgba(242, 230, 201, 0.6); 
-    padding: 12px 12px;
+    padding: 12px 20px;
     border-radius: 15px;
-    border: 2px solid #2E1B08;
-     color: #2E1B08;  
+    border: 2px solid #2E1B08; 
     text-decoration: none;
+    color: #2E1B08;           
+    font-style: italic;
     font-weight: bold;
     font-size: 14px;
     z-index: 10000;           
@@ -96,20 +97,18 @@ background: rgba(242, 230, 201, 0.95);
     transform: scale(1.1);
 }
 .audio-psaltir-pecat {
-    position: absolute;
-    top: 40px;         /* Исто као за Ризницу, само на левој страни */
-    left: 30px;        /* Твој слободан простор лево на лаптопу */
-    background: rgba(242, 230, 201, 0.6); 
-    padding: 12px 12px;
+    position: absolute; /* Ово га вади из реда */
+    top: 50px;           /* Висина - подеси како ти одговара */
+    left: 450px;         /* Ово га гура ДЕСНО од твог главног контејнера */
+    background: rgba(242, 230, 201, 0.4); 
+    padding: 10px 20px;
     border-radius: 15px;
-    border: 2px solid #2E1B08; 
-    color: #2E1B08;   
+    border: 2px solid #2E1B08; /* Твоја тамнобраон */
     text-decoration: none;
+    color: #2E1B08;           /* Твоја тамнобраон за слова */
     font-weight: bold;
-    font-size: 14px;
-    z-index: 10000;           
-    box-shadow: -2px 4px 10px rgba(0,0,0,0.2);
-    transition: 0.3s;
+    font-size: 16px;
+    z-index: 9999;
 }
 
 .stiker-dugme {
@@ -209,33 +208,18 @@ padding: 8px 2px; /* Još malo širimo prostor za tekst unutar dana */
 /* На телефону нека буде у центру испод Ризнице */
 @media (max-width: 480px) {
     .blog-pecat {
-      justify-content: center; /* Centriramo ih na sredini ekrana */  
-      display: block;
-        margin: 20px auto;
-        width: 12px;
-       justify-content: center; /* Centriramo ih na sredini ekrana */
-        gap: 10px; /* Razmak između menija */
-        padding: 20px;
-}        width:12px;
-    
-     
-     .audio-psaltir {
-      justify-content: center; /* Centriramo ih na sredini ekrana */
-        gap: 10px; /* Razmak između menija */
-        padding: 20px;
+        position: static;   
         display: block;
-        margin: 20px auto;
-        width:12px;
+        margin: 10px auto;
+        width: fit-content;
     }
-
-
      
 @media (max-width: 480px) {
     .stiker-dugme {
         position: static;
         display: block;
         margin: 20px auto;
-        width: 40px;
+        width: 20px;
     }
    
  /* --- МОБИЛНИ --- */
