@@ -283,7 +283,12 @@ padding: 8px 2px; /* Još malo širimo prostor za tekst unutar dana */
         <option value="12">Децембар</option>
     </select>
 </div>
-<!-- ТВОЈИ ПЕЧАТИ КОЈИ ЛЕБДЕ -->
+ <h2 id="naslovMeseca">Учитавам...</h2>
+    <div id="kalendarTabela"></div>
+    <br>
+    <a href="index.html" style="text-decoration:none; color:#8b6f47; font-weight:bold;">⬅ Назад на почетну</a>
+</div>
+
 
 <a href="blog.html" class="blog-pecat">📖 Духовна ризница</a>
 <a href="audio-psaltir.html" class="audio-psaltir-pecat">🕊️ Аудио псалтир</a>
@@ -303,14 +308,7 @@ padding: 8px 2px; /* Još malo širimo prostor za tekst unutar dana */
     <a href="duhovne-pouke.html" class="dugme">ДУХОВНЕ ПОУКЕ</a>
 
        
-       <script>     
-  <h2 id="naslovMeseca">Учитавам...</h2>
-    <div id="kalendarTabela"></div>
-    <br>
-    <a href="index.html" style="text-decoration:none; color:#8b6f47; font-weight:bold;">⬅ Назад на почетну</a>
-</div>
-
-<script>
+     <script>
     // POPRAVLJENA MAGIJA: Sada čita i mesec i godinu iz linka
     const params = new URLSearchParams(window.location.search);
     let izabraniMesec = params.get('mesec');
@@ -356,8 +354,7 @@ padding: 8px 2px; /* Još malo širimo prostor za tekst unutar dana */
 
     // Pokrećemo crtanje sa ispravnim podacima
     generisiKalendar(m, g);
-
-</script>  
+</script>
 
 
 
