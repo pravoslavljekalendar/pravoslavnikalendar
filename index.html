@@ -304,19 +304,59 @@ padding: 8px 2px; /* Još malo širimo prostor za tekst unutar dana */
 
        
        <script>     
- // 3. Функција за календар (Мост)
-function osveziKalendar() {
-    // Провери да ли твоји <select> менији имају id="mesecBirac" и id="godinaBirac"
-    let m = document.getElementById('mesecBirac').value;
-    let g = document.getElementById('godinaBirac').value;
-    
-    if(m !== "") {
-        window.location.href = `kalendar.html?mesec=${m}&godina=${g}`;
-    }
-}   
+  <h2 id="naslovMeseca">Учитавам...</h2>
+    <div id="kalendarTabela"></div>
+    <br>
+    <a href="index.html" style="text-decoration:none; color:#8b6f47; font-weight:bold;">⬅ Назад на почетну</a>
+</div>
 
-// Покрени све при учитавању
-prikaziSve();
+<script>
+    // POPRAVLJENA MAGIJA: Sada čita i mesec i godinu iz linka
+    const params = new URLSearchParams(window.location.search);
+    let izabraniMesec = params.get('mesec');
+    let izabranaGodina = params.get('godina'); // OVO JE NOVO!
+
+    let danas = new Date();
+    
+    // Ako nema ništa u linku, uzmi današnji mesec i godinu
+    let m = (izabraniMesec !== null) ? parseInt(izabraniMesec) : danas.getMonth();
+    let g = (izabranaGodina !== null) ? parseInt(izabranaGodina) : danas.getFullYear();
+
+    function generisiKalendar(mesec, godina) {
+        const imena = ["Јануар", "Фебруар", "Март", "Април", "Мај", "Јун", "Јул", "Август", "Септембар", "Октобар", "Новембар", "Децембар"];
+        document.getElementById('naslovMeseca').innerText = `${imena[mesec]} ${godina}.`;
+
+        let prviDan = new Date(godina, mesec, 1).getDay();
+        if (prviDan === 0) prviDan = 7; 
+
+        let brojDana = new Date(godina, mesec + 1, 0).getDate();
+        let html = "<table><tr><th>П</th><th>У</th><th>С</th><th>Ч</th><th>П</th><th>С</th><th class='nedelja'>Н</th></tr><tr>";
+
+        for (let i = 1; i < prviDan; i++) {
+            html += "<td></td>";
+        }
+
+        for (let dan = 1; dan <= brojDana; dan++) {
+            let trenutniDatum = new Date(godina, mesec, dan);
+            let klasa = "";
+            
+            if (trenutniDatum.getDay() === 0) klasa = "class='nedelja'";
+            if (trenutniDatum.toDateString() === danas.toDateString()) klasa = "class='danasnji'";
+
+            html += `<td ${klasa}>${dan}</td>`;
+
+            if (trenutniDatum.getDay() === 0) {
+                html += "</tr><tr>";
+            }
+        }
+
+        html += "</table>";
+        document.getElementById('kalendarTabela').innerHTML = html;
+    }
+
+    // Pokrećemo crtanje sa ispravnim podacima
+    generisiKalendar(m, g);
+
 </script>  
 
 
