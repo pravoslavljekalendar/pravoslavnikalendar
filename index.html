@@ -242,23 +242,16 @@ padding: 8px 2px; /* Još malo širimo prostor za tekst unutar dana */
 @media (max-width: 480px)  position: relative !important; /* Да не лебде преко текста */{
     .container { width: 100%; max-width: 100%; padding: 5px; margin: 0; }
    
-      @media screen and (max-width: 600px) {
-    /* Ово смањује твоје велике печате на телефону */ 
-    .blog-pecat,  { 
-  width: 12px
-    position: relative !important; /* Да не лебде преко текста */        
-  }
-         .audio-psaltir, {  
-   width: 12px 
-     position: relative !important; /* Да не лебде преко текста */       
-  }
-              .stiker-dugme {
-     width: 40px !important; /* Да буду мали и симпатични */
-        position: relative !important; /* Да не лебде преко текста */
-        display: inline-block;
-        margin: 0px;
-    }
-    .stiker-dugme { width: 30px !important; }
+    /* --- МОБИЛНИ --- */
+@media (max-width: 480px) {
+    .container { width: 100%; max-width: 100%; padding: 5px; margin: 0; }
+    .blog-pecat, .audio-psaltir, .stiker-dugme {
+        position: static !important;   
+        display: block !important;
+        margin: 15px auto !important;
+        width: fit-content !important;
+        text-align: center;
+    .stiker-dugme { width: 100px !important; }
     .gornja-traka { justify-content: center; gap: 10px; padding: 10px; }
     .meseci { min-width: 140px; }
 }
