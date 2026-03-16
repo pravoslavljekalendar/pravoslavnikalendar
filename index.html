@@ -151,15 +151,19 @@ font-style: italic;
 }
 
     .block-of-text {
-font-size: 20px;
-font-weight: bold;
 margin-bottom: 15px;
 text-align: center;
 color: #4A3728;
 margin: 20px auto; /* Да добију ваздуха са свих страна */
 display: block;
+.block-of-text 
+    position: absolute; 
+    top: 100px; /* Подеси висину да не удара у лого */
+    left: 0;
+    right: 0;   
+}    
 
-}
+
 /* MOBILNI:  */
 
 @media (max-width: 430px) {
