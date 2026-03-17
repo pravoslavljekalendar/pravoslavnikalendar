@@ -220,6 +220,13 @@ function osveziKalendar() {
 }
 </script>       
    
+<script>
+// Automatski današnji datum
+const datum = new Date();
+const opcije = { day: 'numeric', month: 'long', year: 'numeric' };
+document.getElementById('datum').innerText = datum.toLocaleDateString('sr-RS', opcije);
+</script>
+
 
 
 
