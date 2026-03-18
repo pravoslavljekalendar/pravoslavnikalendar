@@ -439,8 +439,249 @@ border-right-color: rgba(51, 51, 51, 0.12); border-bottom-color: rgba(51, 51, 51
 	</tbody>
 </table> 
 
+</div>
+
+    <p></p>
+
+<style>
+body {
+background-image: url("papir.png");
+
+font-family: "Times New Roman", serif;
+color: #4A3728;
+margin: 0;
+padding: 0;
+}
+
+h1 {
+text-align: center;
+margin-bottom: 20px;
+}
+
+/* ZAGLAVLJE KOLONA */
+
+.zaglavlje-kolone {
+display: grid;
+grid-template-columns: 95px 50px 50px 1fr;
+border-bottom: 1px solid #8b6f47;
+padding: 12px 5px;
+font-weight: bold;
+
+}
+
+.zaglavlje-kolone div {
+padding: 0 10px;
+border-right: 1px solid #cbb489;
+}
+
+.zaglavlje-kolone div:last-child {
+border-right: none;
+}
+
+/* RED DANA */
+
+.dan {
+display: grid;
+grid-template-columns: 20px 20px 20px 1fr;
+padding: 5px;
+border-bottom: 1px solid #cbb489;
+align-items: start;
+}
+
+/* Kontejner koji drži sav tekst desno */
+.tekst-kontejner {
+    grid-column: 4; /* Uvek u četvrtoj koloni */
+    grid-row: 1 / 3; /* Zauzima visinu oba reda (i datuma i posta ispod) */
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+}
+
+/* Post koji ide tačno ISPOD prve tri kolone (dana i datuma) */
+.post-ispod {
+    grid-column: 1 / 4;
+    grid-row: 2;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 12px; /* Malo smanjen font da ikonica stane u red */
+    color: #5c4630;
+    text-align: center;
+    margin-top: -4px;
+    letter-spacing: 0.5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3px; /* Razmak između ikonice i teksta */
+}
+
+/* Maksimalno smanjujemo prored da nema rupa */
+.sadrzaj, .svetitelji, .praznik, .opis {
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 1.1; 
+}
 
 
+.opis {
+font-size: 20px;
+color: #5f0606;    
+margin-top: 4px;   !important; /* Minimalni razmak samo iznad opisa */
+}
+
+.dani-ukupno {
+font-size: 18px;
+color: #6b5440;
+font-style: italic;
+font-weight: 600;
+}
+
+.crveno {
+color: #dd1616;
+font-size: 18px;
+}
+
+.praznik {
+font-weight: 800;
+font-weight: bold;
+font-size: 17px;
+color: #2e1b08; /* ista boja kao običan tekst */
+}
+
+.obicno {
+font-size: 19px;
+color: #070000;
+font-weight: 540;
+line-height: 1.4;
+}
+
+.sadrzaj { 
+font-size: 21px;
+color: #070000;
+
+}
+
+
+.stari-datum {
+color: #d38d8d;
+font-size: 17px;
+font-weight: bold;
+}
+
+.dan-naziv {
+font-size: 17px;
+font-weight: bold;
+}
+
+.novi-datum {
+
+font-size: 17px;
+font-weight: bold;
+}
+.dan.nedelja dan.naziv,
+.dan.nedelja novi-datum {
+color: #dd1616;
+font-weight: bold;
+}
+
+.navigacija {
+display: flex;
+justify-content: space-between;
+margin-bottom: 15px;
+font-size: 20px;
+border-top: 1px solid #8b6f47;
+border-bottom: 1px solid #8b6f47;
+border-left: 1px solid #7a1f1f;
+border-right: 1px solid #7a1f1f;
+}
+.dugme-pocetna {
+    font-size: 18px;
+    text-decoration: none;
+    color: #4A3728;
+    font-weight: bold;
+    /* Možeš dodati i mali razmak oko kućice */
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.navigacija a {
+text-decoration: none;
+color: #6b5440;
+font-weight: 600;
+}
+
+.zaglavlje-kolone,
+.dan {
+width: 100%;
+box-sizing: border-box;
+}
+
+
+.navigacija a:hover {
+color: #c41e1e;
+}
+
+.container {
+    max-width: 350px;
+    margin: 0 auto;
+    background-image: url("papir.jpg");
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.7);
+
+}
+
+
+.nedelja-naslov {
+font-size: 16px;
+color: #f90813;
+text-align: center;
+padding: 0px 0px;
+margin-top: 5px;
+margin-bottom: -5px;
+border-top: 2px solid #9f845d;    /* Deblja linija gore */
+border-bottom: 2px solid #b9a174; /* Tanja i svetlija linija dole */
+background-color: rgba(139, 111, 71, 0.03); /* Skoro nevidljiva senka */
+}
+
+/* MOBILNI: Da ne budu sitna slova */
+@media (max-width: 600px) {
+    .container { padding: 10px; width: 100%; }
+    .dan, .zaglavlje-kolone {
+        grid-template-columns: 20px 20px 20px 1fr !important;
+    }
+.svetitelj { font-size: 18px; }
+.sadrzaj { font-size: 21px; }
+.praznik { font-size: 18px; }
+.opis { font-size: 20px; }
+.obicno { font-size: 19px; }
+   body {
+        padding: 0; /* Brišemo razmak oko celog tela */
+    }
+    
+    .container {
+        width: 100%; /* Širi se na ceo ekran telefona */
+        max-width: 100%;
+        padding: 10px 5px; /* Minimalni razmak tek da slova ne udaraju u ivicu stakla */
+        margin: 0;
+    }
+
+    .dan {
+        padding: 8px 2px; /* Još malo širimo prostor za tekst unutar dana */
+    }
+}
+
+
+</style>
+
+</head>
+<body>
+
+<div class="container">
+<div class="navigacija">
+<a href=""></a>
+    
+<a href="april-2026.html"></a>
+</div>
 	<h1>
 март 2026 
 <span class="dani-ukupno">31 дан</span>
