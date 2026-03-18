@@ -302,12 +302,6 @@ function osveziKalendar() {
 }
 </script>       
 
-<script>
-// Automatski današnji datum
-const datum = new Date();
-const opcije = { day: 'numeric', month: 'long', year: 'numeric' };
-document.getElementById('datum').innerText = datum.toLocaleDateString('sr-RS', opcije);
-</script>
 
 
 
@@ -426,6 +420,17 @@ border-right-color: rgba(51, 51, 51, 0.12); border-bottom-color: rgba(51, 51, 51
 </table> 
 
 
+<script>
+// 🚀 Овај код „види” твоју кућицу испод лога
+const danasnjiDan = new Date();
+const format = { weekday: 'long', day: 'numeric', month: 'long' };
+const исписанДатум = danasnjiDan.toLocaleDateString('sr-RS', format);
+
+// КЉУЧ: Шаљемо датум у "output_danas" и стављамо га у твој .block-of-text
+const meta = document.getElementById('output_danas');
+if (meta) {
+    meta.innerHTML = '<section class="block-of-text">' + исписанДатум + '</section>';
+}
 
 
 </body>
