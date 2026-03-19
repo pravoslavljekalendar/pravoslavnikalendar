@@ -258,9 +258,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <img src="ikona.png" alt="Logo" style="width: 80px; height: 80px; display: block; margin: 0 auto 5px auto; border-radius: 50%; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
 </div> <!-- ОВАЈ ЗАТВАРА ЛОГО -->
 
-<div class="danas" id="output_danas">
-    <!-- Овде ће скрипта сама уписати Свеца -->
-</div> <!-- ОВАЈ ЗАТВАРА ДАТУМ -->
+<div content="container">
+<div id="svetitelj"></div>
+<!-- Datum automatski -->
+<div id="datum"></div>
 
 <div class="container">
     <a href="pravoslavni-kalendar.html" class="dugme">ПРАВОСЛАВНИ КАЛЕНДАР</a>
@@ -283,16 +284,28 @@ function osveziKalendar() {
 </script>       
    
 <script>
-// 🚀 Овај код „види” твоју кућицу испод лога
-const danasnjiDan = new Date();
-const format = { weekday: 'long', day: 'numeric', month: 'long' };
-const исписанДатум = danasnjiDan.toLocaleDateString('sr-RS', format);
+async function prikaziSve() {
+    const d = new Date();
+    // 1. Враћамо суботу на екран
+    const opcije = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
+    document.getElementById('datum').innerText = d.toLocaleDateString('sr-RS', opcije);
 
-// КЉУЧ: Шаљемо датум у "output_danas" и стављамо га у твој .block-of-text
-const meta = document.getElementById('output_danas');
-if (meta) {
-    meta.innerHTML = '<section class="block-of-text">' + исписанДатум + '</section>';
+    // 2. Тражимо свеца у твом фајлу
+    try {
+        const res = await fetch('svetitelji.json');
+        const svetitelji = await res.json();
+        const kljuc = `${d.getDate()}-${d.getMonth() + 1}`;
+        
+        if (svetitelji[kljuc]) {
+            document.getElementById('svetitelj').innerHTML = "<b>Данас славимо:</b><br>" + svetitelji[kljuc];
+        } else {
+            document.getElementById('svetitelj').innerText = "";
+        }
+    } catch (e) {
+        document.getElementById('svetitelj').innerText = "";
+    }
 }
+prikaziSve();
 </script>
 
 <!-- Yandex.Metrika counter -->
