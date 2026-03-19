@@ -198,6 +198,18 @@ padding: 8px 2px; /* Još malo širimo prostor za tekst unutar dana */
  }
 
   
+@media screen and (max-width: 600px) {
+    /* Ово скида бели оклоп са табеле на телефону */
+    table, .kontejner-zadusnice table {
+        background: rgba(255, 255, 255, 0.4) !important; /* Само мало белине, тек да се слова виде */
+        background-image: none !important; 
+        box-shadow: none !important; /* Да не гуши мали екран */
+    }
+    
+    /* Ово чини да се твој беж-лила папир види испод слова */
+    td, th {
+        background: transparent !important;
+    }
 }
     
  </style>
