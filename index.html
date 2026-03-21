@@ -25,7 +25,7 @@ margin: 0;
 background: linear-gradient(135deg, #d3d3d3 0%, #e6e6fa 100%);
 background-image: url("papir.png");
 background-size: cover; /* popunjava ceo ekran */
-background-repeat: no-repeat;
+background-repeat: repeat-y;
 background-position: center;
 min-height: 100vh;
 font-family: "Times New Roman", serif;
@@ -194,6 +194,16 @@ box-shadow: 0 4px 15px rgba(0,0,0,0.7);">
 .dan, .zaglavlje-kolone {
 grid-template-columns: 20px 20px 20px 1fr;
 }
+@media (max-width: 480px) {
+    .gornji-papir {
+        /* ZABRANA: Na mobilnom slika mora biti jedna i mora imati ivice! */
+        background-repeat: no-repeat !important;
+        background-size: 100% 100% !important; 
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        text-align: center;
+    }
 
 .svetitelj { font-size: 18px; }
 .sadrzaj { font-size: 21px; }
