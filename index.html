@@ -38,7 +38,31 @@ padding: 20px; /* Smanjen padding da stane na manje ekrane */
 text-align: center;
 margin: 0;
 }
+.gornji-list {
+    width: 95%;
+    max-width: 430px;
+    margin: 20px auto;
+    padding: 25px;
+    background-image: url("papir.png"); /* Tvoj originalni savijeni papir */
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
 
+/* DONJI DEO - SKORO BELI ZA KALENDAR */
+.kalendar-list {
+    width: 95%;
+    max-width: 430px;
+    margin: 20px auto;
+    padding: 20px;
+    background-image: url("papir.jpg"); /* Taj svetliji papir */
+    background-size: cover; /* Pošto je skoro beo, neka popuni sve */
+    background-color: rgba(255, 255, 255, 0.5); /* Dodatna belina */
+    border: 1px dashed #8b6f47; /* Da izgleda kao isečen list */
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
 /* Datum gore */
 #datum {
 font-size: 20px;
@@ -241,7 +265,7 @@ padding: 8px 2px; /* Još malo širimo prostor za tekst unutar dana */
 
 
 
-<div class="container">
+<div class="gornji-list">
 <img src="ikona.png" alt="Ljubav Pravoslavlje Logo" style="width: 80px; 
 height: 80px; display: block; 
 margin: 0 auto 5px auto; 
@@ -395,7 +419,7 @@ font-weight: 700; ">Задушнице у 2026. години</th>
 
 	
 <br>
-<div class="container">	
+<div class="kalendar-list">
 <div style="text-align: center;">
     <h2 style=" text-shadow: 1px 1px 2px rgba(0,0,0,0.1);">
         🌿 ПРАВОСЛАВНИ КАЛЕНДАР (МАРТ)
