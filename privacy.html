@@ -1,0 +1,1 @@
+"Ova aplikacija ne sakuplja nikakve lične podatke korisnika."
