@@ -1,4 +1,4 @@
-const CACHE_NAME ='pravoslavna-riznica-final-v65';
+const CACHE_NAME ='pravoslavna-riznica-final-v67';
 const OFFLINE_ASSETS = [
   './',
   './index.html',
@@ -213,7 +213,7 @@ const OFFLINE_ASSETS = [
   './svetitelji.json'
 ];
 
-// 1. INSTALL (SAFE VERSION – NE PUKNE AKO NEŠTO FALI)
+// 1. INSTALL (safe preload)
 self.addEventListener('install', (event) => {
   self.skipWaiting();
 
@@ -230,7 +230,7 @@ self.addEventListener('install', (event) => {
   );
 });
 
-// 2. ACTIVATE
+// 2. ACTIVATE (clean old caches)
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then(keys =>
@@ -243,36 +243,37 @@ self.addEventListener('activate', (event) => {
   self.clients.claim();
 });
 
-// 3. FETCH (ROBUST OFFLINE LOGIC)
+// 3. FETCH (STABLE iOS SAFE VERSION)
 self.addEventListener('fetch', (event) => {
-
-  // samo GET zahtevi
   if (event.request.method !== 'GET') return;
 
   event.respondWith(
-    caches.match(event.request).then((cached) => {
-      if (cached) return cached;
+    (async () => {
+      try {
+        // 1. CACHE FIRST
+        const cached = await caches.match(event.request);
+        if (cached) return cached;
 
-      return fetch(event.request)
-        .then((response) => {
+        // 2. NETWORK
+        const response = await fetch(event.request);
 
-          const copy = response.clone();
+        // 3. SAVE TO CACHE
+        const cache = await caches.open(CACHE_NAME);
+        cache.put(event.request, response.clone());
 
-          caches.open(CACHE_NAME).then((cache) => {
-            cache.put(event.request, copy);
-          });
+        return response;
 
-          return response;
-        })
-        .catch(() => {
+      } catch (err) {
 
-          // 🔥 KRITIČNO ZA iOS NAVIGACIJU
-          if (event.request.mode === 'navigate') {
-            return caches.match('./index.html');
-          }
+        // 4. NAVIGATION FALLBACK (ključ za Safari)
+        if (event.request.mode === 'navigate') {
+          const fallback = await caches.match('./index.html');
+          return fallback || new Response('Offline', { status: 200 });
+        }
 
-          return null;
-        });
-    })
+        // 5. safe fallback (NE NULL!)
+        return new Response('', { status: 200 });
+      }
+    })()
   );
 });
