@@ -1,5 +1,5 @@
-const cacheName = 'pravoslavna-riznica-final-v63';
-const assets = [
+const CACHE_NAME ='pravoslavna-riznica-final-v64';
+const OFFLINE_ASSETS = [
   './',
   './index.html',
   './psaltir.html',
