@@ -1,4 +1,4 @@
-const CACHE_NAME ='pravoslavna-riznica-final-v64';
+const CACHE_NAME ='pravoslavna-riznica-final-v65';
 const OFFLINE_ASSETS = [
   './',
   './index.html',
@@ -213,40 +213,49 @@ const OFFLINE_ASSETS = [
   './svetitelji.json'
 ];
 
-// 1. INSTALL - KEŠIRAJ SVE
-self.addEventListener("install", (event) => {
+// 1. INSTALL (SAFE VERSION – NE PUKNE AKO NEŠTO FALI)
+self.addEventListener('install', (event) => {
   self.skipWaiting();
 
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(OFFLINE_ASSETS);
+    caches.open(CACHE_NAME).then(async (cache) => {
+      for (const url of OFFLINE_ASSETS) {
+        try {
+          await cache.add(url);
+        } catch (e) {
+          console.log('Preskačem:', url);
+        }
+      }
     })
   );
 });
 
-// 2. ACTIVATE - OČISTI STARO
-self.addEventListener("activate", (event) => {
+// 2. ACTIVATE
+self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches.keys().then((keys) => {
-      return Promise.all(
-        keys
-          .filter((k) => k !== CACHE_NAME)
-          .map((k) => caches.delete(k))
-      );
-    })
+    caches.keys().then(keys =>
+      Promise.all(
+        keys.map(k => (k !== CACHE_NAME ? caches.delete(k) : null))
+      )
+    )
   );
 
   self.clients.claim();
 });
 
-// 3. FETCH - FULL OFFLINE LOGIKA
-self.addEventListener("fetch", (event) => {
+// 3. FETCH (ROBUST OFFLINE LOGIC)
+self.addEventListener('fetch', (event) => {
+
+  // samo GET zahtevi
+  if (event.request.method !== 'GET') return;
+
   event.respondWith(
     caches.match(event.request).then((cached) => {
       if (cached) return cached;
 
       return fetch(event.request)
         .then((response) => {
+
           const copy = response.clone();
 
           caches.open(CACHE_NAME).then((cache) => {
@@ -256,13 +265,14 @@ self.addEventListener("fetch", (event) => {
           return response;
         })
         .catch(() => {
-          // fallback za HTML
-          if (event.request.destination === "document") {
-            return caches.match("./index.html");
+
+          // 🔥 KRITIČNO ZA iOS NAVIGACIJU
+          if (event.request.mode === 'navigate') {
+            return caches.match('./index.html');
           }
+
+          return null;
         });
     })
   );
 });
-
-
