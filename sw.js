@@ -1,4 +1,5 @@
-const cacheName = 'pravoslavna-riznica-final-v60';
+const CACHE_NAME = "pravoslavlje-v1";
+
 const assets = [
   './',
   './index.html',
@@ -213,50 +214,84 @@ const assets = [
   './svetitelji.json'
 ];
 
-// 1. Instalacija: Snimanje fajlova JEDAN PO JEDAN bez rušenja skripte
-self.addEventListener('install', evt => {
-  self.skipWaiting(); 
-  evt.waitUntil(
-    caches.open(cacheName).then(cache => {
-      console.log('Усисивач пакује фајлове један по један...');
-      return Promise.all(
-        assets.map(url => {
-          return cache.add(url).catch(err => {
-            console.error('Недостаје фајл на серверу, али идемо даље:', url);
-          });
-        })
-      );
+// 1. OSNOVNI APP SHELL (uvek offline)
+const APP_SHELL = [
+  "./",
+  "./index.html",
+  "./manifest.json",
+  "./style.css",
+  "./sw.js",
+  "./web-app-manifest-192x192.png",
+  "./web-app-manifest-512x512.png"
+];
+
+// INSTALL
+self.addEventListener("install", (event) => {
+  self.skipWaiting();
+
+  event.waitUntil(
+    caches.open(CACHE_NAME).then((cache) => {
+      return cache.addAll(APP_SHELL);
     })
   );
 });
 
-// 2. Aktivacija i čišćenje starih keševa
-self.addEventListener('activate', evt => {
-  evt.waitUntil(
-    caches.keys().then(keys => {
-      return Promise.all(
-        keys.filter(key => key !== cacheName).map(key => caches.delete(key))
-      );
-    })
-  );
-});
-
-// 3. Fetch event - servira fajlove offline i dinamički dopunjava keš
-self.addEventListener('fetch', evt => {
-  evt.respondWith(
-    caches.match(evt.request).then(cacheRes => {
-      return cacheRes || fetch(evt.request).then(fetchRes => {
-        return caches.open(cacheName).then(cache => {
-          if (evt.request.url.startsWith(self.location.origin)) {
-            cache.put(evt.request.url, fetchRes.clone());
+// ACTIVATE (čišćenje starih verzija)
+self.addEventListener("activate", (event) => {
+  event.waitUntil(
+    caches.keys().then((keys) =>
+      Promise.all(
+        keys.map((key) => {
+          if (key !== CACHE_NAME) {
+            return caches.delete(key);
           }
-          return fetchRes;
+        })
+      )
+    )
+  );
+  self.clients.claim();
+});
+
+// FETCH (GLAVNA PAMET)
+self.addEventListener("fetch", (event) => {
+  const req = event.request;
+
+  // samo GET
+  if (req.method !== "GET") return;
+
+  event.respondWith(
+    caches.match(req).then((cached) => {
+      // 1. Ako postoji u kešu → odmah vrati
+      if (cached) return cached;
+
+      // 2. Ako nije → idi na mrežu
+      return fetch(req)
+        .then((res) => {
+          // ne keširamo ako nije validno
+          if (!res || res.status !== 200) return res;
+
+          const clone = res.clone();
+
+          caches.open(CACHE_NAME).then((cache) => {
+            // KEŠIRAJ SVE HTML STRANICE DINAMIČKI
+            if (
+              req.url.includes(".html") ||
+              req.url.includes(".json") ||
+              req.url.includes(".css") ||
+              req.url.includes(".js")
+            ) {
+              cache.put(req, clone);
+            }
+          });
+
+          return res;
+        })
+        .catch(() => {
+          // OFFLINE FALLBACK
+          if (req.url.includes(".html")) {
+            return caches.match("./index.html");
+          }
         });
-      });
-    }).catch(() => {
-      if (evt.request.url.indexOf('.html') > -1) {
-        return caches.match('./index.html');
-      }
     })
   );
 });
