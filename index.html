@@ -1143,17 +1143,10 @@ function preslovi(pismo) {
 
 // Izmeni funkciju za Engleski ovako:
 function prevediNaEngleski() {
+    alert("Funkcija je pokrenuta!"); // Ako ovo vidiš, dugme radi
+    
     const recnik = {
-        "Постови": "Fasting periods",
-        "Значајни празници": "Significant holidays",
-        "Духовне поуке": "Spiritual lessons",
-        "Духовне приче": "Spiritual stories",
-        "Васкршњи календар": "Easter calendar",
-        "Правoславни календар": "Orthodox calendar",
-        "Псалтир": "Psalter",
-        "Молитвеник": "Prayer book",
-        "Нови завет": "New Testament",
-        "Охридски пролог": "Ohrid Prologue"
+        "Псалтир": "Psalter" // Probaj samo jednu reč za test
     };
 
     function zameniTekstPrevodom(node) {
@@ -1161,6 +1154,7 @@ function prevediNaEngleski() {
             let tekst = node.nodeValue.trim();
             if (recnik[tekst]) {
                 node.nodeValue = recnik[tekst];
+                alert("Preveo sam: " + tekst); // Ako ovo vidiš, prevod radi
             }
         } else {
             for (let i = 0; i < node.childNodes.length; i++) {
@@ -1169,8 +1163,8 @@ function prevediNaEngleski() {
         }
     }
     
-    // Ovo odmah pokreće prevod bez osvežavanja stranice
     zameniTekstPrevodom(document.body);
+    alert("Funkcija je završila rad.");
 }
 </script>
 
