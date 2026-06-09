@@ -704,6 +704,7 @@ padding: 0; /* Brišemo razmak oko celog tela */
 <div class="pismo-prekidac" style="text-align: center;">
     <span onclick="preslovi('cir')" style="cursor:pointer; padding: 5px 10px;">Ћир</span> | 
     <span onclick="preslovi('lat')" style="cursor:pointer; padding: 5px 10px;">Lat</span>
+	<span onclick="prevediNaEngleski()" style="cursor:pointer; padding: 5px 10px;">ENG</span>
 </div>
 
 
@@ -1139,6 +1140,30 @@ function preslovi(pismo) {
     // Pokreni zamenu za celo telo dokumenta
     zameniTekst(document.body);
 }
+
+function prevediNaEngleski() {
+    // Ovde upisuješ parove: "Srpski tekst" : "Engleski prevod"
+    const recnik = {
+        "Добродошли": "Welcome",
+        "Поручите мајицу": "Order a T-shirt",
+        "Драги пријатељи": "Dear friends"
+        // Dodaj sve bitne naslove i tekstove ovde...
+    };
+
+    function zameniTekstPrevodom(node) {
+        if (node.nodeType === Node.TEXT_NODE) {
+            let tekst = node.nodeValue.trim();
+            if (recnik[tekst]) {
+                node.nodeValue = recnik[tekst];
+            }
+        } else {
+            for (let i = 0; i < node.childNodes.length; i++) {
+                zameniTekstPrevodom(node.childNodes[i]);
+            }
+        }
+    }
+    zameniTekstPrevodom(document.body);
+}		
 </script>
 
 
