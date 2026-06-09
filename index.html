@@ -1141,29 +1141,21 @@ function preslovi(pismo) {
     zameniTekst(document.body);
 }
 
+// Izmeni funkciju za Engleski ovako:
 function prevediNaEngleski() {
-    // Ovde upisuješ parove: "Srpski tekst" : "Engleski prevod"
-    const recnik = {
-        "Добродошли": "Welcome",
-        "Поручите мајицу": "Order a T-shirt",
-        "Драги пријатељи": "Dear friends"
-        // Dodaj sve bitne naslove i tekstove ovde...
+    // 1. Osveži stranicu da vratimo originalni tekst (ćirilicu)
+    location.reload();
+    
+    // 2. Sačekaj da se stranica učita pa onda pokreni prevod
+    window.onload = function() {
+        const recnik = {
+            "Добродошли": "Welcome",
+            "Поручите мајицу": "Order a T-shirt",
+            "Драги пријатељи": "Dear friends"
+        };
+        // ... ostatak tvoje funkcije zameniTekstPrevodom ...
     };
-
-    function zameniTekstPrevodom(node) {
-        if (node.nodeType === Node.TEXT_NODE) {
-            let tekst = node.nodeValue.trim();
-            if (recnik[tekst]) {
-                node.nodeValue = recnik[tekst];
-            }
-        } else {
-            for (let i = 0; i < node.childNodes.length; i++) {
-                zameniTekstPrevodom(node.childNodes[i]);
-            }
-        }
-    }
-    zameniTekstPrevodom(document.body);
-}		
+}	
 </script>
 
 
