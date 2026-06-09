@@ -704,7 +704,7 @@ padding: 0; /* Brišemo razmak oko celog tela */
 <div class="pismo-prekidac" style="text-align: center;">
     <span onclick="preslovi('cir')" style="cursor:pointer; padding: 5px 10px;">Ћир</span> | 
     <span onclick="preslovi('lat')" style="cursor:pointer; padding: 5px 10px;">Lat</span>
-	<span onclick="prevediNaEngleski()" style="cursor:pointer; padding: 5px 10px;">ENG</span>
+	<span onclick="prevediNaEngleski()" style="cursor:pointer; padding: 5px 10px;">Eng</span>
 </div>
 
 
@@ -1148,11 +1148,18 @@ function prevediNaEngleski() {
     
     // 2. Sačekaj da se stranica učita pa onda pokreni prevod
     window.onload = function() {
-        const recnik = {
-            "Добродошли": "Welcome",
-            "Поручите мајицу": "Order a T-shirt",
-            "Драги пријатељи": "Dear friends"
-        };
+      const recnik = {
+    "Постови": "Fasting periods",
+    "Значајни празници": "Significant holidays",
+    "Духовне поуке": "Spiritual lessons",
+    "Духовне приче": "Spiritual stories",
+    "Васкршњи календар": "Easter calendar",
+    "Правoславни календар": "Orthodox calendar",
+    "Псалтир": "Psalter",
+    "Молитвеник": "Prayer book",
+    "Нови завет": "New Testament",
+    "Охридски пролог": "Ohrid Prologue"
+};
         // ... ostatak tvoje funkcije zameniTekstPrevodom ...
     };
 }	
