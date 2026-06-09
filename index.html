@@ -1143,26 +1143,35 @@ function preslovi(pismo) {
 
 // Izmeni funkciju za Engleski ovako:
 function prevediNaEngleski() {
-    // 1. Osveži stranicu da vratimo originalni tekst (ćirilicu)
-    location.reload();
-    
-    // 2. Sačekaj da se stranica učita pa onda pokreni prevod
-    window.onload = function() {
-      const recnik = {
-    "Постови": "Fasting periods",
-    "Значајни празници": "Significant holidays",
-    "Духовне поуке": "Spiritual lessons",
-    "Духовне приче": "Spiritual stories",
-    "Васкршњи календар": "Easter calendar",
-    "Правoславни календар": "Orthodox calendar",
-    "Псалтир": "Psalter",
-    "Молитвеник": "Prayer book",
-    "Нови завет": "New Testament",
-    "Охридски пролог": "Ohrid Prologue"
-};
-        // ... ostatak tvoje funkcije zameniTekstPrevodom ...
+    const recnik = {
+        "Постови": "Fasting periods",
+        "Значајни празници": "Significant holidays",
+        "Духовне поуке": "Spiritual lessons",
+        "Духовне приче": "Spiritual stories",
+        "Васкршњи календар": "Easter calendar",
+        "Правoславни календар": "Orthodox calendar",
+        "Псалтир": "Psalter",
+        "Молитвеник": "Prayer book",
+        "Нови завет": "New Testament",
+        "Охридски пролог": "Ohrid Prologue"
     };
-}	
+
+    function zameniTekstPrevodom(node) {
+        if (node.nodeType === Node.TEXT_NODE) {
+            let tekst = node.nodeValue.trim();
+            if (recnik[tekst]) {
+                node.nodeValue = recnik[tekst];
+            }
+        } else {
+            for (let i = 0; i < node.childNodes.length; i++) {
+                zameniTekstPrevodom(node.childNodes[i]);
+            }
+        }
+    }
+    
+    // Ovo odmah pokreće prevod bez osvežavanja stranice
+    zameniTekstPrevodom(document.body);
+}
 </script>
 
 
