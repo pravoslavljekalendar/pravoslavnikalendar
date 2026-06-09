@@ -1140,32 +1140,37 @@ function preslovi(pismo) {
     // Pokreni zamenu za celo telo dokumenta
     zameniTekst(document.body);
 }
-
+</script>
 // Izmeni funkciju za Engleski ovako:
+<script>
+// Tvoj preslovi kod ostaje ovde...
+function preslovi(pismo) {
+    // ... tvoj postojeći kod ...
+}
+
+// OVO JE KLJUČNO: Obe funkcije moraju biti "napolju"
 function prevediNaEngleski() {
-    alert("Funkcija je pokrenuta!"); // Ako ovo vidiš, dugme radi
-    
     const recnik = {
-        "Псалтир": "Psalter" // Probaj samo jednu reč za test
+        "Псалтир": "Psalter",
+        "Молитвеник": "Prayer book"
     };
 
-   function prevediNaEngleski() {
-    // Samo poruka da vidimo da li dugme reaguje
-    console.log("Kliknuto je ENG dugme!");
-    
-    // Probaćemo da promenimo tekst samo jednog elementa koji sigurno postoji
-    // Zameni 'id_menija' sa pravim ID-jem (ako ga imaš) ili probaj ovako:
-    const elementi = document.getElementsByTagName('span');
-    
-    for (let i = 0; i < elementi.length; i++) {
-        if (elementi[i].innerText === "Псалтир") {
-            elementi[i].innerText = "Psalter";
+    // Sada pozivamo funkciju koju smo definisali ispod
+    zameniTekstPrevodom(document.body, recnik);
+}
+
+// Ova funkcija mora biti van prevediNaEngleski()
+function zameniTekstPrevodom(node, recnik) {
+    if (node.nodeType === Node.TEXT_NODE) {
+        let tekst = node.nodeValue.trim();
+        if (recnik[tekst]) {
+            node.nodeValue = recnik[tekst];
+        }
+    } else {
+        for (let i = 0; i < node.childNodes.length; i++) {
+            zameniTekstPrevodom(node.childNodes[i], recnik);
         }
     }
-}
-    
-    zameniTekstPrevodom(document.body);
-    alert("Funkcija je završila rad.");
 }
 </script>
 
