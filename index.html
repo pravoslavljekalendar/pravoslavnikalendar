@@ -1149,19 +1149,20 @@ function prevediNaEngleski() {
         "Псалтир": "Psalter" // Probaj samo jednu reč za test
     };
 
-    function zameniTekstPrevodom(node) {
-        if (node.nodeType === Node.TEXT_NODE) {
-            let tekst = node.nodeValue.trim();
-            if (recnik[tekst]) {
-                node.nodeValue = recnik[tekst];
-                alert("Preveo sam: " + tekst); // Ako ovo vidiš, prevod radi
-            }
-        } else {
-            for (let i = 0; i < node.childNodes.length; i++) {
-                zameniTekstPrevodom(node.childNodes[i]);
-            }
+   function prevediNaEngleski() {
+    // Samo poruka da vidimo da li dugme reaguje
+    console.log("Kliknuto je ENG dugme!");
+    
+    // Probaćemo da promenimo tekst samo jednog elementa koji sigurno postoji
+    // Zameni 'id_menija' sa pravim ID-jem (ako ga imaš) ili probaj ovako:
+    const elementi = document.getElementsByTagName('span');
+    
+    for (let i = 0; i < elementi.length; i++) {
+        if (elementi[i].innerText === "Псалтир") {
+            elementi[i].innerText = "Psalter";
         }
     }
+}
     
     zameniTekstPrevodom(document.body);
     alert("Funkcija je završila rad.");
