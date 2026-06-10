@@ -1144,27 +1144,31 @@ function preslovi(pismo) {
 // Izmeni funkciju za Engleski ovako:
 
 function prevediNaEngleski() {
+    // Ovde samo dodaješ reči i rečenice koje se pojavljuju u Prologu ili pričama
     const recnik = {
         "Псалтир": "Psalter",
-        "Молитвеник": "Prayer book"
-        // Dodaj ovde ostale reči iz menija
+        "Охридски пролог": "Ohrid Prologue",
+        "Драги пријатељи": "Dear friends",
+        "Добродошли": "Welcome"
+        // ... dodaj ovde naslove priča ili ključne rečenice iz Prologa
     };
 
-    function zameniTekstPrevodom(node) {
-        if (node.nodeType === Node.TEXT_NODE) {
+    function obidjiSve(node) {
+        // Ako je tekstualni čvor i nije prazan
+        if (node.nodeType === 3 && node.nodeValue.trim().length > 0) {
             let tekst = node.nodeValue.trim();
             if (recnik[tekst]) {
                 node.nodeValue = recnik[tekst];
             }
         } else {
+            // Ako nije tekst, idi dublje u čvorove
             for (let i = 0; i < node.childNodes.length; i++) {
-                zameniTekstPrevodom(node.childNodes[i]);
+                obidjiSve(node.childNodes[i]);
             }
         }
     }
-    zameniTekstPrevodom(document.body);
+    obidjiSve(document.body);
 }
-</script>
 
 
 
