@@ -1143,34 +1143,26 @@ function preslovi(pismo) {
 
 // Izmeni funkciju za Engleski ovako:
 
-// Tvoj preslovi kod ostaje ovde...
-function preslovi(pismo) {
-    // ... tvoj postojeći kod ...
-}
-
-// OVO JE KLJUČNO: Obe funkcije moraju biti "napolju"
 function prevediNaEngleski() {
     const recnik = {
         "Псалтир": "Psalter",
         "Молитвеник": "Prayer book"
+        // Dodaj ovde ostale reči iz menija
     };
 
-    // Sada pozivamo funkciju koju smo definisali ispod
-    zameniTekstPrevodom(document.body, recnik);
-}
-
-// Ova funkcija mora biti van prevediNaEngleski()
-function zameniTekstPrevodom(node, recnik) {
-    if (node.nodeType === Node.TEXT_NODE) {
-        let tekst = node.nodeValue.trim();
-        if (recnik[tekst]) {
-            node.nodeValue = recnik[tekst];
-        }
-    } else {
-        for (let i = 0; i < node.childNodes.length; i++) {
-            zameniTekstPrevodom(node.childNodes[i], recnik);
+    function zameniTekstPrevodom(node) {
+        if (node.nodeType === Node.TEXT_NODE) {
+            let tekst = node.nodeValue.trim();
+            if (recnik[tekst]) {
+                node.nodeValue = recnik[tekst];
+            }
+        } else {
+            for (let i = 0; i < node.childNodes.length; i++) {
+                zameniTekstPrevodom(node.childNodes[i]);
+            }
         }
     }
+    zameniTekstPrevodom(document.body);
 }
 </script>
 
