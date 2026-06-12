@@ -149,10 +149,29 @@ h2 { color: #4A3728; } /* Crveni brojevi psalama */
     color: #8b0000; /* Postaju bordo kad pređeš preko njih */
     padding-left: 10px; /* Blagi pomak udesno, vrlo otmeno */
 }
+.font-controls button {
+    background-color: #8b0000; /* Tvoja bordo boja */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: bold;
+}
 
+.font-controls button:hover {
+    background-color: #5f0606; /* Tamnija bordo na dodir */
+}
     </style>
 </head>
 <body>
+<div class="font-controls" style="text-align: center; margin-top: 10px; margin-bottom: 20px;">
+    <button onclick="changeFontSize(-2)">A-</button>
+    <button onclick="changeFontSize(2)">A+</button>
+    <!-- Dugme za Dark Mode -->
+    <button onclick="toggleDarkMode()">🌙</button>
+</div>
+    
 <a href="pravoslavne-knjige.html" class="home-dugme">🏠</a> 
 
 
@@ -6708,5 +6727,22 @@ COBISS.SR-ID 169483276
 
 <script src='//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'></script>
 <div class='clear'></div>
+
+<script>
+    // Funkcija za font
+    function changeFontSize(val) {
+        let body = document.querySelector('body');
+        let style = window.getComputedStyle(body, null).getPropertyValue('font-size');
+        let currentSize = parseFloat(style);
+        body.style.fontSize = (currentSize + val) + 'px';
+    }
+
+    // Funkcija za Dark Mode
+    function toggleDarkMode() {
+        document.body.classList.toggle('dark-mode');
+    }
+</script>
+
+           
 </body>
 </html>
