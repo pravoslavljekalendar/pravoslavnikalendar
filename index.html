@@ -1202,25 +1202,21 @@ function prevediNaEngleski() {
 
 
 
-<div class="column-right-outer">
-<div class="column-right-inner">
-<aside>
-<div class="sidebar section" id="sidebar-right-1">
-    <div class="widget Translate" data-version="1" id="Translate1">
-        <h2 class="title"></h2>
-        
-        <!-- Glavni kontejner za Google prevodilac -->
-        <div id="google_translate_element"></div>
-        
-        <script>
-            function googleTranslateElementInit() {
-                new google.translate.TranslateElement({
-                    pageLanguage: 'sr',
-                    autoDisplay: true,
-                    layout: google.translate.TranslateElement.InlineLayout.VERTICAL
-                }, 'google_translate_element');
-            }
-        </script>
+<!-- Kontejner za Google prevodilac (zauzima manje mesta na ekranu) -->
+<div id="google_translate_element" style="margin: 10px; text-align: center;"></div>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'sr',
+    includedLanguages: 'en,sr,ru,de', // Ovde birate koje jezike nudite
+    autoDisplay: true, // Ovo automatski pita strance da li žele prevod
+    layout: google.translate.TranslateElement.InlineLayout.SIMPLE // Moderniji, manji izgled
+  }, 'google_translate_element');
+}
+</script>
+
+<script type="text/javascript" src="https://google.com"></script>
         <p class="potpis"></p>
     </div>
 </div>
