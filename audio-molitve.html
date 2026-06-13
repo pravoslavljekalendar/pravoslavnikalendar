@@ -1,175 +1,183 @@
 <!DOCTYPE html>
 <html lang="sr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Аудио молитве</title>
-
-
-<style>
-
-        body {
-            margin: 0;
-            background-image: url("papir.png");
-            background-size: cover;
-            background-attachment: fixed; /* Pozadina se ne pomera dok skroluješ tekst */
-            font-family: "Times New Roman", serif;
-            color: #4A3728;
-            text-align: center;
-        }
-
-  .container { padding-top: 20px; width: 50%; margin: auto; }
-        iframe {
-            width: 100%;
-            height: 20vh;
-            border: 2px solid #2E1B08;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-            background-image: url("papir.jpg");
-        }
-
-.molitvenik-dugme {
-            position: fixed; top: 15px; left: 15px;
-            background: rgba(242, 230, 201, 0.9);
-            padding: 10px 15px; border-radius: 8px;
-            border: 1px solid #2E1B08; text-decoration: none; 
-            font-size: 20px; z-index: 1000; color: #2E1B08;
-        }
- 
-
-
-/* Ovo važi za sve uređaje */
-.vrh-link {
-    display: inline-block;
-    text-decoration: none;
-    font-size: 24px;
-    padding: 10px;
-    color: #8b6f47;
-    font-weight: bold;
-    margin-top: 20px;
-}
-
-/* Ovo se aktivira SAMO na telefonima */
-@media (max-width: 480px) {
-    .vrh-link {
-        font-size: 32px; /* Još veća strelica za palac */
-        padding: 20px;   /* Veći prostor za klik */
-        display: block;  /* Da bude na sredini ekrana */
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Аудио молитве</title>
+  <style>
+    body {
+      margin: 0;
+      background-image: url("papir.png");
+      background-size: cover;
+      background-attachment: fixed;
+      font-family: "Times New Roman", serif;
+      color: #4A3728;
+      text-align: center;
     }
-}
-
+    .container {
+      padding-top: 20px;
+      width: 90%;
+      max-width: 500px;
+      margin: auto;
+      padding-bottom: 5px;
+    }
+    /* STIL ZA FIKSNI PLEJER NA VRHU */
+    .plejer-fiksni-okvir {
+      background: #fcf8f2;
+      border: 2px solid #2E1B08;
+      border-radius: 15px;
+      padding: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      margin-bottom: 25px;
+      position: sticky;
+      top: 15px;
+      z-index: 999;
+    }
+    .molitvenik-dugme {
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      background: rgba(242, 230, 201, 0.9);
+      padding: 10px 15px;
+      border-radius: 8px;
+      border: 1px solid #2E1B08;
+      text-decoration: none;
+      font-size: 20px;
+      z-index: 1000;
+      color: #2E1B08;
+    }
+    /* STIL ZA SVAKU PESMU NA LISTI */
+    .pesma-red {
+      background: rgba(242, 230, 201, 0.6);
+      border: 1px solid rgba(46, 27, 8, 0.3);
+      border-radius: 10px;
+      margin: 10px 0;
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .pesma-red:hover {
+      background: rgba(242, 230, 201, 0.9);
+      transform: scale(1.02);
+    }
+    .pesma-naslov {
+      font-weight: bold;
+      color: #5f0606;
+      font-size: 15px;
+      text-align: left;
+    }
+    .dugme-pusti {
+      color: #2E1B08;
+      font-size: 18px;
+    }
   </style>
 </head>
 <body>
 
-   <a href="molitvenik.html" class="molitvenik-dugme">🏠</a>
+  <!-- Dugme za povratak kući -->
+  <a href="molitvenik.html" class="molitvenik-dugme">🏠</a>
 
-<div class="container">
-    <h1 style="text-shadow: 1px 1px 2px white;"></h1>
-    <p><i></i></p>
+  <div class="container">
+    <h1>Аудио молитве и песме</h1>
 
-<h1>Аудио молитве</h1>
-
-<p><strong>Пресвета Богородице Спаси Нас</strong></p>
-<iframe src="https://drive.google.com/file/d/127bSaYz8fA9XSLJVWi5l8xTaOgbqwHYl/preview" width="100%" height="60" allow="autoplay"></iframe>
-
-<p><strong>Душо моја свет се нагло мења</strong></p>
-<iframe src="https://drive.google.com/file/d/1MpuIH1wNvBOJKgYnTb7JN9p96_xZYQBi/preview" width="100%" height="60" allow="autoplay"></iframe>
-
-<p><strong>Господи помилуй, Господи прости</strong></p>
-<iframe src="https://drive.google.com/file/d/1MTwPYMeqwaErs3rdgP67OnmZ6wrZppHN/preview" width="100%" height="60" allow="autoplay"></iframe>
-<p><strong>Устани, Боже, устани</strong></p> 
-<iframe src="https://drive.google.com/file/d/1jyM7jHNp9ODHeqZDLsuizQHll7SUaQ7q/preview" width="100%" height="60" allow="autoplay"></iframe> 
-<p><strong>Два анђела шеташе</strong></p>
-<iframe src="https://drive.google.com/file/d/1rbQ7llI34qDa1SWKbsUoogSaOVnE1pi2/preview" width="100%" height="60" allow="autoplay"></iframe>
-<p><strong>Юлия Славянская - Белый Ангел</strong></p> 
-<iframe src="https://drive.google.com/file/d/1YxjM31MunbTNxjLYBHrzKvDD3Y7-onKD/preview" width="100%" height="60" allow="autoplay"></iframe> 
-<p><strong>Юлия Славянская. Древневенгерский плач Марии</strong></p> 
-<iframe src="https://drive.google.com/file/d/1X_udIon4YHQborDa593rZL3vP65NYuop/preview" width="100%" height="60" allow="autoplay"></iframe> 
-<p><strong>Говори Господе</strong></p> 
-<iframe src="https://drive.google.com/file/d/1tHWYxb9ruk6JpmdAGQZKBCG0ul1uYcY6/preview" width="100%" height="60" allow="autoplay"></iframe> 
-<p><strong>Царицa тишине</strong></p> 
-<iframe src="https://drive.google.com/file/d/1Kzz2WvcC38YC8k3i7DIQk4lN75n9QIkh/preview" width="100%" height="60" allow="autoplay"></iframe> 
-<p><strong>Оче наш на арамејском језику</strong></p> 
-<iframe src="https://drive.google.com/file/d/1DjbsKe9Cr5ui-1dOTFCkssB_hqg6jhBb/preview" width="100%" height="60" allow="autoplay"></iframe> 
-<p><strong>Псалам 117</strong></p> 
-<iframe src="https://drive.google.com/file/d/1UgyZZKB3eZP0en4wqawwI46B2P6sy7MB/preview" width="100%" height="60" allow="autoplay"></iframe>
-<p><strong>Сестринство манастира-Видовдан</strong></p> 
-<iframe src="https://drive.google.com/file/d/1pS5v28JB9A4ySl2Gyh69TOZpLDM3oeg7/preview" width="100%" height="60" allow="autoplay"></iframe> 
-<p><strong>Сестринство манастира-Ој Косово,Косово</strong></p> 
-<iframe src="https://drive.google.com/file/d/1DPYoAwNV9d8W6p6fvn59pr4T8EDWiiQB/preview" width="100%" height="60" allow="autoplay"></iframe> 
-<p><strong>Ανέστη - Христос Воскресе</strong></p> 
-<iframe src="https://drive.google.com/file/d/11q8PPXsIy98sLx4olFmt37rhLhvfHbCn/preview" width="100%" height="60" allow="autoplay"></iframe> 
-<p><strong>Тело Христово</strong></p> 
-<iframe src="https://drive.google.com/file/d/1ea29ziRasmV_WUJjG6PC6e_l1Oju4brz/preview" width="100%" height="60" allow="autoplay"></iframe> 
-<p><strong>Говори Господе</strong></p> 
-<iframe src="https://drive.google.com/file/d/1tHWYxb9ruk6JpmdAGQZKBCG0ul1uYcY6/preview" width="100%" height="60" allow="autoplay"></iframe> 
-<p><strong>Ко има уши да чује, нека чује<p><strong>
-<iframe src="https://drive.google.com/file/d/1pW1tB3dEow8HoI_l5IwQx7dbCtvBjySB/preview" width="100%" height="60" allow="autoplay"></iframe> 
-<p><strong>Непрестана мoлитва<p><strong>
-<iframe src="https://drive.google.com/file/d/1KYjEfzRLLHMYY4u2UNrNi6u4MOP3AOhy/preview" width="100%" height="60" allow="autoplay"></iframe> 
-  
-<p><strong>Свети Сава-Ко удара тако позно</strong></p>
-<iframe src="https://drive.google.com/file/d/17idfm6VU1_ARyDRM3l_aQITrUk_RW887/preview" width="100%" height="60" allow="autoplay"></iframe>
-<p><strong>Песма светој Ксенији</strong></p>
-<iframe src="https://drive.google.com/file/d/1t5LawYzAuqt09juO8IUNEAu1rao_Bj-M/preview" width="100%" height="60" allow="autoplay"></iframe>
-<p><strong>Маријо славна</strong></p>
-<iframe src="https://drive.google.com/file/d/1OUoQBYXc5LaaYzY7Hu9E0gA54zJ5AC_Y/preview" width="100%" height="60" allow="autoplay"></iframe>
-<p><strong>Деца неба</strong></p>
-<iframe src="https://drive.google.com/file/d/1d9LIga95dcJDj7MMRLtwSbmgOG3BVNxw/preview" width="100%" height="60" allow="autoplay"></iframe>
-<p><strong>Знаш ли ко те љуби силно</strong></p>
-<iframe src="https://drive.google.com/file/d/1cAYcI7IlKBNVFjcO4yoObTOrXTn6yaoL/preview" width="100%" height="60" allow="autoplay"></iframe>
-<p><strong>Богородице дјево</strong></p>
-<iframe src="https://drive.google.com/file/d/1O-tWsoWHXnJWj5_f1hQY0bckwzDCCUh8/preview" width="100%" height="60" allow="autoplay"></iframe>
-<p><strong>Косово памти</strong></p>
-<iframe src="https://drive.google.com/file/d/1_WirzQ5b1Q-cTaEy7nSRUZ8yBxQu0hRV/preview" width="100%" height="60" allow="autoplay"></iframe>
-<p><strong>Сини јарко сунце са Косова</strong></p>
-<iframe src="https://drive.google.com/file/d/1tLgSsi3L45JILxv95qKAU3twStSsI7ZY/preview" width="100%" height="60" allow="autoplay"></iframe>
-<p><strong>Псалам 144</strong></p>
-<iframe src="https://drive.google.com/file/d/17PoTdPMSBLjCYDg_f-JPzUfLmOMje8Yt/preview" width="100%" height="60" allow="autoplay"></iframe>
-<p><strong>Иже херувими</strong></p>
-<iframe src="https://drive.google.com/file/d/1NLCjMde39L-I4xfwjaH06PxWv7NKNlom/preview" width="100%" height="60" allow="autoplay"></iframe>
-<p><strong>Благословен јеси Господи</strong></p>
-<iframe src="https://drive.google.com/file/d/1FSIZo4xZe3vRA6bAx6T-TsJ-M_i4vF0l/preview" width="100%" height="60" allow="autoplay"></iframe>
-<p><strong>Псалам 135-136</strong></p>
-<iframe src="https://drive.google.com/file/d/1w2zEphFtqGM5HhwPdKkKNrmE6OXYblrZ/preview" width="100%" height="60" allow="autoplay"></iframe>
-<p><strong>Псалам 90</strong></p>
-<iframe src="https://drive.google.com/file/d/1J-7lSZbEsasDAPB25Nga3nTXUyA8By16/preview" width="100%" height="60" allow="autoplay"></iframe>  
+    <!-- GLAVNI AUTOMATSKI PLEJER -->
+    <div class="plejer-fiksni-okvir">
+      <p id="naslov-pesme" style="font-weight: bold; color: #5f0606; margin: 0 0 10px 0;">Изаберите песму испод</p>
+      <audio id="glavni-plejer" controls style="width: 100%;"></audio>
     </div>
-</div>
+
+    <!-- DINAMIČKA LISTA PESAMA -->
+    <div id="lista-pesama-kontejner"></div>
+
+    <br><br>
+    <a href="#" style="text-decoration:none; font-size: 26px; padding: 15px 30px; color:#8b6f47; font-weight: bold;">⬆ Врх странице</a>
+    <br><br>
+  </div>
 
 <script>
-    const audio = document.getElementById('glavni-plejer');
-    const naslov = document.getElementById('naslov-pesme');
+const audio = document.getElementById('glavni-plejer');
+const naslov = document.getElementById('naslov-pesme');
+const listaKontejner = document.getElementById("lista-pesama-kontejner");
 
-    // Lista pesama za automatsko prebacivanje
-    const pesme = [
-        { naslov: "Пресвета Богородице Спаси Нас", id: "127bSaYz8fA9XSLJVWi5l8xTaOgbqwHYl" },
-        { naslov: "Душо моја свет се нагло мења", id: "1MpuIH1wNvBOJKgYnTb7JN9p96_xZYQBi" }
-    ];
+// Kompletna lista sa svih 30 pesama spremna za automatsko prebacivanje
+const pesme = [
+  { naslov: "Пресвета Богородице Спаси Нас", id: "127bSaYz8fA9XSLJVWi5l8xTaOgbqwHYl" },
+  { naslov: "Душо моја свет се нагло мења", id: "1MpuIH1wNvBOJKgYnTb7JN9p96_xZYQBi" },
+  { naslov: "Господи помилуй, Господи прости", id: "1MTwPYMeqwaErs3rdgP67OnmZ6wrZppHN" },
+  { naslov: "Устани, Боже, устани", id: "1jyM7jHNp9ODHeqZDLsuizQHll7SUaQ7q" },
+  { naslov: "Два анђела шеташе", id: "1rbQ7llI34qDa1SWKbsUoogSaOVnE1pi2" },
+  { naslov: "Юлия Славянская - Белый Ангел", id: "1YxjM31MunbTNxjLYBHrzKvDD3Y7-onKD" },
+  { naslov: "Юлия Славянская. Древневенгерский плач Марии", id: "1X_udIon4YHQborDa593rZL3vP65NYuop" },
+  { naslov: "Говори Господе", id: "1tHWYxb9ruk6JpmdAGQZKBCG0ul1uYcY6" },
+  { naslov: "Царицa тишине", id: "1Kzz2WvcC38YC8k3i7DIQk4lN75n9QIkh" },
+  { naslov: "Оче наш на арамејском језику", id: "1DjbsKe9Cr5ui-1dOTFCkssB_hqg6jhBb" },
+  { naslov: "Псалам 117", id: "1UgyZZKB3eZP0en4wqawwI46B2P6sy7MB" },
+  { naslov: "Сестринство манастира - Видовдан", id: "1pS5v28JB9A4ySl2Gyh69TOZpLDM3oeg7" },
+  { naslov: "Сестринство манастира - Ој Косово, Косово", id: "1DPYoAwNV9d8W6p6fvn59pr4T8EDWiiQB" },
+  { naslov: "Ανέστη - Христос Воскресе", id: "11q8PPXsIy98sLx4olFmt37rhLhvfHbCn" },
+  { naslov: "Тело Христово", id: "1ea29ziRasmV_WUJjG6PC6e_l1Oju4brz" },
+  { naslov: "Ко има уши да чује, нека чује", id: "1pW1tB3dEow8HoI_l5IwQx7dbCtvBjySB" },
+  { naslov: "Непрестана мoлитва", id: "1KYjEfzRLLHMYY4u2UNrNi6u4MOP3AOhy" },
+  { naslov: "Свети Сава - Ко удара тако позно", id: "17idfm6VU1_ARyDRM3l_aQITrUk_RW887" },
+  { naslov: "Песма светој Ксенији", id: "1t5LawYzAuqt09juO8IUNEAu1rao_Bj-M" },
+  { naslov: "Маријо славна", id: "1OUoQBYXc5LaaYzY7Hu9E0gA54zJ5AC_Y" },
+  { naslov: "Деца неба", id: "1d9LIga95dcJDj7MMRLtwSbmgOG3BVNxw" },
+  { naslov: "Знаш ли ко те љуби силно", id: "1cAYcI7IlKBNVFjcO4yoObTOrXTn6yaoL" },
+  { naslov: "Богородице дјево", id: "1O-tWsoWHXnJWj5_f1hQY0bckwzDCCUh8" },
+  { naslov: "Косово памти", id: "1_WirzQ5b1Q-cTaEy7nSRUZ8yBxQu0hRV" },
+  { naslov: "Сини јарко сунце са Косова", id: "1tLgSsi3L45JILxv95qKAU3twStSsI7ZY" },
+  { naslov: "Псалам 144", id: "17PoTdPMSBLjCYDg_f-JPzUfLmOMje8Yt" },
+  { naslov: "Иже херувими", id: "1NLCjMde39L-I4xfwjaH06PxWv7NKNlom" },
+  { naslov: "Благословен јеси Господи", id: "1FSIZo4xZe3vRA6bAx6T-TsJ-M_i4vF0l" },
+  { naslov: "Псалам 135-136", id: "1w2zEphFtqGM5HhwPdKkKNrmE6OXYblrZ" },
+  { naslov: "Псалам 90", id: "1J-7lSZbEsasDAPB25Nga3nTXUyA8By16" }
+];
 
-    let trenutnaPesma = 0;
+let trenutnaPesma = 0;
 
-    function pustiPesmu(index, naziv, driveId) {
-        trenutnaPesma = index;
-        naslov.innerText = naziv;
-        // Specijalni link koji Chrome na telefonu lakše čita:
-        audio.src = "https://docs.google.com/uc?export=open&id=" + driveId;
-        audio.play().catch(e => console.log("Kliknite Play da krene"));
-    }
+// Funkcija koja automatski stvara listu na ekranu
+function napraviListuPesama() {
+  pesme.forEach((pesma, index) => {
+    const red = document.createElement("div");
+    red.className = "pesma-red";
+    red.onclick = () => pustiPesmu(index, pesma.naslov, pesma.id);
+    
+    red.innerHTML = `
+      <span class="pesma-naslov">🎵 ${pesma.naslov}</span>
+      <span class="dugme-pusti">▶</span>
+    `;
+    listaKontejner.appendChild(red);
+  });
+}
 
-    // Kad se završi pesma, automatski kreni na sledeću
-    audio.onended = function() {
-        trenutnaPesma++;
-        if (trenutnaPesma < pesme.length) {
-            pustiPesmu(trenutnaPesma, pesme[trenutnaPesma].naslov, pesme[trenutnaPesma].id);
-        }
-    };
+// Funkcija koja pokreće pesmu
+function pustiPesmu(index, naziv, driveId) {
+  trenutnaPesma = index;
+  naslov.innerText = "Сада свира: " + naziv;
+  audio.src = "https://google.com" + driveId;
+  audio.play().catch(e => console.log("Кликните Play да крене"));
+}
+
+// Kad se završi pesma, automatski kreni na sledeću
+audio.onended = function() {
+  trenutnaPesma++;
+  if (trenutnaPesma < pesme.length) {
+    pustiPesmu(trenutnaPesma, pesme[trenutnaPesma].naslov, pesme[trenutnaPesma].id);
+  } else {
+    trenutnaPesma = 0; // Vrati na prvu pesmu u krug
+    pustiPesmu(trenutnaPesma, pesme[trenutnaPesma].naslov, pesme[trenutnaPesma].id);
+  }
+};
+
+// Pokretanje pravljenja liste pri učitavanju
+napraviListuPesama();
 </script>
 
-    
-
-
+</body>
+</html>
 
 
     <br><br>
