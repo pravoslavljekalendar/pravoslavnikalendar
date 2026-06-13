@@ -1202,8 +1202,7 @@ function prevediNaEngleski() {
 
 
 
-<!-- Kontejner za Google prevodilac (zauzima manje mesta na ekranu) -->
-<div id="google_translate_element" style="margin: 10px; text-align: center;"></div>
+
 
 <script type="text/javascript">
 function googleTranslateElementInit() {
@@ -1216,7 +1215,10 @@ function googleTranslateElementInit() {
 }
 </script>
 
-<script type="text/javascript" src="https://google.com"></script>
+  <!-- Dodali smo https: ovde da GitHub i PWA budu 100% srećni -->
+        <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+        
+        <div class="clear"></div>
         <p class="potpis"></p>
     </div>
 </div>
