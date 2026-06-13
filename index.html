@@ -722,14 +722,13 @@ padding: 0; /* Brišemo razmak oko celog tela */
         </select>
     </div> 
 
-<!-- Dugmići za promenu pisma -->
-<div class="pismo-prekidac" style="text-align: center;">
-    <span onclick="preslovi('cir')" style="cursor:pointer; padding: 5px 10px;">Ћир</span> | 
-    <span onclick="preslovi('lat')" style="cursor:pointer; padding: 5px 10px;">Lat</span>
-	<span onclick="prevediNaEngleski()" style="cursor:pointer; padding: 5px 10px;">Eng</span>
+
+
+<div class="pismo-prekidac" style="text-align: center;"> 
+  <span onclick="preslovi('cir')" style="cursor:pointer; padding: 5px 10px;">Ћир</span> | 
+  <span onclick="preslovi('lat')" style="cursor:pointer; padding: 5px 10px;">Lat</span> | 
+  <span onclick="prevediNaEngleski()" style="cursor:pointer; padding: 5px 10px;">Eng</span> 
 </div>
-
-
   <!-- 2. Hamburger zona (Tri crtice) -->
         <div class="hamburger-zona">
             <a href="#header_right">
@@ -1166,33 +1165,46 @@ function preslovi(pismo) {
     zameniTekst(document.body);
 }
 
-// Izmeni funkciju za Engleski ovako:
-
 function prevediNaEngleski() {
-    // Ovde samo dodaješ reči i rečenice koje se pojavljuju u Prologu ili pričama
-    const recnik = {
-        "Псалтир": "Psalter",
-        "Охридски пролог": "Ohrid Prologue",
-        
-        // ... dodaj ovde naslove priča ili ključne rečenice iz Prologa
-    };
+  // REČNIK: Ovde unosite reči onako kako su napisane na ćirilici na Vašem sajtu
+  const recnik = {
+    "Псалтир": "Psalter",
+    "Молитвеник": "Prayer Book",
+    "Нови Завет": "New Testament",
+    "Охридски пролог": "Ohrid Prologue",
+    "Пост": "Fast",
+    "риба": "fish",
+    "уље": "oil",
+    "вода": "water",
+    "на води": "on water",
+    "субота": "Saturday",
+    "недеља": "Sunday",
+    "по старом": "old style",
+    "Лето Господње": "Year of our Lord",
+    "Духовне песме": "Spiritual Songs",
+    "Духовне књиге": "Spiritual Books"
+  };
 
-    function obidjiSve(node) {
-        // Ako je tekstualni čvor i nije prazan
-        if (node.nodeType === 3 && node.nodeValue.trim().length > 0) {
-            let tekst = node.nodeValue.trim();
-            if (recnik[tekst]) {
-                node.nodeValue = recnik[tekst];
-            }
-        } else {
-            // Ako nije tekst, idi dublje u čvorove
-            for (let i = 0; i < node.childNodes.length; i++) {
-                obidjiSve(node.childNodes[i]);
-            }
-        }
+  function obidjiSve(node) {
+    if (node.nodeType === Node.TEXT_NODE) {
+      let tekst = node.nodeValue;
+      
+      // Prolazimo kroz rečnik i menjamo reči čak i ako su unutar rečenica
+      for (let kljuc in recnik) {
+        tekst = tekst.split(kljuc).join(recnik[kljuc]);
+      }
+      
+      node.nodeValue = tekst;
+    } else {
+      for (let i = 0; i < node.childNodes.length; i++) {
+        obidjiSve(node.childNodes[i]);
+      }
     }
-    obidjiSve(document.body);
+  }
+  obidjiSve(document.body);
 }
+</script>
+	
 
 
 
