@@ -1204,18 +1204,27 @@ function prevediNaEngleski() {
 
 
 
-<script type="text/javascript">
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement({
-    pageLanguage: 'sr',
-    includedLanguages: 'en,sr,ru,de', // Ovde birate koje jezike nudite
-    autoDisplay: true, // Ovo automatski pita strance da li žele prevod
-    layout: google.translate.TranslateElement.InlineLayout.SIMPLE // Moderniji, manji izgled
-  }, 'google_translate_element');
-}
-</script>
-
-  <!-- Dodali smo https: ovde da GitHub i PWA budu 100% srećni -->
+<div class="column-right-outer">
+<div class="column-right-inner">
+<aside>
+<div class="sidebar section" id="sidebar-right-1">
+    <div class="widget Translate" data-version="1" id="Translate1">
+        <h2 class="title"></h2>
+        
+        <!-- Glavni kontejner za Google prevodilac -->
+        <div id="google_translate_element"></div>
+        
+        <script>
+            function googleTranslateElementInit() {
+                new google.translate.TranslateElement({
+                    pageLanguage: 'sr',
+                    autoDisplay: true,
+                    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+                }, 'google_translate_element');
+            }
+        </script>
+        
+        <!-- Dodali smo https: ovde da GitHub i PWA budu 100% srećni -->
         <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
         
         <div class="clear"></div>
