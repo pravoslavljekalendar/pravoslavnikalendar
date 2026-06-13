@@ -824,9 +824,9 @@ padding: 0; /* Brišemo razmak oko celog tela */
 
 
 
-            <!-- 3. Prevod i Pečati -->
+            <!-- Kontejner za Google prevodilac (zauzima manje mesta na ekranu) -->
+<div id="google_translate_element" style="margin: 10px; text-align: center;"></div>
 
-           <div id="google_translate_element"></div>
 
 
 <div class="container">
@@ -1221,11 +1221,6 @@ function prevediNaEngleski() {
                 }, 'google_translate_element');
             }
         </script>
-        
-        <!-- Dodali smo https: ovde da GitHub i PWA budu 100% srećni -->
-        <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-        
-        <div class="clear"></div>
         <p class="potpis"></p>
     </div>
 </div>
