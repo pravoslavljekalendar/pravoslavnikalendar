@@ -669,31 +669,31 @@ padding: 0; /* Brišemo razmak oko celog tela */
 padding: 0; /* Brišemo razmak oko celog tela */
 }
 
-/* SAKRIVANJE SVEGA OSIM KALENDARA KADA JE SAJT NA BLOGU */
+/* UNIVERZALNO SAKRIVANJE ZA WIDGET REŽIM */
 .widget-mode header, 
-.widget-mode nav, 
-.widget-mode .hamburger-zona, 
-.widget-mode .jezik-changer, 
-.widget-mode footer {
-  display: none !important;
-}
-
-/* SAKRIVANJE BOČNIH PRIČA NA LAPTOPU KADA JE U WIDGET REŽIMU */
-.widget-mode .bocne-price,
+.widget-mode footer, 
+.widget-mode nav-kalendar, 
 .widget-mode aside,
-.widget-mode .box {
+.widget-mode .hamburger,
+.widget-mode .hamburger-meni,
+.widget-mode .preslovljavanje,
+.widget-mode .column-right,
+.widget-mode .column-left,	
+.widget-mode .box,
+.widget-mode .logo,
+.widget-mode #logo {
   display: none !important;
 }
 
-/* PRILAGOĐAVANJE VAŠEG PRAVOUGAONIKA ZA BLOG */
+/* PORAVNANJE SAMO ZA VAŠ KALENDAR-OKVIR */
 .widget-mode .kalendar-okvir {
   width: 100% !important;
   max-width: 100% !important;
   margin: 0 auto !important;
+  padding: 10px !important;
   box-shadow: none !important;
-  border: none !important; /* Brise spoljnu ivicu jer blog vec ima vas braon ram */
+  border: none !important;
 }
-
  </style>
 
 </head>
@@ -1357,9 +1357,9 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 
 <script>
-  // Provera da li se sajt učitava unutar iframe-a na blogu
   if (window.self !== window.top) {
-    document.documentElement.classList.add('widget-mode');
+    document.documentElement.className += ' widget-mode';
+    document.body.className += ' widget-mode';
   }
 </script>
 
