@@ -19,19 +19,7 @@
       width: 90%;
       max-width: 500px;
       margin: auto;
-      padding-bottom: 5px;
-    }
-    /* TVOJ PRELEPI FIKSNI PLEJER NA VRHU */
-    .plejer-fiksni-okvir {
-      background: #fcf8f2;
-      border: 2px solid #2E1B08;
-      border-radius: 15px;
-      padding: 15px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-      margin-bottom: 25px;
-      position: sticky;
-      top: 15px;
-      z-index: 999;
+      padding-bottom: 25px;
     }
     .molitvenik-dugme {
       position: fixed;
@@ -46,39 +34,45 @@
       z-index: 1000;
       color: #2E1B08;
     }
-    /* STIL ZA SVAKU PESMU NA LISTI (DUGMIĆI ZA IZBOR) */
-    .pesma-red {
+    /* TVOJ PRELEPI STIL ZA REDOVE SA PESMAMA */
+    .pesma-blok {
       background: rgba(242, 230, 201, 0.6);
       border: 1px solid rgba(46, 27, 8, 0.3);
-      border-radius: 10px;
-      margin: 10px 0;
-      padding: 12px;
+      border-radius: 12px;
+      margin: 15px 0;
+      padding: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      transition: 0.2s;
+    }
+    .pesma-vrh {
       display: flex;
       align-items: center;
       justify-content: space-between;
       cursor: pointer;
-      transition: 0.2s;
-    }
-    .pesma-red:hover {
-      background: rgba(242, 230, 201, 0.9);
-      transform: scale(1.02);
     }
     .pesma-naslov {
       font-weight: bold;
       color: #5f0606;
-      font-size: 15px;
+      font-size: 16px;
       text-align: left;
+      font-family: 'Times New Roman', serif;
     }
     .dugme-pusti {
       color: #2E1B08;
       font-size: 18px;
+      font-weight: bold;
     }
-    /* Sakrivamo iframe prozor vizuelno, ali on radi u pozadini */
-    #skriveni-transporter {
-      width: 1px;
-      height: 1px;
-      opacity: 0;
-      position: absolute;
+    /* MESTO GDE SE POJAVLJUJE JEDAN JEDINI AKUTELNI PLEJER */
+    .plejer-kontejner {
+      margin-top: 12px;
+      display: none; /* Sakriven dok se ne klikne na tu pesmu */
+    }
+    iframe {
+      width: 100%;
+      height: 60px;
+      border: none;
+      border-radius: 10px;
+      background: #fff;
     }
   </style>
 </head>
@@ -88,17 +82,9 @@
   <a href="molitvenik.html" class="molitvenik-dugme">🏠</a>
 
   <div class="container">
-    <h1>Аудио молитве и песме</h1>
+    <h1 style="text-shadow: 1px 1px 2px white; margin-bottom: 30px;">Аудио молитве и песме</h1>
 
-    <!-- GLAVNI PLEJER KOJI SE VIDI NA VRHU -->
-    <div class="plejer-fiksni-okvir">
-      <p id="naslov-pesme" style="font-weight: bold; color: #5f0606; margin: 0 0 10px 0;">Изаберите песму испод</p>
-      
-      <!-- Koristimo tvoj originalni i sigurni Google Drive iframe stil unutar tvog okvira! -->
-      <iframe id="glavni-google-prozor" src="" width="100%" height="60" style="border:none; border-radius:10px; background:#fff;" allow="autoplay"></iframe>
-    </div>
-
-    <!-- DINAMIČKA LISTA PESAMA ZA KLIKANJE -->
+    <!-- OVDE SE AUTOMATSKI STVARA LISTA SA TVOJIM DIZAJNOM -->
     <div id="lista-pesama-kontejner"></div>
 
     <br><br>
@@ -107,11 +93,9 @@
   </div>
 
 <script>
-const prozor = document.getElementById('glavni-google-prozor');
-const naslov = document.getElementById('naslov-pesme');
 const listaKontejner = document.getElementById("lista-pesama-kontejner");
 
-// Tvoja lista sa svim pesmama i tvojim sigurnim /preview linkovima sa bloga
+// Tvoja kompletna lista od 30 pesama sa tačnim Google Drive ID-jevima
 const pesme = [
   { naslov: "Пресвета Богородице Спаси Нас", id: "127bSaYz8fA9XSLJVWi5l8xTaOgbqwHYl" },
   { naslov: "Душо моја свет се нагло мења", id: "1MpuIH1wNvBOJKgYnTb7JN9p96_xZYQBi" },
@@ -126,7 +110,7 @@ const pesme = [
   { naslov: "Псалам 117", id: "1UgyZZKB3eZP0en4wqawwI46B2P6sy7MB" },
   { naslov: "Сестринство манастира - Видовдан", id: "1pS5v28JB9A4ySl2Gyh69TOZpLDM3oeg7" },
   { naslov: "Сестринство манастира - Ој Косово, Косово", id: "1DPYoAwNV9d8W6p6fvn59pr4T8EDWiiQB" },
-  { naslov: "Αнέστη - Христос Воскресе", id: "11q8PPXsIy98sLx4olFmt37rhLhvfHbCn" },
+  { naslov: "Ανέστη - Христос Воскресе", id: "11q8PPXsIy98sLx4olFmt37rhLhvfHbCn" },
   { naslov: "Тело Христово", id: "1ea29ziRasmV_WUJjG6PC6e_l1Oju4brz" },
   { naslov: "Ко има уши да чује, нека чује", id: "1pW1tB3dEow8HoI_l5IwQx7dbCtvBjySB" },
   { naslov: "Непрестана мoлитва", id: "1KYjEfzRLLHMYY4u2UNrNi6u4MOP3AOhy" },
@@ -145,38 +129,50 @@ const pesme = [
   { naslov: "Псалам 90", id: "1J-7lSZbEsasDAPB25Nga3nTXUyA8By16" }
 ];
 
-// Funkcija koja pravi listu dugmića na ekranu
-function napraviListuPesama() {
+// Funkcija koja gradi listu na ekranu
+function napraviListu() {
   pesme.forEach((pesma, index) => {
-    const red = document.createElement("div");
-    red.className = "pesma-red";
-    red.onclick = () => pustiPesmu(index, pesma.naslov, pesma.id);
+    const blok = document.createElement("div");
+    blok.className = "pesma-blok";
+    blok.id = "blok-" + index;
     
-    red.innerHTML = `
-      <span class="pesma-naslov">🎵 ${pesma.naslov}</span>
-      <span class="dugme-pusti">▶</span>
+    blok.innerHTML = `
+      <div class="pesma-vrh" onclick="pustiPesmuDirektno(${index}, '${pesma.id}')">
+        <span class="pesma-naslov">☦️ ${pesma.naslov}</span>
+        <span class="dugme-pusti" id="strelica-${index}">▶</span>
+      </div>
+      <div class="plejer-kontejner" id="plejer-${index}"></div>
     `;
-    listaKontejner.appendChild(red);
+    
+    listaKontejner.appendChild(blok);
   });
 }
 
-// Funkcija koja puni gornji okvir tvojim sigurnim Google Drive linkom
-function pustiPesmu(index, naziv, driveId) {
-  naslov.innerText = "Сада изабрано: " + naziv;
+// Pametna funkcija: Otvara originalni prozorčić BAŠ TDE gde je kliknuto!
+function pustiPesmuDirektno(index, driveId) {
+  // Prvo zatvori sve druge pleere koji su možda otvoreni na ekranu
+  const sviPlejevi = document.querySelectorAll('.plejer-kontejner');
+  sviPlejevi.forEach(p => { p.innerHTML = ''; p.style.display = 'none'; });
   
-  // Vraćamo tvoj stari /preview link koji Google Drive 100% dozvoljava i nikada ne koči!
-  prozor.src = "https://google.com" + driveId + "/preview";
+  const sveStrelice = document.querySelectorAll('.dugme-pusti');
+  sveStrelice.forEach(s => s.innerText = '▶');
+
+  // Otvori plejer tačno ispod kliknute pesme
+  const trenutniPlejer = document.getElementById("plejer-" + index);
+  const trenutnaStrelica = document.getElementById("strelica-" + index);
+  
+  trenutniPlejer.style.display = "block";
+  trenutnaStrelica.innerText = "▼"; // Menja se strelica na dole da označi da je otvoreno
+  
+  // Ubacujemo tvoj originalni /preview link koji Google 100% prihvata jer se stvara ispočetka!
+  trenutniPlejer.innerHTML = `
+    <iframe src="https://google.com{driveId}/preview" allow="autoplay"></iframe>
+  `;
 }
 
-// Učitaj prvu pesmu kao početnu
-if(pesme.length > 0) {
-  pustiPesmu(0, pesme[0].naslov, pesme[0].id);
-}
-
-// Pokretanje pravljenja liste pri učitavanju
-napraviListuPesama();
+// Pokreni pravljenje liste čim se stranica učita
+napraviListu();
 </script>
-
 
 </body>
 </html>
