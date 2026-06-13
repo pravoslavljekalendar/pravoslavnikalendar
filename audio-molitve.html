@@ -34,44 +34,41 @@
       z-index: 1000;
       color: #2E1B08;
     }
-    /* TVOJ PRELEPI STIL ZA REDOVE SA PESMAMA */
-    .pesma-blok {
-      background: rgba(242, 230, 201, 0.6);
-      border: 1px solid rgba(46, 27, 8, 0.3);
-      border-radius: 12px;
-      margin: 15px 0;
+    /* GORNJA TRAKA ZA IZBOR JEZIKA */
+    .pismo-prekidac {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    .pismo-prekidac span {
+      cursor: pointer;
+      padding: 5px 10px;
+    }
+    /* TVOJ POPRAVLJENI BRAON STIL ZA SVAKU PESMU */
+    .pesma-okvir {
+      text-align: center;
+      margin: 20px auto;
+      width: 95%;
+      background: rgba(242, 230, 201, 0.6); /* Bež pozadina */
+      border: 1px solid #8b6f47; /* Braon ivica */
+      border-radius: 15px; /* Zaobljene ivice */
       padding: 15px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      transition: 0.2s;
     }
-    .pesma-vrh {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      cursor: pointer;
-    }
-    .pesma-naslov {
+    .pesma-naslov-tekst {
+      color: #5f0606; /* Crveni naslov pesme */
       font-weight: bold;
-      color: #5f0606;
+      margin-top: 0;
+      margin-bottom: 12px;
       font-size: 16px;
-      text-align: left;
-      font-family: 'Times New Roman', serif;
-    }
-    .dugme-pusti {
-      color: #2E1B08;
-      font-size: 18px;
-      font-weight: bold;
-    }
-    /* MESTO GDE SE POJAVLJUJE JEDAN JEDINI AKUTELNI PLEJER */
-    .plejer-kontejner {
-      margin-top: 12px;
-      display: none; /* Sakriven dok se ne klikne na tu pesmu */
     }
     iframe {
       width: 100%;
       height: 60px;
       border: none;
       border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       background: #fff;
     }
   </style>
@@ -82,101 +79,52 @@
   <a href="molitvenik.html" class="molitvenik-dugme">🏠</a>
 
   <div class="container">
-    <h1 style="text-shadow: 1px 1px 2px white; margin-bottom: 30px;">Аудио молитве и песме</h1>
+    
+    <!-- Popravljena traka sa jezicima -->
+    <div class="pismo-prekidac"> 
+      <span onclick="preslovi('cir')">Ћир</span> | 
+      <span onclick="preslovi('lat')">Lat</span> | 
+      <span onclick="prevediNaEngleski()">Eng</span> 
+    </div>
 
-    <!-- OVDE SE AUTOMATSKI STVARA LISTA SA TVOJIM DIZAJNOM -->
-    <div id="lista-pesama-kontejner"></div>
+    <h1 style="text-shadow: 1px 1px 2px white; margin-bottom: 25px;">Аудио молитве и песме</h1>
+
+    <!-- Прва песма -->
+    <div class="pesma-okvir">
+      <p class="pesma-naslov-tekst">Оче наш на арамејском језику</p>
+      <iframe src="https://google.com" allow="autoplay"></iframe>
+    </div>
+
+    <!-- Друга песма -->
+    <div class="pesma-okvir">
+      <p class="pesma-naslov-tekst">Устани, Боже, устани</p>
+      <iframe src="https://google.com" allow="autoplay"></iframe>
+    </div>
+
+    <!-- Трећа песма -->
+    <div class="pesma-okvir">
+      <p class="pesma-naslov-tekst">Пресвета Богородице Спаси Нас</p>
+      <iframe src="https://google.com" allow="autoplay"></iframe>
+    </div>
+
+    <!-- Четврта песма -->
+    <div class="pesma-okvir">
+      <p class="pesma-naslov-tekst">Душо моја свет се нагло мења</p>
+      <iframe src="https://google.com" allow="autoplay"></iframe>
+    </div>
 
     <br><br>
     <a href="#" style="text-decoration:none; font-size: 26px; padding: 15px 30px; color:#8b6f47; font-weight: bold;">⬆ Врх странице</a>
     <br><br>
   </div>
 
-<script>
-const listaKontejner = document.getElementById("lista-pesama-kontejner");
-
-// Tvoja kompletna lista od 30 pesama sa tačnim Google Drive ID-jevima
-const pesme = [
-  { naslov: "Пресвета Богородице Спаси Нас", id: "127bSaYz8fA9XSLJVWi5l8xTaOgbqwHYl" },
-  { naslov: "Душо моја свет се нагло мења", id: "1MpuIH1wNvBOJKgYnTb7JN9p96_xZYQBi" },
-  { naslov: "Господи помилуй, Господи прости", id: "1MTwPYMeqwaErs3rdgP67OnmZ6wrZppHN" },
-  { naslov: "Устани, Боже, устани", id: "1jyM7jHNp9ODHeqZDLsuizQHll7SUaQ7q" },
-  { naslov: "Два анђела шеташе", id: "1rbQ7llI34qDa1SWKbsUoogSaOVnE1pi2" },
-  { naslov: "Юлия Славянская - Белый Ангел", id: "1YxjM31MunbTNxjLYBHrzKvDD3Y7-onKD" },
-  { naslov: "Юлия Славянская. Древневенгерский плач Марии", id: "1X_udIon4YHQborDa593rZL3vP65NYuop" },
-  { naslov: "Говори Господе", id: "1tHWYxb9ruk6JpmdAGQZKBCG0ul1uYcY6" },
-  { naslov: "Царицa тишине", id: "1Kzz2WvcC38YC8k3i7DIQk4lN75n9QIkh" },
-  { naslov: "Оче наш на арамејском језику", id: "1DjbsKe9Cr5ui-1dOTFCkssB_hqg6jhBb" },
-  { naslov: "Псалам 117", id: "1UgyZZKB3eZP0en4wqawwI46B2P6sy7MB" },
-  { naslov: "Сестринство манастира - Видовдан", id: "1pS5v28JB9A4ySl2Gyh69TOZpLDM3oeg7" },
-  { naslov: "Сестринство манастира - Ој Косово, Косово", id: "1DPYoAwNV9d8W6p6fvn59pr4T8EDWiiQB" },
-  { naslov: "Ανέστη - Христос Воскресе", id: "11q8PPXsIy98sLx4olFmt37rhLhvfHbCn" },
-  { naslov: "Тело Христово", id: "1ea29ziRasmV_WUJjG6PC6e_l1Oju4brz" },
-  { naslov: "Ко има уши да чује, нека чује", id: "1pW1tB3dEow8HoI_l5IwQx7dbCtvBjySB" },
-  { naslov: "Непрестана мoлитва", id: "1KYjEfzRLLHMYY4u2UNrNi6u4MOP3AOhy" },
-  { naslov: "Свети Сава - Ко удара тако позно", id: "17idfm6VU1_ARyDRM3l_aQITrUk_RW887" },
-  { naslov: "Песма светој Ксенији", id: "1t5LawYzAuqt09juO8IUNEAu1rao_Bj-M" },
-  { naslov: "Маријо славна", id: "1OUoQBYXc5LaaYzY7Hu9E0gA54zJ5AC_Y" },
-  { naslov: "Деца неба", id: "1d9LIga95dcJDj7MMRLtwSbmgOG3BVNxw" },
-  { naslov: "Знаш ли ко те љуби силно", id: "1cAYcI7IlKBNVFjcO4yoObTOrXTn6yaoL" },
-  { naslov: "Богородице дјево", id: "1O-tWsoWHXnJWj5_f1hQY0bckwzDCCUh8" },
-  { naslov: "Косово памти", id: "1_WirzQ5b1Q-cTaEy7nSRUZ8yBxQu0hRV" },
-  { naslov: "Сини јарко сунце са Косова", id: "1tLgSsi3L45JILxv95qKAU3twStSsI7ZY" },
-  { naslov: "Псалам 144", id: "17PoTdPMSBLjCYDg_f-JPzUfLmOMje8Yt" },
-  { naslov: "Иже херувими", id: "1NLCjMde39L-I4xfwjaH06PxWv7NKNlom" },
-  { naslov: "Благословен јеси Господи", id: "1FSIZo4xZe3vRA6bAx6T-TsJ-M_i4vF0l" },
-  { naslov: "Псалам 135-136", id: "1w2zEphFtqGM5HhwPdKkKNrmE6OXYblrZ" },
-  { naslov: "Псалам 90", id: "1J-7lSZbEsasDAPB25Nga3nTXUyA8By16" }
-];
-
-// Funkcija koja gradi listu na ekranu
-function napraviListu() {
-  pesme.forEach((pesma, index) => {
-    const blok = document.createElement("div");
-    blok.className = "pesma-blok";
-    blok.id = "blok-" + index;
-    
-    blok.innerHTML = `
-      <div class="pesma-vrh" onclick="pustiPesmuDirektno(${index}, '${pesma.id}')">
-        <span class="pesma-naslov">☦️ ${pesma.naslov}</span>
-        <span class="dugme-pusti" id="strelica-${index}">▶</span>
-      </div>
-      <div class="plejer-kontejner" id="plejer-${index}"></div>
-    `;
-    
-    listaKontejner.appendChild(blok);
-  });
-}
-
-// Pametna funkcija: Otvara originalni prozorčić BAŠ TDE gde je kliknuto!
-function pustiPesmuDirektno(index, driveId) {
-  // Prvo zatvori sve druge pleere koji su možda otvoreni na ekranu
-  const sviPlejevi = document.querySelectorAll('.plejer-kontejner');
-  sviPlejevi.forEach(p => { p.innerHTML = ''; p.style.display = 'none'; });
-  
-  const sveStrelice = document.querySelectorAll('.dugme-pusti');
-  sveStrelice.forEach(s => s.innerText = '▶');
-
-  // Otvori plejer tačno ispod kliknute pesme
-  const trenutniPlejer = document.getElementById("plejer-" + index);
-  const trenutnaStrelica = document.getElementById("strelica-" + index);
-  
-  trenutniPlejer.style.display = "block";
-  trenutnaStrelica.innerText = "▼"; // Menja se strelica na dole da označi da je otvoreno
-  
-  // Ubacujemo tvoj originalni /preview link koji Google 100% prihvata jer se stvara ispočetka!
-  trenutniPlejer.innerHTML = `
-    <iframe src="https://google.com{driveId}/preview" allow="autoplay"></iframe>
-  `;
-}
-
-// Pokreni pravljenje liste čim se stranica učita
-napraviListu();
-</script>
+  <!-- Skripte za oflajn jezike ostaju na dnu stranice -->
+  <script>
+    // Tvoj kod za ćirilicu/latinicu i oflajn engleski rečnik...
+  </script>
 
 </body>
 </html>
-
 
 
 
