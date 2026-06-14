@@ -1,102 +1,76 @@
 <!DOCTYPE html>
 <html lang="sr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Аудио молитве и песме</title>
-  <style>
-    body {
-      margin: 0;
-      background-image: url("papir.png");
-      background-size: cover;
-      background-attachment: fixed;
-      font-family: "Times New Roman", serif;
-      color: #4A3728;
-      text-align: center;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Аудио молитве</title>
+
+
+<style>
+
+        body {
+            margin: 0;
+            background-image: url("papir.png");
+            background-size: cover;
+            background-attachment: fixed; /* Pozadina se ne pomera dok skroluješ tekst */
+            font-family: "Times New Roman", serif;
+            color: #4A3728;
+            text-align: center;
+        }
+
+  .container { padding-top: 20px; width: 50%; margin: auto; }
+        iframe {
+            width: 100%;
+            height: 20vh;
+            border: 2px solid #2E1B08;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            background-image: url("papir.jpg");
+        }
+
+.molitvenik-dugme {
+            position: fixed; top: 15px; left: 15px;
+            background: rgba(242, 230, 201, 0.9);
+            padding: 10px 15px; border-radius: 8px;
+            border: 1px solid #2E1B08; text-decoration: none; 
+            font-size: 20px; z-index: 1000; color: #2E1B08;
+        }
+ 
+
+
+/* Ovo važi za sve uređaje */
+.vrh-link {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 24px;
+    padding: 10px;
+    color: #8b6f47;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* Ovo se aktivira SAMO na telefonima */
+@media (max-width: 480px) {
+    .vrh-link {
+        font-size: 32px; /* Još veća strelica za palac */
+        padding: 20px;   /* Veći prostor za klik */
+        display: block;  /* Da bude na sredini ekrana */
     }
-    .container {
-      padding-top: 20px;
-      width: 90%;
-      max-width: 500px;
-      margin: auto;
-      padding-bottom: 5px;
-    }
-    /* STIL ZA GLAVNI FIKSNI PLEJER NA VRHU */
-    .plejer-fiksni-okvir {
-      background: #fcf8f2;
-      border: 2px solid #2E1B08;
-      border-radius: 15px;
-      padding: 15px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-      margin-bottom: 25px;
-      position: sticky;
-      top: 15px;
-      z-index: 999;
-    }
-    .molitvenik-dugme {
-      position: fixed;
-      top: 15px;
-      left: 15px;
-      background: rgba(242, 230, 201, 0.9);
-      padding: 10px 15px;
-      border-radius: 8px;
-      border: 1px solid #2E1B08;
-      text-decoration: none;
-      font-size: 20px;
-      z-index: 1000;
-      color: #2E1B08;
-    }
-    /* STIL ZA SVAKU PESMU NA LISTI */
-    .pesma-red {
-      background: rgba(242, 230, 201, 0.6);
-      border: 1px solid rgba(46, 27, 8, 0.3);
-      border-radius: 10px;
-      margin: 10px 0;
-      padding: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-    .pesma-red:hover {
-      background: rgba(242, 230, 201, 0.9);
-      transform: scale(1.02);
-    }
-    .pesma-naslov {
-      font-weight: bold;
-      color: #5f0606;
-      font-size: 15px;
-      text-align: left;
-    }
-    .dugme-pusti {
-      color: #2E1B08;
-      font-size: 18px;
-    }
+}
+
   </style>
 </head>
 <body>
 
-  <!-- Dugme za povratak kući -->
-  <a href="molitvenik.html" class="molitvenik-dugme">🏠</a>
+   <a href="molitvenik.html" class="molitvenik-dugme">🏠</a>
 
-  <div class="container">
-    <h1>Аудио молитве i песме</h1>
+<div class="container">
+    <h1 style="text-shadow: 1px 1px 2px white;"></h1>
+    <p><i></i></p>
 
-    <!-- GLAVNI AUTOMATSKI PLEJER -->
-    <div class="plejer-fiksni-okvir">
-      <p id="trenutni-naslov" style="font-weight: bold; color: #5f0606; margin: 0 0 10px 0;">Изаберите песму испод</p>
-      <audio id="glavni-audio" controls style="width: 100%;"></audio>
-    </div>
+<h1>Аудио молитве</h1>
 
-    <!-- DINAMIČKA LISTA PESAMA -->
-    <div id="lista-pesama-kontejner"></div>
-  </div>
-
-<script>
-// Kompletna tabela tvojih Google Drive linkova pretvorena u čiste audio izvore
-const bibliotekaPesama = [
- <p><strong>Пресвета Богородице Спаси Нас</strong></p>
+<p><strong>Пресвета Богородице Спаси Нас</strong></p>
 <iframe src="https://drive.google.com/file/d/127bSaYz8fA9XSLJVWi5l8xTaOgbqwHYl/preview" width="100%" height="60" allow="autoplay"></iframe>
 
 <p><strong>Душо моја свет се нагло мења</strong></p>
@@ -164,7 +138,6 @@ const bibliotekaPesama = [
     </div>
 </div>
 
-
 <script>
     const audio = document.getElementById('glavni-plejer');
     const naslov = document.getElementById('naslov-pesme');
@@ -194,33 +167,32 @@ const bibliotekaPesama = [
     };
 </script>
 
-    red.innerHTML = `
-      <span class="pesma-naslov">🎵 ${pesma.naslov}</span>
-      <span class="dugme-pusti">▶</span>
-    `;
-    listaKontejner.appendChild(red);
-  });
-}
+    
 
 
 
-// AUTOMATSKO PREBACIVANJE: Čim se pesma završi, pusti sledeću sa liste!
-audioObjekat.addEventListener("ended", function() {
-  aktivniIndeks++;
-  if (aktivniIndeks < bibliotekaPesama.length) {
-    pokreniIzabranuPesmu(aktivniIndeks);
-  } else {
-    aktivniIndeks = 0; // Ako dođe do kraja, vrati se na prvu pesmu
-    pokreniIzabranuPesmu(aktivniIndeks);
-  }
-});
 
-// Pokretanje pravljenja liste pri učitavanju
-napraviListuPesama();
-</script>
+    <br><br>
+
+        <a href="#" style="text-decoration:none; 
+font-size: 26px; 
+padding: 15px 30px;
+color:#8b6f47;">⬆ Врх странице</a>
+        <br><br>
+    </div>
+
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
 
 
 
