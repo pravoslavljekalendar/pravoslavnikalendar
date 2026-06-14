@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Аудио молитве</title>
+  <title>Аудио молитве и песме</title>
   <style>
     body {
       margin: 0;
@@ -165,18 +165,35 @@ const bibliotekaPesama = [
 </div>
 
 
-let aktivniIndeks = 0;
-const audioObjekat = document.getElementById("glavni-audio");
-const naslovEkrana = document.getElementById("trenutni-naslov");
-const listaKontejner = document.getElementById("lista-pesama-kontejner");
+<script>
+    const audio = document.getElementById('glavni-plejer');
+    const naslov = document.getElementById('naslov-pesme');
 
-// Funkcija koja automatski stvara listu na ekranu
-function napraviListuPesama() {
-  bibliotekaPesama.forEach((pesma, indeks) => {
-    const red = document.createElement("div");
-    red.className = "pesma-red";
-    red.onclick = () => pokreniIzabranuPesmu(indeks);
-    
+    // Lista pesama za automatsko prebacivanje
+    const pesme = [
+        { naslov: "Пресвета Богородице Спаси Нас", id: "127bSaYz8fA9XSLJVWi5l8xTaOgbqwHYl" },
+        { naslov: "Душо моја свет се нагло мења", id: "1MpuIH1wNvBOJKgYnTb7JN9p96_xZYQBi" }
+    ];
+
+    let trenutnaPesma = 0;
+
+    function pustiPesmu(index, naziv, driveId) {
+        trenutnaPesma = index;
+        naslov.innerText = naziv;
+        // Specijalni link koji Chrome na telefonu lakše čita:
+        audio.src = "https://docs.google.com/uc?export=open&id=" + driveId;
+        audio.play().catch(e => console.log("Kliknite Play da krene"));
+    }
+
+    // Kad se završi pesma, automatski kreni na sledeću
+    audio.onended = function() {
+        trenutnaPesma++;
+        if (trenutnaPesma < pesme.length) {
+            pustiPesmu(trenutnaPesma, pesme[trenutnaPesma].naslov, pesme[trenutnaPesma].id);
+        }
+    };
+</script>
+
     red.innerHTML = `
       <span class="pesma-naslov">🎵 ${pesma.naslov}</span>
       <span class="dugme-pusti">▶</span>
@@ -185,17 +202,7 @@ function napraviListuPesama() {
   });
 }
 
-// Funkcija koja šalje čisti fajl u plejer i pušta muziku
-function pokreniIzabranuPesmu(indeks) {
-  if (indeks >= 0 && indeks < bibliotekaPesama.length) {
-    aktivniIndeks = indeks;
-    naslovEkrana.innerText = "Сада свира: " + bibliotekaPesama[indeks].naslov;
-    
-    // Trik za izvlačenje čistog mp3 strima sa Google Drive-a
-    audioObjekat.src = "https://google.com" + bibliotekaPesama[indeks].id;
-    audioObjekat.play();
-  }
-}
+
 
 // AUTOMATSKO PREBACIVANJE: Čim se pesma završi, pusti sledeću sa liste!
 audioObjekat.addEventListener("ended", function() {
