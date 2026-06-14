@@ -4,140 +4,100 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Аудио молитве</title>
-
-
-<style>
-
+    <style>
         body {
             margin: 0;
             background-image: url("papir.png");
             background-size: cover;
-            background-attachment: fixed; /* Pozadina se ne pomera dok skroluješ tekst */
+            background-attachment: fixed;
             font-family: "Times New Roman", serif;
             color: #4A3728;
             text-align: center;
         }
-
-  .container { padding-top: 20px; width: 50%; margin: auto; }
-        iframe {
+        .container {
+            padding-top: 20px;
+            width: 50%;
+            margin: auto;
+        }
+        iframe, audio {
             width: 100%;
-            height: 5vh;
+            height: 60px;
             border: 2px solid #2E1B08;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-            background-image: url("papir.jpg");
-        }
-
-.molitvenik-dugme {
-            position: fixed; top: 15px; left: 15px;
             background: rgba(242, 230, 201, 0.9);
-            padding: 10px 15px; border-radius: 8px;
-            border: 1px solid #2E1B08; text-decoration: none; 
-            font-size: 20px; z-index: 1000; color: #2E1B08;
+            margin-bottom: 20px;
         }
- 
-
-
-.fiksni-vrh {
-    position: fixed;
-    bottom: 25px;
-    right: 20px;
-    background: rgba(242, 230, 201, 0.95); /* Твоја беж */
-    border: 1px solid #8b6f47;            /* Златни оквир */
-    border-radius: 50%;                   /* Круг */
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    color: #8b6f47;
-    font-size: 24px;
-    font-weight: bold;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    z-index: 9999;
-    transition: 0.3s;
-}
-
-.fiksni-vrh:hover {
-    transform: scale(1.1);
-}
-
-/* Ovo se aktivira SAMO na telefonima */
-@media (max-width: 480px) {
-    .vrh-link {
-        font-size: 32px; /* Još veća strelica za palac */
-        padding: 20px;   /* Veći prostor za klik */
-        display: block;  /* Da bude na sredini ekrana */
-    }
-}
-
-  </style>
+        .molitvenik-dugme {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            background: rgba(242, 230, 201, 0.9);
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: 1px solid #2E1B08;
+            text-decoration: none;
+            font-size: 20px;
+            z-index: 1000;
+            color: #2E1B08;
+        }
+        .fiksni-vrh {
+            position: fixed;
+            bottom: 25px;
+            right: 20px;
+            background: rgba(242, 230, 201, 0.95);
+            border: 1px solid #8b6f47;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: #8b6f47;
+            font-size: 24px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            z-index: 9999;
+            transition: 0.3s;
+        }
+        .fiksni-vrh:hover {
+            transform: scale(1.1);
+        }
+        @media (max-width: 480px) {
+            .container {
+                width: 90%;
+            }
+            .fiksni-vrh {
+                width: 60px;
+                height: 60px;
+                font-size: 32px;
+            }
+        }
+    </style>
 </head>
 <body>
 
-   <a href="molitvenik.html" class="molitvenik-dugme">🏠</a>
+    <a href="molitvenik.html" class="molitvenik-dugme">🏠</a>
 
-<div class="container">
-    <h1 style="text-shadow: 1px 1px 2px white;"></h1>
-    <p><i></i></p>
+    <div class="container">
+        <h1>Аудио молитве и песме</h1>
 
-<h1>Аудио молитве и песме</h1>
+        <p><strong>Пресвета Богородице Спаси Нас</strong></p>
+        <iframe src="https://drive.google.com/file/d/127bSaYz8fA9XSLJVWi5l8xTaOgbqwHYl/preview" allow="autoplay"></iframe>
 
-<p><strong>Пресвета Богородице Спаси Нас</strong></p>
-<iframe src="https://drive.google.com/file/d/127bSaYz8fA9XSLJVWi5l8xTaOgbqwHYl/preview" width="100%" height="60" allow="autoplay"></iframe>
-<p><strong>Душо моја свет се нагло мења</strong></p>
-<iframe src="https://drive.google.com/file/d/1MpuIH1wNvBOJKgYnTb7JN9p96_xZYQBi/preview" width="100%" height="60" allow="autoplay"></iframe>
+        <p><strong>Душо моја svet se naglo menja</strong></p>
+        <iframe src="https://drive.google.com/file/d/1MpuIH1wNvBOJKgYnTb7JN9p96_xZYQBi/preview" allow="autoplay"></iframe>
 
-
-    </div>
-</div>
-
-<script>
-    const audio = document.getElementById('glavni-plejer');
-    const naslov = document.getElementById('naslov-pesme');
-
-    // Lista pesama za automatsko prebacivanje
-    const pesme = [
-        { naslov: "Пресвета Богородице Спаси Нас", id: "127bSaYz8fA9XSLJVWi5l8xTaOgbqwHYl" },
-        { naslov: "Душо моја свет се нагло мења", id: "1MpuIH1wNvBOJKgYnTb7JN9p96_xZYQBi" }
-    ];
-
-    let trenutnaPesma = 0;
-
-    function pustiPesmu(index, naziv, driveId) {
-        trenutnaPesma = index;
-        naslov.innerText = naziv;
-        // Specijalni link koji Chrome na telefonu lakše čita:
-        audio.src = "https://docs.google.com/uc?export=open&id=" + driveId;
-        audio.play().catch(e => console.log("Kliknite Play da krene"));
-    }
-
-    // Kad se završi pesma, automatski kreni na sledeću
-    audio.onended = function() {
-        trenutnaPesma++;
-        if (trenutnaPesma < pesme.length) {
-            pustiPesmu(trenutnaPesma, pesme[trenutnaPesma].naslov, pesme[trenutnaPesma].id);
-        }
-    };
-</script>
-
-    
-
-
-
-
-  </div>
-   </div>
-
-
-
-
-
-           <a href="#" class="fiksni-vrh">▲</a>
+        <!-- OVDE JE NOVA MOLITVA SA GITHUB-A -->
+        <p><strong>Молитва покајника</strong></p>
+        <audio controls preload="metadata">
+            <source src="https://githubusercontent.com" type="audio/mpeg">
+            Vaš pregledač ne podržava audio plejer.
+        </audio>
     </div>
 
- 
+    <a href="#" class="fiksni-vrh">▲</a>
 
 </body>
 </html>
