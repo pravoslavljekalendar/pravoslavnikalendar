@@ -19,7 +19,19 @@
       width: 90%;
       max-width: 500px;
       margin: auto;
-      padding-bottom: 25px;
+      padding-bottom: 5px;
+    }
+    /* STIL ZA GLAVNI FIKSNI PLEJER NA VRHU */
+    .plejer-fiksni-okvir {
+      background: #fcf8f2;
+      border: 2px solid #2E1B08;
+      border-radius: 15px;
+      padding: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      margin-bottom: 25px;
+      position: sticky;
+      top: 15px;
+      z-index: 999;
     }
     .molitvenik-dugme {
       position: fixed;
@@ -34,42 +46,32 @@
       z-index: 1000;
       color: #2E1B08;
     }
-    /* GORNJA TRAKA ZA IZBOR JEZIKA */
-    .pismo-prekidac {
-      text-align: center;
-      margin-bottom: 20px;
-      font-size: 16px;
-      font-weight: bold;
-    }
-    .pismo-prekidac span {
-      cursor: pointer;
-      padding: 5px 10px;
-    }
-    /* TVOJ POPRAVLJENI BRAON STIL ZA SVAKU PESMU */
-    .pesma-okvir {
-      text-align: center;
-      margin: 20px auto;
-      width: 95%;
-      background: rgba(242, 230, 201, 0.6); /* Bež pozadina */
-      border: 1px solid #8b6f47; /* Braon ivica */
-      border-radius: 15px; /* Zaobljene ivice */
-      padding: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    }
-    .pesma-naslov-tekst {
-      color: #5f0606; /* Crveni naslov pesme */
-      font-weight: bold;
-      margin-top: 0;
-      margin-bottom: 12px;
-      font-size: 16px;
-    }
-    iframe {
-      width: 100%;
-      height: 60px;
-      border: none;
+    /* STIL ZA SVAKU PESMU NA LISTI */
+    .pesma-red {
+      background: rgba(242, 230, 201, 0.6);
+      border: 1px solid rgba(46, 27, 8, 0.3);
       border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      background: #fff;
+      margin: 10px 0;
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .pesma-red:hover {
+      background: rgba(242, 230, 201, 0.9);
+      transform: scale(1.02);
+    }
+    .pesma-naslov {
+      font-weight: bold;
+      color: #5f0606;
+      font-size: 15px;
+      text-align: left;
+    }
+    .dugme-pusti {
+      color: #2E1B08;
+      font-size: 18px;
     }
   </style>
 </head>
@@ -79,49 +81,95 @@
   <a href="molitvenik.html" class="molitvenik-dugme">🏠</a>
 
   <div class="container">
-    
-    <!-- Popravljena traka sa jezicima -->
-    <div class="pismo-prekidac"> 
-      <span onclick="preslovi('cir')">Ћир</span> | 
-      <span onclick="preslovi('lat')">Lat</span> | 
-      <span onclick="prevediNaEngleski()">Eng</span> 
+    <h1>Аудио молитве i песме</h1>
+
+    <!-- GLAVNI AUTOMATSKI PLEJER -->
+    <div class="plejer-fiksni-okvir">
+      <p id="trenutni-naslov" style="font-weight: bold; color: #5f0606; margin: 0 0 10px 0;">Изаберите песму испод</p>
+      <audio id="glavni-audio" controls style="width: 100%;"></audio>
     </div>
 
-    <h1 style="text-shadow: 1px 1px 2px white; margin-bottom: 25px;">Аудио молитве и песме</h1>
-
-    <!-- Прва песма -->
-    <div class="pesma-okvir">
-      <p class="pesma-naslov-tekst">Оче наш на арамејском језику</p>
-      <iframe src="https://google.com" allow="autoplay"></iframe>
-    </div>
-
-    <!-- Друга песма -->
-    <div class="pesma-okvir">
-      <p class="pesma-naslov-tekst">Устани, Боже, устани</p>
-      <iframe src="https://google.com" allow="autoplay"></iframe>
-    </div>
-
-    <!-- Трећа песма -->
-    <div class="pesma-okvir">
-      <p class="pesma-naslov-tekst">Пресвета Богородице Спаси Нас</p>
-      <iframe src="https://google.com" allow="autoplay"></iframe>
-    </div>
-
-    <!-- Четврта песма -->
-    <div class="pesma-okvir">
-      <p class="pesma-naslov-tekst">Душо моја свет се нагло мења</p>
-      <iframe src="https://google.com" allow="autoplay"></iframe>
-    </div>
-
-    <br><br>
-    <a href="#" style="text-decoration:none; font-size: 26px; padding: 15px 30px; color:#8b6f47; font-weight: bold;">⬆ Врх странице</a>
-    <br><br>
+    <!-- DINAMIČKA LISTA PESAMA -->
+    <div id="lista-pesama-kontejner"></div>
   </div>
 
-  <!-- Skripte za oflajn jezike ostaju na dnu stranice -->
-  <script>
-    // Tvoj kod za ćirilicu/latinicu i oflajn engleski rečnik...
-  </script>
+<script>
+// Kompletna tabela tvojih Google Drive linkova pretvorena u čiste audio izvore
+const bibliotekaPesama = [
+  { naslov: "Пресвета Богородице Спаси Нас", id: "127bSaYz8fA9XSLJVWi5l8xTaOgbqwHYl" },
+  { naslov: "Душо моја свет се нагло мења", id: "1MpuIH1wNvBOJKgYnTb7JN9p96_xZYQBi" },
+  { naslov: "Господи помилуй, Господи прости", id: "1MTwPYMeqwaErs3rdgP67OnmZ6wrZppHN" },
+  { naslov: "Устани, Боже, ustani", id: "1jyM7jHNp9ODHeqZDLsuizQHll7SUaQ7q" },
+  { naslov: "Два анђела шеташе", id: "1rbQ7llI34qDa1SWKbsUoogSaOVnE1pi2" },
+  { naslov: "Юлия Славянская - Белый Ангел", id: "1YxjM31MunbTNxjLYBHrzKvDD3Y7-onKD" },
+  { naslov: "Юлия Славянская. Древневенгерский плач Марии", id: "1X_udIon4YHQborDa593rZL3vP65NYuop" },
+  { naslov: "Говори Господе", id: "1tHWYxb9ruk6JpmdAGQZKBCG0ul1uYcY6" },
+  { naslov: "Царицa тишине", id: "1Kzz2WvcC38YC8k3i7DIQk4lN75n9QIkh" },
+  { naslov: "Оче наш на арамејском језику", id: "1DjbsKe9Cr5ui-1dOTFCkssB_hqg6jhBb" },
+  { naslov: "Псалам 117", id: "1UgyZZKB3eZP0en4wqawwI46B2P6sy7MB" },
+  { naslov: "Сестринство манастира - Видовдан", id: "1pS5v28JB9A4ySl2Gyh69TOZpLDM3oeg7" },
+  { naslov: "Сестринство манастира - Ој Косово, Косово", id: "1DPYoAwNV9d8W6p6fvn59pr4T8EDWiiQB" },
+  { naslov: "Ανέστη - Христос Воскресе", id: "11q8PPXsIy98sLx4olFmt37rhLhvfHbCn" },
+  { naslov: "Тело Христово", id: "1ea29ziRasmV_WUJjG6PC6e_l1Oju4brz" },
+  { naslov: "Ко има уши да чује, нека чује", id: "1pW1tB3dEow8HoI_l5IwQx7dbCtvBjySB" },
+  { naslov: "Непрестана мoлитва", id: "1KYjEfzRLLHMYY4u2UNrNi6u4MOP3AOhy" },
+  { naslov: "Свети Сава - Ко удара тако позно", id: "17idfm6VU1_ARyDRM3l_aQITrUk_RW887" },
+  { naslov: "Песна светој Ксенији", id: "1t5LawYzAuqt09juO8IUNEAu1rao_Bj-M" },
+  { naslov: "Маријо славна", id: "1OUoQBYXc5LaaYzY7Hu9E0gA54zJ5AC_Y" },
+  { naslov: "Деца неба", id: "1d9LIga95dcJDj7MMRLtwSbmgOG3BVNxw" },
+  { naslov: "Знаш ли ко те љуби силно", id: "1cAYcI7IlKBNVFjcO4yoObTOrXTn6yaoL" },
+  { naslov: "Богородице дјево", id: "1O-tWsoWHXnJWj5_f1hQY0bckwzDCCUh8" },
+  { naslov: "Косово памти", id: "1_WirzQ5b1Q-cTaEy7nSRUZ8yBxQu0hRV" },
+  { naslov: "Сини јарко сунце са Косова", id: "1tLgSsi3L45JILxv95qKAU3twStSsI7ZY" },
+  { naslov: "Псалам 144", id: "17PoTdPMSBLjCYDg_f-JPzUfLmOMje8Yt" }
+];
+
+let aktivniIndeks = 0;
+const audioObjekat = document.getElementById("glavni-audio");
+const naslovEkrana = document.getElementById("trenutni-naslov");
+const listaKontejner = document.getElementById("lista-pesama-kontejner");
+
+// Funkcija koja automatski stvara listu na ekranu
+function napraviListuPesama() {
+  bibliotekaPesama.forEach((pesma, indeks) => {
+    const red = document.createElement("div");
+    red.className = "pesma-red";
+    red.onclick = () => pokreniIzabranuPesmu(indeks);
+    
+    red.innerHTML = `
+      <span class="pesma-naslov">🎵 ${pesma.naslov}</span>
+      <span class="dugme-pusti">▶</span>
+    `;
+    listaKontejner.appendChild(red);
+  });
+}
+
+// Funkcija koja šalje čisti fajl u plejer i pušta muziku
+function pokreniIzabranuPesmu(indeks) {
+  if (indeks >= 0 && indeks < bibliotekaPesama.length) {
+    aktivniIndeks = indeks;
+    naslovEkrana.innerText = "Сада свира: " + bibliotekaPesama[indeks].naslov;
+    
+    // Trik za izvlačenje čistog mp3 strima sa Google Drive-a
+    audioObjekat.src = "https://google.com" + bibliotekaPesama[indeks].id;
+    audioObjekat.play();
+  }
+}
+
+// AUTOMATSKO PREBACIVANJE: Čim se pesma završi, pusti sledeću sa liste!
+audioObjekat.addEventListener("ended", function() {
+  aktivniIndeks++;
+  if (aktivniIndeks < bibliotekaPesama.length) {
+    pokreniIzabranuPesmu(aktivniIndeks);
+  } else {
+    aktivniIndeks = 0; // Ako dođe do kraja, vrati se na prvu pesmu
+    pokreniIzabranuPesmu(aktivniIndeks);
+  }
+});
+
+// Pokretanje pravljenja liste pri učitavanju
+napraviListuPesama();
+</script>
 
 </body>
 </html>
