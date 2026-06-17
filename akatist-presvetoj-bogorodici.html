@@ -1,0 +1,537 @@
+<!DOCTYPE html> 
+<html lang="sr"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Акатист Светом Нектарију</title> 
+    <style> 
+      
+        body { 
+            margin: 0; 
+            background-image: url("papir.png"); 
+            background-size: cover; 
+            background-attachment: fixed; 
+            font-family: "Times New Roman", serif; 
+            color: #4A3728; /* Твоја тамнобраон */ 
+            text-align: center; 
+            padding: 20px;
+        }
+
+.container {
+            max-width: 700px;
+            margin: auto;
+            padding: 20px;
+            padding-top: 60px; /* Razmak da naslov ne udara u vrh ekrana */
+            background: rgba(252, 245, 229, 0.6); /* Blaga providnost da se tekst bolje vidi preko papira */
+            min-height: 100vh;
+        }
+ 
+        .home-dugme { 
+            position: fixed; 
+            top: 15px; 
+            left: 15px; 
+            background: rgba(242, 230, 201, 0.9); 
+            padding: 10px 15px; 
+            border-radius: 8px; 
+            border: 1px solid #2E1B08; 
+            text-decoration: none; 
+            color: #2E1B08; 
+            font-size: 21px; 
+            z-index: 1000; 
+        } 
+        .fiksni-vrh { 
+            position: fixed; 
+            bottom: 25px; 
+            right: 20px; 
+            background: rgba(242, 230, 201, 0.95); 
+            border: 1px solid #8b6f47; 
+            border-radius: 50%; 
+            width: 50px; 
+            height: 50px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            text-decoration: none; 
+            color: #8b6f47; 
+            font-size: 24px; 
+            font-weight: bold; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3); 
+            z-index: 9999; 
+            transition: 0.3s; 
+        } 
+        .fiksni-vrh:hover { 
+            transform: scale(1.1); 
+        } 
+
+ html {
+    scroll-behavior: smooth; /* Ово омогућава оно нежно, "клизеће" скроловање */
+} 
+        
+        /* СТИЛОВИ ЗА ТЕКСТ АКАТИСТА */
+        .sadrzaj-akatista {
+            max-width: 600px;
+            margin: 80px auto 40px auto; /* Размак због иконице на врху */
+            text-align: justify; /* Равно поравнање за лакше читање */
+            line-height: 1.6;
+            padding: 0 15px;
+        }
+        h1 {
+            font-size: 26px;
+            text-align: center;
+            margin-bottom: 5px;
+            color: #2E1B08;
+        }
+        h2 {
+            font-size: 20px;
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: #8b6f47;
+            font-style: italic;
+        }
+
+ h3 {
+            font-size: 26px;
+            color: #8b0000; /* Crvena boja za naslove katizmi */
+            font-variant: small-caps;
+            border-top: 1px solid #8b6f47;
+            border-bottom: 1px solid #8b6f47;
+            padding-top: 20px;
+        }
+
+        p {
+            font-size: 19px;
+            margin-bottom: 15px;
+            text-indent: 20px; /* Почетак пасуса увучен */
+        }
+        .raduj-se-lista {
+            margin: 15px 0;
+            padding-left: 20px;
+            font-size: 19px;
+            color: #3A2A1D;
+            font-weight: bold;
+margin-bottom: 50px;
+    border-radius: 10px;
+    border-bottom: 3px solid #8b6f47; /* Deblja linija na dnu katizme */
+        }
+        .raduj-se-red {
+            margin-bottom: 8px;
+            display: block;
+        }
+        .aliluja {
+            text-align: center;
+            font-weight: bold;
+            font-size: 20px;
+            margin: 20px 0;
+            color: #8b6f47;
+        }
+
+.uputstvo-crveno {
+    color: #8b0000; /* Твоја прелепа бордо/црвена боја */
+    font-size: 18px; /* Мало мања слова, пошто је то упутство */
+    font-style: italic; /* Користимо твој омиљени италик */
+    display: block; /* Ово ставља цео текст у посебан ред */
+    text-align: center; /* Да буде на средини екрана */
+    margin: 15px 0; /* Леп размак изнад и испод упутства */
+}
+
+ .molitva { 
+    text-align: justify; /* Poravnato kao u knjizi */ 
+    line-height: 1.6; 
+    font-size: 21px; 
+    padding: 0; /* Izbačen padding */ 
+    margin-bottom: 60px; /* Malo smo povećali razmak na dnu */
+    border-radius: 10px; 
+    border-bottom: 3px solid #8b6f47; /* Deblja linija na dnu katizme */
+    display: block; /* Prisiljava pretraživač da nacrta ceo blok */
+    overflow: visible; /* Osigurava da se donja linija nikada ne sakrije */
+}
+
+.tekst-crвени-inline {
+    color: #8b0000; /* Ваша прелепа бордо/црвена */
+    font-weight: bold; /* Подебљано као и остатак молитве */
+    font-style: italic; /* Обична усправна слова, да прати ритам молитве */
+}
+
+
+.knjiska-linija {
+    border: none;
+    border-bottom: 2px solid #8b6f47;
+    margin: 40px auto;
+    width: 100%;
+}
+.aliluja-inline {
+    color: #8b6f47; /* Златно-браон боја као за кондаке */
+    font-weight: bold; /* Подебљано */
+    font-style: italic; /* Обична усправна слова */
+    margin-left: 5px; /* Мали размак од претходне речи */
+}
+    </style> 
+</head> 
+<body> 
+
+    <!-- Дугме води назад на листу свих акатаста -->
+    <a href="index.html" class="home-dugme">🏠</a>
+<div class="container">
+    <div class="sadrzaj-akatista"> 
+        <center><img src="serafimi.png" class="stiker-vrh" alt="" style="max-width: 150px;"></center>
+        <h3>АКАТИСТ Пресветој БОГОРОДИЦИ</h3>
+       
+        <center><small><i></i></small></center>
+
+
+        <h2>Кондак 1.</h2>
+        <p>Теби, Војвоткињи која се бори за нас, узносимо песме победне, а избавивши се од зла – песме захвалне, ми, слуге Твоје, Богородице. Но пошто имаш моћ непобедиву, од сваке нас опасности избави, да Ти кличемо:
+<p>Радуј се, Невесто Неневесна!
+</p>
+        <h2>Икос 1.</h2>
+        <p>Анђео првак послан би с неба да каже Богородици: Радуј се! И гледајући Те, Господе, како се оваплоћаваш на нетелесни глас, беше запрепашћен, и стајаше кличући јој овако:
+</p>
+        
+        <div class="raduj-se-lista">
+<span class="raduj-se-red">Радуј се, јер ће Тобом радост засијати!</span>
+<span class="raduj-se-red">Радуј се, јер ће Тобом проклетство ишчезнути!</span>
+<span class="raduj-se-red">Радуј се, палог Адама позивање!</span>
+<span class="raduj-se-red">Радуј се, Еве од суза Избављење!</span>
+<span class="raduj-se-red">Радуј се, Висино недостижна људским помислима</span>
+<span class="raduj-se-red">Радуј се, Дубино недогледна и анђелским очима!</span>
+<span class="raduj-se-red">Радуј се, јер си Царев Престо!</span>
+<span class="raduj-se-red">Радуј се, јер носиш Носиоца свега!</span>
+<span class="raduj-se-red">Радуј се, Звездо која објављује сунце!</span>
+<span class="raduj-se-red">Радуј се, Утробо божанског оваплоћења!</span>       
+<span class="raduj-se-red">Радуј се, јер се Тобом обнавља створење!</span> 
+<span class="raduj-se-red">Радуј се, јер се у Теби зачиње Створитељ!</span>       
+<span class="raduj-se-red">Радуј се, Невесто Неневесна!</span> 
+ </div>
+
+        <h2>Кондак 2.</h2>
+        <p>Видећи Себе у чистоти, Света смело говори Гаврилу: Твој чудни говор изгледа несхватљив души мојој, јер како говориш о 
+рођењу од бесеменог зачећа, кличући: <span class="aliluja-inline">Алилуја!</span>
+ </p>
+       
+
+ <h2>Икос 2.</h2>
+<p>
+Тражећи да сазна непознато знање, Дјева повика служитељу (тајне): Реци ми како је могуће да се син роди из чисте утробе? 
+А он јој рече са страхом, кличући овако:
+</p> 
+<div class="raduj-se-lista">
+<span class="raduj-se-red">Радуј се, Поверенице тајанственог савета!</span>
+<span class="raduj-se-red">Радуј се, Веро у оно о чему треба ћутати!</span>
+<span class="raduj-se-red">Радуј се, Уводе у чуда Христова!</span>
+<span class="raduj-se-red">Радуј се, главни од догмата Његових!</span>
+<span class="raduj-se-red">Радуј се, Лествице Небеска којом сиђе Бог!</span>
+<span class="raduj-se-red">Радуј се, Мосте који преводи са земље на небо!</span>
+<span class="raduj-se-red">Радуј се, Чудо о коме много говоре анђели!</span>
+<span class="raduj-se-red">Радуј се, многооплакивани Поразе демонима!</span>
+<span class="raduj-se-red">Радуј се, јер си неизрециву Светлост родила!</span>
+<span class="raduj-se-red">Радуј се, јер начин ником ниси открила!</span>       
+<span class="raduj-se-red">Радуј се, јер превазилазиш знање мудраца!</span> 
+<span class="raduj-se-red">Радуј се, јер просветљујеш разум верних!</span>       
+<span class="raduj-se-red">Радуј се, Невесто Неневесна!</span> 
+ </div>
+   
+
+ <h2>Кондак 3.</h2>
+<p>
+Сила Свевишњега тада осени браку неискусну Дјеву ради зачећа, и утробу Њену с благим плодом показа дивном њивом свима који желе да жању спасење, певајући овако: 
+<span class="aliluja-inline">Алилуја!</span>
+ </p>
+ 
+
+
+ <h2>Икос 3.</h2>
+<p>
+Примивши Бога у утробу, Дјева похита Јелисавети, а чедо ове, осетивши одмах њихов загрљај, обрадова се, и узигравањем, 
+као песмама клицаше Богородици:
+</p> 
+<div class="raduj-se-lista">
+<span class="raduj-se-red">Радуј се, Лозо неувелог изданка!</span>
+<span class="raduj-se-red">Радуј се, Тековино бесмртнога плода!</span>
+<span class="raduj-se-red">Радуј се, јер преобраћаш земљоделца у човекољубца!</span>
+<span class="raduj-se-red">Радуј се, јер си родила Садитеља живота нашега!</span>
+<span class="raduj-se-red">Радуј се, Њиво која произведе обиље милосрђа!</span>
+<span class="raduj-se-red">Радуј се, Трпезо, која носи мноштво милости!</span>
+<span class="raduj-se-red">Радуј се, јер чиниш да цвета рај сладости!</span>
+<span class="raduj-se-red">Радуј се, јер спремаш пристаниште душа!</span>
+<span class="raduj-se-red">Радуј се, пријатни Тамјане молитве!</span>
+<span class="raduj-se-red">Радуј се, целом свету Умилостивљење!</span>       
+<span class="raduj-se-red">Радуј се, Божија наклоности према смртнима!</span> 
+<span class="raduj-se-red">Радуј се, Смелости смртних према Богу!</span> 
+<span class="raduj-se-red">Радуј се, Невесто Неневесна!</span>      
+ </div>
+ <h2>Кондак 4.</h2>
+<p>
+С буром помисли сумље у себи, смерни Јосиф збуни се гледајући, Непорочна на Тебе безбрачну и подозревајући браколомство. Но, сазнавши да је Твоје зачеће од Духа Светога, рече: 
+<span class="aliluja-inline">Алилуја!</span>
+ </p> 
+
+<h2>Икос 4.</h2>
+<p>
+Чувши пастири анђеле како песмом славе долазак Христа у телу, и похитавши му као Пастиру, видеше Га као безазлено јагње, отхрањено у утроби 
+Марије коју славећи рекоше:
+</p>
+<div class="raduj-se-lista">
+<span class="raduj-se-red">Радуј се, Мати Јагњета и Пастира!</span>
+<span class="raduj-se-red">Радуј се, Торе разумних оваца!</span>
+<span class="raduj-se-red">Радуј се, Одбрано од невидљивих непријатеља!</span>
+<span class="raduj-se-red">Радуј се, Отварање рајских врата!</span>
+<span class="raduj-se-red">Радуј се, јер се небеско радује са земаљским!</span>
+<span class="raduj-se-red">Радуј се, јер земаљско ликује са небеским!</span>
+<span class="raduj-se-red">Радуј се, неућутна Уста апостола!</span>
+<span class="raduj-se-red">Радуј се, непобедива Смелости мученика!</span>
+<span class="raduj-se-red">Радуј се, јака Тврђаво вере!</span>
+<span class="raduj-se-red">Радуј се, светла Ознако благодати!</span>       
+<span class="raduj-se-red">Радуј се, јер се Тобом обнажи ад!</span> 
+<span class="raduj-se-red">Радуј се, јер се Тобом обукосмо у славу!</span>       
+<span class="raduj-se-red">Радуј се, Невесто Неневесна!</span> 
+ </div>
+
+ <h2>Кондак 5.</h2>
+<p>
+Угледавши Богу водећу звезду, мудраци иђаху за њеном светлошћу, и држећи ју као светиљку, њоме тражаху моћнога Цара. Па стигавши до Недостижног, обрадовавше се кличући Му: 
+<span class="aliluja-inline">Алилуја!</span>
+ </p>
+
+<h2>Икос 5.</h2>
+<p>
+Синови Халдејаца видеше на рукама Дјеве Онога који је рукама створио људе, и познавши у њему Владара, иако узе лик слуге, похитавше да Му послуже даровима и да кличу 
+благословеној:
+</p> 
+
+<div class="raduj-se-lista">
+<span class="raduj-se-red">Радуј се, Мати незалазна Звезде!</span>
+<span class="raduj-se-red">Радуј се, Зоро тајанственог дана!</span>
+<span class="raduj-se-red">Радуј се, јер си угасила пећ преваре!</span>
+<span class="raduj-se-red">Радуј се, јер просвећујеш проповеднике Свете Тројице!</span>
+<span class="raduj-se-red">Радуј се, јер си збацила са власти нечовечног мучитеља!</span>
+<span class="raduj-se-red">Радуј се, јер си показала човекољубивог Господа, Христа!</span>
+<span class="raduj-se-red">Радуј се, јер избављаш од незнабожачких веровања!</span>
+<span class="raduj-se-red">Радуј се, јер чуваш од нечистих дела!</span>
+<span class="raduj-se-red">Радуј се, јер си укинула клањање огњу!</span>
+<span class="raduj-se-red">Радуј се, јер ослобађаш од пламена страсти!</span>       
+<span class="raduj-se-red">Радуј се, Водиљо верних невиности!</span> 
+<span class="raduj-se-red">Радуј се, Радости свих покољења!</span>       
+<span class="raduj-se-red">Радуј се, Невесто Неневесна!</span> 
+ </div>
+
+<h2>Кондак 6.</h2>
+<p>
+Поставши богоносни проповедници, мудраци се вратише у Вавилон, испунивши Твоје пророштво и објавивши свима Тебе, Христа, оставише Ирода као безумника, који не зна да пева: 
+<span class="aliluja-inline">Алилуја!</span>
+ </p> 
+
+<h2>Икос 6.</h2>
+<p>
+Засјавши у Египту светлошћу истине, прогнао си таму лажи, јер идоли његови, Спаситељу, попадоше не могући поднети Твоју силу. А избављени од њих клицаху 
+Богородици:
+<p>
+<div class="raduj-se-lista">
+<span class="raduj-se-red">Радуј се, Уздизање људи!</span>
+<span class="raduj-se-red">Радуј се, Обарање демона!</span>
+<span class="raduj-se-red">Радуј се, јер си превару заблуде уништила!</span>
+<span class="raduj-se-red">Радуј се, јер си лукавство идола изобличила!</span>
+<span class="raduj-se-red">Радуј се, Море које потопи духовног фараона!</span>
+<span class="raduj-se-red">Радуј се, Стено која напоји жедне живота!</span>
+<span class="raduj-se-red">Радуј се, огњени Стубе, који показује пут онима у тами!</span>
+<span class="raduj-se-red">Радуј се, Заклоне свету шири од облака!</span>
+<span class="raduj-se-red">Радуј се, Храно замено мане!</span>
+<span class="raduj-se-red">Радуј се, Служитељко свете Сладости!</span>       
+<span class="raduj-se-red">Радуј се, Земљо обећана!</span> 
+<span class="raduj-se-red">Радуј се, (Земљо) из које тече мед и млеко!</span>       
+<span class="raduj-se-red">Радуј се, Невесто Неневесна!</span> 
+ </div>
+
+
+<h2>Кондак 7.</h2>
+<p>
+Кад је требао Симеон да пређе из овог варљивог света, предат Си му био као дете, али он у Теби позна и савршенога Бога. Зато се задиви Твојој неисказаној мудрости кличући: 
+<span class="aliluja-inline">Алилуја!</span>
+ </p> 
+
+<h2>Икос 7.</h2>
+<p>
+Јавивши се, Створитељ показа нама, Својим створовима, нову твар, израсте из бесемене утробе, и сачува ју чистом као што је и била, да бисмо видећи чудо, 
+славили је усклицима:
+<p>
+<div class="raduj-se-lista">
+<span class="raduj-se-red">Радуј се, Цвете непролазности!</span>
+<span class="raduj-se-red">Радуј се, Венче уздржљивости!</span>
+<span class="raduj-se-red">Радуј се, јер у Теби сија праслика васкрсења!</span>
+<span class="raduj-se-red">Радуј се, јер показујеш живот анђелски!</span>
+<span class="raduj-se-red">Радуј се, Дрво краснога плода, којим се хране верни!</span>
+<span class="raduj-se-red">Радуј се, Дрво доброг хлада, под које се склањају многи!</span>
+<span class="raduj-se-red">Радуј се, јер си носила у утроби Путовођу заблуделих!</span>
+<span class="raduj-se-red">Радуј се, јер си родила Избавитеља заробљених!</span>
+<span class="raduj-se-red">Радуј се, Умилостивљење праведнога Судије!</span>
+<span class="raduj-se-red">Радуј се, Опроштају многим преступницима!</span>       
+<span class="raduj-se-red">Радуј се, непостидна Одећо нагима!</span> 
+<span class="raduj-se-red">Радуј се, Љубави, која сваку жудњу побеђује!</span> 
+<span class="raduj-se-red">Радуј се, Невесто Неневесна!</span> 
+ </div>
+
+<h2>Кондак 8.</h2>
+<p>
+Видевши необично рођење, уклонимо се од света, и пренесимо ум на небо, јер се зато узвишени Бог јави на земљи као смерни човек, желећи да привуче висини оне који Му кличу: 
+<span class="aliluja-inline">Алилуја!</span>
+ </p>
+
+<h2>Икос 8.</h2>
+<p>
+Неописана Реч сва беше међу земнима, но никако не одвојивши се од небеских. Јер не беше промена места божанско силажење и рођење од Дјеве, 
+Која прими Бога, и Која слуша ово:
+<p>
+<div class="raduj-se-lista">
+<span class="raduj-se-red">Радуј се, Сместиште несместивог Бога!</span>
+<span class="raduj-se-red">Радуј се, Врата величанствене Тајне!</span>
+<span class="raduj-se-red">Радуј се, Ти, о Којој са сумњом слушају неверници!</span>
+<span class="raduj-se-red">Радуј се, несумљива Похвало верних!</span>
+<span class="raduj-se-red">Радуј се, Пресвета Колеснице Онога Који је на Херувимима!</span>
+<span class="raduj-se-red">Радуј се, преславно Станиште Онога Који је на Серафимима!</span>
+<span class="raduj-se-red">Радуј се, јер си супротности ујединила!</span>
+<span class="raduj-se-red">Радуј се, јер си девичанство и рођење спојила!</span>
+<span class="raduj-se-red">Радуј се, јер се Тобом преступ заглади!</span>
+<span class="raduj-se-red">Радуј се, јер се Тобом рај отвори!</span>       
+<span class="raduj-se-red">Радуј се, Кључу Царства Христова!</span> 
+<span class="raduj-se-red">Радуј се, Надо вечних добара!</span> 
+<span class="raduj-se-red">Радуј се, Невесто Неневесна!</span>
+ </div>
+
+
+<h2>Кондак 9.</h2>
+<p>
+Сва природа анђелска задиви се великом делу Твога ваплоћења, јер Онога Који је као Бог недоступан гледаху као свима доступног човека, 
+где с нама борави и од свију слуша: <span class="aliluja-inline">Алилуја!</span>
+ </p> 
+
+<h2>Икос 9.</h2>
+<p>
+Речите говорнике видимо безгласне као рибе пред Тобом, Богородице, јер не умеју да објасне како си и девојка остала и могла родити. 
+Ми пак, дивећи се тајни, верно кличемо:
+<p>
+<div class="raduj-se-lista">
+<span class="raduj-se-red">Радуј се, Сасуде Божије мудрости!</span>
+<span class="raduj-se-red">Радуј се, Ризницо Његовог промисла!</span>
+<span class="raduj-se-red">Радуј се, јер показујеш да су мудраци немудри!</span>
+<span class="raduj-se-red">Радуј се, јер доказујеш да су красноречиви безгласни!</span>
+<span class="raduj-se-red">Радуј се, јер залудеше опаки споритељи!</span>
+<span class="raduj-se-red">Радуј се, јер увенуше творци басана!</span>
+<span class="raduj-se-red">Радуј се, јер раскидаш незнабожачка плетења Атињана!</span>
+<span class="raduj-se-red">Радуј се, јер пуниш мреже рибара!</span>
+<span class="raduj-se-red">Радуј се, јер извлачиш из дубине незнања!</span>
+<span class="raduj-se-red">Радуј се, јер многе просвећујеш знањем!</span>       
+<span class="raduj-se-red">Радуј се, Лађо жељим спасења!</span> 
+<span class="raduj-se-red">Радуј се, Пристаниште бродара кроз живот!</span> 
+<span class="raduj-se-red">Радуј се, Невесто Неневесна!</span> 
+ </div>
+
+
+<h2>Кондак 10.</h2>
+<p>
+Желећи да спасе свет, Украситељ свега дође Својом одлуком, и будући Господар – као Бог – ради нас јави се подобан нама човек, и сличним позвавши слично, 
+као Бог слуша: <span class="aliluja-inline">Алилуја!</span>
+ </p> 
+
+<h2>Икос 10.</h2>
+<p>
+Тврђава си девојкама и свима који Ти прибегавају, Богородице Дјево, јер тиме те Пречиста, учини Творац неба и земље уселивши се у утробу 
+Твоју и научивши све да Ти кличу:
+<p>
+<div class="raduj-se-lista">
+<span class="raduj-se-red">Радуј се, Стубе девојаштва!</span>
+<span class="raduj-se-red">Радуј се, Врата спасења!</span>
+<span class="raduj-se-red">Радуј се, Человођо духовног обновљења!</span>
+<span class="raduj-se-red">Радуј се, Дароватељко божанске доброте!</span>
+<span class="raduj-se-red">Радуј се, јер си препородила у греху зачете!</span>
+<span class="raduj-se-red">Радуј се, јер си уразумила лишене разума!</span>
+<span class="raduj-se-red">Радуј се, јер си уништила кваритеља ума!</span>
+<span class="raduj-se-red">Радуј се, јер си родила Сејача чистоте!</span>
+<span class="raduj-se-red">Радуј се, Дворано бесемене удаје!</span>
+<span class="raduj-se-red">Радуј се, јер верне сједињујеш са Господом!</span>       
+<span class="raduj-se-red">Радуј се, дивна Одгајатељко девојака!</span> 
+<span class="raduj-se-red">Радуј се, Невесто – краситељко светих душа!</span> 
+<span class="raduj-se-red">Радуј се, Невесто Неневесна!</span> 
+ </div>
+
+<h2>Кондак 11.</h2>
+<p>
+Свака химна Теби, ма с колико настојања проширивана, пада пред силним мноштвом милосрђа Твога, јер кад бисмо Ти, Свети Царе, принели онолико песама колико је песка, ништа достојно не бисмо учинили према ономе 
+што Си дао нама који Ти кличемо: <span class="aliluja-inline">Алилуја!</span>
+ </p> 
+
+<h2>Икос 11.</h2>
+<p>
+Као светлоносну светиљку, која се појави онима што су у тами, видимо Свету Дјеву, јер Она запаливши нематеријалну светлост, води све божанском знању, просвећујући ум јасношћу, 
+а слави се овим усклицима:
+<p>
+<div class="raduj-se-lista">
+<span class="raduj-se-red">Радуј се, Зраку Духовног Сунца!</span>
+<span class="raduj-se-red">Радуј се, Сјају Незалазне Светлости!</span>
+<span class="raduj-se-red">Радуј се, Муњо, Која просветљујеш душе!</span>
+<span class="raduj-se-red">Радуј се, Која као гром страшиш непријатеље!</span>
+<span class="raduj-se-red">Радуј се, јер из Тебе зрачи многосветло просвећење!</span>
+<span class="raduj-se-red">Радуј се, јер из Тебе извире обилна река!</span>
+<span class="raduj-se-red">Радуј се, јер изображаваш слику купјељи!</span>
+<span class="raduj-se-red">Радуј се, јер укидаш прљавштину греха!</span>
+<span class="raduj-se-red">Радуј се, Бањо, Која пере савест!</span>
+<span class="raduj-se-red">Радуј се, Чашо, Која точи радост!</span>       
+<span class="raduj-se-red">Радуј се, Мирисе Христовог миомира!</span> 
+<span class="raduj-se-red">Радуј се, Животе тајанственог весеља!</span> 
+<span class="raduj-se-red">Радуј се, Невесто Неневесна!</span> 
+ </div>
+
+
+<h2>Кондак 12.</h2>
+<p>
+Хотећи дати опроштај од старих дугова, Ослободилац свих људи Сам дође онима који се беху удаљили од Његове благодати, и подеравши обвезницу слуша од свих ово: 
+<span class="aliluja-inline">Алилуја!</span>
+ </p> 
+
+<h2>Икос 12.</h2>
+<p>
+Опевајући Твој пород, славимо Те сви као Живи Храм, Богородице, јер Господ Који све држи руком, уселивши се у утробу Твоју, освети, 
+прослави и научи све да Ти кличу:
+<p>
+<div class="raduj-se-lista">
+<span class="raduj-se-red">Радуј се, Шаторе Бога Речи!</span>
+<span class="raduj-se-red">Радуј се, већа од светиње над светињама!</span>
+<span class="raduj-se-red">Радуј се, Ковчеже позлаћени Духом!</span>
+<span class="raduj-se-red">Радуј се, неисцрпна Ризницо живота!</span>
+<span class="raduj-se-red">Радуј се, скупоцена Круно побожних царева!</span>
+<span class="raduj-se-red">Радуј се, часна Похвало богобојажљивих свештеника!</span>
+<span class="raduj-se-red">Радуј се, непоколебљива Куло Цркве!</span>
+<span class="raduj-se-red">Радуј се, неразрушива Тврђаво царства!</span>
+<span class="raduj-se-red">Радуј се, јер се Тобом дижу заставе победе!</span>
+<span class="raduj-se-red">Радуј се, јер се Тобом обарају непријатељи!</span>       
+<span class="raduj-se-red">Радуј се, тела мога Исцељење!</span> 
+<span class="raduj-se-red">Радуј се, душе моје Спасење!</span> 
+<span class="raduj-se-red">Радуј се, Невесто Неневесна!</span> 
+ </div>
+
+<h2>Кондак 13.</h2>
+<p>
+О, Свехвална Мати, Која роди Реч светију од свих светих, примивши овај садашњи принос, избави од напасти сваке, 
+и ослободи будућих мука све који кличу: <span class="aliluja-inline">Алилуја!</span>
+ </p>
+<span class="uputstvo-crveno">(Овај Кондак се чита трипут, а онда Икос 1. и Кондак 1.)</span>
+<p>    </div> 
+
+
+  <!-- ОВДЕ СЕ ЗАВРШАВА 13. ИКОС/КОНДАК И СТАВЉАМО ТВОЈУ ПРЕЛЕПУ ЛИНИЈУ -->
+        <hr class="knjiska-linija">
+
+     
+</div>
+
+  </div> 
+
+
+
+
+
+ 
+
+    <a href="#" class="fiksni-vrh">▲</a>
+
+</body> 
+</html>
