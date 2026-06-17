@@ -828,24 +828,20 @@ body.dark-mode .beseda-naslov {
 
 
 <script>
-// Nova, jača funkcija koja menja veličinu slova na celoj stranici odjednom
+// Funkcija koja menja veličinu slova samo unutar teksta knjige
 function changeFontSize(action) {
-  // Uzimamo celo telo stranice (body)
-  let body = document.body;
-  // Čitamo trenutnu veličinu slova sa njega
-  let currentSize = window.getComputedStyle(body).fontSize;
-  // Pretvaramo u broj i dodajemo/oduzimamo piksele (npr. +2 ili -2)
-  let newSize = parseFloat(currentSize) + action;
-  
-  // Ako slova postanu previše mala ili prevelika, postavljamo granice (od 14px do 36px)
-  if (newSize >= 14 && newSize <= 36) {
-    body.style.fontSize = newSize + 'px';
+  let tekst = document.querySelector('.tekst-knjige');
+  if (tekst) {
+    // Uzimamo trenutnu veličinu slova
+    let currentSize = window.getComputedStyle(tekst).fontSize;
+    // Pretvaramo u čist broj
+    let currentNumber = parseFloat(currentSize);
+    // Računamo novu veličinu
+    let newSize = currentNumber + action;
     
-    // Dodatno menjamo i sam tekst unutar knjige da se pretraživač ne bi zbunio
-    let tekst = document.querySelector('.tekst-knjige');
-    if (tekst) {
-      let trenutniTekstSize = window.getComputedStyle(tekst).fontSize;
-      tekst.style.fontSize = (parseFloat(trenutniTekstSize) + action) + 'px';
+    // Dozvoljavamo promenu samo ako je između 16px i 36px
+    if (newSize >= 16 && newSize <= 36) {
+      tekst.style.fontSize = newSize + 'px';
     }
   }
 }
