@@ -161,10 +161,59 @@ text align: center;
     padding-left: 10px; /* Blagi pomak udesno, vrlo otmeno */
 }
 
+        
+/* 🌙 STIL ZA DARK MODE - OVO JE NOVO! */
+body.dark-mode {
+  background-image: none; /* Sklanjamo papir u mraku da ne blešti */
+  background-color: #121212; /* Tamna pozadina */
+  color: #e0e0e0; /* Svetla slova */
+}
+
+body.dark-mode .container {
+  background: rgba(30, 30, 30, 0.9); /* Tamna unutrašnja pozadina */
+}
+
+body.dark-mode .beseda-naslov {
+  color: #ff4d4d; /* Svetlija crvena za naslove u mraku */
+}
+
+/* Kontrole za font fiksirane na vrhu ekrana */
+.font-controls {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 2000;
+}
+
+.font-controls button { 
+  background-color: #8b0000; 
+  color: white; 
+  border: none; 
+  padding: 8px 12px; /* Malo veća dugmad za mobilni */
+  cursor: pointer; 
+  border-radius: 4px; 
+  font-weight: bold; 
+  font-size: 16px;
+  margin-left: 5px;
+} 
+
+.font-controls button:hover { 
+  background-color: #5f0606; 
+} 
+
+        
     </style>
 </head>
 <body>
 
+<!-- Dugmići za kontrolu -->
+<div class="font-controls"> 
+  <button onclick="changeFontSize(-2)">A-</button> 
+  <button onclick="changeFontSize(2)">A+</button> 
+  <button onclick="toggleDarkMode()">🌙</button> 
+</div>
+
+    
 <div class='column-right-outer'>
 <div class='column-right-inner'>
 <aside>
@@ -776,6 +825,43 @@ text align: center;
   <a href="#" class="fiksni-vrh">▲</a>
     </div>
 
+
+<script>
+// Nova, jača funkcija koja menja veličinu slova na celoj stranici odjednom
+function changeFontSize(action) {
+  // Uzimamo celo telo stranice (body)
+  let body = document.body;
+  // Čitamo trenutnu veličinu slova sa njega
+  let currentSize = window.getComputedStyle(body).fontSize;
+  // Pretvaramo u broj i dodajemo/oduzimamo piksele (npr. +2 ili -2)
+  let newSize = parseFloat(currentSize) + action;
+  
+  // Ako slova postanu previše mala ili prevelika, postavljamo granice (od 14px do 36px)
+  if (newSize >= 14 && newSize <= 36) {
+    body.style.fontSize = newSize + 'px';
+    
+    // Dodatno menjamo i sam tekst unutar knjige da se pretraživač ne bi zbunio
+    let tekst = document.querySelector('.tekst-knjige');
+    if (tekst) {
+      let trenutniTekstSize = window.getComputedStyle(tekst).fontSize;
+      tekst.style.fontSize = (parseFloat(trenutniTekstSize) + action) + 'px';
+    }
+  }
+}
+
+// Funkcija za paljenje i gašenje Dark Mode-a
+function toggleDarkMode() {
+  document.body.classList.toggle('dark-mode');
+}
+</script>
+
+</body>
+</html>
+
+
+
+
+    
 </body>
 </html>
 
