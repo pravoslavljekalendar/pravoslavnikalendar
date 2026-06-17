@@ -1,4 +1,4 @@
-const CACHE_NAME ='pravoslavna-riznica-final-v67';
+const CACHE_NAME ='pravoslavna-riznica-final-v68';
 const OFFLINE_ASSETS = [
   './',
   './index.html',
@@ -11,6 +11,16 @@ const OFFLINE_ASSETS = [
   './praznici.html',
   './post-i-trapave-sedmice.html',
   './vaskrsnji-kalendar.html',
+
+  
+  './akatist-presvetoj-bogorodici.html',
+  './akatist-svetom-nektariju-eginskom.html',
+  './akatist-svetoj-kseniji-petrogradskoj.html',
+
+ 
+  './jednom-za-ceo-zivot.html',
+  './sedam-znakova-novog-rodjenja.html',
+  './boziji-promisao.html',
   './januar-2026.html',
   './februar-2026.html',
   './mart-2026.html',
