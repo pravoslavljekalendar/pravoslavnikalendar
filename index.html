@@ -1457,10 +1457,12 @@ document.addEventListener("DOMContentLoaded", function() {
     // Твоја база за 365 дана у години, полако уноси дан по дан како стигнеш
     let bazaZitijaDesno = {
         "19-6": {
-            "naslov": "Свети Свештеномученик Доротеј",
-            "slika": "ikone-danas/jun19.jpg", // Скини његову обичну ЈПГ слику и стави је у овај фолдер
-            "tekst": "Епископ тирски из четвртог века. Био је веома учен и духован човек. Написао је многа корисна дела за Цркву, претрпео тешке муке због вере у Христа под царем Јулијаном Одступником и преселио се у Царство Небеско у својој 107. години живота, остављајући нам пример светог трпљења."
-        },
+           "naslov": "Преподобни Висарион и Иларион Нови",
+            "slika1": "ikone-danas/jun19-1.jpg", // Твој Висарион
+            "slika2": "ikone-danas/jun19-2.jpg", // Твој Иларион Нови
+            "tekst": "Преподобни Висарион: Рођен и васпитан у Мисиру. Рано се одао духовном животу... (текст Висариона) ... Упокојио се мирно 466. године. Преподобни Иларион Нови: Игуман Далматске обитељи у Цариграду. Моћан у молитви, истрајан и храбар у страдању за свете иконе... (текст Илариона) ... Упокојио се у царству небеском 845. године."
+        }
+    };
         "20-6": {
             "naslov": "Свети Свештеномученик Теодот Анкирски",
             "slika": "ikone-danas/jun20.jpg",
@@ -1468,9 +1470,15 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     };
 
-    // Проверавамо да ли већ имаш уписаног свеца у десној бази за данашњи дан
+    // Овај део испод унутар скрипте само мало мењамо да учита обе слике:
     if(bazaZitijaDesno[kljucDatuma]) {
         let svetacDesno = bazaZitijaDesno[kljucDatuma];
+        
+        document.getElementById("naslov-svetitelj-danas").innerText = svetacDesno.naslov;
+        document.getElementById("slika-svetitelja-1").src = svetacDesno.slika1;
+        document.getElementById("slika-svetitelja-2").src = svetacDesno.slika2;
+        document.getElementById("tekst-zitija-danas").innerText = svetacDesno.tekst;
+    }
         
         // Аутоматски убацујемо ЈПГ слику са рамом, име и житије у твој десни бокс!
         if (document.getElementById("naslov-svetitelj-danas")) {
