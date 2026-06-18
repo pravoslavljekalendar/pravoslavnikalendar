@@ -1,0 +1,155 @@
+<!DOCTYPE html> 
+<html lang="sr"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <meta name="apple-mobile-web-app-capable" content="yes"> 
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"> 
+    <title>АУДИО НОВИ ЗАВЕТ</title> 
+    <style> 
+        html { 
+            scroll-behavior: smooth; 
+        } 
+        body { 
+            margin: 0; 
+            background-image: url("papir.png"); 
+            background-size: cover; 
+            background-attachment: fixed; 
+            font-family: "Times New Roman", serif; 
+            color: #4A3728; 
+            text-align: center; 
+            padding: 20px; 
+        } 
+        .container { 
+            max-width: 700px; 
+            margin: auto; 
+            padding: 20px; 
+            padding-top: 60px; 
+            background: rgba(252, 245, 229, 0.6); 
+            min-height: 100vh; 
+            box-sizing: border-box;
+        } 
+        .home-dugme { 
+            position: fixed; 
+            top: 15px; 
+            left: 15px; 
+            background: rgba(242, 230, 201, 0.9); 
+            padding: 10px 15px; 
+            border-radius: 8px; 
+            border: 1px solid #8b6f47; 
+            text-decoration: none; 
+            color: #4A3728; 
+            font-size: 20px; 
+            z-index: 1000; 
+        } 
+        .fiksni-vrh { 
+            position: fixed; 
+            bottom: 25px; 
+            right: 20px; 
+            background: rgba(242, 230, 201, 0.95); 
+            border: 1px solid #8b6f47; 
+            border-radius: 50%; 
+            width: 50px; height: 50px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            text-decoration: none; 
+            color: #8b6f47; 
+            font-size: 24px; 
+            font-weight: bold; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3); 
+            z-index: 9999; 
+            transition: 0.3s; 
+        } 
+        .fiksni-vrh:hover { 
+            transform: scale(1.1); 
+        } 
+        h3 { 
+            font-size: 26px; 
+            color: #8b0000; 
+            font-variant: small-caps; 
+            border-top: 1px solid #8b6f47; 
+            border-bottom: 1px solid #8b6f47; 
+            padding-top: 20px; 
+            padding-bottom: 10px;
+            text-align: center;
+        } 
+        h4 {
+            font-size: 22px;
+            color: #4A3728;
+            margin-top: 30px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        /* СТИЛ ЗА ТВОЈЕ ТОПЛЕ ПЛЕЈЕР КУТИЈЕ */
+        .kutija-plejer {
+            background: rgba(242, 230, 201, 0.88); 
+            border: 1px solid #8b6f47; 
+            border-radius: 10px; 
+            padding: 15px; 
+            max-width: 400px; 
+            margin: 15px auto; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+        .naslov-glave {
+            color: #8b0000; 
+            font-size: 19px; 
+            font-weight: bold; 
+            margin-bottom: 8px;
+            text-align: center;
+        }
+        audio {
+            width: 100%; 
+            outline: none;
+        }
+    </style> 
+</head> 
+<body> 
+
+    <!-- Води назад на главну страницу Аудио Библије --> 
+    <a href="audio-biblija.html" class="home-dugme">⬅️</a> 
+
+    <div class="container"> 
+        <center><img src="serafimi.png" class="stiker-vrh" alt="" style="max-width: 150px;"></center> 
+        
+        <h3>АУДИО НОВИ ЗАВЕТ</h3> 
+
+        <h4>Свето Јеванђеље по Матеју</h4>
+
+        <!-- ГЛАВА 1 -->
+        <div class="kutija-plejer">
+            <div class="naslov-glave">Глава 1.</div>
+            <audio controls>
+                <!-- Овде претраживач тражи твој фајл 01.mp3 -->
+                <source src="01.mp3" type="audio/mpeg">
+                Твој уређај не подржава аудио плејер.
+            </audio>
+        </div>
+
+        <!-- ГЛАВА 2 -->
+        <div class="kutija-plejer">
+            <div class="naslov-glave">Глава 2.</div>
+            <audio controls>
+                <source src="02.mp3" type="audio/mpeg">
+                Твој уређај не подржава аудио плејер.
+            </audio>
+        </div>
+
+        <!-- ГЛАВА 3 -->
+        <div class="kutija-plejer">
+            <div class="naslov-glave">Глава 3.</div>
+            <audio controls>
+                <source src="03.mp3" type="audio/mpeg">
+                Твој уређај не подржава аудио плејер.
+            </audio>
+        </div>
+
+        <!-- На исти начин само копираш кутије до броја 28 -->
+
+    </div> 
+
+    <a href="#" class="fiksni-vrh">▲</a> 
+
+</body> 
+</html>
