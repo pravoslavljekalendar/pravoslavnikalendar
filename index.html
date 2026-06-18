@@ -661,7 +661,25 @@ padding: 0; /* Brišemo razmak oko celog tela */
     left: 17px;
 }	
 
+/* ПРЕЛЕП ОКИВР ЗА ОБИЧНЕ ЈПГ СЛИКЕ СВЕТИТЕЉА */
+.sveca-jpg-ikona { 
+    width: 100%;
+    max-width: 160px; /* Величина слике на десној страни */
+    height: auto; 
+    margin: 0 auto 15px auto; 
+    display: block;
+    border-radius: 10px; /* Благо заобљени углови */
+    border: 2px solid #8b6f47; /* Твој прелепи златни/браон рам */
+    /* Ова сенка даје ефекат да икона лебди изнад папира */
+    box-shadow: 0 5px 12px rgba(0,0,0,0.2); 
+    transition: 0.3s;
+}
 
+/* Ефекат када мишем пређеш преко слике на лаптопу */
+.sveca-jpg-ikona:hover {
+    transform: scale(1.05); /* Слика се нежно повећа */
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3); /* Сенка постаје дубља */
+}
 
 
 @media (prefers-color-scheme: dark) {
@@ -923,6 +941,31 @@ overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.3); margin: 20px 0 20px 30
     <p style="text-align:center;">Учитавам житије дана...</p>
 </div>	
 
+<!-- ДЕСНА КОЛОНА (Приказује се само на десктопу/лаптопу) -->
+<div class="header-desktop-right-box">
+    
+    <!-- НАСЛОВ БОКСА -->
+    <div style="color: #8b0000; font-weight: bold; font-size: 16px; margin-bottom: 15px; letter-spacing: 1px;">
+        ✨ СВЕТИТЕЉ ЗА ДАНАС
+    </div>
+
+    <!-- ТВОЈ ОМИЉЕНИ СТИКЕР: Слика свеца са drop-shadow ефектом -->
+    <center> 
+    <!-- ОВДЕ СМО УБАЦИЛИ КЛАСУ И ОЧИСТИЛИ СТАРИ СТИЛ ЗА СТИКЕРЕ -->
+    <img id="slika-svetitelja-danas" class="sveca-jpg-ikona" src="serafimi.png" alt="Светитељ"> 
+</center> 
+
+<!-- НА СРЕДИНИ: Име Светитеља из Пролога --> 
+<div class="naslov-header-desktop-right" id="naslov-svetitelj-danas" style="color: #8b0000; text-align: center; font-size: 21px; font-weight: bold; margin-bottom: 10px;"> 
+    Учитавање... 
+</div> 
+
+<!-- ТЕКСТ ЖИТИЈА У ТВОМ ОМИЉЕНОМ ИТАЛИКУ --> 
+<p id="tekst-zitija-danas" style="font-size: 18px; line-height: 1.5; font-style: italic; text-indent: 20px; margin: 0; padding-top: 5px;"> 
+    Учитавање данашњег житија из Охридског Пролога... 
+</p> 
+
+	
 
 <div class="header-desktop-right-box">
 <div class="naslov-header-desktop-right">Старац Пајсије Светогорац</div>
@@ -1378,6 +1421,49 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 </script>
 
+
+ <!-- Nova za probu zitija -->
+<script>
+window.addEventListener('DOMContentLoaded', (event) => {
+    // 1. Рачунар узима тренутни датум са лаптопа корисника
+    let danas = new Date();
+    let dan = danas.getDate();
+    let mesec = danas.getMonth() + 1; // Јануар је 0, зато додајемо 1
+    
+    // Кључ за данашњи дан, нпр. "18-6" за данашњи 18. јун
+    let kljucDatuma = dan + "-" + mesec;
+
+    // 2. Овде правиш своју велику дигиталну ризницу за 365 дана
+    let bazaZitija = {
+        "18-6": {
+            "ime": "Свети Свештеномученик Доротеј",
+            "slika": "dorotej.png", // ПНГ сличица из твог фолдера
+            "tekst": "Епископ тирски од времена Диоклецијана па све до Јулијана Одступника, под којим је у дубокој старости претрпео тешке муке и преселио се у Царство Небеско у својој 107. години живота."
+        },
+        "19-6": {
+            "ime": "Свети Преподобни Висарион",
+            "slika": "visarion.png",
+            "tekst": "Велики чудотворац египатски. Због свог огромног смирења добио је од Бога дар чудотворства, те је море прелазио као суво и молитвом кишу изводио."
+        }
+        // Како будеш имала времена, само додајеш дане овако: "дан-месец": { ... }
+    };
+
+    // 3. Проверавамо да ли имамо уписаног свеца за данашњи дан
+    if(bazaZitija[kljucDatuma]) {
+        let danasnjiSvetac = bazaZitija[kljucDatuma];
+        
+        // Аутоматски мењамо име, слику и житије у десној колони!
+        document.getElementById("naslov-svetitelj-danas").innerText = danasnjiSvetac.ime;
+        document.getElementById("slika-svetitelja-danas").src = danasnjiSvetac.slika;
+        document.getElementById("tekst-zitija-danas").innerText = danasnjiSvetac.tekst;
+    } else {
+        // Ако неки дан још ниси стигла да упишеш, рачунар ће оставити твог вољеног Пајсија
+        document.getElementById("naslov-header-desktop-right").innerText = "Старац Пајсије Светогорац";
+        document.getElementById("slika-svetitelja-danas").src = "serafimi.png";
+        document.getElementById("tekst-zitija-danas").innerText = "Што је човек духовнији, то има мање права у овом животу. Мора да буде стрпљив, мора да подноси неправде, мора да трпи увреде од људи...";
+    }
+});
+	
 	
 </body>
 </html>
