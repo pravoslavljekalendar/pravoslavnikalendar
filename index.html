@@ -1422,6 +1422,86 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 
 
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const datum = new Date();
+    const dan = datum.getDate();
+    const meseci = ["januar", "februar", "mart", "april", "maj", "jun", "jul", "avgust", "septembar", "oktobar", "novembar", "decembar"];
+    const mesecIme = meseci[datum.getMonth()];
+
+    // 1. ТВОЈ ЗЛАТНИ СИСТЕМ ЗА ПРОЛОГ (Учитава Пролог у средину екрана)
+    const fajlPutanja = `prolog-${mesecIme}.html`;
+    const targetId = `${mesecIme}${dan}`;
+
+    fetch(fajlPutanja)
+        .then(response => response.text())
+        .then(html => {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            const sadrzajDana = doc.getElementById(targetId);
+            
+            if (sadrzajDana) {
+                document.getElementById('dnevni-prolog-kontejner').innerHTML = sadrzajDana.outerHTML;
+            } else {
+                document.getElementById('dnevni-prolog-kontejner').innerHTML = "<p>Житије за данашњи дан ће бити ускоро додато.</p>";
+            }
+        })
+        .catch(err => {
+            console.error("Грешка при учитавању пролога:", err);
+            document.getElementById('dnevni-prolog-kontejner').innerHTML = "";
+        });
+
+    // 2. ГАРФИЛДОВ ПАМЕТНИ ДОДАТАК ЗА ДЕСНУ СТРАНУ ЛАПТОПА (Светитељ + ЈПГ икона + Житије)
+    let kljucDatuma = dan + "-" + (datum.getMonth() + 1);
+
+    // Твоја база за 365 дана у години, полако уноси дан по дан како стигнеш
+    let bazaZitijaDesno = {
+        "19-6": {
+            "naslov": "Свети Свештеномученик Доротеј",
+            "slika": "ikone-danas/jun19.jpg", // Скини његову обичну ЈПГ слику и стави је у овај фолдер
+            "tekst": "Епископ тирски из четвртог века. Био је веома учен и духован човек. Написао је многа корисна дела за Цркву, претрпео тешке муке због вере у Христа под царем Јулијаном Одступником и преселио се у Царство Небеско у својој 107. години живота, остављајући нам пример светог трпљења."
+        },
+        "20-6": {
+            "naslov": "Свети Свештеномученик Теодот Анкирски",
+            "slika": "ikone-danas/jun20.jpg",
+            "tekst": "Следећи светитељ за сутрашњи дан..."
+        }
+    };
+
+    // Проверавамо да ли већ имаш уписаног свеца у десној бази за данашњи дан
+    if(bazaZitijaDesno[kljucDatuma]) {
+        let svetacDesno = bazaZitijaDesno[kljucDatuma];
+        
+        // Аутоматски убацујемо ЈПГ слику са рамом, име и житије у твој десни бокс!
+        if (document.getElementById("naslov-svetitelj-danas")) {
+            document.getElementById("naslov-svetitelj-danas").innerText = svetacDesno.naslov;
+        }
+        if (document.getElementById("slika-svetitelja-danas")) {
+            document.getElementById("slika-svetitelja-danas").src = svetacDesno.slika;
+        }
+        if (document.getElementById("tekst-zitija-danas")) {
+            document.getElementById("tekst-zitija-danas").innerText = svetacDesno.tekst;
+        }
+    } else {
+        // Ако неки датум још ниси уписала, Гарфилд аутоматски враћа твог вољеног Старца Пајсија да кутија не остане празна
+        if (document.getElementById("naslov-svetitelj-danas")) {
+            document.getElementById("naslov-svetitelj-danas").innerText = "Старац Пајсије Светогорац";
+        }
+        if (document.getElementById("slika-svetitelja-danas")) {
+            document.getElementById("slika-svetitelja-danas").src = "serafimi.png";
+        }
+        if (document.getElementById("tekst-zitija-danas")) {
+            document.getElementById("tekst-zitija-danas").innerText = "Што је човек духовнији, то има мање права у овом животу. Мора да буде стрпљив, мора да подноси неправде, мора да трпи увреде од људи. Наша права Бог чува за други живот...";
+        }
+    }
+});
+</script>
+
+
+	
+
+
+	
  <!-- Nova za probu zitija -->
 <script>
 window.addEventListener('DOMContentLoaded', (event) => {
