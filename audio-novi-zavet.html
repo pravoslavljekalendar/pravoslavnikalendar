@@ -25,9 +25,9 @@
             margin: auto; 
             padding: 20px; 
             padding-top: 60px; 
-            background: rgba(252, 245, 229, 0.6); 
+             background: transparent; /* ОВО ПРАВИ МАГИЈУ: Позадина постаје скроз прозирна */  
             min-height: 100vh; 
-            box-sizing: border-box;
+            box-sizing: border-box; 
         } 
         .home-dugme { 
             position: fixed; 
@@ -49,7 +49,8 @@
             background: rgba(242, 230, 201, 0.95); 
             border: 1px solid #8b6f47; 
             border-radius: 50%; 
-            width: 50px; height: 50px; 
+            width: 50px; 
+            height: 50px; 
             display: flex; 
             align-items: center; 
             justify-content: center; 
@@ -71,292 +72,134 @@
             border-top: 1px solid #8b6f47; 
             border-bottom: 1px solid #8b6f47; 
             padding-top: 20px; 
-            padding-bottom: 10px;
-            text-align: center;
+            padding-bottom: 10px; 
+            text-align: center; 
         } 
-        h4 {
-            font-size: 22px;
-            color: #4A3728;
-            margin-top: 30px;
-            margin-bottom: 10px;
-            text-align: center;
-        }
         
-        /* СТИЛ ЗА ТВОЈЕ ТОПЛЕ ПЛЕЈЕР КУТИЈЕ */
-        .kutija-plejer {
+        /* ТВОЈ СТИЛ СА ДВЕ КОЛОНЕ ИЗ ПСАЛТИРА */
+        .sadrzaj { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 10px; 
+            margin-bottom: 40px; 
+            padding: 10px; 
+        } 
+        .katizma-link { 
+            padding: 10px; 
+            background: rgba(242, 230, 201, 0.9); 
+            border: 1px solid #8b6f47; 
+            border-radius: 5px; 
+            text-decoration: none; 
+            color: #4A3728; 
+            font-weight: bold; 
+            font-size: 14px; 
+            transition: 0.3s;
+        } 
+        .katizma-link:hover { 
+            transform: translateY(-3px); 
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
+            background: rgba(255, 255, 255, 0.95); 
+        } 
+
+        /* СТАЊЕНА КУТИЈА ПЛЕЈЕРА У ЈЕДНОМ РЕДУ */
+        .kutija-plejer { 
             background: rgba(242, 230, 201, 0.88); 
             border: 1px solid #8b6f47; 
-            border-radius: 10px; 
-            padding: 15px; 
-            max-width: 400px; 
-            margin: 15px auto; 
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-        }
-        .naslov-glave {
+            border-radius: 8px; 
+            padding: 6px 12px; 
+            max-width: 420px; 
+            margin: 8px auto; 
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        } 
+        .naslov-glave { 
             color: #8b0000; 
-            font-size: 19px; 
+            font-size: 17px; 
             font-weight: bold; 
-            margin-bottom: 8px;
-            text-align: center;
-        }
-        audio {
-            width: 100%; 
-            outline: none;
+            margin-bottom: 0; 
+            white-space: nowrap;
+            padding-right: 10px;
+        } 
+        audio { 
+            width: 75%; 
+            height: 32px;
+            outline: none; 
+        } 
+        .sekcija-naslov {
+            color: #4A3728;
+            font-size: 24px;
+            margin-top: 40px;
+            margin-bottom: 15px;
+            border-bottom: 1px dotted #8b6f47;
+            padding-bottom: 5px;
         }
     </style> 
 </head> 
 <body> 
 
-     <!-- Води назад на главну страницу Аудио Библије --> 
     <a href="audio-biblija.html" class="home-dugme">🏠</a> 
-
-    <div class="container"> 
-        <center><img src="serafimi.png" class="stiker-vrh" alt="" style="max-width: 150px;"></center> 
-        
-        <h3>АУДИО НОВИ ЗАВЕТ</h3> 
-
-        <h4>Свето Јеванђеље по Матеју</h4>
-
+<div class="container"> 
     
-
-    <div class="container"> 
         <center><img src="serafimi.png" class="stiker-vrh" alt="" style="max-width: 150px;"></center> 
         
         <h3>АУДИО НОВИ ЗАВЕТ</h3> 
 
-        <h4>Свето Јеванђеље по Матеју</h4>
-
-        <!-- ГЛАВА 1 -->
-        <div class="kutija-plejer">
-            <div class="naslov-glave">Глава 1.</div>
-            <audio controls>
-                <!-- Овде претраживач тражи твој фајл 01.mp3 -->
-                <source src="01.mp3" type="audio/mpeg">
-                Твој уређај не подржава аудио плејер.
-            </audio>
+        <!-- ЧЕТИРИ ПРЕЛЕПА ДУГМЕТА ЗА СКОК КРОЗ СТРАНИЦУ -->
+        <div class="sadrzaj">
+            <a href="#matej" class="katizma-link">📖 по Матеју</a>
+            <a href="#marko" class="katizma-link">📖 по Марку</a>
+            <a href="#luka" class="katizma-link">📖 по Луки</a>
+            <a href="#jovan" class="katizma-link">📖 по Јовану</a>
         </div>
 
-        <!-- ГЛАВА 2 -->
-        <div class="kutija-plejer">
-            <div class="naslov-glave">Глава 2.</div>
-            <audio controls>
-                <source src="02.mp3" type="audio/mpeg">
-                Твој уређај не подржава аудио плејер.
-            </audio>
+        <!-- ================= МАТЕЈ ================= -->
+        <div id="matej">
+            <div class="sekcija-naslov">Свето Јеванђеље по Матеју</div>
+            
+            <!-- Овде већ имаш својих 28 глава, само их остави ту са путањом matej/01.mp3 итд. -->
+            <div class="kutija-plejer"><div class="naslov-glave">Глава 1.</div><audio controls><source src="matej/01.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer"><div class="naslov-glave">Глава 2.</div><audio controls><source src="matej/02.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer"><div class="naslov-glave">Глава 3.</div><audio controls><source src="matej/03.mp3" type="audio/mpeg"></audio></div>
+            <!-- ... и тако даље до 28 ... -->
         </div>
 
-        <!-- ГЛАВА 3 -->
-        <div class="kutija-plejer">
-            <div class="naslov-glave">Глава 3.</div>
-            <audio controls>
-                <source src="03.mp3" type="audio/mpeg">
-                Твој уређај не подржава аудио плејер.
-            </audio>
+        <!-- ================= МАРКО ================= -->
+        <div id="marko">
+            <div class="sekcija-naslov">Свето Јеванђеље по Марку</div>
+            
+            <div class="kutija-plejer"><div class="naslov-glave">Глава 1.</div><audio controls><source src="marko/01.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer"><div class="naslov-glave">Глава 2.</div><audio controls><source src="marko/02.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer"><div class="naslov-glave">Глава 3.</div><audio controls><source src="marko/03.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer"><div class="naslov-glave">Глава 4.</div><audio controls><source src="marko/04.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer"><div class="naslov-glave">Глава 5.</div><audio controls><source src="marko/05.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer"><div class="naslov-glave">Глава 6.</div><audio controls><source src="marko/06.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer"><div class="naslov-glave">Глава 7.</div><audio controls><source src="marko/07.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer"><div class="naslov-glave">Глава 8.</div><audio controls><source src="marko/08.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer"><div class="naslov-glave">Глава 9.</div><audio controls><source src="marko/09.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer"><div class="naslov-glave">Глава 10.</div><audio controls><source src="marko/10.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer"><div class="naslov-glave">Глава 11.</div><audio controls><source src="marko/11.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer"><div class="naslov-glave">Глава 12.</div><audio controls><source src="marko/12.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer"><div class="naslov-glave">Глава 13.</div><audio controls><source src="marko/13.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer"><div class="naslov-glave">Глава 14.</div><audio controls><source src="marko/14.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer"><div class="naslov-glave">Глава 15.</div><audio controls><source src="marko/15.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer"><div class="naslov-glave">Глава 16.</div><audio controls><source src="marko/16.mp3" type="audio/mpeg"></audio></div>
         </div>
 
-   <div class="kutija-plejer">
-            <div class="naslov-glave">Глава 4.</div>
-            <audio controls>
-                <source src="04.mp3" type="audio/mpeg">
-                Твој уређај не подржава аудио плејер.
-            </audio>
-        </div>
-
-   <div class="kutija-plejer">
-            <div class="naslov-glave">Глава 5.</div>
-            <audio controls>
-                <source src="05.mp3" type="audio/mpeg">
-                Твој уређај не подржава аудио плејер.
-            </audio>
-        </div>
-
-   <div class="kutija-plejer">
-            <div class="naslov-glave">Глава 6.</div>
-            <audio controls>
-                <source src="06.mp3" type="audio/mpeg">
-                Твој уређај не подржава аудио плејер.
-            </audio>
-        </div>
-
-   <div class="kutija-plejer">
-            <div class="naslov-glave">Глава 7.</div>
-            <audio controls>
-                <source src="07.mp3" type="audio/mpeg">
-                Твој уређај не подржава аудио плејер.
-            </audio>
-        </div>
-
-   <div class="kutija-plejer">
-            <div class="naslov-glave">Глава 8.</div>
-            <audio controls>
-                <source src="08.mp3" type="audio/mpeg">
-                Твој уређај не подржава аудио плејер.
-            </audio>
-        </div>
-
-   <div class="kutija-plejer">
-            <div class="naslov-glave">Глава 9.</div>
-            <audio controls>
-                <source src="09.mp3" type="audio/mpeg">
-                Твој уређај не подржава аудио плејер.
-            </audio>
-        </div>
-
-   <div class="kutija-plejer">
-            <div class="naslov-glave">Глава 10.</div>
-            <audio controls>
-                <source src="10.mp3" type="audio/mpeg">
-                Твој уређај не подржава аудио плејер.
-            </audio>
-        </div>
-
-   <div class="kutija-plejer">
-            <div class="naslov-glave">Глава 11.</div>
-            <audio controls>
-                <source src="11.mp3" type="audio/mpeg">
-                Твој уређај не подржава аудио плејер.
-            </audio>
-        </div>
-
-   <div class="kutija-plejer">
-            <div class="naslov-glave">Глава 12.</div>
-            <audio controls>
-                <source src="12.mp3" type="audio/mpeg">
-                Твој уређај не подржава аудио плејер.
-            </audio>
-        </div>
-
-   <div class="kutija-plejer">
-            <div class="naslov-glave">Глава 13.</div>
-            <audio controls>
-                <source src="13.mp3" type="audio/mpeg">
-                Твој уређај не подржава аудио плејер.
-            </audio>
-        </div>
-
-   <div class="kutija-plejer">
-            <div class="naslov-glave">Глава 14.</div>
-            <audio controls>
-                <source src="14.mp3" type="audio/mpeg">
-                Твој уређај не подржава аудио плејер.
-            </audio>
-        </div>
-
-   <div class="kutija-plejer">
-            <div class="naslov-glave">Глава 15.</div>
-            <audio controls>
-                <source src="15.mp3" type="audio/mpeg">
-                Твој уређај не подржава аудио плејер.
-            </audio>
-        </div>
-
-   <div class="kutija-plejer">
-            <div class="naslov-glave">Глава 16.</div>
-            <audio controls>
-                <source src="16.mp3" type="audio/mpeg">
-                Твој уређај не подржава аудио плејер.
-            </audio>
-        </div>
-
-   <div class="kutija-plejer">
-            <div class="naslov-glave">Глава 17.</div>
-            <audio controls>
-                <source src="17.mp3" type="audio/mpeg">
-                Твој уређај не подржава аудио плејер.
-            </audio>
-        </div>
-
-   <div class="kutija-plejer">
-            <div class="naslov-glave">Глава 18.</div>
-            <audio controls>
-                <source src="18.mp3" type="audio/mpeg">
-                Твој уређај не подржава аудио плејер.
-            </audio>
-        </div>
-
-   <div class="kutija-plejer">
-            <div class="naslov-glave">Глава 19.</div>
-            <audio controls>
-                <source src="19.mp3" type="audio/mpeg">
-                Твој уређај не подржава аудио плејер.
-            </audio>
-        </div>
-
-   <div class="kutija-plejer">
-            <div class="naslov-glave">Глава 20.</div>
-            <audio controls>
-                <source src="20.mp3" type="audio/mpeg">
-                Твој уређај не подржава аудио плејер.
-            </audio>
-        </div>
-
-   <div class="kutija-plejer">
-            <div class="naslov-glave">Глава 21.</div>
-            <audio controls>
-                <source src="21.mp3" type="audio/mpeg">
-                Твој уређај не подржава аудио плејер.
-            </audio>
-        </div>
-
-   <div class="kutija-plejer">
-            <div class="naslov-glave">Глава 22.</div>
-            <audio controls>
-                <source src="22.mp3" type="audio/mpeg">
-                Твој уређај не подржава аудио плејер.
-            </audio>
-        </div>
-
-   <div class="kutija-plejer">
-            <div class="naslov-glave">Глава 23.</div>
-            <audio controls>
-                <source src="23.mp3" type="audio/mpeg">
-                Твој уређај не подржава аудио плејер.
-            </audio>
-        </div>
-
-   <div class="kutija-plejer">
-            <div class="naslov-glave">Глава 24.</div>
-            <audio controls>
-                <source src="24.mp3" type="audio/mpeg">
-                Твој уређај не подржава аудио плејер.
-            </audio>
-        </div>
-
-   <div class="kutija-plejer">
-            <div class="naslov-glave">Глава 25.</div>
-            <audio controls>
-                <source src="25.mp3" type="audio/mpeg">
-                Твој уређај не подржава аудио плејер.
-            </audio>
-        </div>
-
-   <div class="kutija-plejer">
-            <div class="naslov-glave">Глава 26.</div>
-            <audio controls>
-                <source src="26.mp3" type="audio/mpeg">
-                Твој уређај не подржава аудио плејер.
-            </audio>
-        </div>
-
-   <div class="kutija-plejer">
-            <div class="naslov-glave">Глава 27.</div>
-            <audio controls>
-                <source src="27.mp3" type="audio/mpeg">
-                Твој уређај не подржава аудио плејер.
-            </audio>
-        </div>
-
-   <div class="kutija-plejer">
-            <div class="naslov-glave">Глава 28.</div>
-            <audio controls>
-                <source src="28.mp3" type="audio/mpeg">
-                Твој уређај не подржава аудио плејер.
-            </audio>
-        </div>
-
-   
-        <!-- На исти начин само копираш кутије до броја 28 -->
-
+        <!-- ================= ЛУКА ================= -->
+        <div id="luka">
+            <div class="sekcija-naslov">Свето Јеванђеље по Луки</div>
+            
+            <div class="kutija-plejer"><div class="naslov-glave">Глава 1.</div><audio controls><source src="luka/01.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer"><div class="naslov-glave">Глава 2.</div><audio controls><source src="luka/02.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer"><div class="naslov-glave">Глава 3.</div><audio controls><source src="luka/03.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer"><div class="naslov-glave">Глава 4.</div><audio controls><source src="luka/04.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer"><div class="naslov-glave">Глава 5.</div><audio controls><source src="luka/05.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer"><div class="naslov-glave">Глава 6.</div><audio controls><source src="luka/06.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer"><div class="naslov-glave">Глава 7.</div><audio controls><source src="luka/07.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer"><div class="naslov-glave">Глава 8.</div><audio controls><source src="luka/08.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer"><div class="naslov-glave">Глава 9.</div><audio controls><source src="luka/09.mp3" type="audio/mpeg"></audio></div>
     </div> 
 
     <a href="#" class="fiksni-vrh">▲</a> 
