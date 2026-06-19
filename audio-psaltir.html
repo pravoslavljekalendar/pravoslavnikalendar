@@ -1,77 +1,175 @@
-<!DOCTYPE html>
-<html lang="sr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Аудио ПСАЛТИР</title>
+<!DOCTYPE html> 
+<html lang="sr"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <meta name="apple-mobile-web-app-capable" content="yes"> 
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"> 
+    <title>АУДИО ПСАЛТИР</title> 
+    <style> 
+        html { scroll-behavior: smooth; } 
+        body { 
+            margin: 0; 
+            background-image: url("papir.png"); 
+            background-size: cover; 
+            background-attachment: fixed; 
+            font-family: "Times New Roman", serif; 
+            color: #4A3728; 
+            text-align: center; 
+            padding: 20px; 
+        } 
+        .container { 
+            max-width: 700px; 
+            margin: auto; 
+            padding: 20px; 
+            padding-top: 60px; 
+            background: transparent; /* Твој лепи прозирни контејнер за папир */
+            min-height: 100vh; 
+            box-sizing: border-box; 
+        } 
+        .home-dugme { 
+            position: fixed; top: 15px; left: 15px; 
+            background: rgba(242, 230, 201, 0.9); 
+            padding: 10px 15px; border-radius: 8px; 
+            border: 1px solid #8b6f47; text-decoration: none; 
+            color: #4A3728; font-size: 20px; z-index: 1000; 
+        } 
+        .fiksni-vrh { 
+            position: fixed; bottom: 25px; right: 20px; 
+            background: rgba(242, 230, 201, 0.95); 
+            border: 1px solid #8b6f47; border-radius: 50%; 
+            width: 50px; height: 50px; display: flex; 
+            align-items: center; justify-content: center; 
+            text-decoration: none; color: #8b6f47; 
+            font-size: 24px; font-weight: bold; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3); z-index: 9999; 
+            transition: 0.3s; 
+        } 
+        .fiksni-vrh:hover { transform: scale(1.1); } 
+        h3 { 
+            font-size: 26px; color: #8b0000; font-variant: small-caps; 
+            border-top: 1px solid #8b6f47; border-bottom: 1px solid #8b6f47; 
+            padding-top: 20px; padding-bottom: 10px; text-align: center; 
+        } 
+        
+        /* ТВОЈ СТИЛ СА ДВЕ КОЛОНЕ ЗА БРЗИ СКОК ИЗ ПСАЛТИРА */
+        .sadrzaj-mreza { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 10px; 
+            margin-bottom: 40px; 
+            padding: 10px; 
+        } 
+        .katizma-brzi-link { 
+            padding: 10px; 
+            background: rgba(242, 230, 201, 0.9); 
+            border: 1px solid #8b6f47; border-radius: 5px; 
+            text-decoration: none; color: #4A3728; 
+            font-weight: bold; font-size: 14px; transition: 0.3s;
+        } 
+        .katizma-brzi-link:hover { 
+            transform: translateY(-3px); 
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
+            background: rgba(255, 255, 255, 0.95); 
+        } 
 
-
-<style>
-
-        body {
-            margin: 0;
-            background-image: url("papir.png");
-            background-size: cover;
-            background-attachment: fixed; /* Pozadina se ne pomera dok skroluješ tekst */
-            font-family: "Times New Roman", serif;
-            color: #4A3728;
-            text-align: center;
+        /* СТАЊЕНЕ КУТИЈЕ ЗА ПЛЕЈЕРЕ */
+        .kutija-plejer-psalam { 
+            background: rgba(242, 230, 201, 0.88); 
+            border: 1px solid #8b6f47; border-radius: 8px; 
+            padding: 6px 12px; max-width: 440px; 
+            margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+            display: flex; align-items: center; justify-content: space-between;
+        } 
+        .naslov-psalma { 
+            color: #8b0000; font-size: 16px; font-weight: bold; 
+            margin-bottom: 0; white-space: nowrap; padding-right: 10px;
+        } 
+        audio { width: 70%; height: 32px; outline: none; } 
+        .sekcija-katizma {
+            color: #4A3728; font-size: 22px; font-weight: bold;
+            margin-top: 40px; margin-bottom: 15px;
+            border-bottom: 1px dotted #8b6f47; padding-bottom: 5px;
         }
+    </style> 
+</head> 
+<body> 
 
- 
+    <a href="audio-biblija.html" class="home-dugme">🏠</a> 
 
-.home-dugme {
-            position: fixed; top: 15px; left: 15px;
-            background: rgba(242, 230, 201, 0.9);
-            padding: 10px 15px; border-radius: 8px;
-            border: 1px solid #2E1B08; text-decoration: none; 
-            font-size: 20px; z-index: 1000; color: #2E1B08;
-        }
- 
+    <div class="container"> 
+        <center><img src="serafimi.png" class="stiker-vrh" alt="" style="max-width: 150px;"></center> 
+        
+        <h3>АУДИО ПСАЛТИР</h3> 
 
+        <!-- МЕНИ СА ДВЕ КОЛОНЕ ЗА БРЗИ СКОК НА КАТИЗМЕ -->
+        <div class="sadrzaj-mreza">
+            <a href="#katizma1" class="katizma-brzi-link">🎵 Катизма 1 (Пс. 1-8)</a>
+            <a href="#katizma2" class="katizma-brzi-link">🎵 Катизма 2 (Пс. 9-16)</a>
+            <a href="#katizma3" class="katizma-brzi-link">🎵 Катизма 3 (Пс. 17-20)</a>
+            <!-- Овде слободно додај дугмиће за остале катизме до броја 20 -->
+        </div>
 
-/* Ovo važi za sve uređaje */
-.vrh-link {
-    display: inline-block;
-    text-decoration: none;
-    font-size: 24px;
-    padding: 10px;
-    color: #8b6f47;
-    font-weight: bold;
-    margin-top: 20px;
-}
+        <!-- ================= КАТИЗМА 1 ================= -->
+        <div id="katizma1">
+            <div class="sekcija-katizma">Катизма Прва</div>
+            
+            <div class="kutija-plejer-psalam"><div class="naslov-psalma">Псалам 1.</div><audio controls><source src="psaltir/001.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer-psalam"><div class="naslov-psalma">Псалам 2.</div><audio controls><source src="psaltir/002.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer-psalam"><div class="naslov-psalma">Псалам 3.</div><audio controls><source src="psaltir/003.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer-psalam"><div class="naslov-psalma">Псалам 4.</div><audio controls><source src="psaltir/004.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer-psalam"><div class="naslov-psalma">Псалам 5.</div><audio controls><source src="psaltir/005.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer-psalam"><div class="naslov-psalma">Псалам 6.</div><audio controls><source src="psaltir/006.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer-psalam"><div class="naslov-psalma">Псалам 7.</div><audio controls><source src="psaltir/007.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer-psalam"><div class="naslov-psalma">Псалам 8.</div><audio controls><source src="psaltir/008.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer-psalam"><div class="naslov-psalma">Псалам 9.</div><audio controls><source src="psaltir/009.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer-psalam"><div class="naslov-psalma">Псалам 10.</div><audio controls><source src="psaltir/010.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer-psalam"><div class="naslov-psalma">Псалам 11.</div><audio controls><source src="psaltir/011.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer-psalam"><div class="naslov-psalma">Псалам 12.</div><audio controls><source src="psaltir/012.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer-psalam"><div class="naslov-psalma">Псалам 13.</div><audio controls><source src="psaltir/013.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer-psalam"><div class="naslov-psalma">Псалам 14.</div><audio controls><source src="psaltir/014.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer-psalam"><div class="naslov-psalma">Псалам 15.</div><audio controls><source src="psaltir/015.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer-psalam"><div class="naslov-psalma">Псалам 16.</div><audio controls><source src="psaltir/016.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer-psalam"><div class="naslov-psalma">Псалам 17.</div><audio controls><source src="psaltir/017.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer-psalam"><div class="naslov-psalma">Псалам 18.</div><audio controls><source src="psaltir/018.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer-psalam"><div class="naslov-psalma">Псалам 19.</div><audio controls><source src="psaltir/019.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer-psalam"><div class="naslov-psalma">Псалам 20.</div><audio controls><source src="psaltir/020.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer-psalam"><div class="naslov-psalma">Псалам 21.</div><audio controls><source src="psaltir/021.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer-psalam"><div class="naslov-psalma">Псалам 22.</div><audio controls><source src="psaltir/022.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer-psalam"><div class="naslov-psalma">Псалам 23.</div><audio controls><source src="psaltir/023.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer-psalam"><div class="naslov-psalma">Псалам 24.</div><audio controls><source src="psaltir/024.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer-psalam"><div class="naslov-psalma">Псалам 25.</div><audio controls><source src="psaltir/025.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer-psalam"><div class="naslov-psalma">Псалам 26.</div><audio controls><source src="psaltir/026.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer-psalam"><div class="naslov-psalma">Псалам 27.</div><audio controls><source src="psaltir/027.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer-psalam"><div class="naslov-psalma">Псалам 28.</div><audio controls><source src="psaltir/028.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer-psalam"><div class="naslov-psalma">Псалам 29.</div><audio controls><source src="psaltir/029.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer-psalam"><div class="naslov-psalma">Псалам 30.</div><audio controls><source src="psaltir/030.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer-psalam"><div class="naslov-psalma">Псалам 31.</div><audio controls><source src="psaltir/031.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer-psalam"><div class="naslov-psalma">Псалам 32.</div><audio controls><source src="psaltir/032.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer-psalam"><div class="naslov-psalma">Псалам 33.</div><audio controls><source src="psaltir/033.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer-psalam"><div class="naslov-psalma">Псалам 34.</div><audio controls><source src="psaltir/034.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer-psalam"><div class="naslov-psalma">Псалам 35.</div><audio controls><source src="psaltir/035.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer-psalam"><div class="naslov-psalma">Псалам 36.</div><audio controls><source src="psaltir/036.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer-psalam"><div class="naslov-psalma">Псалам 37.</div><audio controls><source src="psaltir/037.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer-psalam"><div class="naslov-psalma">Псалам 38.</div><audio controls><source src="psaltir/038.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer-psalam"><div class="naslov-psalma">Псалам 39.</div><audio controls><source src="psaltir/039.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer-psalam"><div class="naslov-psalma">Псалам 40.</div><audio controls><source src="psaltir/040.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer-psalam"><div class="naslov-psalma">Псалам 41.</div><audio controls><source src="psaltir/041.mp3" type="audio/mpeg"></audio></div>
+           
+        <!-- ================= КАТИЗМА 2 ================= -->
+        <div id="katizma2">
+            <div class="sekcija-katizma">Катизма Друга</div>
+            
+            <div class="kutija-plejer-psalam"><div class="naslov-psalma">Псалам 9.</div><audio controls><source src="psaltir/009.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer-psalam"><div class="naslov-psalma">Псалам 10.</div><audio controls><source src="psaltir/010.mp3" type="audio/mpeg"></audio></div>
+            <!-- На исти начин само копираш даље псалме из свог фолдера "psaltir/" -->
+        </div>
 
-/* Ovo se aktivira SAMO na telefonima */
-@media (max-width: 480px) {
-    .vrh-link {
-        font-size: 32px; /* Još veća strelica za palac */
-        padding: 20px;   /* Veći prostor za klik */
-        display: block;  /* Da bude na sredini ekrana */
-    }
-}
+    </div> 
 
-  </style>
-</head>
-<body>
+    <a href="#" class="fiksni-vrh">▲</a> 
 
-   <a href="index.html" class="home-dugme">🏠</a>
-
-<div class="container">
-    <h1 style="text-shadow: 1px 1px 2px white;"></h1>
-    <p><i></i></p>
-
-<h1>Аудио ПСАЛТИР</h1>
-<p><strong>Псалтир</strong></p> 
-<iframe src="https://drive.google.com/file/d/16IdRzNXKOmBjHYfbVFj6oPLXN-FlkHkk/preview" width="100%" height="60" allow="autoplay"></iframe>  
-
-
-
-
-
-
-
-
-</body>
+</body> 
 </html>
 
 
