@@ -104,36 +104,20 @@
         /* СТАЊЕНА КУТИЈА ПЛЕЈЕРА У ЈЕДНОМ РЕДУ */
         .kutija-plejer { 
             background: rgba(242, 230, 201, 0.88); 
-            border: 1px solid #8b6f47; 
-            border-radius: 8px; 
-            padding: 6px 12px; 
-            max-width: 420px; 
-            margin: 8px auto; 
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            border: 1px solid #8b6f47; border-radius: 8px; 
+            padding: 5px 12px; max-width: 440px; 
+            margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+            display: flex; align-items: center; justify-content: space-between;
         } 
         .naslov-glave { 
-            color: #8b0000; 
-            font-size: 17px; 
-            font-weight: bold; 
-            margin-bottom: 0; 
-            white-space: nowrap;
-            padding-right: 10px;
+            color: #8b0000; font-size: 17px; font-weight: bold; 
+            margin-bottom: 0; white-space: nowrap; padding-right: 10px;
+            text-align: left; width: 25%;
         } 
-        audio { 
-            width: 75%; 
-            height: 32px;
-            outline: none; 
-        } 
+        audio { width: 75%; height: 28px; outline: none; } 
         .sekcija-naslov {
-            color: #4A3728;
-            font-size: 24px;
-            margin-top: 40px;
-            margin-bottom: 15px;
-            border-bottom: 3px solid #8b6f47; /* Deblja linija na dnu katizme */
-            padding-bottom: 5px;
+            color: #4A3728; font-size: 24px; margin-top: 40px; margin-bottom: 15px;
+            border-bottom: 1px dotted #8b6f47; padding-bottom: 5px;
         }
     </style> 
 </head> 
@@ -145,7 +129,23 @@
         <center><img src="serafimi.png" class="stiker-vrh" alt="" style="max-width: 150px;"></center> 
         
         <h3>АУДИО НОВИ ЗАВЕТ</h3> 
-
+ <!-- ПЛЕЈЕР 2: Молитва покајника -->
+        <div style="margin: 20px auto; 
+max-width: 400px; background: rgba(255,255,255,0.4); 
+padding: 20px; 
+border-radius: 12px; 
+box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+border: 1px solid #4A3728;">
+            
+<h3 style="margin-top: 0; color: #4A3728; font-size: 18px;">📖 Молитва покајника</h3>
+            <audio controls style="width: 100%;">
+                <source src="pesme/molitva-pokajnika.mp3" type="audio/mpeg">
+                Ваш прегледач не подржава аудио плејер.
+            </audio>
+            <br>
+            <a href="pesme/molitva-pokajnika.mp3" download style="color: #8b6f47; text-decoration: none; font-size: 13px; font-weight: bold; display: inline-block; margin-top: 10px;">💾 Преузми молитву (MP3)</a>
+        </div>
+ </div>
         <!-- ЧЕТИРИ ПРЕЛЕПА ДУГМЕТА ЗА СКОК КРОЗ СТРАНИЦУ -->
         <div class="sadrzaj">
             <a href="#matej" class="katizma-link">📖 по Матеју</a>
