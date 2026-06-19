@@ -83,6 +83,10 @@ const OFFLINE_ASSETS = [
   './zitije-vavedenje.html',
   './zitije-vaznesenje.html',
   './zitije-veliki-petak.html',
+
+   './ikone-danas/jun19-1.jpg',
+  './ikone-danas/jun19-2.jpg',
+  
   './screen1.png',
   './screen2.png',
   './screen3.png',
