@@ -1,0 +1,105 @@
+<!DOCTYPE html> 
+<html lang="sr"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Аудио молитве и песме</title> 
+</head> 
+<style>
+	body {
+            margin: 0;
+            background-image: url("papir.jpg");
+            background-size: cover;
+            background-attachment: fixed; /* Pozadina se ne pomera dok skroluješ tekst */
+            font-family: "Times New Roman", serif;
+            color: #4A3728;
+            text-align: center;
+        }
+.fiksni-vrh {
+            position: fixed;
+            bottom: 25px;
+            right: 20px;
+            background: rgba(242, 230, 201, 0.95); /* Твоја беж */
+            border: 1px solid #8b6f47; /* Златни оквир */
+            border-radius: 50%; /* Круг */
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: #8b6f47;
+            font-size: 24px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            z-index: 9999;
+            transition: 0.3s;
+        }
+        .fiksni-vrh:hover {
+            transform: scale(1.1);
+        }
+	 </style>
+    <h1 style="font-weight: bold; margin-bottom: 5px;">Аудио ризница</h1> 
+    <p style="font-style: italic; margin-bottom: 40px;">Духовне песме и молитве за умирење душе.</p> 
+
+    <!-- ПЛЕЈЕР 1: Благословен јеси Господи -->
+  <div style="background: rgba(242, 230, 201, 0.88); 
+            border: 1px solid #8b6f47; border-radius: 8px; 
+            padding: 5px 12px; max-width: 440px; 
+            margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+            display: flex; align-items: center; justify-content: space-between;">
+            <h3 style="margin-top: 0; color: #4A3728; font-size: 18px;">🎶 Благословен јеси Господи</h3>
+        <audio controls style="width: 100%;">
+            <source src="pesme/blagosloven-jesi-gospodi.mp3" type="audio/mpeg">
+            Ваш прегледач не подржава аудио плејер.
+        </audio>
+        
+    </div>
+
+     <!-- ПЛЕЈЕР 1: Благословен јеси Господи -->
+      <div style="background: rgba(242, 230, 201, 0.88); 
+            border: 1px solid #8b6f47; border-radius: 8px; 
+            padding: 5px 12px; max-width: 440px; 
+            margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+            display: flex; align-items: center; justify-content: space-between;">
+            <h3 style="margin-top: 0; color: #4A3728; font-size: 18px;">🎶 Благословен јеси Господи</h3>
+            <audio controls style="width: 100%;">
+                <source src="pesme/blagosloven-jesi-gospodi.mp3" type="audio/mpeg">
+                Ваш прегледач не подржава аудио плејер.
+            </audio>
+           
+        </div>
+
+        <!-- ПЛЕЈЕР 2: Молитва покајника -->
+        <div style="background: rgba(242, 230, 201, 0.88); 
+            border: 1px solid #8b6f47; border-radius: 8px; 
+            padding: 5px 12px; max-width: 440px; 
+            margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+            display: flex; align-items: center; justify-content: space-between;">
+            <h3 style="margin-top: 0; color: #4A3728; font-size: 18px;">📖 Молитва покајника</h3>
+            <audio controls style="width: 100%;">
+                <source src="pesme/molitva-pokajnika.mp3" type="audio/mpeg">
+                Ваш прегледач не подржава аудио плејер.
+            </audio>
+          
+        </div>
+  <!-- ПЛЕЈЕР 1: Благословен јеси Господи -->
+  <div style="background: rgba(242, 230, 201, 0.88); 
+            border: 1px solid #8b6f47; border-radius: 8px; 
+            padding: 5px 12px; max-width: 440px; 
+            margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+            display: flex; align-items: center; justify-content: space-between;">
+            <h3 style="margin-top: 0; color: #4A3728; font-size: 18px;">🎶 Аудио псалтир</h3>
+        <audio controls style="width: 100%;">
+            <source src="psalmi/psalmi.mp3" type="audio/mpeg">
+            Ваш прегледач не подржава аудио плејер.
+        </audio>
+        
+    </div>
+
+   <!-- Дугме за повратак на врх странице када има пуно плејера -->
+    <a href="#" class="fiksni-vrh">▲</a>
+
+	
+</body> 
+</html>
