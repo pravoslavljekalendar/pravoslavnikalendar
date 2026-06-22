@@ -1,0 +1,337 @@
+<!DOCTYPE html> 
+<html lang="sr"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <meta name="apple-mobile-web-app-capable" content="yes"> 
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"> 
+    <title>АУДИО НОВИ ЗАВЕТ</title> 
+    <style> 
+        html { scroll-behavior: smooth; } 
+        body { 
+            margin: 0; 
+            background-image: url("papir.png"); 
+            background-size: cover; 
+            background-attachment: fixed; 
+            font-family: "Times New Roman", serif; 
+            color: #4A3728; 
+            text-align: center; 
+            padding: 20px; 
+        } 
+        .container { 
+            max-width: 700px; 
+            margin: auto; 
+            padding: 20px; 
+            padding-top: 60px; 
+            background: transparent; 
+            min-height: 100vh; 
+            box-sizing: border-box; 
+        } 
+        .home-dugme { 
+            position: fixed; top: 15px; left: 15px; 
+            background: rgba(242, 230, 201, 0.9); 
+            padding: 10px 15px; border-radius: 8px; 
+            border: 1px solid #8b6f47; text-decoration: none; 
+            color: #4A3728; font-size: 20px; z-index: 1000; 
+        } 
+        .fiksni-vrh { 
+            position: fixed; bottom: 25px; right: 20px; 
+            background: rgba(242, 230, 201, 0.95); 
+            border: 1px solid #8b6f47; border-radius: 50%; 
+            width: 50px; height: 50px; display: flex; 
+            align-items: center; justify-content: center; 
+            text-decoration: none; color: #8b6f47; 
+            font-size: 24px; font-weight: bold; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3); z-index: 9999; 
+            transition: 0.3s; 
+        } 
+        .fiksni-vrh:hover { transform: scale(1.1); } 
+        h3 { 
+            font-size: 26px; color: #8b0000; font-variant: small-caps; 
+            border-top: 1px solid #8b6f47; border-bottom: 1px solid #8b6f47; 
+            padding-top: 20px; padding-bottom: 10px; text-align: center; 
+        } 
+        
+        /* СТАЊЕНА КУТИЈА ПЛЕЈЕРА У ЈЕДНОМ РЕДУ */
+        .kutija-plejer { 
+            background: rgba(242, 230, 201, 0.88); 
+            border: 1px solid #8b6f47; border-radius: 8px; 
+            padding: 5px 12px; max-width: 440px; 
+            margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+            display: flex; align-items: center; justify-content: space-between;
+        } 
+        .naslov-glave { 
+            color: #8b0000; font-size: 17px; font-weight: bold; 
+            margin-bottom: 0; white-space: nowrap; padding-right: 10px;
+            text-align: left; width: 25%;
+        } 
+        audio { width: 75%; height: 28px; outline: none; } 
+        .sekcija-naslov {
+            color: #4A3728; font-size: 24px; margin-top: 40px; margin-bottom: 15px;
+            border-bottom: 1px dotted #8b6f47; padding-bottom: 5px;
+        }
+    </style> 
+</head> 
+<body> 
+
+    <a href="audio-biblija.html" class="home-dugme">🏠</a> 
+
+
+<audio controls preload="none">
+   
+
+ <source src="matej/01.mp3" type="audio/mpeg">
+</audio>
+    <div class="container"> 
+        <center><img src="serafimi.png" class="stiker-vrh" alt="" style="max-width: 150px;"></center> 
+        
+        <h3>АУДИО НОВИ ЗАВЕТ</h3> 
+
+        <!-- СВЕТО ЈЕВАНЂЕЉЕ ПО МАТЕЈУ (Путања води у твој фолдер 'matej') -->
+        <div id="matej">
+            <div class="sekcija-naslov">Свето Јеванђеље по Матеју</div>
+
+<div class="kutija-plejer">
+    <div class="naslov-glave">Глава 1.</div>
+    <audio id="audio1" controls onended="document.getElementById('audio2').play()">
+        <source src="matej/01.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+<div class="kutija-plejer">
+    <div class="naslov-glave">Глава 2.</div>
+    <audio id="audio2" controls onended="document.getElementById('audio3').play()">
+        <source src="matej/02.mp3" type="audio/mpeg">
+    </audio>
+</div>           
+          
+<div class="kutija-plejer">
+    <div class="naslov-glave">Глава 3.</div>
+    <audio id="audio3" controls onended="document.getElementById('audio4').play()">
+        <source src="matej/03.mp3" type="audio/mpeg">
+    </audio>
+</div> 
+
+<div class="kutija-plejer">
+    <div class="naslov-glave">Глава 4.</div>
+    <audio id="audio4" controls onended="document.getElementById('audio5').play()">
+        <source src="matej/04.mp3" type="audio/mpeg">
+    </audio>
+</div> 
+
+
+<div class="kutija-plejer">
+    <div class="naslov-glave">Глава 5.</div>
+    <audio id="audio5" controls onended="document.getElementById('audio6').play()">
+        <source src="matej/05.mp3" type="audio/mpeg">
+    </audio>
+</div> 
+
+<div class="kutija-plejer">
+    <div class="naslov-glave">Глава 6.</div>
+    <audio id="audio6" controls onended="document.getElementById('audio7').play()">
+        <source src="matej/06.mp3" type="audio/mpeg">
+    </audio>
+</div> 
+
+<div class="kutija-plejer">
+    <div class="naslov-glave">Глава 7.</div>
+    <audio id="audio7" controls onended="document.getElementById('audio8').play()">
+        <source src="matej/07.mp3" type="audio/mpeg">
+    </audio>
+</div> 
+
+<div class="kutija-plejer">
+    <div class="naslov-glave">Глава 8.</div>
+    <audio id="audio8" controls onended="document.getElementById('audio9').play()">
+        <source src="matej/08.mp3" type="audio/mpeg">
+    </audio>
+</div> 
+
+<div class="kutija-plejer">
+    <div class="naslov-glave">Глава 9.</div>
+    <audio id="audio9" controls onended="document.getElementById('audio10').play()">
+        <source src="matej/09.mp3" type="audio/mpeg">
+    </audio>
+</div> 
+
+<div class="kutija-plejer">
+    <div class="naslov-glave">Глава 10.</div>
+    <audio id="audio10" controls onended="document.getElementById('audio11').play()">
+        <source src="matej/10.mp3" type="audio/mpeg">
+    </audio>
+</div> 
+
+<div class="kutija-plejer">
+    <div class="naslov-glave">Глава 11.</div>
+    <audio id="audio11" controls onended="document.getElementById('audio12').play()">
+        <source src="matej/11.mp3" type="audio/mpeg">
+    </audio>
+</div> 
+
+<div class="kutija-plejer">
+    <div class="naslov-glave">Глава 12.</div>
+    <audio id="audio12" controls onended="document.getElementById('audio13').play()">
+        <source src="matej/12.mp3" type="audio/mpeg">
+    </audio>
+</div> 
+
+<div class="kutija-plejer">
+    <div class="naslov-glave">Глава 13.</div>
+    <audio id="audio13" controls onended="document.getElementById('audio14').play()">
+        <source src="matej/13.mp3" type="audio/mpeg">
+    </audio>
+</div> 
+
+<div class="kutija-plejer">
+    <div class="naslov-glave">Глава 14.</div>
+    <audio id="audio14" controls onended="document.getElementById('audio15').play()">
+        <source src="matej/14.mp3" type="audio/mpeg">
+    </audio>
+</div> 
+
+<div class="kutija-plejer">
+    <div class="naslov-glave">Глава 15.</div>
+    <audio id="audio15" controls onended="document.getElementById('audio16').play()">
+        <source src="matej/15.mp3" type="audio/mpeg">
+    </audio>
+</div> 
+
+<div class="kutija-plejer">
+    <div class="naslov-glave">Глава 16.</div>
+    <audio id="audio16" controls onended="document.getElementById('audio17').play()">
+        <source src="matej/16.mp3" type="audio/mpeg">
+    </audio>
+</div> 
+
+<div class="kutija-plejer">
+    <div class="naslov-glave">Глава 17.</div>
+    <audio id="audio17" controls onended="document.getElementById('audio18').play()">
+        <source src="matej/17.mp3" type="audio/mpeg">
+    </audio>
+</div> 
+			
+<div class="kutija-plejer">
+    <div class="naslov-glave">Глава 18.</div>
+    <audio id="audio18" controls onended="document.getElementById('audio19').play()">
+        <source src="matej/18.mp3" type="audio/mpeg">
+    </audio>
+</div> 
+
+<div class="kutija-plejer">
+    <div class="naslov-glave">Глава 19.</div>
+    <audio id="audio19" controls onended="document.getElementById('audio20').play()">
+        <source src="matej/19.mp3" type="audio/mpeg">
+    </audio>
+</div> 
+
+<div class="kutija-plejer">
+    <div class="naslov-glave">Глава 20.</div>
+    <audio id="audio20" controls onended="document.getElementById('audio21').play()">
+        <source src="matej/20.mp3" type="audio/mpeg">
+    </audio>
+</div>
+			
+<div class="kutija-plejer">
+    <div class="naslov-glave">Глава 21.</div>
+    <audio id="audio21" controls onended="document.getElementById('audio22').play()">
+        <source src="matej/21.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+<div class="kutija-plejer">
+    <div class="naslov-glave">Глава 22.</div>
+    <audio id="audio22" controls onended="document.getElementById('audio23').play()">
+        <source src="matej/22.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+<div class="kutija-plejer">
+    <div class="naslov-glave">Глава 23.</div>
+    <audio id="audio23" controls onended="document.getElementById('audio24').play()">
+        <source src="matej/23.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+<div class="kutija-plejer">
+    <div class="naslov-glave">Глава 24.</div>
+    <audio id="audio24" controls onended="document.getElementById('audio25').play()">
+        <source src="matej/24.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+<div class="kutija-plejer">
+    <div class="naslov-glave">Глава 25.</div>
+    <audio id="audio25" controls onended="document.getElementById('audio26').play()">
+        <source src="matej/25.mp3" type="audio/mpeg">
+    </audio>
+</div>
+						
+<div class="kutija-plejer">
+    <div class="naslov-glave">Глава 26.</div>
+    <audio id="audio26" controls onended="document.getElementById('audio27').play()">
+        <source src="matej/26.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+<div class="kutija-plejer">
+    <div class="naslov-glave">Глава 27.</div>
+    <audio id="audio27" controls onended="document.getElementById('audio28').play()">
+        <source src="matej/27.mp3" type="audio/mpeg">
+    </audio>
+</div>
+			
+<div class="kutija-plejer">
+    <div class="naslov-glave">Глава 28.</div>
+    <audio id="audio28" controls>
+        <source src="matej/28.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+			
+            <div class="kutija-plejer"><div class="naslov-glave">Глава 3.</div><audio controls><source src="matej/03.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer"><div class="naslov-glave">Глава 4.</div><audio controls><source src="matej/04.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer"><div class="naslov-glave">Глава 5.</div><audio controls><source src="matej/05.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer"><div class="naslov-glave">Глава 6.</div><audio controls><source src="matej/06.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer"><div class="naslov-glave">Глава 7.</div><audio controls><source src="matej/07.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer"><div class="naslov-glave">Глава 8.</div><audio controls><source src="matej/08.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer"><div class="naslov-glave">Глава 9.</div><audio controls><source src="matej/09.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer"><div class="naslov-glave">Глава 10.</div><audio controls><source src="matej/10.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer"><div class="naslov-glave">Глава 11.</div><audio controls><source src="matej/11.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer"><div class="naslov-glave">Глава 12.</div><audio controls><source src="matej/12.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer"><div class="naslov-glave">Глава 13.</div><audio controls><source src="matej/13.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer"><div class="naslov-glave">Глава 14.</div><audio controls><source src="matej/14.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer"><div class="naslov-glave">Глава 15.</div><audio controls><source src="matej/15.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer"><div class="naslov-glave">Глава 16.</div><audio controls><source src="matej/16.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer"><div class="naslov-glave">Глава 17.</div><audio controls><source src="matej/17.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer"><div class="naslov-glave">Глава 18.</div><audio controls><source src="matej/18.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer"><div class="naslov-glave">Глава 19.</div><audio controls><source src="matej/19.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer"><div class="naslov-glave">Глава 20.</div><audio controls><source src="matej/20.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer"><div class="naslov-glave">Глава 21.</div><audio controls><source src="matej/21.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer"><div class="naslov-glave">Глава 22.</div><audio controls><source src="matej/22.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer"><div class="naslov-glave">Глава 23.</div><audio controls><source src="matej/23.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer"><div class="naslov-glave">Глава 24.</div><audio controls><source src="matej/24.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer"><div class="naslov-glave">Глава 25.</div><audio controls><source src="matej/25.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer"><div class="naslov-glave">Глава 26.</div><audio controls><source src="matej/26.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer"><div class="naslov-glave">Глава 27.</div><audio controls><source src="matej/27.mp3" type="audio/mpeg"></audio></div>
+            <div class="kutija-plejer"><div class="naslov-glave">Глава 28.</div><audio controls><source src="matej/28.mp3" type="audio/mpeg"></audio></div>
+        </div>
+
+    </div> 
+
+    <a href="#" class="fiksni-vrh">▲</a>
+<script>
+    const audioPlayers = document.querySelectorAll('audio');
+
+    audioPlayers.forEach((player, index) => {
+        player.onended = () => {
+            if (index < audioPlayers.length - 1) {
+                audioPlayers[index + 1].play();
+            }
+        };
+    });
+</script>
+
+	
+</body> 
+</html>
