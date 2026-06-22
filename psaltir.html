@@ -125,6 +125,19 @@ b { color: #8b0000; } /* Crveni brojevi psalama */
 .fiksni-vrh:hover {
     transform: scale(1.1);
 }
+.info-psalam {
+    display: none; /* Sakriveno dok se ne klikne */
+    background: rgba(255, 255, 255, 0.4);
+    padding: 10px;
+    margin-top: 5px;
+    font-size: 14px;
+    font-style: italic;
+    border-radius: 5px;
+    text-align: left;
+}
+
+
+
 
     </style>
 </head>
@@ -144,7 +157,12 @@ b { color: #8b0000; } /* Crveni brojevi psalama */
       }, 'google_translate_element');
     }
 
-
+<div class="naslov-psalma" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display=='block'?'none':'block')">
+    Псалам 1. ℹ️
+</div>
+<div class="info-psalam">
+    Чита се за избављење од невоља и за духовну снагу.
+</div>
   
   </script>
 <script src='//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'></script>
