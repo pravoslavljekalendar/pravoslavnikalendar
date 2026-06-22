@@ -1,0 +1,212 @@
+<!DOCTYPE html> 
+<html lang="sr"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <meta name="apple-mobile-web-app-capable" content="yes"> 
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"> 
+    <title>АУДИО НОВИ ЗАВЕТ</title> 
+    <style> 
+        html { scroll-behavior: smooth; } 
+        body { 
+            margin: 0; 
+            background-image: url("papir.png"); 
+            background-size: cover; 
+            background-attachment: fixed; 
+            font-family: "Times New Roman", serif; 
+            color: #4A3728; 
+            text-align: center; 
+            padding: 20px; 
+        } 
+        .container { 
+            max-width: 700px; 
+            margin: auto; 
+            padding: 20px; 
+            padding-top: 60px; 
+            background: transparent; 
+            min-height: 100vh; 
+            box-sizing: border-box; 
+        } 
+        .home-dugme { 
+            position: fixed; top: 15px; left: 15px; 
+            background: rgba(242, 230, 201, 0.9); 
+            padding: 10px 15px; border-radius: 8px; 
+            border: 1px solid #8b6f47; text-decoration: none; 
+            color: #4A3728; font-size: 20px; z-index: 1000; 
+        } 
+        .fiksni-vrh { 
+            position: fixed; bottom: 25px; right: 20px; 
+            background: rgba(242, 230, 201, 0.95); 
+            border: 1px solid #8b6f47; border-radius: 50%; 
+            width: 50px; height: 50px; display: flex; 
+            align-items: center; justify-content: center; 
+            text-decoration: none; color: #8b6f47; 
+            font-size: 24px; font-weight: bold; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3); z-index: 9999; 
+            transition: 0.3s; 
+        } 
+        .fiksni-vrh:hover { transform: scale(1.1); } 
+        h3 { 
+            font-size: 26px; color: #8b0000; font-variant: small-caps; 
+            border-top: 1px solid #8b6f47; border-bottom: 1px solid #8b6f47; 
+            padding-top: 20px; padding-bottom: 10px; text-align: center; 
+        } 
+        
+        /* СТАЊЕНА КУТИЈА ПЛЕЈЕРА У ЈЕДНОМ РЕДУ */
+        .kutija-plejer { 
+            background: rgba(242, 230, 201, 0.88); 
+            border: 1px solid #8b6f47; border-radius: 8px; 
+            padding: 5px 12px; max-width: 440px; 
+            margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+            display: flex; align-items: center; justify-content: space-between;
+        } 
+        .naslov-glave { 
+            color: #8b0000; font-size: 17px; font-weight: bold; 
+            margin-bottom: 0; white-space: nowrap; padding-right: 10px;
+            text-align: left; width: 25%;
+        } 
+        audio { width: 75%; height: 28px; outline: none; } 
+        .sekcija-naslov {
+            color: #4A3728; font-size: 24px; margin-top: 40px; margin-bottom: 15px;
+            border-bottom: 1px dotted #8b6f47; padding-bottom: 5px;
+        }
+    </style> 
+</head> 
+<body> 
+
+    <a href="audio-biblija.html" class="home-dugme">🏠</a> 
+
+
+<audio controls preload="none">
+   
+
+ <source src="marko/01.mp3" type="audio/mpeg">
+</audio>
+    <div class="container"> 
+        <center><img src="serafimi.png" class="stiker-vrh" alt="" style="max-width: 150px;"></center> 
+        
+        <h3>АУДИО НОВИ ЗАВЕТ</h3> 
+
+
+
+
+ <!-- ================= МАРКО ================= -->
+<div id="marko">
+    <div class="sekcija-naslov">Свето Јеванђеље по Марку</div>
+
+    <div class="kutija-plejer">
+        <div class="naslov-glave">Глава 1.</div>
+        <audio id="marko1" controls onended="document.getElementById('marko2').play()">
+            <source src="marko/01.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <div class="kutija-plejer">
+        <div class="naslov-glave">Глава 2.</div>
+        <audio id="marko2" controls onended="document.getElementById('marko3').play()">
+            <source src="marko/02.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <div class="kutija-plejer">
+        <div class="naslov-glave">Глава 3.</div>
+        <audio id="marko3" controls onended="document.getElementById('marko4').play()">
+            <source src="marko/03.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <div class="kutija-plejer">
+        <div class="naslov-glave">Глава 4.</div>
+        <audio id="marko4" controls onended="document.getElementById('marko5').play()">
+            <source src="marko/04.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <div class="kutija-plejer">
+        <div class="naslov-glave">Глава 5.</div>
+        <audio id="marko5" controls onended="document.getElementById('marko6').play()">
+            <source src="marko/05.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <div class="kutija-plejer">
+        <div class="naslov-glave">Глава 6.</div>
+        <audio id="marko6" controls onended="document.getElementById('marko7').play()">
+            <source src="marko/06.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <div class="kutija-plejer">
+        <div class="naslov-glave">Глава 7.</div>
+        <audio id="marko7" controls onended="document.getElementById('marko8').play()">
+            <source src="marko/07.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <div class="kutija-plejer">
+        <div class="naslov-glave">Глава 8.</div>
+        <audio id="marko8" controls onended="document.getElementById('marko9').play()">
+            <source src="marko/08.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <div class="kutija-plejer">
+        <div class="naslov-glave">Глава 9.</div>
+        <audio id="marko9" controls onended="document.getElementById('marko10').play()">
+            <source src="marko/09.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <div class="kutija-plejer">
+        <div class="naslov-glave">Глава 10.</div>
+        <audio id="marko10" controls onended="document.getElementById('marko11').play()">
+            <source src="marko/10.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <div class="kutija-plejer">
+        <div class="naslov-glave">Глава 11.</div>
+        <audio id="marko11" controls onended="document.getElementById('marko12').play()">
+            <source src="marko/11.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <div class="kutija-plejer">
+        <div class="naslov-glave">Глава 12.</div>
+        <audio id="marko12" controls onended="document.getElementById('marko13').play()">
+            <source src="marko/12.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <div class="kutija-plejer">
+        <div class="naslov-glave">Глава 13.</div>
+        <audio id="marko13" controls onended="document.getElementById('marko14').play()">
+            <source src="marko/13.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <div class="kutija-plejer">
+        <div class="naslov-glave">Глава 14.</div>
+        <audio id="marko14" controls onended="document.getElementById('marko15').play()">
+            <source src="marko/14.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <div class="kutija-plejer">
+        <div class="naslov-glave">Глава 15.</div>
+        <audio id="marko15" controls onended="document.getElementById('marko16').play()">
+            <source src="marko/15.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <div class="kutija-plejer">
+        <div class="naslov-glave">Глава 16.</div>
+        <audio id="marko16" controls>
+            <source src="marko/16.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+</div>
+    <a href="#" class="fiksni-vrh">▲</a>
+
+</body> 
+</html>
