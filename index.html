@@ -150,10 +150,9 @@ margin-bottom: 15px;
 
 /* 3. Sabijanje teksta unutar kutije */
 #datum, #svetitelj, #pouka-dana, #post-tip #praznik, #obicno, #sadrzaj, #crveno, {
-
-    line-height: 1.1;
-    margin-bottom: 5px !important;
-    display: block;
+line-height: 1.1;
+margin-bottom: 5px !important;
+display: block;
 }
 
 /* 1. Smanjuje prostor oko linije (hr) */
@@ -1159,7 +1158,7 @@ async function prikaziSve() {
             "<br><small>(по старом: " + stariD.getDate() + ". " + stariD.toLocaleDateString('sr-RS', {month:'long'}) + " | Лето Господње " + AM + ".)</small>";
     }
 
-    // 2. Читање из твог календара
+    // 2. Читање из mog календара
     try {
         const res = await fetch(nazivFajla);
         const html = await res.text();
@@ -1205,9 +1204,7 @@ async function prikaziSve() {
 }
 prikaziSve();
 	
-</script>
-
-<script>
+</script>...i evo i druge koju sam menjala...skripte ispod za prolog..<script>
 document.addEventListener("DOMContentLoaded", function() {
     const d = new Date();
     // Pomeramo 13 dana unazad
