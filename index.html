@@ -1204,7 +1204,9 @@ async function prikaziSve() {
 }
 prikaziSve();
 	
-</script>...i evo i druge koju sam menjala...skripte ispod za prolog..<script>
+</script>
+	
+	<script>
 document.addEventListener("DOMContentLoaded", function() {
     const d = new Date();
     // Pomeramo 13 dana unazad
@@ -1302,56 +1304,32 @@ function preslovi(pismo) {
     zameniTekst(document.body);
 }
 
+<!-- Почетак скрипте за ручни речник (умотано у script тагове) -->
+<script>
 function prevediNaEngleski() {
-  // REČNIK: Ovde unosite reči onako kako su napisane na ćirilici na Vašem sajtu
-  const recnik = {
-    "Псалтир": "Psalter",
-    "Молитвеник": "Prayer Book",
-    "Нови Завет": "New Testament",
-    "Охридски пролог": "Ohrid Prologue",
-    "Пост": "Fast",
-    "риба": "fish",
-    "уље": "oil",
-    "вода": "water",
-    "на води": "on water",
-    "субота": "Saturday",
-    "недеља": "Sunday",
-    "по старом": "old style",
-    "Лето Господње": "Year of our Lord",
-    "Духовне песме": "Spiritual Songs",
-    "Духовне књиге": "Spiritual Books"
-  };
+    const recnik = {
+        "Псалтир": "Psalter",
+        "Охридски пролог": "Ohrid Prologue"
+        // ... овде можете додавати нове речи у будућности
+    };
 
-  function obidjiSve(node) {
-    if (node.nodeType === Node.TEXT_NODE) {
-      let tekst = node.nodeValue;
-      
-      // Prolazimo kroz rečnik i menjamo reči čak i ako su unutar rečenica
-      for (let kljuc in recnik) {
-        tekst = tekst.split(kljuc).join(recnik[kljuc]);
-      }
-      
-      node.nodeValue = tekst;
-    } else {
-      for (let i = 0; i < node.childNodes.length; i++) {
-        obidjiSve(node.childNodes[i]);
-      }
+    function obidjiSve(node) {
+        if (node.nodeType === 3 && node.nodeValue.trim().length > 0) {
+            let tekst = node.nodeValue.trim();
+            if (recnik[tekst]) {
+                node.nodeValue = recnik[tekst];
+            }
+        } else {
+            for (let i = 0; i < node.childNodes.length; i++) {
+                obidjiSve(node.childNodes[i]);
+            }
+        }
     }
-  }
-  obidjiSve(document.body);
+    obidjiSve(document.body);
 }
+</script>
 
-	
-
-
-
-
-
-
-
-
-
-
+<!-- Десна колона и Google Translate виџет -->
 <div class="column-right-outer">
 <div class="column-right-inner">
 <aside>
@@ -1367,16 +1345,20 @@ function prevediNaEngleski() {
                 new google.translate.TranslateElement({
                     pageLanguage: 'sr',
                     autoDisplay: true,
-                    layout: google.translate.TranslateElement.InlineLayout.VERTICAL
+                    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
                 }, 'google_translate_element');
             }
         </script>
         
-        <!-- Dodali smo https: ovde da GitHub i PWA budu 100% srećni -->
         <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-        
+    </div> <!-- Zatvoren widget -->
+</div> <!-- Zatvoren sidebar -->
+</aside> <!-- Zatvoren aside -->
+</div> <!-- Zatvoren column-right-inner -->
+</div> <!-- Zatvoren column-right-outer -->
         <div class="clear"></div>
-        <p class="potpis"></p>
+       
+	<p class="potpis"></p>
     </div>
 </div>
 
