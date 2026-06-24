@@ -1209,14 +1209,18 @@ prikaziSve();
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    const datum = new Date();
-    const dan = datum.getDate();
-    const meseci = ["januar", "februar", "mart", "april", "maj", "jun", "jul", "avgust", "septembar", "oktobar", "novembar", "decembar"];
-    const mesecIme = meseci[datum.getMonth()];
+    const d = new Date();
+    // Pomeramo 13 dana unazad
+    const julijanskiMS = d.getTime() - (13 * 24 * 60 * 60 * 1000);
+    const stariD = new Date(julijanskiMS);
     
-    // Путања до фајла (нпр. prolog-april.html)
-    const fajlPutanja = `prolog-${mesecIme}.html`;
-    const targetId = `${mesecIme}${dan}`; // Прави нпр. "april20"
+    const danStari = stariD.getDate(); // Dan po starom
+    const meseci = ["januar", "februar", "mart", "april", "maj", "jun", "jul", "avgust", "septembar", "oktobar", "novembar", "decembar"];
+    const mesecImeStari = meseci[stariD.getMonth()]; // Mesec po starom
+    
+    // Putanja do fajla i ID sada koriste stari datum
+    const fajlPutanja = `prolog-${mesecImeStari}.html`;
+    const targetId = `${mesecImeStari}${danStari}`; // Npr. "jun9"
 
     fetch(fajlPutanja)
         .then(response => response.text())
@@ -1237,7 +1241,6 @@ document.addEventListener("DOMContentLoaded", function() {
         });
 });
 </script>
-	
 
 	<script>
 function osveziKalendar() {
