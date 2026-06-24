@@ -1363,36 +1363,7 @@ function prevediNaEngleski() {
 </div>
 
 
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    const datum = new Date();
-    const dan = datum.getDate();
-    const meseci = ["januar", "februar", "mart", "april", "maj", "jun", "jul", "avgust", "septembar", "oktobar", "novembar", "decembar"];
-    const mesecIme = meseci[datum.getMonth()];
-    
-    // UCITAVANJE PROLOGA (Samo za današnji dan, pravo u boks na sredini)
-    const fajlPutanja = `prolog-${mesecIme}.html`;
-    const targetId = `${mesecIme}${dan}`;
 
-    fetch(fajlPutanja)
-        .then(response => response.text())
-        .then(html => {
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(html, 'text/html');
-            const sadrzajDana = doc.getElementById(targetId);
-            let kontejnerProlog = document.getElementById('dnevni-prolog-kontejner');
-            
-            if (kontejnerProlog) {
-                if (sadrzajDana) {
-                    kontejnerProlog.innerHTML = sadrzajDana.outerHTML;
-                } else {
-                    kontejnerProlog.innerHTML = "<p>Житије за данашњи дан ће бити ускоро додато.</p>";
-                }
-            }
-        })
-        .catch(err => console.error("Грешка при учитавању пролога:", err));
-});
-</script>
 	
 
 <div class="header-desktop-left-box">
