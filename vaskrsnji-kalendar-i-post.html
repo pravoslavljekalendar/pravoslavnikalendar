@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Васкршњи Календар и Постови 2025-2030</title>
+    <style>
+        body {
+            margin: 0;
+            background-image: url("papir.jpg");
+            background-size: cover;
+            background-attachment: fixed;
+            font-family: "Times New Roman", Georgia, serif;
+            color: #4A3728;
+            text-align: center;
+        }
+        .container {
+            width: 95%;
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            padding-top: 60px;
+        }
+        .gornja-traka {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .meseci {
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #8b6f47;
+            background: rgba(242, 230, 201, 0.9);
+            font-size: 16px;
+            color: #4A3728;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(242, 230, 201, 0.7);
+            border: 1px solid #8b6f47;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        th, td {
+            padding: 12px 5px;
+            border: 1px solid rgba(139, 111, 71, 0.3);
+            font-size: 18px;
+        }
+        th { background: rgba(139, 111, 71, 0.2); }
+        .nedelja { color: #8b0000; font-weight: bold; }
+        .danasnji { 
+            background: rgba(139, 111, 71, 0.4); 
+            border: 2px solid #8b0000 !important;
+            font-weight: bold;
+        }
+        /* ОВО ЈЕ ЗА ВАСКРС У ТАБЕЛИ */
+        .vaskrs-u-tabeli {
+            background: #8b0000 !important;
+            color: white !important;
+            font-weight: bold !important;
+            border-radius: 50%;
+        }
+        .home-dugme {
+            position: fixed; top: 15px; left: 15px;
+            background: rgba(242, 230, 201, 0.9);
+            padding: 10px 15px; border-radius: 8px;
+            border: 1px solid #8b6f47; text-decoration: none; color: #4A3728;
+            font-size: 20px; z-index: 100;
+        }
+        
+        /* СТИЛ ЗА НОВА ТРИ ДУГМЕТА */
+        .dugme-okvir {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+            margin-top: 15px;
+        }
+        .glavno-dugme {
+            background: #8b0000; color: white; padding: 15px 25px; border-radius: 10px; border: none; font-size: 18px; font-weight: bold; cursor: pointer; width: 85%; max-width: 300px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .sporedno-dugme {
+            background: #4A3728; color: white; padding: 12px 20px; border-radius: 10px; border: none; font-size: 16px; font-weight: bold; cursor: pointer; width: 85%; max-width: 300px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .zeleno-dugme {
+            background: #2e7d32; color: white; padding: 12px 20px; border-radius: 10px; border: none; font-size: 16px; font-weight: bold; cursor: pointer; width: 85%; max-width: 300px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+
+<a href="index.html" class="home-dugme">🏠</a>
+
+<div class="container">
+    <div class="gornja-traka">
+        <select id="godinaBirac" class="meseci" onchange="osveziKalendar()">
+            <option value="2025">2025</option>
+            <option value="2026" selected>2026</option>
+            <option value="2027">2027</option>
+            <option value="2028">2028</option>
+            <option value="2029">2029</option>
+            <option value="2030">2030</option>
+        </select>
+
+        <select id="mesecBirac" class="meseci" onchange="osveziKalendar()">
+            <option value="0">Јануар</option><option value="1">Фебруар</option>
+            <option value="2">Март</option><option value="3" selected>Април</option>
+            <option value="4">Мај</option><option value="5">Јун</option>
+            <option value="6">Јул</option><option value="7">Август</option>
+            <option value="8">Септембар</option><option value="9">Октобар</option>
+            <option value="10">Новембар</option><option value="11">Децембар</option>
+        </select>
+    </div>
+
+    <h2 id="naslovMeseca">Април 2026.</h2>
+    <div id="kalendarTabela"></div>
+
+    <div id="dodatakPrikaz" style="display:none; margin: 20px auto; padding: 15px; background: rgba(242, 230, 201, 0.9); border: 1px solid #8b6f47; border-radius: 10px; font-style: italic; width: 85%;"></div>
+
+    <!-- ТРИ ПАМЕТНА ДУГМЕТА НА ЈЕДНОМ МЕСТУ -->
+    <div class="dugme-okvir">
+        <button onclick="prikaziVaskrs()" class="glavno-dugme">🥚 Када је Васкрс?</button>   
+        <button onclick="prikaziVelikiPost()" class="sporedno-dugme">☦️ Велики пост</button>
+        <button onclick="prikaziPetrovskiPost()" class="zeleno-dugme">🌿 Петровски пост</button>
+    </div>
+    
+    <br>
+    <a href="index.html" style="text-decoration:none; font-size: 22px; color:#8b6f47; font-weight:bold;">⬅ Назад на почетну</a>
+</div>
+
+<script>
+    function izracunajVaskrsObjekat(godina) {
+        const a = godina % 19, b = godina % 4, c = godina % 7;
+        const d = (19 * a + 15) % 30, e = (2 * b + 4 * c + 6 * d + 6) % 7;
+        const f = d + e;
+        let vD, vM;
+        if (f <= 9) { vD = 22 + f; vM = 2; } else { vD = f - 9; vM = 3; }
+        let vaskrsNovi = new Date(godina, vM, vD);
+        vaskrsNovi.setDate(vaskrsNovi.getDate() + 13);
+        return vaskrsNovi;
+    }
+
+    function generisiKalendar(mesec, godina) {
+        const imena = ["Јануар", "Фебруар", "Март", "Април", "Mај", "Jун", "Jул", "Aвгуст", "Септембар", "Октобар", "Новембар", "Децембар"];
+        document.getElementById('naslovMeseca').innerText = imena[mesec] + " " + godina + ".";
+
+        let danas = new Date();
+        let vaskrsDatum = izracunajVaskrsObjekat(godina);
+
+        let prviDan = new Date(godina, mesec, 1).getDay();
+        if (prviDan === 0) prviDan = 7; 
+
+        let brojDana = new Date(godina, mesec + 1, 0).getDate();
+        let html = "<table><tr><th>П</th><th>У</th><th>С</th><th>Ч</th><th>П</th><th>С</th><th class='nedelja'>Н</th></tr><tr>";
+
+        for (let i = 1; i < prviDan; i++) {
+            html += "<td></td>";
+        }
+
+        for (let dan = 1; dan <= brojDana; dan++) {
+            let trenutniDatum = new Date(godina, mesec, dan);
+            let klase = [];
+            
+            if (trenutniDatum.getDay() === 0) klase.push("nedelja");
+            if (trenutniDatum.toDateString() === danas.toDateString()) klase.push("danasnji");
+            if (trenutniDatum.toDateString() === vaskrsDatum.toDateString()) klase.push("vaskrs-u-tabeli");
+
+            let klasaTekst = klase.length > 0 ? "class='" + klase.join(" ") + "'" : "";
+
+            html += "<td " + klasaTekst + ">" + dan + "</td>";
+            if (trenutniDatum.getDay() === 0) html += "</tr><tr>";
+        }
+        html += "</table>";
+        document.getElementById('kalendarTabela').innerHTML = html;
+    }
+
+    function osveziKalendar() {
+        const m = document.getElementById('mesecBirac').value;
+        const g = document.getElementById('godinaBirac').value;
+        generisiKalendar(parseInt(m), parseInt(g));
+        document.getElementById('dodatakPrikaz').style.display = "none";
+    }
+
+   function prikaziVaskrs() {
+    const g = document.getElementById('godinaBirac').value;
+    const v = izracunajVaskrsObjekat(parseInt(g));
+    
+    const mesecVaskrsa = v.getMonth(); 
+    document.getElementById('mesecBirac').value = mesecVaskrsa;
+    generisiKalendar(mesecVaskrsa, parseInt(g));
+
+    const datum = v.toLocaleDateString('sr-RS', { day: 'numeric', month: 'long' });
+    const prikaz = document.getElementById('dodatakPrikaz');
+    prikaz.style.display = "block";
+    prikaz.innerHTML = "<b>Васкрс " + g + ". године пада:</b><br><span style='color:#8b0000; font-size:24px;'>" + datum + "</span>";
+}
+
+function prikaziVelikiPost() {
+    const g = document.getElementById('godinaBirac').value;
+    const v = izracunajVaskrsObjekat(parseInt(g));
+    
+    let velikiPost = new Date(v);
+    velikiPost.setDate(velikiPost.getDate() - 48); 
+
+    const mesecPosta = velikiPost.getMonth();
+    document.getElementById('mesecBirac').value = mesecPosta;
+    generisiKalendar(mesecPosta, parseInt(g));
+
+    const datum = velikiPost.toLocaleDateString('sr-RS', { weekday: 'long', day: 'numeric', month: 'long' });
+    const prikaz = document.getElementById('dodatakPrikaz');
+    prikaz.style.display = "block";
+    prikaz.innerHTML = "<b>Велики пост (Чисти понедељак) " + g + ". године почиње:</b><br><span style='color:#8b0000; font-size:22px;'>" + datum + "</span>";
+}
+
+function prikaziPetrovskiPost() {
+    const g = document.getElementById('godinaBirac').value;
+    const v = izracunajVaskrsObjekat(parseInt(g));
+    
+    let petrovskiPost = new Date(v);
+    petrovskiPost.setDate(petrovskiPost.getDate() + 57); 
+
+    const mesecPetrovskog = petrovskiPost.getMonth();
+    document.getElementById('mesecBirac').value = mesecPetrovskog;
+    generisiKalendar(mesecPetrovskog, parseInt(g));
+
+    const datum = petrovskiPost.toLocaleDateString('sr-RS', { weekday: 'long', day: 'numeric', month: 'long' });
+    const prikaz = document.getElementById('dodatakPrikaz');
+    prikaz.style.display = "block";
+    prikaz.innerHTML = "<b>Петровски пост " + g + ". године почиње:</b><br><span style='color:#2e7d32; font-size:22px;'>" + datum + "</span>";
+}
+
+    // Иницијално цртање календара чим корисник уђе
+    generisiKalendar(3, 2026); // Почињемо од Априла 2026.
+</script>
+</body>
+</html>
