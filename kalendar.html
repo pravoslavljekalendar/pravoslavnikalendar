@@ -158,13 +158,13 @@ function izracunajVaskrs(godina) {
     return vaskrsNovi.toLocaleDateString('sr-RS', opcije);
 }
 
-// Функција која приказује Васкрс кад кликнеш на дугме
+// Функција која приказује Васкрс кад кликнем на дугме
 function prikaziVaskrs() {
     const params = new URLSearchParams(window.location.search);
     const g = parseInt(params.get('godina')) || 2026;
     const datum = izracunajVaskrs(g);
 
-    // Ово исписује одговор на онај твој папир:
+    // Ово исписује одговор на онај мој папир:
     const prikaz = document.getElementById('dodatakPrikaz');
     prikaz.style.display = "block";
     prikaz.innerHTML = "<b>Васкрс " + g + ". године пада:</b><br><span style='color:#8b0000; font-size:24px;'>" + datum + "</span>";
