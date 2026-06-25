@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Васкршњи Календар и Постови 2025-2030</title>
     <style>
-      body {
+        body {
             margin: 0;
             background-image: url("papir.jpg");
             background-size: cover;
@@ -71,7 +71,7 @@
             font-size: 20px; z-index: 100;
         }
         
-        /* СТИЛОВИ ЗА СВА ЧЕТИРИ ПАМЕТНА ДУГМЕТА */
+        /* СТИЛ ЗА НОВА ТРИ ДУГМЕТА */
         .dugme-okvir {
             display: flex;
             flex-direction: column;
@@ -88,12 +88,14 @@
         .zeleno-dugme {
             background: #2e7d32; color: white; padding: 12px 20px; border-radius: 10px; border: none; font-size: 16px; font-weight: bold; cursor: pointer; width: 85%; max-width: 300px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
-        .tamno-zeleno-dugme {
+
+ .tamno-zeleno-dugme {
             background: #004d40; color: white; padding: 12px 20px; border-radius: 10px; border: none; font-size: 16px; font-weight: bold; cursor: pointer; width: 85%; max-width: 300px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
         .plavo-dugme {
             background: #0d47a1; color: white; padding: 12px 20px; border-radius: 10px; border: none; font-size: 16px; font-weight: bold; cursor: pointer; width: 85%; max-width: 300px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
+
     </style>
 </head>
 <body>
@@ -126,13 +128,14 @@
 
     <div id="dodatakPrikaz" style="display:none; margin: 20px auto; padding: 15px; background: rgba(242, 230, 201, 0.9); border: 1px solid #8b6f47; border-radius: 10px; font-style: italic; width: 85%;"></div>
 
-    <!-- СВА ДУГМЕТА СА ИСПРАВЉЕНИМ КЛАСАМА И БОЈАМА -->
+    <!-- ТРИ ПАМЕТНА ДУГМЕТА НА ЈЕДНОМ МЕСТУ -->
     <div class="dugme-okvir">
         <button onclick="prikaziVaskrs()" class="glavno-dugme">🥚 Када је Васкрс?</button>   
         <button onclick="prikaziVelikiPost()" class="sporedno-dugme">☦️ Велики пост</button>
         <button onclick="prikaziPetrovskiPost()" class="zeleno-dugme">🌿 Петровски пост</button>
         <button onclick="prikaziGospojinskiPost()" class="tamno-zeleno-dugme">🌺 Госпојински пост</button>
         <button onclick="prikaziBozicniPost()" class="plavo-dugme">❄️ Божићни пост</button>
+    </div>
     </div>
     
     <br>
@@ -232,14 +235,37 @@ function prikaziPetrovskiPost() {
 
     const mesecPetrovskog = petrovskiPost.getMonth();
     document.getElementById('mesecBirac').value = mesecPetrovskog;
+    generisiKalendar(mesecPetrovskog, parseInt(g));
 
+    const datum = petrovskiPost.toLocaleDateString('sr-RS', { weekday: 'long', day: 'numeric', month: 'long' });
+    const prikaz = document.getElementById('dodatakPrikaz');
+    prikaz.style.display = "block";
+    prikaz.innerHTML = "<b>Петровски пост " + g + ". године почиње:</b><br><span style='color:#2e7d32; font-size:22px;'>" + datum + "</span>";
+}
 
-generisiKalendar(mesecPetrovskog, parseInt(g));const datum = petrovskiPost.toLocaleDateString('sr-RS', { weekday: 'long', day: 'numeric', month: 'long' });const prikaz = document.getElementById('dodatakPrikaz');prikaz.style.display = "block";prikaz.innerHTML = "Петровски пост " + g + ". године почиње:" + datum + "";}function prikaziGospojinskiPost() {const g = document.getElementById('godinaBirac').value;const mesecAvgust = 7;document.getElementById('mesecBirac').value = mesecAvgust;generisiKalendar(mesecAvgust, parseInt(g));const prikaz = document.getElementById('dodatakPrikaz');prikaz.style.display = "block";prikaz.innerHTML = "Госпојински пост " + g + ". године траје:од 14. августа до 27. августа(Увек фиксан датум | по старом: од 1. до 14. августа)";}function prikaziBozicniPost() {const g = parseInt(document.getElementById('godinaBirac').value);const mesecNovembar = 10;document.getElementById('mesecBirac').value = mesecNovembar;generisiKalendar(mesecNovembar, g);const sledecaGodina = g + 1;const prikaz = document.getElementById('dodatakPrikaz');prikaz.style.display = "block";
-prikaz.innerHTML = "Божићни пост " + g + ". године траје:од 28. новембра до 6. јануара " + sledecaGodina + ".(Увек фиксан датум | по старом: од 15. новембра 
-до 24. децембра)";}// Иницијално цртање календара чим се учита страницаgenerisiKalendar(3, 2026);
+function prikaziGospojinskiPost() {
+    const g = document.getElementById('godinaBirac').value;
+    const mesecAvgust = 7; 
+    document.getElementById('mesecBirac').value = mesecAvgust;
+    generisiKalendar(mesecAvgust, parseInt(g));
+    const prikaz = document.getElementById('dodatakPrikaz');
+    prikaz.style.display = "block";
+    prikaz.innerHTML = "<b>Госпојински пост " + g + ". године траје:</b><br><span style='color:#004d40; font-size:22px;'>од 14. августа до 27. августа</span><br><small style='color:#666;'>(Увек фиксан датум)</small>";
+}
 
+function prikaziBozicniPost() {
+    const g = parseInt(document.getElementById('godinaBirac').value);
+    const mesecNovembar = 10; 
+    document.getElementById('mesecBirac').value = mesecNovembar;
+    generisiKalendar(mesecNovembar, g);
+    const sledecaGodina = g + 1;
+    const prikaz = document.getElementById('dodatakPrikaz');
+    prikaz.style.display = "block";
+    prikaz.innerHTML = "<b>Божићни пост " + g + ". године траје:</b><br><span style='color:#0d47a1; font-size:22px;'>од 28. новембра до 6. јануара " + sledecaGodina + ".</span><br><small style='color:#666;'>(Увек фиксан датум)</small>";
+}
 
+    // Иницијално цртање календара чим корисник уђе
+    generisiKalendar(3, 2026); // Почињемо од Априла 2026.
 </script>
 </body>
 </html>
-    
