@@ -232,6 +232,9 @@ function prikaziPetrovskiPost() {
     prikaz.innerHTML = "<b>Петровски пост " + g + ". године почиње:</b><br><span style='color:#2e7d32; font-size:22px;'>" + datum + "</span>";
 }
 
+function prikaziGospojinskiPost() {const g = document.getElementById('godinaBirac').value;const mesecAvgust = 7; // Август је 7document.getElementById('mesecBirac').value = mesecAvgust;generisiKalendar(mesecAvgust, parseInt(g));const prikaz = document.getElementById('dodatakPrikaz');prikaz.style.display = "block";prikaz.innerHTML = "Госпојински пост " + g + ". године траје:од 14. августа до 27. августа(Увек фиксан датум | по старом: од 1. до 14. августа)";}function prikaziBozicniPost() {const g = parseInt(document.getElementById('godinaBirac').value);const mesecNovembar = 10; // Новембар је 10document.getElementById('mesecBirac').value = mesecNovembar;generisiKalendar(mesecNovembar, g);const sledecaGodina = g + 1;const prikaz = document.getElementById('dodatakPrikaz');prikaz.style.display = "block";prikaz.innerHTML = "Божићни пост " + g + ". године траје:од 28. новембра до 6. јануара " + sledecaGodina + ".
+                                   (Увек фиксан датум | по старом: од 15. новембра до 24. децембра)";}
+    
     // Иницијално цртање календара чим корисник уђе
     generisiKalendar(3, 2026); // Почињемо од Априла 2026.
 </script>
