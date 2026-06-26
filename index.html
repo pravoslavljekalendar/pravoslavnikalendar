@@ -789,7 +789,14 @@ padding: 0; /* Brišemo razmak oko celog tela */
 .procitaj-vise-dugme:hover {
     background-color: #5f0606;
 }
-
+/* 📱 MREŽA ZA STIKERE - AUTOMATSKI SE PAKUJU U DVE KOLONE NA TELEFONU */
+.stiker-mreza {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Dve kolone sličica */
+  gap: 20px;
+  padding: 10px;
+  margin-bottom: 50px;
+}
 /* Сакривање на мобилном телефону да се не згужва екран */
 @media (max-width: 768px) {
     .desna-kolona-stikeri {
@@ -1380,15 +1387,16 @@ function prevediNaEngleski() {
 
 
 <!-- ЛЕВИ БОКС 1:АКАТИСТИ -->
-<div class="header-desktop-left-box" style="padding: 15px; 
+<div class="header-desktop-left-box" style="padding: 10px; 
 	background: rgba(252, 245, 229, 0.4); border-radius: 8px; 
 	border: 1px solid #8b6f47; margin-bottom: 20px;">
     <div class="naslov-header-desktop-left" style="color: #8b0000; 
+		hover: background-color: #5f0606;
 		font-size: 22px; font-weight: bold; margin-bottom: 15px; 
 		text-align: center;">АКАТИСТИ</div>
     
-    <div style=" display: grid; flex-direction: column; grid-template-columns: 1fr 1fr;
-		gap: 12px; text-align: left;">
+    <div style=" display: grid; flex-direction: grid; grid-template-columns: 1fr 1fr;
+		gap: 20px; text-align: left;">
 
    
 
@@ -1399,7 +1407,7 @@ function prevediNaEngleski() {
         class="citaj-dugme">📖 Акатист Пресветој Богородици &rarr;</a>
     </div>
 
-		
+		<div class="stiker-mreza">
         <!-- 1. БОГОРОДИЦА -->
         <a href="akatist-presvetoj-bogorodici.html" style="display: flex; 
 			align-items: center; gap: 15px; text-decoration: none; 
@@ -1414,18 +1422,21 @@ function prevediNaEngleski() {
 				font-weight: bold;">Акатист Пресветој Богородици &rarr;</span>
         </a>
 
+		<div class="stiker-mreza">	
         <!-- 2. ВАСИЛИЈЕ ОСТРОШКИ -->
         <a href="akatist-svetom-vasiliju-ostroskom.html" style="display: flex; align-items: center; gap: 15px; text-decoration: none; color: #4A3728; background: rgba(242, 230, 201, 0.6); padding: 8px; border-radius: 6px; border: 1px solid rgba(139, 111, 71, 0.3); transition: 0.3s;">
  <img src="vasilije-ostroski.jpg" alt="" style="width: 70px; height: auto; border-radius: 4px; border: 1px solid #8b6f47; box-shadow: 0 2px 4px rgba(0,0,0,0.15);">
  <span style="font-size: 16px; font-weight: bold;">Акатист св. Василију Острошком &rarr;</span>
         </a>
 
+			<div class="stiker-mreza">
         <!-- 3. НЕКТАРИЈЕ ЕГИНСКИ -->
         <a href="akatist-svetom-nektariju-eginskom.html" style="display: flex; align-items: center; gap: 15px; text-decoration: none; color: #4A3728; background: rgba(242, 230, 201, 0.6); padding: 8px; border-radius: 6px; border: 1px solid rgba(139, 111, 71, 0.3); transition: 0.3s;">
             <img src="ikona-nektarije.jpg" alt="" style="width: 70px; height: auto; border-radius: 4px; border: 1px solid #8b6f47; box-shadow: 0 2px 4px rgba(0,0,0,0.15);">
             <span style="font-size: 16px; font-weight: bold;">Акатист св. Нектарију Егинском &rarr;</span>
         </a>
 
+			<div class="stiker-mreza">	
         <!-- 4. КСЕНИЈА ПЕТРОГРАДСКА -->
         <a href="akatist-svetoj-kseniji-petrogradskoj.html" style="display: flex; align-items: center; gap: 15px; text-decoration: none; color: #4A3728; background: rgba(242, 230, 201, 0.6); padding: 8px; border-radius: 6px; border: 1px solid rgba(139, 111, 71, 0.3); transition: 0.3s;">
             <img src="ikona-ksenija.jpg" alt="" style="width: 70px; height: auto; border-radius: 4px; border: 1px solid #8b6f47; box-shadow: 0 2px 4px rgba(0,0,0,0.15);">
