@@ -797,6 +797,17 @@ padding: 0; /* Brišemo razmak oko celog tela */
   padding: 10px;
   margin-bottom: 50px;
 }
+
+/* 📱 MREŽA ZA AKATISTE - AUTOMATSKI SE PAKUJU U DVE KOLONE NA TELEFONU */
+.akatist-mreza {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Dve kolone sličica */
+  gap: 20px;
+  padding: 10px;
+  margin-bottom: 50px;
+  top: 70px;           
+  left: 17px;
+}	
 /* Сакривање на мобилном телефону да се не згужва екран */
 @media (max-width: 768px) {
     .desna-kolona-stikeri {
@@ -804,7 +815,11 @@ padding: 0; /* Brišemo razmak oko celog tela */
     }
 }
 
-	
+@media (max-width: 768px) {
+    .akatist-mreza {
+        display: none !important;
+    }
+}	
 @media (prefers-color-scheme: dark) {
    body {
 padding: 0; /* Brišemo razmak oko celog tela */
@@ -1462,9 +1477,174 @@ function prevediNaEngleski() {
 <div class="container">
 <div class="donji-papir">	
 
+<p class="column-left-mobile">
 
+<style> 
+body { 
+  margin: 0; 
+  background-image: url("papir.png"); 
+  background-size: cover; 
+  background-attachment: fixed; 
+  font-family: "Times New Roman", serif; 
+  color: #4A3728; 
+  text-align: center; 
+} 
 
-	
+html { 
+  scroll-behavior: smooth; 
+} 
+
+.container { 
+  max-width: 120px; 
+  margin: auto; 
+  padding: 20px; 
+  padding-top: 60px; 
+  background: transparent; 
+  min-height: 100vh; 
+} 
+
+h1 { 
+  margin-top: 20px; 
+  font-size: 30px; 
+  color: #8b0000; /* Tvoja bordo */
+  margin-bottom: 5px; 
+} 
+
+.podnaslov {
+  font-style: italic;
+  font-size: 16px;
+  margin-bottom: 30px;
+  color: #6e553f;
+}
+
+/* 📱 MREŽA ZA AKATISTE - AUTOMATSKI SE PAKUJU U DVE KOLONE NA TELEFONU */
+.akatist-mreza {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Dve kolone sličica */
+  gap: 20px;
+  padding: 10px;
+  margin-bottom: 50px;
+  top: 70px;           
+  left: 17px;
+}
+
+/* Okvir oko svakog stikera */
+.akatist-kartica {
+  background: rgba(242, 230, 201, 0.8);
+  border: 1px solid #8b6f47;
+  border-radius: 8px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+
+.akatist-kartica:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+/* Stil za PNG sličicu */
+.svetitelj-slika {
+  max-width: 130px;
+  height: auto;
+  margin-bottom: 15px;
+  /* Blaga senka iza same providne sličice da se bolje istakne */
+  filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.15)); 
+}
+
+/* Tvoja prelepa bordo dugmad za skidanje stikera */
+.citaj-dugme { 
+  background-color: #8b0000; 
+  color: white; 
+  border: none; 
+  padding: 8px 14px; 
+  text-decoration: none;
+  font-weight: bold; 
+  font-size: 14px;
+  border-radius: 4px; 
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  transition: background-color 0.3s;
+  display: inline-block;
+  width: 80%; /* Širina dugmeta prati karticu */
+} 
+
+.citaj-dugme:hover { 
+  background-color: #5f0606; 
+} 
+
+/* Home dugme u ćošku */
+.home-dugme { 
+  position: fixed; 
+  top: 15px; 
+  left: 15px; 
+  background: rgba(242, 230, 201, 0.9); 
+  padding: 10px 15px; 
+  border-radius: 8px; 
+  border: 1px solid #8b6f47; 
+  text-decoration: none; 
+  color: #4A3728; 
+  font-size: 20px; 
+  z-index: 1000; 
+} 
+</style> 
+</head> 
+<body> 
+
+<a href="index.html" class="home-dugme">🏠</a> 
+
+<div class="container"> 
+  <h1>АКАТИСТИ</h1>
+  <p class="podnaslov"></p>
+
+  <div class="akatist-mreza">
+
+     <!-- КАРТИЦА 1: БОГОРОДИЦА -->
+    <div class="akatist-kartica">
+      <img src="bogorodica.jpg" alt="" class="svetitelj-slika">
+       <a href="akatist-presvetoj-bogorodici.html" 
+        class="citaj-dugme">📖 Акатист Пресветој Богородици &rarr;</a>
+    </div>
+
+    <!-- КАРТИЦА 2: ВАСИЛИЈЕ ОСТРОШКИ -->
+    <div class="akatist-kartica">
+      <img src="vasilije-ostroski.jpg" alt="" class="svetitelj-slika">
+      <a href="akatist-svetom-vasiliju-ostroskom.html" 
+        class="citaj-dugme">📖 Акатист св. Василију Остошком &rarr;</a>
+    </div>
+
+    <!-- КАРТИЦА 3: НЕКТАРИЈЕ ЕГИНСКИ -->
+    <div class="akatist-kartica">
+      <img src="ikona-nektarije.jpg" alt="" class="svetitelj-slika">
+     <a href="akatist-svetom-nektariju-eginskom.html" 
+        class="citaj-dugme">📖 Акатист св. Нектарију Егинском &rarr;</a>
+    </div>
+
+    <!-- КАРТИЦА 4: КСЕНИЈА ПЕТРОГРАДСКА -->
+    <div class="akatist-kartica">
+      <img src="ikona-ksenija.jpg" alt="" class="svetitelj-slika">
+      <a href="akatist-svetoj-kseniji-petrogradskoj.html" 
+        class="citaj-dugme">📖 Акатист св. Ксенији Петроградској &rarr;</a>
+    </div>
+
+    <!-- КАРТИЦА 5: МАРИЈА ГАТЧИНСКА -->
+    <div class="akatist-kartica">
+      <img src="ikona-marija-gatcinska.jpg" alt="" class="svetitelj-slika">
+      <a href="akatist-mariji-gatcinskoj.html" 
+        class="citaj-dugme">📖 Акатист св. Марији Гатчинској &rarr;</a>
+    </div>
+
+     <!-- КАРТИЦА 6: ИСУС У ИСКУШЕЊУ -->
+    <div class="akatist-kartica">
+      <img src="ikona-isus-tron.jpg" alt="" class="svetitelj-slika">
+      <a href="akatist-svemogucem-bogu.html" 
+        class="citaj-dugme">📖 Акатист Свемогућем Богу при најезди искушења &rarr;</a>
+    </div>
+
+  </div> 	
 
 <script>
   if ('serviceWorker' in navigator) {
