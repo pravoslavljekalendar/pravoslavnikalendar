@@ -733,7 +733,9 @@ padding: 0; /* Brišemo razmak oko celog tela */
 /* 💻 ДЕСНА КОЛОНА НА ЛАПТОПУ (Према твом стилу за стикере) */
 .desna-kolona-stikeri {
     display: block;
-    position: absolute;
+      display: flex;
+    flex-direction: column;
+    align-items: center;
     right: 20px;
     top: 180px;
     width: 25%;
@@ -796,6 +798,10 @@ padding: 0; /* Brišemo razmak oko celog tela */
   gap: 20px;
   padding: 10px;
   margin-bottom: 50px;
+ display: flex;             /* Aktivira flex magiju */
+    flex-direction: column;    /* Ređa sve u kolonu (jedno ispod drugog) */
+    align-items: center;       /* Centriranje po širini */
+    gap: 15px;    	
 }
 
 /* 📱 MREŽA ZA AKATISTE - AUTOMATSKI SE PAKUJU U DVE KOLONE NA TELEFONU */
