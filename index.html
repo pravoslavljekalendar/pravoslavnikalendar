@@ -807,6 +807,10 @@ padding: 0; /* Brišemo razmak oko celog tela */
   margin-bottom: 50px;
   top: 70px;           
   left: 17px;
+	 display: flex;             /* Aktivira flex magiju */
+    flex-direction: column;    /* Ređa sve u kolonu (jedno ispod drugog) */
+    align-items: center;       /* Centriranje po širini */
+    gap: 15px;             
 }	
 /* Сакривање на мобилном телефону да се не згужва екран */
 @media (max-width: 768px) {
@@ -1405,7 +1409,7 @@ function prevediNaEngleski() {
 <div class="container">
 <div class="donji-papir">	
 
-<p class="column-left-mobile">
+<p class="header-desktop-left">
 
 <style> 
 body { 
