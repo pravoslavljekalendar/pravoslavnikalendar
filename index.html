@@ -297,64 +297,55 @@ display: block;
 }
 
 
-/* LAPTOP: Ovde boks živi i leti desno */
+/* ==========================================================================
+   ZAJEDNIČKA PODEŠAVANJA ZA LEVI I DESNI BOKS (Boje i reljef efekat)
+   ========================================================================== */
+.header-desktop-left-box, 
+.header-desktop-right-box {
+    background-color: rgba(245, 240, 230, 0.9); /* Tvoja bež pozadina */
+    border: 1px solid #8b6f47;                   /* Tvoja braon boja ivice */
+    border-radius: 20px;                         /* Zaobljeni uglovi */
+    padding: 25px;
+    font-size: 20px;
+    text-align: justify;
+    
+    /* TVOJ RELJEF EFEKAT (Unutrašnje i spoljašnje senke) */
+    box-shadow: inset 0 2px 6px rgba(255,255,255,0.25),
+                inset 0 -2px 4px rgba(0,0,0,0.15),
+                0 6px 12px rgba(0,0,0,0.25);
+                
+    /* Glatka tranzicija za efekte */
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+}
+
+/* ==========================================================================
+   POZICIONIRANJE BOKSOVA (Simetrija levo-desno)
+   ========================================================================== */
 .header-desktop-left-box {
-    display: block; /* Vidljiv je */
+    display: block; 
     position: absolute;
     left: 20px;
     top: 180px;
     width: 25%;
-    padding: 25px;
-    border-radius: 20px;
-    border: 1px solid #8b6f47;
-    font-size: 20px;
-    text-align: justify;
-/* NOVO: unutrašnja i spoljašnja senka za “reljef” efekt */
-box-shadow: inset 0 2px 6px rgba(255,255,255,0.25),
-inset 0 -2px 4px rgba(0,0,0,0.15),
-0 6px 12px rgba(0,0,0,0.25);
-transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
 }
 
-.naslov-header-desktop-left {	
- color: #8b0000;      /* Твоја бордо боја */
-text-align: center;  /* Ово га центрира УНУТАР кутије */
-   font-size: 21px; 	
-}	
-
-
-	
-/* LAPTOP: Ovde boks živi i leti desno */
 .header-desktop-right-box {
-    /* Zadržavamo ovo što ti treba za poziciju */
+    display: block;
     position: absolute;
-    right: 20px;
-    top: 180px;
-    width: 25%;
-    padding: 25px;
-    border-radius: 20px;
-    border: 1px solid #8b6f47;
-    
-    /* OVO MENJAMO I DODAJEMO: */
-    display: flex;             /* Aktivira flex magiju */
-    flex-direction: column;    /* Ređa sve u kolonu (jedno ispod drugog) */
-    align-items: center;       /* Centriranje po širini */
-    gap: 15px;                 /* Razmak između svega što ubaciš u box */
-    
-    /* Ostalo ostaje isto */
-    font-size: 20px;
-    text-align: justify;
-    box-shadow: inset 0 2px 6px rgba(255,255,255,0.25),
-                inset 0 -2px 4px rgba(0,0,0,0.15),
-                0 6px 12px rgba(0,0,0,0.25);
-    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+    right: 20px; /* Zrcalno postavljeno na desnu stranu */
+    top: 180px;  /* Na istoj visini kao i levi boks */
+    width: 25%;  /* Ista širina */
 }
 
+/* ==========================================================================
+   STILOVI ZA NASLOVE (Tvoja bordo boja i centriranje)
+   ========================================================================== */
+.naslov-header-desktop-left,
 .naslov-header-desktop-right {	
- color: #8b0000;      /* Твоја бордо боја */
-text-align: center;  /* Ово га центрира УНУТАР кутије */
-   font-size: 21px; 	
-}	
+    color: #8b0000;      /* Tvoja bordo boja */
+    text-align: center;  /* Centrirano unutar kutije */
+    font-size: 21px; 	
+}
 .player-wrapper {
     width: 100%;
     height: 50px; /* Daj mu fiksnu visinu da ne nestaje */
@@ -1152,7 +1143,17 @@ overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.3); margin: 20px 0 20px 30
 </div>
 </div>
 
+<!-- LEVI BOKS -->
+<div class="header-desktop-left-box">
+    <h2 class="naslov-header-desktop-left"><!-- DESNI BOKS -->Naslov Leve Priče<!-- DESNI BOKS --></h2>
+    <p><!-- LEVI BOKS -->Ovde ide tvoja priča, plejer i sve ostalo što želiš da se nađe u levom boksu...<!-- LEVI BOKS --></p>
+</div>
 
+<!-- DESNI BOKS -->
+<div class="header-desktop-right-box">
+    <h2 class="naslov-header-desktop-right"><!-- DESNI BOKS -->Naslov Desne Priče <!-- DESNI BOKS --></h2>
+    <p><!-- DESNI BOKS -->Ovde ide sadržaj za desni boks, koji će automatski dobiti isti reljef i bež pozadinu...<!-- DESNI BOKS --></p>
+</div>
 	
 <div class="container">
 
