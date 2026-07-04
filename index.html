@@ -300,7 +300,7 @@ display: block;
 /* ==========================================================================
    ZAJEDNIČKA PODEŠAVANJA ZA LEVI I DESNI BOKS (Boje i reljef efekat)
    ========================================================================== */
-/* Заједнички стил за леву и десну главну кутију */
+/* 1. ЗАЈЕДНИЧКИ СТИЛ ЗА ОБЕ ГЛАВНЕ КУТИЈЕ */
 .header-desktop-left-box, 
 .header-desktop-right-box {
     background-color: rgba(245, 240, 230, 0.9); 
@@ -313,15 +313,16 @@ display: block;
                 inset 0 -2px 4px rgba(0,0,0,0.15),
                 0 6px 12px rgba(0,0,0,0.25);
     transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
-    
-    /* ОВО СМО ДОДАЛИ: Омогућава аутоматско ређање у низ наниже */
+    box-sizing: border-box;
+
+    /* ОВО ЈЕ СПАС: Форсира све унутар кутије да иде у низ наниже, без преклапања */
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    height: auto; /* Кутија се сама шири према дужини приче */
-    box-sizing: border-box;
+    gap: 20px;          /* Прави сигуран размак између слике, плејера и приче */
+    height: auto;       /* Спољна кутија се сама издужује према садржају */
 }
 
+/* 2. ФИКСНЕ ПОЗИЦИЈЕ НА ЕКРАНУ */
 .header-desktop-left-box {
     position: absolute;
     left: 20px;
@@ -336,7 +337,7 @@ display: block;
     width: 25%;  
 }
 
-/* Стил за унутрашњи бокс са причом који иде испод плејера */
+/* 3. СТИЛ ЗА КУТИЈУ СА ПРИЧОМ (И ЛЕВО И ДЕСНО) */
 .prica-unutar-boxa {
     background: rgba(252, 245, 229, 0.4); 
     border-radius: 8px; 
@@ -344,6 +345,8 @@ display: block;
     padding: 15px; 
     width: 100%;
     box-sizing: border-box;
+    font-size: 16px;
+    line-height: 1.5;
 }
 
 .naslov-header-desktop-left,
