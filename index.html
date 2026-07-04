@@ -1070,22 +1070,22 @@ overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.3); margin: 20px 0 20px 30
 <div class="header-desktop-right-box">
     
     <!-- 1. DEO: Slika sa dugmetom -->
+    <div class="header-desktop-right-box">
+    
+    <!-- 1. Слика -->
     <div class="sveca-kartica-desno">
         <img src="pojas-presvete-bogorodice.jpg" alt="pojas" class="sveca-slika-desno">
         <a href="akatist-presvetoj-bogorodici.html" class="procitaj-vise-dugme">📖</a>
     </div>
 
-    <!-- 2. DEO: Audio plejer -->
-    <div style="width: 100%;">
-        <audio controls style="width: 100%;">
-            <source src="pojas.mp3" type="audio/mpeg">
-        </audio>
-    </div>
+    <!-- 2. Аудио плејер -->
+    <audio controls style="width: 100%;">
+        <source src="pojas.mp3" type="audio/mpeg">
+    </audio>
 
-    <!-- 3. DEO: Čista priča која сада користи класу из Style-a -->
+    <!-- 3. Прича испод плејера -->
     <div class="prica-unutar-boxa">
         <div class="naslov-header-desktop-right">КАКО ЂАВО ОБМАЊУЈЕ ЧОВЕКА</div>
-        <p style="font-size: 16px; line-height: 1.5; margin: 0;">
 
  <p>Велики пустињак из околине Александрије ава Иларион, молио се Богу неколико година да му открије лукавство ђавола,
 како то они успевају да одведу људе од доброг пута, те их чине робовима греха, и одводе их у пакао. И једне ноћи,
@@ -1441,10 +1441,11 @@ function prevediNaEngleski() {
 
 
 <!-- ЛЕВИ БОКС 1:АКАТИСТИ -->
-<div class="header-desktop-left-box" style="padding: 15px; background: rgba(252, 245, 229, 0.4); border-radius: 8px; border: 1px solid #8b6f47; margin-bottom: 20px;">
-    <div class="naslov-header-desktop-left" style="color: #8b0000; font-size: 22px; font-weight: bold; margin-bottom: 15px; text-align: center;">АКАТИСТИ</div>
-    
-    <div style="display: flex; flex-direction: column; gap: 12px; text-align: left;">
+<div class="header-desktop-left-box">
+
+    <!-- 1. Део са Акатистима (твој постојећи код за линкове) -->
+    <div class="akatisti-linkovi">
+       
 
         <!-- 1. БОГОРОДИЦА -->
         <a href="akatist-presvetoj-bogorodici.html" style="display: flex; align-items: center; gap: 15px; text-decoration: none; color: #4A3728; background: rgba(242, 230, 201, 0.6); padding: 8px; border-radius: 6px; border: 1px solid rgba(139, 111, 71, 0.3); transition: 0.3s;">
@@ -1477,15 +1478,16 @@ function prevediNaEngleski() {
         </a>
 
     </div> <!-- Крај унутрашњег низа за линкове -->
-</div> <!-- СИГУРАН КРАЈ ПРВОГ БОКСА ЗА АКАТИСТЕ -->
+
 
 <div class="container">
 	
 
 
 <!-- LEVI BOKS -->
-<div class="header-desktop-left-box">
-    <h2 class="naslov-header-desktop-left">Јерменин и његов син</h2>
+ <!-- 2. Кратка прича која сада СИГУРНО иде испод њих -->
+    <div class="prica-unutar-boxa">
+        <div class="naslov-header-desktop-left">Јерменин и његов син</div>
     <p>На самрти позва стари Јерменин свога сина па га доведе до прозора и упита шта види.
 – Људе, одговори он.
 Затим му пружи огледало да се погледа и упита га шта види.
@@ -1494,7 +1496,7 @@ function prevediNaEngleski() {
 с том разликом што се на стаклу од огледала налази танки слој сребра.
 И у животу је тако: где год се сребро нађе између људи, ту човек види само себе.</p>
 </div>
-
+</div>
  
 	
 
