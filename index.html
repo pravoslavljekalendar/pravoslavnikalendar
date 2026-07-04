@@ -1064,7 +1064,6 @@ overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.3); margin: 20px 0 20px 30
 </div> 
 </div>
 
-<!-- JEDNA ZAJEDNIČKA DESNA KUTIJA ZA SVE ELEMENTE -->
 <div class="header-desktop-right-box">
     
     <!-- 1. DEO: Slika sa dugmetom -->
@@ -1074,18 +1073,16 @@ overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.3); margin: 20px 0 20px 30
     </div>
 
     <!-- 2. DEO: Audio plejer -->
-    <div style="width: 100%; text-align: center; margin: 10px 0;">
+    <div style="width: 100%;">
         <audio controls style="width: 100%;">
             <source src="pojas.mp3" type="audio/mpeg">
         </audio>
     </div>
-<div class="container">
-    <!-- 3. DEO: Priča (Naslov i tekst) koji sada idu sigurno ISPOD slike -->
-    <div style="background: rgba(252, 245, 229, 0.4); border-radius: 8px; border: 1px solid #8b6f47; padding: 15px; width: 100%;">
+
+    <!-- 3. DEO: Čista priča која сада користи класу из Style-a -->
+    <div class="prica-unutar-boxa">
         <div class="naslov-header-desktop-right">КАКО ЂАВО ОБМАЊУЈЕ ЧОВЕКА</div>
-        <p style="text-align: justify; font-size: 16px; line-height: 1.5; margin-top: 10px;">
-
-
+        <p style="font-size: 16px; line-height: 1.5; margin: 0;">
 
  <p>Велики пустињак из околине Александрије ава Иларион, молио се Богу неколико година да му открије лукавство ђавола,
 како то они успевају да одведу људе од доброг пута, те их чине робовима греха, и одводе их у пакао. И једне ноћи,
