@@ -1132,26 +1132,28 @@ overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.3); margin: 20px 0 20px 30
 </div>
 
 
-   <!-- DESNA KOLONA (Samo jedna glavna kutija, bez dupliranja) -->
-<div class="header-desktop-right-box">
+ <!-- DESNA STRANA - DVE ODVOJENE KUTIJE -->
+<div class="desktop-desna-strana">
 
-    <!-- 1. Slika sa dugmetom -->
-    <div class="sveca-kartica-desno">
-        <img src="pojas-presvete-bogorodice.jpg" alt="pojas" class="sveca-slika-desno">
-        <a href="akatist-presvetoj-bogorodici.html" class="procitaj-vise-dugme">📖</a>
-    </div>
-
-    <!-- 2. Audio plejer -->
-    <div class="player-wrapper">
-        <audio controls>
+    <!-- PRVA KUTIJA: Ikona i Audio Plejer -->
+    <div class="desktop-desna-kartica">
+        <div class="sveca-kartica-desno">
+            <img src="pojas-presvete-bogorodice.jpg" alt="pojas" class="sveca-slika-desno">
+            <a href="akatist-presvetoj-bogorodici.html" class="procitaj-vise-dugme">📖</a>
+        </div>
+        
+        <!-- Tvoj audio plejer za lokalni mp3 sa GitHub-a -->
+        <audio controls style="width: 100%; margin-top: 10px;">
             <source src="pojas.mp3" type="audio/mpeg">
+            Tvoj pretraživač ne podržava audio plejer.
         </audio>
     </div>
 
-    <!-- 3. Priča ispod plejera -->
-    <div class="prica-unutar-boxa">
+    <!-- DRUGA KUTIJA: Priča u svom posebnom okruženju -->
+    <div class="desktop-desna-kartica">
         <div class="naslov-header-desktop-right">КАКО ЂАВО ОБМАЊУЈЕ ЧОВЕКА</div>
-        <p style="text-align: justify;"> <p>Велики пустињак из околине Александрије ава Иларион, молио се Богу неколико година да му открије лукавство ђавола,
+        <p style="text-align: justify; margin: 0; font-size: 16px; line-height: 1.5;">
+            <p>Велики пустињак из околине Александрије ава Иларион, молио се Богу неколико година да му открије лукавство ђавола,
 како то они успевају да одведу људе од доброг пута, те их чине робовима греха, и одводе их у пакао. И једне ноћи,
 позове га Анђео да изађе на оближњи пропланак, да узме са собом крст, и да се ничега не боји.
 Угледао је како се насред пропланка појављује престо, и како долази сатана и седа на њега.. Пљеснуо је дланом од длан,
@@ -1214,6 +1216,8 @@ overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.3); margin: 20px 0 20px 30
 до смртне постеље, и тако их одводи у пакао.</p>
 </div>
 </div>
+        <div class="naslov-header-desktop-right">КАКО ЂАВО ОБМАЊУЈЕ ЧОВЕКА</div>
+        <p style="text-align: justify;">
 
 
 
