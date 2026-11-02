@@ -916,10 +916,36 @@ background-color: rgba(139, 111, 71, 0.03); /* Skoro nevidljiva senka */
 <div class="navigacija">
 <a href="decembar-2026.html">← децембар</a>
 <a href="index.html" class="dugme-pocetna">🏠 ПОЧЕТНА</a>    
-<a href="februar-2027.html">фебруар →</a>
+<a href="januar-2027.html">јануар →</a>
 </div>
 
-
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var danas = new Date();
+    // Данас је 5. април, тражимо текст "5."
+    var trazeniBroj = danas.getDate() + "."; 
+    
+    // Пролазимо кроз све твоје мале вагоне са новим датумом
+    var sveKolone = document.querySelectorAll(".novi-datum");
+    
+    sveKolone.forEach(function(kolona) {
+        if (kolona.innerText.trim() === trazeniBroj) {
+            // Ово каже: Нађи главни вагон "dan" који држи овај број
+            var glavniVagon = kolona.closest(".dan");
+            if (glavniVagon) {
+                // Фарбамо га директно у злато!
+                glavniVagon.style.background = "rgba(139, 111, 71, 0.25)";
+                glavniVagon.style.border = "2px solid #8b6f47";
+                glavniVagon.style.borderRadius = "12px";
+                glavniVagon.style.boxShadow = "0 4px 12px rgba(139, 111, 71, 0.3)";
+                
+                // Аутоматски скок на данашњи празник (Цвети)
+                glavniVagon.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+    });
+});
+</script>
 
 </body>
 </html>
