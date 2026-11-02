@@ -1,0 +1,925 @@
+<!DOCTYPE html> 
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><!-- Prikaz preko celog ekrana (bez browser trake) -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+
+<!-- Boja statusne trake (stavi boju tvog papira ili zlata) -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#EED69F">
+
+<!-- Naziv koji će pisati ispod ikonice na telefonu -->
+<meta name="apple-mobile-web-app-title" content="Каледар 2026">
+<title>Црквени календар – Фебруар 2026</title>
+
+
+
+<style>
+body {
+background-color: #EED69F;
+font-family: "Times New Roman", serif;
+color: #4A3728;
+margin: 0;
+padding: 0;
+}
+
+h1 {
+text-align: center;
+margin-bottom: 20px;
+}
+
+/* ZAGLAVLJE KOLONA */
+
+.zaglavlje-kolone {
+display: grid;
+grid-template-columns: 95px 50px 50px 1fr;
+border-bottom: 1px solid #8b6f47;
+padding: 12px 5px;
+font-weight: bold;
+
+}
+
+.zaglavlje-kolone div {
+padding: 0 10px;
+border-right: 1px solid #cbb489;
+}
+
+.zaglavlje-kolone div:last-child {
+border-right: none;
+}
+
+/* RED DANA */
+
+.dan {
+display: grid;
+grid-template-columns: 20px 20px 20px 1fr;
+padding: 5px;
+border-bottom: 1px solid #cbb489;
+align-items: start;
+}
+
+/* Kontejner koji drži sav tekst desno */
+.tekst-kontejner {
+    grid-column: 4; /* Uvek u četvrtoj koloni */
+    grid-row: 1 / 3; /* Zauzima visinu oba reda (i datuma i posta ispod) */
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+}
+
+/* Post koji ide tačno ISPOD prve tri kolone (dana i datuma) */
+.post-ispod {
+    grid-column: 1 / 4;
+    grid-row: 2;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 12px; /* Malo smanjen font da ikonica stane u red */
+    color: #5c4630;
+    text-align: center;
+    margin-top: -4px;
+    letter-spacing: 0.5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3px; /* Razmak između ikonice i teksta */
+}
+
+/* Maksimalno smanjujemo prored da nema rupa */
+.sadrzaj, .svetitelji, .praznik, .opis {
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 1.1; 
+}
+
+
+.opis {
+font-size: 20px;
+color: #5f0606;    
+margin-top: 4px;   !important; /* Minimalni razmak samo iznad opisa */
+}
+
+.dani-ukupno {
+font-size: 18px;
+color: #6b5440;
+font-style: italic;
+font-weight: 600;
+}
+
+.crveno {
+color: #dd1616;
+font-size: 18px;
+}
+
+.praznik {
+font-weight: 800;
+font-weight: bold;
+font-size: 17px;
+color: #2e1b08; /* ista boja kao običan tekst */
+}
+
+.obicno {
+font-size: 17px;
+color: #070000;
+font-weight: 540;
+line-height: 1.4;
+}
+
+.sadrzaj { 
+font-size: 21px;
+color: #070000;
+
+}
+
+
+.stari-datum {
+color: #d38d8d;
+font-size: 17px;
+font-weight: bold;
+}
+
+.dan-naziv {
+font-size: 17px;
+font-weight: bold;
+}
+
+.novi-datum {
+
+font-size: 17px;
+font-weight: bold;
+}
+.dan.nedelja dan.naziv,
+.dan.nedelja novi-datum {
+color: #dd1616;
+font-weight: bold;
+}
+
+.navigacija {
+display: flex;
+justify-content: space-between;
+margin-bottom: 15px;
+font-size: 20px;
+border-top: 1px solid #8b6f47;
+border-bottom: 1px solid #8b6f47;
+border-left: 1px solid #7a1f1f;
+border-right: 1px solid #7a1f1f;
+}
+.dugme-pocetna {
+    font-size: 18px;
+    text-decoration: none;
+    color: #4A3728;
+    font-weight: bold;
+    /* Možeš dodati i mali razmak oko kućice */
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.navigacija a {
+text-decoration: none;
+color: #6b5440;
+font-weight: 600;
+}
+
+.zaglavlje-kolone,
+.dan {
+width: 100%;
+box-sizing: border-box;
+}
+
+
+.navigacija a:hover {
+color: #c41e1e;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background-image: url("papir.png");
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.nedelja-naslov {
+font-size: 16px;
+color: #f90813;
+text-align: center;
+padding: 0px 0px;
+margin-top: 5px;
+margin-bottom: -5px;
+border-top: 2px solid #9f845d;    /* Deblja linija gore */
+border-bottom: 2px solid #b9a174; /* Tanja i svetlija linija dole */
+background-color: rgba(139, 111, 71, 0.03); /* Skoro nevidljiva senka */
+}
+
+/* MOBILNI: Da ne budu sitna slova */
+@media (max-width: 600px) {
+    .container { padding: 10px; width: 100%; }
+    .dan, .zaglavlje-kolone {
+        grid-template-columns: 20px 20px 20px 1fr !important;
+    }
+.svetitelj { font-size: 18px; }
+.sadrzaj { font-size: 21px; }
+.praznik { font-size: 18px; }
+.opis { font-size: 20px; }
+.obicno { font-size: 18px; }
+   body {
+        padding: 0; /* Brišemo razmak oko celog tela */
+    }
+    
+    .container {
+        width: 100%; /* Širi se na ceo ekran telefona */
+        max-width: 100%;
+        padding: 10px 5px; /* Minimalni razmak tek da slova ne udaraju u ivicu stakla */
+        margin: 0;
+    }
+
+    .dan {
+        padding: 8px 2px; /* Još malo širimo prostor za tekst unutar dana */
+    }
+}
+
+
+</style>
+
+</head>
+<body>
+
+<div class="container">
+<div class="navigacija">
+<a href="decembar-2026.html">← децембар</a>
+<a href="index.html" class="dugme-pocetna">🏠 ПОЧЕТНА</a>    
+<a href="februar-2027.html">фебруар →</a>
+</div>
+
+<h1>
+Јануар 2027 
+<span class="dani-ukupno">31 дан</span>
+</h1>
+
+<div class="zaglavlje-kolone">
+</div>
+
+<div class="dan">
+<div class="kol dan-naziv">П</div>
+<div class="kol novi-datum">1.</div>
+<div class="kol stari-datum">19.</div>
+
+<div class="tekst-kontejner">
+<div class="praznik"></div>
+<div class="svetitelji">
+<div class="sadrzaj">
+Свети мученик Бонифатије
+</div>
+</div>
+
+<div class="opis">
+Најбоље познаје себе онај ко за себе мисли да је ништа.
+</div>
+</div>
+
+<div class="post-ispod">⚱️ уље</div>
+</div>
+
+<div class="dan">
+<div class="kol dan-naziv">С</div>
+<div class="kol novi-datum">2.</div>
+<div class="kol stari-datum">20.</div>
+
+<div class="tekst-kontejner">
+<div class="praznik">Свети Игњатије Богоносац</div>
+<div class="svetitelji">
+<div class="sadrzaj">
+Свети Данило Други, архипископ српски 
+(Претпразништво Рождества)
+</div>
+</div>
+<div class="opis">
+Ко зида добро самим тим руши зло. Ко се пак окрене да руши зло,
+брзо заборави зидати добро и претвори се у злочинца. 
+</div>
+</div>
+
+<div class="post-ispod">⚱️ уље</div>
+</div>
+
+<div class="dan">
+<div class="kol dan-naziv">Н</div>
+<div class="kol novi-datum">3.</div>
+<div class="kol stari-datum">21.</div>
+
+<div class="tekst-kontejner">
+<div class="praznik"></div>
+<div class="svetitelji">
+<div class="sadrzaj">
+Света мученица Јулијана; Свети Петар Кијевски
+</div>
+</div>
+<div class="opis">
+Најбољи бизнис је отварање фабрике која производи 
+позитивне мисли. 
+</div>
+</div>
+<div class="post-ispod">⚱️ уље</div>
+</div>
+
+<div class="nedelja-naslov">
+Недеља 30. по Духовима – Светих Отаца. Глас 5. Јев. вас. 8. (Јн 20, 11-18). На Литургиjи, ап. зач. 328. (Јев 11, 9-10; 17-23; 32-40). Јев. Мт зач. 1. (1, 1-25).
+</div>
+
+<div class="dan">
+</div>
+
+<div class="dan">
+<div class="kol dan-naziv crveno">П</div>
+<div class="kol novi-datum crveno">4.</div>
+<div class="kol stari-datum">22.</div>
+
+<div class="tekst-kontejner">
+<div class="praznik">Оци</div>
+<div class="praznik"></div>
+<div class="svetitelji">
+<div class="sadrzaj">
+Света великомученица Анастасија; Свети Никифор Лепрозни;
+Недеља Светих Отаца  
+</div>
+</div>
+<div class="opis">
+Не намећи своје мишљење никоме па макар ти
+био и у праву. Јер, што више притискаш, то више одскаче.
+</div>
+</div>
+<div class="post-ispod">⚱️ уље</div>
+</div>
+
+<div class="dan">
+<div class="kol dan-naziv">У</div>
+<div class="kol novi-datum">5.</div>
+<div class="kol stari-datum">23.</div>
+
+<div class="tekst-kontejner">
+<div class="praznik"></div>
+<div class="svetitelji">
+<div class="sadrzaj">
+Светих 10 мученика Критских; 
+Преподобни Наум Охридски – Туциндан
+</div>
+</div>
+<div class="opis">
+Кад би ти понудили златан пехар са најбољим вином у свету и рекли:
+Пиј, но знај да је на дну шкорпија-да ли би пио?
+</div>
+</div>
+<div class="post-ispod">💧 вода</div>
+</div>
+
+<div class="dan">
+<div class="kol dan-naziv">С</div>
+<div class="kol novi-datum">6.</div>
+<div class="kol stari-datum">24.</div>
+
+<div class="tekst-kontejner">
+<div class="praznik">Бадњи дан</div>
+<div class="svetitelji">
+<div class="sadrzaj">
+Света преподобномученица Евгенија  
+</div>
+</div>
+<div class="opis">
+Изгубити стид значи, на крају крајева, признати себе савршеним.
+</div>
+</div>
+<div class="post-ispod">⚱️ уље</div>
+</div>
+
+<div class="dan">
+<div class="kol dan-naziv">Ч</div>
+<div class="kol novi-datum">7.</div>
+<div class="kol stari-datum">25.</div>
+
+<div class="tekst-kontejner">
+<div class="sadrzaj">
+<div class="praznik"></div>
+<div class="svetitelji crveno">
+Рождество Христово – Божић
+</div>
+</div>
+<div class="opis">
+Чувај се више зависти пријатеља него непријатеља
+јер непријатељ ти завиди јавно, а пријатељ тајно.
+</div>
+</div>
+<div class="post-ispod">мрс</div>
+</div>
+
+<div class="dan">
+<div class="kol dan-naziv">П</div>
+<div class="kol novi-datum">8.</div>
+<div class="kol stari-datum crveno">26.</div>
+
+<div class="tekst-kontejner">
+<div class="sadrzaj">
+<div class="praznik"></div>
+<div class="svetitelji crveno">
+Сабор Пресвете Богородице
+</div>
+</div>
+<div class="opis">
+Не наводи друге на грех. Чувај себе од греха
+и не буди повод туђем греху.
+</div>
+</div>
+<div class="post-ispod">мрс</div>
+</div>
+
+<div class="dan">
+<div class="kol dan-naziv">С</div>
+<div class="kol novi-datum">9.</div>
+<div class="kol stari-datum">27.</div>
+
+<div class="tekst-kontejner">
+<div class="sadrzaj">
+<div class="praznik"></div>
+<div class="svetitelji crveno">
+Свети првомученик и архиђакон Стефан
+</div>
+</div>
+
+<div class="opis">
+Прва сласт човекова је млеко, а последња-мисао.
+</div>
+</div>
+<div class="post-ispod">мрс</div>
+</div>
+
+
+<div class="dan">
+<div class="kol dan-naziv">Н</div>
+<div class="kol novi-datum">10.</div>
+<div class="kol stari-datum">28.</div>
+
+<div class="tekst-kontejner">
+<div class="praznik"></div>
+<div class="svetitelji">
+<div class="sadrzaj">
+Светих 20.000 мученика Никомидијских
+</div>
+</div>
+<div class="opis">
+Све бриге ваше као трње су што сејете по путу своме. Оне не производе кишу,
+но чине сушу још сушнијом. Не додају живота, но гомилају немоћи.
+</div>
+</div>
+<div class="post-ispod">мрс</div>
+</div>
+
+<div class="nedelja-naslov">
+Недеља 31. по Духовима – Богоотаца. Глас 6. Јев. вас. 9. (Јн 20, 19-31). На Лит. ап. зач. 200. (Гал 1, 11-19) . Јев. Мт зач. 4. (2, 13-23).
+</div>
+
+<div class="dan">
+</div>
+
+<div class="dan">
+<div class="kol dan-naziv crveno">П</div>
+<div class="kol novi-datum crveno">11.</div>
+<div class="kol stari-datum">29.</div>
+
+<div class="tekst-kontejner">
+<div class="praznik"></div>
+<div class="svetitelji">
+<div class="sadrzaj">
+Светих 14.000 младенаца Витлејемских
+</div>
+</div>
+<div class="opis">
+Бескорисне слуге, обратите бриге у молитве као што
+се лед обраћа у текућу воду.
+</div>
+</div>
+<div class="post-ispod">мрс</div>
+</div>
+
+<div class="dan">
+<div class="kol dan-naziv">У</div>
+<div class="kol novi-datum">12.</div>
+<div class="kol stari-datum crveno">30.</div>
+
+<div class="tekst-kontejner">
+<div class="praznik"></div>
+<div class="praznik"></div>
+<div class="svetitelji">
+<div class="sadrzaj">
+Света мученица Анисија; Преподобна Теодора 
+</div>
+</div>
+<div class="opis">
+Нећеш се спасити ако себе спашаваш док 
+други због тебе падају у пропаст.
+</div>
+</div>
+<div class="post-ispod">мрс</div>
+</div>
+
+<div class="dan">
+<div class="kol dan-naziv">С</div>
+<div class="kol novi-datum">13.</div>
+<div class="kol stari-datum">31.</div>
+
+<div class="tekst-kontejner">
+<div class="praznik"></div>
+<div class="svetitelji">
+<div class="sadrzaj">
+Преподобна Меланија; Свети Доситеј Загребачки Исповедник
+</div>
+</div>
+<div class="opis">
+Није богат онај који поседује иметак и чува га, него онај који га дели.
+Жртва, а не поседовање нас усрећује.
+</div>
+</div>
+<div class="post-ispod">мрс</div>
+</div>
+
+<div class="dan">
+<div class="kol dan-naziv crveno">Ч</div>
+<div class="kol novi-datum crveno">14.</div>
+<div class="kol stari-datum">1.</div>
+
+<div class="tekst-kontejner">
+<div class="sadrzaj">
+<div class="praznik"></div>
+<div class="svetitelji crveno">
+ЈАНУАР – Нова година – Обрезање Господње; 
+Свети Василије Велики
+</div>
+</div>
+<div class="opis">
+Ко купује орахе, не цени по љусци него по језгру.
+</div>
+</div>
+<div class="post-ispod">мрс</div>
+</div>
+
+
+<div class="dan">
+<div class="kol dan-naziv">П</div>
+<div class="kol novi-datum">15.</div>
+<div class="kol stari-datum crveno">2.</div>
+
+<div class="tekst-kontejner">
+<div class="sadrzaj">
+<div class="praznik"></div>
+<div class="svetitelji">
+Преподобни Серафим Саровски;
+Свети Силвестар (Претпразништво Богојављења)
+</div>
+</div>
+<div class="opis">
+Када би било корисно знати будућност, 
+онда то Бог не би сакрио од нас. (Св. Јован Златоусти)
+</div>
+</div>
+<div class="post-ispod">мрс</div>
+</div>
+
+<div class="dan">
+<div class="kol dan-naziv">С</div>
+<div class="kol novi-datum">16.</div>
+<div class="kol stari-datum">3.</div>
+
+<div class="tekst-kontejner">
+<div class="praznik"></div>
+<div class="svetitelji">
+<div class="sadrzaj">
+Свети пророк Малахија; Свети мученик Гордије
+</div>
+</div>
+<div class="opis">
+Ђаво нас учи да изврћемо речи да не бисмо, када нас питају,
+себе окривили, већ да бисмо, учинивши грех, слагали и оправдали себе.
+</div>
+</div>
+<div class="post-ispod">мрс</div>
+</div>
+
+<div class="dan">
+<div class="kol dan-naziv">Н</div>
+<div class="kol novi-datum">17.</div>
+<div class="kol stari-datum">4.</div>
+
+<div class="tekst-kontejner">
+<div class="praznik"></div>
+<div class="svetitelji">
+<div class="sadrzaj">
+Сабор 70 светих апостола; Свети Јевстатије српски
+</div>
+</div>
+<div class="opis">
+Добро је да помажемо речима оне који питају, али је много боље да их
+помогнемо молитвом и врлином. Јер, онај ко себе помоћу њих приноси Богу,
+помаже и себи и своме ближњем.
+</div>
+</div>
+<div class="post-ispod">мрс</div>
+</div>
+
+<div class="nedelja-naslov">
+Недеља 32. по Духовима – пред Богојављење. Глас 7. Јев. вас. 10, (Јн 21, 1-14). На Литургиjи, ап. зач. 298. (2. Тим 4, 5-8). Јев. Мк зач. 1. (1, 1-8).
+</div>
+
+
+<div class="dan">
+</div>
+
+<div class="dan">
+<div class="kol dan-naziv crveno">П</div>
+<div class="kol novi-datum crveno">18.</div>
+<div class="kol stari-datum">5.</div>
+
+<div class="tekst-kontejner">
+<div class="sadrzaj">
+<div class="praznik">Крстовдан</div>
+<div class="svetitelji">
+Свети Теопемт и Теона 
+</div>
+</div>
+</div>
+
+<div class="post-ispod">⚱️ уље</div>
+</div>
+
+<div class="dan">
+<div class="kol dan-naziv">У</div>
+<div class="kol novi-datum">19.</div>
+<div class="kol stari-datum">6.</div>
+
+<div class="tekst-kontejner">
+<div class="sadrzaj">
+<div class="praznik"></div>
+<div class="svetitelji crveno">
+Богојављење
+</div>
+</div>
+<div class="opis">
+Никада се не бој онога чега се Бог не боји.
+</div>
+</div>
+<div class="post-ispod">мрс</div>
+</div>
+
+<div class="dan">
+<div class="kol dan-naziv">С</div>
+<div class="kol novi-datum">20.</div>
+<div class="kol stari-datum">7.</div>
+
+<div class="tekst-kontejner">
+<div class="sadrzaj">
+<div class="praznik"></div>
+<div class="svetitelji crveno">
+Сабор светог Јована Крститеља – Јовањдан
+</div>
+</div>
+<div class="opis">
+Две храбрости су потребне покајнику-једном храброшћу да заплаче
+над старим путем и другом се обрадује новом.
+</div>
+</div>
+<div class="post-ispod">💧 вода</div>
+</div>
+
+<div class="dan">
+<div class="kol dan-naziv">Ч</div>
+<div class="kol novi-datum">21.</div>
+<div class="kol stari-datum">8.</div>
+
+<div class="tekst-kontejner">
+<div class="praznik"></div>
+<div class="svetitelji">
+<div class="sadrzaj">
+Свети мученик Јулијан и Василиса;
+Преподобни Георгије Хозевит; свети Григорије Охридски
+</div>
+</div>
+<div class="opis">
+Децо, мудрије је сејати со но грех. Из првог семена неће нићи ништа,
+из другог нићи ће језици, који ће вас оптужити.
+</div>
+</div>
+<div class="post-ispod">мрс</div>
+</div>
+
+<div class="dan">
+<div class="kol dan-naziv">П</div>
+<div class="kol novi-datum">22.</div>
+<div class="kol stari-datum">9.</div>
+
+<div class="tekst-kontejner">
+<div class="sadrzaj">
+<div class="praznik"></div>
+<div class="svetitelji">
+Свети мученик Полиевкт; Свети Филип Московски
+</div>
+</div>
+<div class="opis">
+Молитва је први дар Божији, кроз који се сви остали дарови задобијају.
+</div>
+</div>
+<div class="post-ispod">⚱️ уље</div>
+</div>
+
+<div class="dan">
+<div class="kol dan-naziv">С</div>
+<div class="kol novi-datum">23.</div>
+<div class="kol stari-datum">10.</div>
+
+<div class="tekst-kontejner">
+<div class="sadrzaj">
+<div class="praznik"></div>
+<div class="svetitelji">
+Свети Григорије Ниски; Преподобни Дометијан Митилински
+</div>
+</div>
+<div class="opis">
+Не прљај онога који се почео прати, него му помози да се опере.
+</div>
+</div>
+<div class="post-ispod">мрс</div>
+</div>
+
+
+<div class="dan">
+<div class="kol dan-naziv">Н</div>
+<div class="kol novi-datum">24.</div>
+<div class="kol stari-datum">11.</div>
+
+<div class="tekst-kontejner">
+<div class="sadrzaj">
+<div class="praznik"></div>
+<div class="svetitelji">
+Преподобни Теодосије Велики; Преподобни Михаило Клопски
+</div>
+</div>
+<div class="opis">
+Нека твоје пријатељство не буде из потребе да се избегне усамљеност, 
+већ из унутрашњег богатства.
+</div>
+</div>
+<div class="post-ispod">мрс</div>
+</div>
+
+<div class="nedelja-naslov">
+Недеља 33. по Духовима – по Богојављењу. Глас 8. Јев. вас. 11. (Јн 21, 15-25). На Литургиjи, ап. зач. 224. (Еф 4, 7-13). Јев. Мт зач. 8. (4, 12-17).
+</div>
+
+<div class="dan">
+</div>
+
+<div class="dan">
+<div class="kol dan-naziv crveno">П</div>
+<div class="kol novi-datum crveno">25.</div>
+<div class="kol stari-datum">12.</div>
+
+<div class="tekst-kontejner">
+<div class="sadrzaj">
+<div class="praznik"></div>
+<div class="svetitelji">
+Света мученица Татијана; Икона Млекопитатељница
+</div>
+</div>
+<div class="opis">
+Истина је слична медицини; горка и лековита.
+</div>
+</div>
+<div class="post-ispod">мрс</div>
+</div>
+
+
+<div class="dan">
+<div class="kol dan-naziv">У</div>
+<div class="kol novi-datum">26.</div>
+<div class="kol stari-datum">13.</div>
+
+<div class="tekst-kontejner">
+<div class="sadrzaj">
+<div class="praznik"></div>
+<div class="svetitelji">
+Свети мученици Ермил и Стратоник;
+(Оданије Богојављења)
+</div>
+</div>
+<div class="opis">
+Што год ткаш, везуј концем за небо.
+</div>
+</div>
+<div class="post-ispod">мрс</div>
+</div>
+
+<div class="dan">
+<div class="kol dan-naziv crveno">С</div>
+<div class="kol novi-datum crveno">27.</div>
+<div class="kol stari-datum">14.</div>
+
+<div class="tekst-kontejner">
+<div class="sadrzaj">
+<div class="praznik"></div>
+<div class="svetitelji crveno">
+Свети Сава, први архиепископ српски – Савиндан; 
+Света Нина Грузијска
+</div>
+</div>
+<div class="opis">
+Високо цени сваки свој уздисај, јер се он неће вратити.
+</div>
+</div>
+<div class="post-ispod">мрс</div>
+</div>
+
+<div class="dan">
+<div class="kol dan-naziv">Ч</div>
+<div class="kol novi-datum">28.</div>
+<div class="kol stari-datum">15.</div>
+
+<div class="tekst-kontejner">
+<div class="sadrzaj">
+<div class="praznik"></div>
+<div class="svetitelji">
+Преподобни Павле; преподобни Гаврило Лесновски
+</div>
+</div>
+<div class="opis">
+Ни један пријатељ злата никад није постао пријатељ Христа или људи.
+</div>
+</div>
+<div class="post-ispod">⚱️ уље</div>
+</div>
+
+<div class="dan">
+<div class="kol dan-naziv">П</div>
+<div class="kol novi-datum">29.</div>
+<div class="kol stari-datum">16.</div>
+
+<div class="tekst-kontejner">
+<div class="sadrzaj">
+<div class="praznik">Часне вериге Светог апостола Петра</div>
+<div class="svetitelji">
+Преподобни Ромило Раванички
+</div>
+</div>
+<div class="opis">
+Ко зида добро самим тим руши зло. Ко се пак окрене да руши зло,
+брзо заборави зидати добро и претвори се у злочинца.
+</div>
+</div>
+<div class="post-ispod">мрс</div>
+</div>
+
+<div class="dan">
+<div class="kol dan-naziv">С</div>
+<div class="kol novi-datum">30.</div>
+<div class="kol stari-datum">17.</div>
+
+<div class="tekst-kontejner">
+<div class="sadrzaj">
+<div class="praznik"></div>
+<div class="svetitelji">
+Преподобни Антоније Велики
+</div>
+</div>
+<div class="opis">
+Исправна вера не користи ништа ако је живот искварен.
+</div>
+</div>
+<div class="post-ispod">⚱️ уље</div>
+</div>
+
+<div class="dan">
+<div class="kol dan-naziv">Н</div>
+<div class="kol novi-datum">31.</div>
+<div class="kol stari-datum">18.</div>
+
+<div class="tekst-kontejner">
+<div class="sadrzaj">
+<div class="praznik">Свети Атанасије Велики</div>
+<div class="svetitelji">
+Свети Максим архиепископ српски
+</div>
+</div>
+<div class="opis">
+Када је труд на нашој страни одсутан тада и Божија помоћ престаје.
+</div>
+</div>
+<div class="post-ispod">мрс</div>
+</div>
+
+<div class="container">
+<div class="navigacija">
+<a href="decembar-2026.html">← децембар</a>
+<a href="index.html" class="dugme-pocetna">🏠 ПОЧЕТНА</a>    
+<a href="februar-2027.html">фебруар →</a>
+</div>
+
+
+
+</body>
+</html>
