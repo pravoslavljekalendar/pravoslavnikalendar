@@ -1,4 +1,4 @@
-const CACHE_NAME ='pravoslavna-riznica-final-v72';
+const CACHE_NAME ='pravoslavna-riznica-final-v73';
 const OFFLINE_ASSETS = [
   './',
   './index.html',
