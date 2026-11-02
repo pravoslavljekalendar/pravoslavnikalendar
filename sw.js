@@ -278,6 +278,7 @@ const OFFLINE_ASSETS = [
   './novembar-2026.html',
   './decembar-2026.html',
   './januar-2027.html',
+  './februar-2026.html',
   './prolog-januar.html',
   './prolog-februar.html',
   './prolog-mart.html',
