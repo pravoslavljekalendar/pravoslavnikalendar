@@ -1,4 +1,4 @@
-const CACHE_NAME ='pravoslavna-riznica-final-v73';
+const CACHE_NAME ='pravoslavna-riznica-final-v74';
 const OFFLINE_ASSETS = [
   './',
   './index.html',
@@ -278,7 +278,7 @@ const OFFLINE_ASSETS = [
   './novembar-2026.html',
   './decembar-2026.html',
   './januar-2027.html',
-  './februar-2026.html',
+  './februar-2027.html',
   './prolog-januar.html',
   './prolog-februar.html',
   './prolog-mart.html',
