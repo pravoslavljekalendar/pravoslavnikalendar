@@ -1,4 +1,4 @@
-const CACHE_NAME ='pravoslavna-riznica-final-v74';
+const CACHE_NAME ='pravoslavna-riznica-final-v75';
 const OFFLINE_ASSETS = [
   './',
   './index.html',
@@ -417,7 +417,7 @@ const OFFLINE_ASSETS = [
   './matej-11.html', './matej-12.html', './matej-13.html', './matej-14.html', './matej-15.html',
   './matej-16.html', './matej-17.html', './matej-18.html', './matej-19.html', './matej-20.html',
   './matej-21.html', './matej-22.html', './matej-23.html', './matej-24.html', './matej-25.html',
-  './matej-26.html', './matej-27.html', './matej-28.html',
+  './matej-26.html', './matej-27.html', './matej-28.html', './matej-sve.html',
   './marko-1.html', './marko-2.html', './marko-3.html', './marko-4.html', './marko-5.html',
   './marko-6.html', './marko-7.html', './marko-8.html', './marko-9.html', './marko-10.html',
   './marko-11.html', './marko-12.html', './marko-13.html', './marko-14.html', './marko-15.html', 
