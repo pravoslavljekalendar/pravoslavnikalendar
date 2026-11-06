@@ -1,156 +1,578 @@
-<!DOCTYPE html>
-<html lang="sr">
-<head>
-    <meta charset="UTF-8">
+<!DOCTYPE html> 
+<html lang="sr"> 
+<head> 
+    <meta charset="UTF-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Аудио молитве</title>
-
-
+    <title>Аудио молитве и песме</title> 
+</head> 
 <style>
-
-        body {
+	body {
             margin: 0;
-            background-image: url("papir.png");
+            background-image: url("papir.jpg");
             background-size: cover;
             background-attachment: fixed; /* Pozadina se ne pomera dok skroluješ tekst */
             font-family: "Times New Roman", serif;
             color: #4A3728;
             text-align: center;
         }
-
-  .container { padding-top: 20px; width: 50%; margin: auto; }
-        iframe {
-            width: 100%;
-            height: 5vh;
-            border: 2px solid #2E1B08;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-            background-image: url("papir.jpg");
+.fiksni-vrh {
+            position: fixed;
+            bottom: 25px;
+            right: 20px;
+            background: rgba(242, 230, 201, 0.95); /* Твоја беж */
+            border: 1px solid #8b6f47; /* Златни оквир */
+            border-radius: 50%; /* Круг */
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: #8b6f47;
+            font-size: 24px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            z-index: 9999;
+            transition: 0.3s;
+        }
+        .fiksni-vrh:hover {
+            transform: scale(1.1);
         }
 
-.molitvenik-dugme {
-            position: fixed; top: 15px; left: 15px;
-            background: rgba(242, 230, 201, 0.9);
-            padding: 10px 15px; border-radius: 8px;
-            border: 1px solid #2E1B08; text-decoration: none; 
-            font-size: 20px; z-index: 1000; color: #2E1B08;
+     /* СТАЊЕНА КУТИЈА ПЛЕЈЕРА У ЈЕДНОМ РЕДУ */
+        .kutija-plejer { 
+            background: rgba(242, 230, 201, 0.88); 
+            border: 1px solid #8b6f47; border-radius: 8px; 
+            padding: 5px 12px; max-width: 440px; 
+            margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+            display: flex; align-items: center; justify-content: space-between;
+        } 
+        .naslov-glave { 
+            color: #8b0000; font-size: 17px; font-weight: bold; 
+            margin-bottom: 0; white-space: nowrap; padding-right: 10px;
+            text-align: left; width: 25%;
+        } 
+        audio { width: 75%; height: 28px; outline: none; } 
+        .sekcija-naslov {
+            color: #4A3728; font-size: 24px; margin-top: 40px; margin-bottom: 15px;
+            border-bottom: 1px dotted #8b6f47; padding-bottom: 5px;
         }
+
+	 </style>
+    <h1 style="font-weight: bold; margin-bottom: 5px;">Аудио ризница</h1> 
+    <p style="font-style: italic; margin-bottom: 40px;">Духовне песме и молитве за умирење душе.</p> 
+
+   
+<!-- ПЛЕЈЕР 1: Благословен јеси Господи -->
+  <div style="background: rgba(242, 230, 201, 0.88); 
+            border: 1px solid #8b6f47; border-radius: 8px; 
+            padding: 5px 12px; max-width: 440px; 
+            margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+            display: flex; align-items: center; justify-content: space-between;">
+            <h3 style="margin-top: 0; color: #4A3728; font-size: 18px;">🎶 Чисто срце</h3>
+        <audio controls style="width: 100%;">
+            <source src="pesme/cisto-srce.mp3" type="audio/mpeg">
+            Ваш прегледач не подржава аудио плејер.
+        </audio>
+
+    </div>
+	
+<!-- ПЛЕЈЕР 1: Благословен јеси Господи -->
+  <div style="background: rgba(242, 230, 201, 0.88); 
+            border: 1px solid #8b6f47; border-radius: 8px; 
+            padding: 5px 12px; max-width: 440px; 
+            margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+            display: flex; align-items: center; justify-content: space-between;">
+            <h3 style="margin-top: 0; color: #4A3728; font-size: 18px;">🎶 Видовдан</h3>
+        <audio controls style="width: 100%;">
+            <source src="pesme/sestrinstvo-manastira-vidovdan.mp3" type="audio/mpeg">
+            Ваш прегледач не подржава аудио плејер.
+        </audio>
+        
+    </div>
+
+
+ <!-- ПЛЕЈЕР 1: Благословен јеси Господи -->
+  <div style="background: rgba(242, 230, 201, 0.88); 
+            border: 1px solid #8b6f47; border-radius: 8px; 
+            padding: 5px 12px; max-width: 440px; 
+            margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+            display: flex; align-items: center; justify-content: space-between;">
+            <h3 style="margin-top: 0; color: #4A3728; font-size: 18px;">🎶 Косово памти</h3>
+        <audio controls style="width: 100%;">
+            <source src="pesme/kosovo-pamti.mp3" type="audio/mpeg">
+            Ваш прегледач не подржава аудио плејер.
+        </audio>
+ </div>
+
+
+
+ <!-- ПЛЕЈЕР 1: Благословен јеси Господи -->
+  <div style="background: rgba(242, 230, 201, 0.88); 
+            border: 1px solid #8b6f47; border-radius: 8px; 
+            padding: 5px 12px; max-width: 440px; 
+            margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+            display: flex; align-items: center; justify-content: space-between;">
+            <h3 style="margin-top: 0; color: #4A3728; font-size: 18px;">🎶 Ој, Косово, Косово</h3>
+        <audio controls style="width: 100%;">
+            <source src="pesme/sestrinstvo-manastira-oj-kosovo-kosovo.mp3" type="audio/mpeg">
+            Ваш прегледач не подржава аудио плејер.
+        </audio>
+        
+    </div>
+
+
+ <!-- ПЛЕЈЕР 1: Благословен јеси Господи -->
+  <div style="background: rgba(242, 230, 201, 0.88); 
+            border: 1px solid #8b6f47; border-radius: 8px; 
+            padding: 5px 12px; max-width: 440px; 
+            margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+            display: flex; align-items: center; justify-content: space-between;">
+            <h3 style="margin-top: 0; color: #4A3728; font-size: 18px;">🎶 Ми смо деца неба</h3>
+        <audio controls style="width: 100%;">
+            <source src="pesme/mi-smo-deca-neba.mp3" type="audio/mpeg">
+            Ваш прегледач не подржава аудио плејер.
+        </audio>
+        
+    </div>
+
+
+<!-- ПЛЕЈЕР 1: Благословен јеси Господи -->
+  <div style="background: rgba(242, 230, 201, 0.88); 
+            border: 1px solid #8b6f47; border-radius: 8px; 
+            padding: 5px 12px; max-width: 440px; 
+            margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+            display: flex; align-items: center; justify-content: space-between;">
+            <h3 style="margin-top: 0; color: #4A3728; font-size: 18px;">🎶 Песма Богородици</h3>
+        <audio controls style="width: 100%;">
+            <source src="pesme/bogorodica.mp3" type="audio/mpeg">
+            Ваш прегледач не подржава аудио плејер.
+        </audio>
+ </div>
+
+ <!-- ПЛЕЈЕР 1: Благословен јеси Господи -->
+  <div style="background: rgba(242, 230, 201, 0.88); 
+            border: 1px solid #8b6f47; border-radius: 8px; 
+            padding: 5px 12px; max-width: 440px; 
+            margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+            display: flex; align-items: center; justify-content: space-between;">
+            <h3 style="margin-top: 0; color: #4A3728; font-size: 18px;">🎶 Песма Светој Ксенији</h3>
+        <audio controls style="width: 100%;">
+            <source src="pesme/pesma-svetoj-kseniji.mp3" type="audio/mpeg">
+            Ваш прегледач не подржава аудио плејер.
+        </audio>
+        
+    </div>
+
+ <!-- ПЛЕЈЕР 1: Благословен јеси Господи -->
+  <div style="background: rgba(242, 230, 201, 0.88); 
+            border: 1px solid #8b6f47; border-radius: 8px; 
+            padding: 5px 12px; max-width: 440px; 
+            margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+            display: flex; align-items: center; justify-content: space-between;">
+            <h3 style="margin-top: 0; color: #4A3728; font-size: 18px;">🎶 Пресвета Богородице спаси нас</h3>
+        <audio controls style="width: 100%;">
+            <source src="pesme/presveta-bogorodice-spasi-nas.mp3" type="audio/mpeg">
+            Ваш прегледач не подржава аудио плејер.
+        </audio>
+        
+    </div>
+
+ <!-- ПЛЕЈЕР 1: Благословен јеси Господи -->
+  <div style="background: rgba(242, 230, 201, 0.88); 
+            border: 1px solid #8b6f47; border-radius: 8px; 
+            padding: 5px 12px; max-width: 440px; 
+            margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+            display: flex; align-items: center; justify-content: space-between;">
+            <h3 style="margin-top: 0; color: #4A3728; font-size: 18px;">🎶 Богородице дјево</h3>
+        <audio controls style="width: 100%;">
+            <source src="pesme/bogorodice-djevo.mp3" type="audio/mpeg">
+            Ваш прегледач не подржава аудио плејер.
+        </audio>
+        
+    </div>
+
+ <!-- ПЛЕЈЕР 1: Благословен јеси Господи -->
+  <div style="background: rgba(242, 230, 201, 0.88); 
+            border: 1px solid #8b6f47; border-radius: 8px; 
+            padding: 5px 12px; max-width: 440px; 
+            margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+            display: flex; align-items: center; justify-content: space-between;">
+            <h3 style="margin-top: 0; color: #4A3728; font-size: 18px;">🎶 Душо моја свет се нагло мења</h3>
+        <audio controls style="width: 100%;">
+            <source src="pesme/duso-moja-svet-se-naglo-menja.mp3" type="audio/mpeg">
+            Ваш прегледач не подржава аудио плејер.
+        </audio>
+        
+    </div>
+
+ <!-- ПЛЕЈЕР 1: Благословен јеси Господи -->
+  <div style="background: rgba(242, 230, 201, 0.88); 
+            border: 1px solid #8b6f47; border-radius: 8px; 
+            padding: 5px 12px; max-width: 440px; 
+            margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+            display: flex; align-items: center; justify-content: space-between;">
+            <h3 style="margin-top: 0; color: #4A3728; font-size: 18px;">🎶 Душо моја</h3>
+        <audio controls style="width: 100%;">
+            <source src="pesme/duso-moja.mp3" type="audio/mpeg">
+            Ваш прегледач не подржава аудио плејер.
+        </audio>
+        
+    </div>
+
+ <!-- ПЛЕЈЕР 1: Благословен јеси Господи -->
+  <div style="background: rgba(242, 230, 201, 0.88); 
+            border: 1px solid #8b6f47; border-radius: 8px; 
+            padding: 5px 12px; max-width: 440px; 
+            margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+            display: flex; align-items: center; justify-content: space-between;">
+            <h3 style="margin-top: 0; color: #4A3728; font-size: 18px;">🎶 Два ањђела шеташе</h3>
+        <audio controls style="width: 100%;">
+            <source src="pesme/dva-andjela-setase.mp3" type="audio/mpeg">
+            Ваш прегледач не подржава аудио плејер.
+        </audio>
+        
+    </div>
+
+ <!-- ПЛЕЈЕР 1: Благословен јеси Господи -->
+  <div style="background: rgba(242, 230, 201, 0.88); 
+            border: 1px solid #8b6f47; border-radius: 8px; 
+            padding: 5px 12px; max-width: 440px; 
+            margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+            display: flex; align-items: center; justify-content: space-between;">
+            <h3 style="margin-top: 0; color: #4A3728; font-size: 18px;">🎶 Господи помилуј, Господи прости</h3>
+        <audio controls style="width: 100%;">
+            <source src="pesme/gospodi-pomiluj-gospodi-prosti.mp3" type="audio/mpeg">
+            Ваш прегледач не подржава аудио плејер.
+        </audio>
+        
+    </div>
+
+ <!-- ПЛЕЈЕР 1: Благословен јеси Господи -->
+  <div style="background: rgba(242, 230, 201, 0.88); 
+            border: 1px solid #8b6f47; border-radius: 8px; 
+            padding: 5px 12px; max-width: 440px; 
+            margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+            display: flex; align-items: center; justify-content: space-between;">
+            <h3 style="margin-top: 0; color: #4A3728; font-size: 18px;">🎶 Говори Господе</h3>
+        <audio controls style="width: 100%;">
+            <source src="pesme/govori-gospode.mp3" type="audio/mpeg">
+            Ваш прегледач не подржава аудио плејер.
+        </audio>
+        
+    </div>
+
+ <!-- ПЛЕЈЕР 1: Благословен јеси Господи -->
+  <div style="background: rgba(242, 230, 201, 0.88); 
+            border: 1px solid #8b6f47; border-radius: 8px; 
+            padding: 5px 12px; max-width: 440px; 
+            margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+            display: flex; align-items: center; justify-content: space-between;">
+            <h3 style="margin-top: 0; color: #4A3728; font-size: 18px;">🎶 Иже Херувими</h3>
+        <audio controls style="width: 100%;">
+            <source src="pesme/ize-heruvimi.mp3" type="audio/mpeg">
+            Ваш прегледач не подржава аудио плејер.
+        </audio>
+        
+    </div>
+
+ <!-- ПЛЕЈЕР 1: Благословен јеси Господи -->
+  <div style="background: rgba(242, 230, 201, 0.88); 
+            border: 1px solid #8b6f47; border-radius: 8px; 
+            padding: 5px 12px; max-width: 440px; 
+            margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+            display: flex; align-items: center; justify-content: space-between;">
+            <h3 style="margin-top: 0; color: #4A3728; font-size: 18px;">🎶 Плач Марије</h3>
+        <audio controls style="width: 100%;">
+            <source src="pesme/julija-slavjanska-plac-marije.mp3" type="audio/mpeg">
+            Ваш прегледач не подржава аудио плејер.
+        </audio>
+        
+    </div>
+
+ <!-- ПЛЕЈЕР 1: Благословен јеси Господи -->
+  <div style="background: rgba(242, 230, 201, 0.88); 
+            border: 1px solid #8b6f47; border-radius: 8px; 
+            padding: 5px 12px; max-width: 440px; 
+            margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+            display: flex; align-items: center; justify-content: space-between;">
+            <h3 style="margin-top: 0; color: #4A3728; font-size: 18px;">🎶 Бели анђео</h3>
+        <audio controls style="width: 100%;">
+            <source src="pesme/julija-slavjanska-beli-andjeo.mp3" type="audio/mpeg">
+            Ваш прегледач не подржава аудио плејер.
+        </audio>
+        
+    </div>
+
+ <!-- ПЛЕЈЕР 1: Благословен јеси Господи -->
+  <div style="background: rgba(242, 230, 201, 0.88); 
+            border: 1px solid #8b6f47; border-radius: 8px; 
+            padding: 5px 12px; max-width: 440px; 
+            margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+            display: flex; align-items: center; justify-content: space-between;">
+            <h3 style="margin-top: 0; color: #4A3728; font-size: 18px;">🎶 Ко има уши нека чује</h3>
+        <audio controls style="width: 100%;">
+            <source src="pesme/ko-ima-usi-neka-cuje.mp3" type="audio/mpeg">
+            Ваш прегледач не подржава аудио плејер.
+        </audio>
+        
+    </div>
+
+ <!-- ПЛЕЈЕР 1: Благословен јеси Господи -->
+  <div style="background: rgba(242, 230, 201, 0.88); 
+            border: 1px solid #8b6f47; border-radius: 8px; 
+            padding: 5px 12px; max-width: 440px; 
+            margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+            display: flex; align-items: center; justify-content: space-between;">
+            <h3 style="margin-top: 0; color: #4A3728; font-size: 18px;">🎶 Ко удара тако позно</h3>
+        <audio controls style="width: 100%;">
+            <source src="pesme/ko-udara-tako-pozno.mp3" type="audio/mpeg">
+            Ваш прегледач не подржава аудио плејер.
+        </audio>
+        
+    </div>
+
+
+        
+   
+
+ <!-- ПЛЕЈЕР 1: Благословен јеси Господи -->
+  <div style="background: rgba(242, 230, 201, 0.88); 
+            border: 1px solid #8b6f47; border-radius: 8px; 
+            padding: 5px 12px; max-width: 440px; 
+            margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+            display: flex; align-items: center; justify-content: space-between;">
+            <h3 style="margin-top: 0; color: #4A3728; font-size: 18px;">🎶 Маријо славна</h3>
+        <audio controls style="width: 100%;">
+            <source src="pesme/marijo-slavna.mp3" type="audio/mpeg">
+            Ваш прегледач не подржава аудио плејер.
+        </audio>
+        
+    </div>
+
+
+
+ <!-- ПЛЕЈЕР 1: Благословен јеси Господи -->
+  <div style="background: rgba(242, 230, 201, 0.88); 
+            border: 1px solid #8b6f47; border-radius: 8px; 
+            padding: 5px 12px; max-width: 440px; 
+            margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+            display: flex; align-items: center; justify-content: space-between;">
+            <h3 style="margin-top: 0; color: #4A3728; font-size: 18px;">🎶 Монаси</h3>
+        <audio controls style="width: 100%;">
+            <source src="pesme/monasi.mp3" type="audio/mpeg">
+            Ваш прегледач не подржава аудио плејер.
+        </audio>
+        
+    </div>
+
+ <!-- ПЛЕЈЕР 1: Благословен јеси Господи -->
+  <div style="background: rgba(242, 230, 201, 0.88); 
+            border: 1px solid #8b6f47; border-radius: 8px; 
+            padding: 5px 12px; max-width: 440px; 
+            margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+            display: flex; align-items: center; justify-content: space-between;">
+            <h3 style="margin-top: 0; color: #4A3728; font-size: 18px;">🎶 Оче наш на арамејском</h3>
+        <audio controls style="width: 100%;">
+            <source src="pesme/oce-nas-na-aramejskom.mp3" type="audio/mpeg">
+            Ваш прегледач не подржава аудио плејер.
+        </audio>
+        
+    </div>
+
+
+
+
+
+ <!-- ПЛЕЈЕР 1: Благословен јеси Господи -->
+  <div style="background: rgba(242, 230, 201, 0.88); 
+            border: 1px solid #8b6f47; border-radius: 8px; 
+            padding: 5px 12px; max-width: 440px; 
+            margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+            display: flex; align-items: center; justify-content: space-between;">
+            <h3 style="margin-top: 0; color: #4A3728; font-size: 18px;">🎶 Псалам 117</h3>
+        <audio controls style="width: 100%;">
+            <source src="pesme/psalam-117.mp3" type="audio/mpeg">
+            Ваш прегледач не подржава аудио плејер.
+        </audio>
+        
+    </div>
+
+ <!-- ПЛЕЈЕР 1: Благословен јеси Господи -->
+  <div style="background: rgba(242, 230, 201, 0.88); 
+            border: 1px solid #8b6f47; border-radius: 8px; 
+            padding: 5px 12px; max-width: 440px; 
+            margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+            display: flex; align-items: center; justify-content: space-between;">
+            <h3 style="margin-top: 0; color: #4A3728; font-size: 18px;">🎶 Богородице дјево</h3>
+        <audio controls style="width: 100%;">
+            <source src="pesme/bogorodice-djevo.mp3" type="audio/mpeg">
+            Ваш прегледач не подржава аудио плејер.
+        </audio>
+        
+    </div>
+
  
 
 
-.fiksni-vrh {
-    position: fixed;
-    bottom: 25px;
-    right: 20px;
-    background: rgba(242, 230, 201, 0.95); /* Твоја беж */
-    border: 1px solid #8b6f47;            /* Златни оквир */
-    border-radius: 50%;                   /* Круг */
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    color: #8b6f47;
-    font-size: 24px;
-    font-weight: bold;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    z-index: 9999;
-    transition: 0.3s;
-}
-
-.fiksni-vrh:hover {
-    transform: scale(1.1);
-}
-
-/* Ovo se aktivira SAMO na telefonima */
-@media (max-width: 480px) {
-    .vrh-link {
-        font-size: 32px; /* Još veća strelica za palac */
-        padding: 20px;   /* Veći prostor za klik */
-        display: block;  /* Da bude na sredini ekrana */
-    }
-}
-
-  </style>
-</head>
-<body>
-
-   <a href="molitvenik.html" class="molitvenik-dugme">🏠</a>
-
-<div class="container">
-    <h1 style="text-shadow: 1px 1px 2px white;"></h1>
-    <p><i></i></p>
-
-<h1>Аудио молитве i музика</h1>
-
-<p><strong>Пресвета Богородице Спаси Нас</strong></p>
-<iframe src="https://drive.google.com/file/d/127bSaYz8fA9XSLJVWi5l8xTaOgbqwHYl/preview" width="100%" height="60" allow="autoplay"></iframe>
-
-<p><strong>Душо моја свет се нагло мења</strong></p>
-<iframe src="https://drive.google.com/file/d/1MpuIH1wNvBOJKgYnTb7JN9p96_xZYQBi/preview" width="100%" height="60" allow="autoplay"></iframe>
-
-<p><strong>Господи помилуй, Господи прости</strong></p>
-<iframe src="https://drive.google.com/file/d/1MTwPYMeqwaErs3rdgP67OnmZ6wrZppHN/preview" width="100%" height="60" allow="autoplay"></iframe>
-<p><strong>Устани, Боже, устани</strong></p> 
-<iframe src="https://drive.google.com/file/d/1jyM7jHNp9ODHeqZDLsuizQHll7SUaQ7q/preview" width="100%" height="60" allow="autoplay"></iframe> 
-<p><strong>Два анђела шеташе</strong></p>
-<iframe src="https://drive.google.com/file/d/1rbQ7llI34qDa1SWKbsUoogSaOVnE1pi2/preview" width="100%" height="60" allow="autoplay"></iframe>
-<p><strong>Юлия Славянская - Белый Ангел</strong></p> 
-<iframe src="https://drive.google.com/file/d/1YxjM31MunbTNxjLYBHrzKvDD3Y7-onKD/preview" width="100%" height="60" allow="autoplay"></iframe> 
-<p><strong>Юлия Славянская. Древневенгерский плач Марии</strong></p> 
-<iframe src="https://drive.google.com/file/d/1X_udIon4YHQborDa593rZL3vP65NYuop/preview" width="100%" height="60" allow="autoplay"></iframe> 
-<p><strong>Говори Господе</strong></p> 
-<iframe src="https://drive.google.com/file/d/1tHWYxb9ruk6JpmdAGQZKBCG0ul1uYcY6/preview" width="100%" height="60" allow="autoplay"></iframe> 
-<p><strong>Царицa тишине</strong></p> 
-<iframe src="https://drive.google.com/file/d/1Kzz2WvcC38YC8k3i7DIQk4lN75n9QIkh/preview" width="100%" height="60" allow="autoplay"></iframe> 
-<p><strong>Оче наш на арамејском језику</strong></p> 
-<iframe src="https://drive.google.com/file/d/1DjbsKe9Cr5ui-1dOTFCkssB_hqg6jhBb/preview" width="100%" height="60" allow="autoplay"></iframe> 
-<p><strong>Псалам 117</strong></p> 
-<iframe src="https://drive.google.com/file/d/1UgyZZKB3eZP0en4wqawwI46B2P6sy7MB/preview" width="100%" height="60" allow="autoplay"></iframe>
-<p><strong>Сестринство манастира-Видовдан</strong></p> 
-<iframe src="https://drive.google.com/file/d/1pS5v28JB9A4ySl2Gyh69TOZpLDM3oeg7/preview" width="100%" height="60" allow="autoplay"></iframe> 
-<p><strong>Сестринство манастира-Ој Косово,Косово</strong></p> 
-<iframe src="https://drive.google.com/file/d/1DPYoAwNV9d8W6p6fvn59pr4T8EDWiiQB/preview" width="100%" height="60" allow="autoplay"></iframe> 
-<p><strong>Ανέστη - Христос Воскресе</strong></p> 
-<iframe src="https://drive.google.com/file/d/11q8PPXsIy98sLx4olFmt37rhLhvfHbCn/preview" width="100%" height="60" allow="autoplay"></iframe> 
-<p><strong>Тело Христово</strong></p> 
-<iframe src="https://drive.google.com/file/d/1ea29ziRasmV_WUJjG6PC6e_l1Oju4brz/preview" width="100%" height="60" allow="autoplay"></iframe> 
-<p><strong>Говори Господе</strong></p> 
-<iframe src="https://drive.google.com/file/d/1tHWYxb9ruk6JpmdAGQZKBCG0ul1uYcY6/preview" width="100%" height="60" allow="autoplay"></iframe> 
-<p><strong>Ко има уши да чује, нека чује<p><strong>
-<iframe src="https://drive.google.com/file/d/1pW1tB3dEow8HoI_l5IwQx7dbCtvBjySB/preview" width="100%" height="60" allow="autoplay"></iframe> 
-<p><strong>Непрестана мoлитва<p><strong>
-<iframe src="https://drive.google.com/file/d/1KYjEfzRLLHMYY4u2UNrNi6u4MOP3AOhy/preview" width="100%" height="60" allow="autoplay"></iframe> 
-  
-<p><strong>Свети Сава-Ко удара тако позно</strong></p>
-<iframe src="https://drive.google.com/file/d/17idfm6VU1_ARyDRM3l_aQITrUk_RW887/preview" width="100%" height="60" allow="autoplay"></iframe>
-<p><strong>Песма светој Ксенији</strong></p>
-<iframe src="https://drive.google.com/file/d/1t5LawYzAuqt09juO8IUNEAu1rao_Bj-M/preview" width="100%" height="60" allow="autoplay"></iframe>
-<p><strong>Маријо славна</strong></p>
-<iframe src="https://drive.google.com/file/d/1OUoQBYXc5LaaYzY7Hu9E0gA54zJ5AC_Y/preview" width="100%" height="60" allow="autoplay"></iframe>
-<p><strong>Деца неба</strong></p>
-<iframe src="https://drive.google.com/file/d/1d9LIga95dcJDj7MMRLtwSbmgOG3BVNxw/preview" width="100%" height="60" allow="autoplay"></iframe>
-<p><strong>Знаш ли ко те љуби силно</strong></p>
-<iframe src="https://drive.google.com/file/d/1cAYcI7IlKBNVFjcO4yoObTOrXTn6yaoL/preview" width="100%" height="60" allow="autoplay"></iframe>
-<p><strong>Богородице дјево</strong></p>
-<iframe src="https://drive.google.com/file/d/1O-tWsoWHXnJWj5_f1hQY0bckwzDCCUh8/preview" width="100%" height="60" allow="autoplay"></iframe>
-<p><strong>Косово памти</strong></p>
-<iframe src="https://drive.google.com/file/d/1_WirzQ5b1Q-cTaEy7nSRUZ8yBxQu0hRV/preview" width="100%" height="60" allow="autoplay"></iframe>
-<p><strong>Сини јарко сунце са Косова</strong></p>
-<iframe src="https://drive.google.com/file/d/1tLgSsi3L45JILxv95qKAU3twStSsI7ZY/preview" width="100%" height="60" allow="autoplay"></iframe>
-<p><strong>Псалам 144</strong></p>
-<iframe src="https://drive.google.com/file/d/17PoTdPMSBLjCYDg_f-JPzUfLmOMje8Yt/preview" width="100%" height="60" allow="autoplay"></iframe>
-<p><strong>Иже херувими</strong></p>
-<iframe src="https://drive.google.com/file/d/1NLCjMde39L-I4xfwjaH06PxWv7NKNlom/preview" width="100%" height="60" allow="autoplay"></iframe>
-<p><strong>Благословен јеси Господи</strong></p>
-<iframe src="https://drive.google.com/file/d/1FSIZo4xZe3vRA6bAx6T-TsJ-M_i4vF0l/preview" width="100%" height="60" allow="autoplay"></iframe>
-<p><strong>Псалам 135-136</strong></p>
-<iframe src="https://drive.google.com/file/d/1w2zEphFtqGM5HhwPdKkKNrmE6OXYblrZ/preview" width="100%" height="60" allow="autoplay"></iframe>
-<p><strong>Псалам 90</strong></p>
-<iframe src="https://drive.google.com/file/d/1J-7lSZbEsasDAPB25Nga3nTXUyA8By16/preview" width="100%" height="60" allow="autoplay"></iframe>  
+ <!-- ПЛЕЈЕР 1: Благословен јеси Господи -->
+  <div style="background: rgba(242, 230, 201, 0.88); 
+            border: 1px solid #8b6f47; border-radius: 8px; 
+            padding: 5px 12px; max-width: 440px; 
+            margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+            display: flex; align-items: center; justify-content: space-between;">
+            <h3 style="margin-top: 0; color: #4A3728; font-size: 18px;">🎶 Сини јарко сунце са Косова</h3>
+        <audio controls style="width: 100%;">
+            <source src="pesme/sini-jarko-sunce-sa-kosova.mp3" type="audio/mpeg">
+            Ваш прегледач не подржава аудио плејер.
+        </audio>
+        
     </div>
-</div>
+
+
+ <!-- ПЛЕЈЕР 1: Благословен јеси Господи -->
+  <div style="background: rgba(242, 230, 201, 0.88); 
+            border: 1px solid #8b6f47; border-radius: 8px; 
+            padding: 5px 12px; max-width: 440px; 
+            margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+            display: flex; align-items: center; justify-content: space-between;">
+            <h3 style="margin-top: 0; color: #4A3728; font-size: 18px;">🎶 Богородице дјево</h3>
+        <audio controls style="width: 100%;">
+            <source src="pesme/bogorodice-djevo.mp3" type="audio/mpeg">
+            Ваш прегледач не подржава аудио плејер.
+        </audio>
+        
+    </div>
+
+ <!-- ПЛЕЈЕР 1: Благословен јеси Господи -->
+  <div style="background: rgba(242, 230, 201, 0.88); 
+            border: 1px solid #8b6f47; border-radius: 8px; 
+            padding: 5px 12px; max-width: 440px; 
+            margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+            display: flex; align-items: center; justify-content: space-between;">
+            <h3 style="margin-top: 0; color: #4A3728; font-size: 18px;">🎶 Устани Боже устани</h3>
+        <audio controls style="width: 100%;">
+            <source src="pesme/ustani-boze-ustani.mp3" type="audio/mpeg">
+            Ваш прегледач не подржава аудио плејер.
+        </audio>
+        
+    </div>
+
+ <!-- ПЛЕЈЕР 1: Благословен јеси Господи -->
+  <div style="background: rgba(242, 230, 201, 0.88); 
+            border: 1px solid #8b6f47; border-radius: 8px; 
+            padding: 5px 12px; max-width: 440px; 
+            margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+            display: flex; align-items: center; justify-content: space-between;">
+            <h3 style="margin-top: 0; color: #4A3728; font-size: 18px;">🎶 Богородице дјево</h3>
+        <audio controls style="width: 100%;">
+            <source src="pesme/bogorodice-djevo.mp3" type="audio/mpeg">
+            Ваш прегледач не подржава аудио плејер.
+        </audio>
+        
+    </div>
+
+ <!-- ПЛЕЈЕР 1: Благословен јеси Господи -->
+  <div style="background: rgba(242, 230, 201, 0.88); 
+            border: 1px solid #8b6f47; border-radius: 8px; 
+            padding: 5px 12px; max-width: 440px; 
+            margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+            display: flex; align-items: center; justify-content: space-between;">
+            <h3 style="margin-top: 0; color: #4A3728; font-size: 18px;">🎶 Знаш ли ко те љуби силно</h3>
+        <audio controls style="width: 100%;">
+            <source src="pesme/znas-li-ko-te-ljubi-silno.mp3" type="audio/mpeg">
+            Ваш прегледач не подржава аудио плејер.
+        </audio>
+        
+    </div>
+
+ <!-- ПЛЕЈЕР 1: Благословен јеси Господи -->
+  <div style="background: rgba(242, 230, 201, 0.88); 
+            border: 1px solid #8b6f47; border-radius: 8px; 
+            padding: 5px 12px; max-width: 440px; 
+            margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+            display: flex; align-items: center; justify-content: space-between;">
+            <h3 style="margin-top: 0; color: #4A3728; font-size: 18px;">🎶 Богородице дјево</h3>
+        <audio controls style="width: 100%;">
+            <source src="pesme/bogorodice-djevo.mp3" type="audio/mpeg">
+            Ваш прегледач не подржава аудио плејер.
+        </audio>
+        
+    </div>
+
+ <!-- ПЛЕЈЕР 1: Благословен јеси Господи -->
+  <div style="background: rgba(242, 230, 201, 0.88); 
+            border: 1px solid #8b6f47; border-radius: 8px; 
+            padding: 5px 12px; max-width: 440px; 
+            margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+            display: flex; align-items: center; justify-content: space-between;">
+            <h3 style="margin-top: 0; color: #4A3728; font-size: 18px;">🎶 Богородице дјево</h3>
+        <audio controls style="width: 100%;">
+            <source src="pesme/bogorodice-djevo.mp3" type="audio/mpeg">
+            Ваш прегледач не подржава аудио плејер.
+        </audio>
+        
+    </div>
+
+
+<!-- ПЛЕЈЕР 1: Благословен јеси Господи -->
+  <div style="background: rgba(242, 230, 201, 0.88); 
+            border: 1px solid #8b6f47; border-radius: 8px; 
+            padding: 5px 12px; max-width: 440px; 
+            margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+            display: flex; align-items: center; justify-content: space-between;">
+            <h3 style="margin-top: 0; color: #4A3728; font-size: 18px;">🎶 Благословен јеси Господи</h3>
+        <audio controls style="width: 100%;">
+            <source src="pesme/blagosloven-jesi-gospodi.mp3" type="audio/mpeg">
+            Ваш прегледач не подржава аудио плејер.
+        </audio>
+   </div>
+	
+     <!-- ПЛЕЈЕР 1: Благословен јеси Господи -->
+      <div style="background: rgba(242, 230, 201, 0.88); 
+            border: 1px solid #8b6f47; border-radius: 8px; 
+            padding: 5px 12px; max-width: 440px; 
+            margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+            display: flex; align-items: center; justify-content: space-between;">
+            <h3 style="margin-top: 0; color: #4A3728; font-size: 18px;">🎶 90 Псалам </h3>
+            <audio controls style="width: 100%;">
+                <source src="pesme/90-psalam.mp3" type="audio/mpeg">
+                Ваш прегледач не подржава аудио плејер.
+            </audio>
+           
+        </div>
+
+        <!-- ПЛЕЈЕР 2: Молитва покајника -->
+        <div style="background: rgba(242, 230, 201, 0.88); 
+            border: 1px solid #8b6f47; border-radius: 8px; 
+            padding: 5px 12px; max-width: 440px; 
+            margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+            display: flex; align-items: center; justify-content: space-between;">
+            <h3 style="margin-top: 0; color: #4A3728; font-size: 18px;">📖 Молитва покајника</h3>
+            <audio controls style="width: 100%;">
+                <source src="pesme/molitva-pokajnika.mp3" type="audio/mpeg">
+                Ваш прегледач не подржава аудио плејер.
+            </audio>
+          
+        </div>
+  <!-- ПЛЕЈЕР 1: Благословен јеси Господи -->
+  <div style="background: rgba(242, 230, 201, 0.88); 
+            border: 1px solid #8b6f47; border-radius: 8px; 
+            padding: 5px 12px; max-width: 440px; 
+            margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+            display: flex; align-items: center; justify-content: space-between;">
+            <h3 style="margin-top: 0; color: #4A3728; font-size: 18px;">🎶 136-135 Псалам</h3>
+        <audio controls style="width: 100%;">
+            <source src="pesme/136-135-psalam.mp3" type="audio/mpeg">
+            Ваш прегледач не подржава аудио плејер.
+        </audio>
+        
+    </div>
+
+   <!-- Дугме за повратак на врх странице када има пуно плејера -->
+    <a href="#" class="fiksni-vrh">▲</a>
+
+	
 
  
 
