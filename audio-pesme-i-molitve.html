@@ -1,0 +1,450 @@
+<!DOCTYPE html> 
+<html lang="sr"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Аудио молитве и песме</title> 
+</head> 
+<style>
+	body {
+            margin: 0;
+            background-image: url("papir.jpg");
+            background-size: cover;
+            background-attachment: fixed; /* Pozadina se ne pomera dok skroluješ tekst */
+            font-family: "Times New Roman", serif;
+            color: #4A3728;
+            text-align: center;
+        }
+.fiksni-vrh {
+            position: fixed;
+            bottom: 25px;
+            right: 20px;
+            background: rgba(242, 230, 201, 0.95); /* Твоја беж */
+            border: 1px solid #8b6f47; /* Златни оквир */
+            border-radius: 50%; /* Круг */
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: #8b6f47;
+            font-size: 24px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            z-index: 9999;
+            transition: 0.3s;
+        }
+        .fiksni-vrh:hover {
+            transform: scale(1.1);
+        }
+
+     /* СТАЊЕНА КУТИЈА ПЛЕЈЕРА У ЈЕДНОМ РЕДУ */
+        .kutija-plejer { 
+            background: rgba(242, 230, 201, 0.88); 
+            border: 1px solid #8b6f47; border-radius: 8px; 
+            padding: 5px 12px; max-width: 440px; 
+            margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+            display: flex; align-items: center; justify-content: space-between;
+        } 
+        .naslov-glave { 
+            color: #8b0000; font-size: 17px; font-weight: bold; 
+            margin-bottom: 0; white-space: nowrap; padding-right: 10px;
+            text-align: left; width: 25%;
+        } 
+        audio { width: 75%; height: 28px; outline: none; } 
+        .sekcija-naslov {
+            color: #4A3728; font-size: 24px; margin-top: 40px; margin-bottom: 15px;
+            border-bottom: 1px dotted #8b6f47; padding-bottom: 5px;
+        }
+
+	 </style>
+    <h1 style="font-weight: bold; margin-bottom: 5px;">Аудио ризница</h1> 
+    <p style="font-style: italic; margin-bottom: 40px;">Духовне песме и молитве за умирење душе.</p> 
+
+
+
+<!-- ПЛЕЈЕР 1: Видовдан (Следећа је Косово памти -> pesma2) -->
+<div style="background: rgba(242, 230, 201, 0.88); border: 1px solid #8b6f47; 
+border-radius: 8px; padding: 5px 12px; 
+max-width: 440px; margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); display: flex; 
+align-items: center; justify-content: space-between;">
+    <h3 style="margin-top: 0; color: #4A3728; font-size: 18px; 
+margin-right: 10px; white-space: nowrap;">🎶 Чисто срце</h3>
+    <audio id="pesma1" controls preload="none" onended="document.getElementById('pesma2').play()">
+       <source src="pesme/cisto-srce.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+
+<!-- ПЛЕЈЕР 2: Видовдан (Следећа је Косово памти -> pesma2) -->
+<div style="background: rgba(242, 230, 201, 0.88); border: 1px solid #8b6f47; 
+border-radius: 8px; padding: 5px 12px; 
+max-width: 440px; margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); display: flex; 
+align-items: center; justify-content: space-between;">
+    <h3 style="margin-top: 0; color: #4A3728; font-size: 18px; 
+margin-right: 10px; white-space: nowrap;">🎶 Видовдан</h3>
+    <audio id="pesma1" controls preload="none" onended="document.getElementById('pesma2').play()">
+       <source src="pesme3/sestrinstvo-manastira-vidovdan.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+
+<!-- ПЛЕЈЕР 3: Видовдан (Следећа је Косово памти -> pesma2) -->
+<div style="background: rgba(242, 230, 201, 0.88); border: 1px solid #8b6f47; 
+border-radius: 8px; padding: 5px 12px; max-width: 440px; 
+margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); display: flex; 
+align-items: center; justify-content: space-between;">
+    <h3 style="margin-top: 0; color: #4A3728; font-size: 18px; margin-right: 10px; 
+white-space: nowrap;">🎶 Косово памти</h3>
+    <audio id="pesma1" controls preload="none" onended="document.getElementById('pesma2').play()">
+        <source src="pesme/kosovo-pamti.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+<!-- ПЛЕЈЕР 4: Видовдан (Следећа је Косово памти -> pesma2) -->
+<div style="background: rgba(242, 230, 201, 0.88); border: 1px solid #8b6f47; 
+border-radius: 8px; padding: 5px 12px; 
+max-width: 440px; margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); display: flex; 
+align-items: center; justify-content: space-between;">
+    <h3 style="margin-top: 0; color: #4A3728; font-size: 18px; 
+margin-right: 10px; white-space: nowrap;">🎶 Ој, Косово, Косово</h3>
+    <audio id="pesma1" controls preload="none" onended="document.getElementById('pesma2').play()">
+       <source src="pesme3/sestrinstvo-manastira-oj-kosovo-kosovo.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+<!-- ПЛЕЈЕР 5: Видовдан (Следећа је Косово памти -> pesma2) -->
+<div style="background: rgba(242, 230, 201, 0.88); border: 1px solid #8b6f47; 
+border-radius: 8px; padding: 5px 12px; 
+max-width: 440px; margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); display: flex; 
+align-items: center; justify-content: space-between;">
+    <h3 style="margin-top: 0; color: #4A3728; font-size: 18px; 
+margin-right: 10px; white-space: nowrap;">🎶 Ми смо деца неба</h3>
+    <audio id="pesma1" controls preload="none" onended="document.getElementById('pesma2').play()">
+       <source src="pesme1/mi-smo-deca-neba.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+<!-- ПЛЕЈЕР 6: Видовдан (Следећа је Косово памти -> pesma2) -->
+<div style="background: rgba(242, 230, 201, 0.88); border: 1px solid #8b6f47; 
+border-radius: 8px; padding: 5px 12px; 
+max-width: 440px; margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); display: flex; 
+align-items: center; justify-content: space-between;">
+    <h3 style="margin-top: 0; color: #4A3728; font-size: 18px; 
+margin-right: 10px; white-space: nowrap;">🎶 Песма Богородици</h3>
+    <audio id="pesma1" controls preload="none" onended="document.getElementById('pesma2').play()">
+       <source src="pesme1/pojas.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+<!-- ПЛЕЈЕР 6: Видовдан (Следећа је Косово памти -> pesma2) -->
+<div style="background: rgba(242, 230, 201, 0.88); border: 1px solid #8b6f47; 
+border-radius: 8px; padding: 5px 12px; 
+max-width: 440px; margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); display: flex; 
+align-items: center; justify-content: space-between;">
+    <h3 style="margin-top: 0; color: #4A3728; font-size: 18px; 
+margin-right: 10px; white-space: nowrap;">🎶 Песма Богородици</h3>
+    <audio id="pesma1" controls preload="none" onended="document.getElementById('pesma2').play()">
+       <source src="pesme1/pojas.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+<!-- ПЛЕЈЕР 7: Видовдан (Следећа је Косово памти -> pesma2) -->
+<div style="background: rgba(242, 230, 201, 0.88); border: 1px solid #8b6f47; 
+border-radius: 8px; padding: 5px 12px; 
+max-width: 440px; margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); display: flex; 
+align-items: center; justify-content: space-between;">
+    <h3 style="margin-top: 0; color: #4A3728; font-size: 18px; 
+margin-right: 10px; white-space: nowrap;">🎶 Песма Светој Ксенији</h3>
+    <audio id="pesma1" controls preload="none" onended="document.getElementById('pesma2').play()">
+       <source src="pesme1/pesma-svetoj-kseniji.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+<!-- ПЛЕЈЕР 8: Видовдан (Следећа је Косово памти -> pesma2) -->
+<div style="background: rgba(242, 230, 201, 0.88); border: 1px solid #8b6f47; 
+border-radius: 8px; padding: 5px 12px; 
+max-width: 440px; margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); display: flex; 
+align-items: center; justify-content: space-between;">
+    <h3 style="margin-top: 0; color: #4A3728; font-size: 18px; 
+margin-right: 10px; white-space: nowrap;">🎶 Пресвета Богородице спаси нас</h3>
+    <audio id="pesma1" controls preload="none" onended="document.getElementById('pesma2').play()">
+       <source src="pesme4/presveta-bogorodice-spasi-nas.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+<!-- ПЛЕЈЕР 9: Видовдан (Следећа је Косово памти -> pesma2) -->
+<div style="background: rgba(242, 230, 201, 0.88); border: 1px solid #8b6f47; 
+border-radius: 8px; padding: 5px 12px; 
+max-width: 440px; margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); display: flex; 
+align-items: center; justify-content: space-between;">
+    <h3 style="margin-top: 0; color: #4A3728; font-size: 18px; 
+margin-right: 10px; white-space: nowrap;">🎶 Песма Богородици</h3>
+    <audio id="pesma1" controls preload="none" onended="document.getElementById('pesma2').play()">
+       <source src="pesme1/pojas.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+<!-- ПЛЕЈЕР 10: Видовдан (Следећа је Косово памти -> pesma2) -->
+<div style="background: rgba(242, 230, 201, 0.88); border: 1px solid #8b6f47; 
+border-radius: 8px; padding: 5px 12px; 
+max-width: 440px; margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); display: flex; 
+align-items: center; justify-content: space-between;">
+    <h3 style="margin-top: 0; color: #4A3728; font-size: 18px; 
+margin-right: 10px; white-space: nowrap;">🎶 Богородице дјево</h3>
+    <audio id="pesma1" controls preload="none" onended="document.getElementById('pesma2').play()">
+       <source src="pesme/bogorodice-djevo.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+<!-- ПЛЕЈЕР 11: Видовдан (Следећа је Косово памти -> pesma2) -->
+<div style="background: rgba(242, 230, 201, 0.88); border: 1px solid #8b6f47; 
+border-radius: 8px; padding: 5px 12px; 
+max-width: 440px; margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); display: flex; 
+align-items: center; justify-content: space-between;">
+    <h3 style="margin-top: 0; color: #4A3728; font-size: 18px; 
+margin-right: 10px; white-space: nowrap;">🎶 Душо моја свет се нагло мења</h3>
+    <audio id="pesma1" controls preload="none" onended="document.getElementById('pesma2').play()">
+       <source src="pesme2/duso-moja-svet-se-naglo-menja.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+<!-- ПЛЕЈЕР 12: Видовдан (Следећа је Косово памти -> pesma2) -->
+<div style="background: rgba(242, 230, 201, 0.88); border: 1px solid #8b6f47; 
+border-radius: 8px; padding: 5px 12px; 
+max-width: 440px; margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); display: flex; 
+align-items: center; justify-content: space-between;">
+    <h3 style="margin-top: 0; color: #4A3728; font-size: 18px; 
+margin-right: 10px; white-space: nowrap;">🎶 Два ањђела шеташе</h3>
+    <audio id="pesma1" controls preload="none" onended="document.getElementById('pesma2').play()">
+       <source src="pesme5/dva-andjela-setase.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+<!-- ПЛЕЈЕР 13: Видовдан (Следећа је Косово памти -> pesma2) -->
+<div style="background: rgba(242, 230, 201, 0.88); border: 1px solid #8b6f47; 
+border-radius: 8px; padding: 5px 12px; 
+max-width: 440px; margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); display: flex; 
+align-items: center; justify-content: space-between;">
+    <h3 style="margin-top: 0; color: #4A3728; font-size: 18px; 
+margin-right: 10px; white-space: nowrap;">🎶 Господи помилуј, Господи прости</h3>
+    <audio id="pesma1" controls preload="none" onended="document.getElementById('pesma2').play()">
+       <source src="pesme5/gospodi-pomiluj-gospodi-prosti.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+<!-- ПЛЕЈЕР 14: Видовдан (Следећа је Косово памти -> pesma2) -->
+<div style="background: rgba(242, 230, 201, 0.88); border: 1px solid #8b6f47; 
+border-radius: 8px; padding: 5px 12px; 
+max-width: 440px; margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); display: flex; 
+align-items: center; justify-content: space-between;">
+    <h3 style="margin-top: 0; color: #4A3728; font-size: 18px; 
+margin-right: 10px; white-space: nowrap;">🎶 Говори Господе</h3>
+    <audio id="pesma1" controls preload="none" onended="document.getElementById('pesma2').play()">
+       <source src="pesme5/govori-gospode.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+<!-- ПЛЕЈЕР 15: Видовдан (Следећа је Косово памти -> pesma2) -->
+<div style="background: rgba(242, 230, 201, 0.88); border: 1px solid #8b6f47; 
+border-radius: 8px; padding: 5px 12px; 
+max-width: 440px; margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); display: flex; 
+align-items: center; justify-content: space-between;">
+    <h3 style="margin-top: 0; color: #4A3728; font-size: 18px; 
+margin-right: 10px; white-space: nowrap;">🎶 Иже Херувими</h3>
+    <audio id="pesma1" controls preload="none" onended="document.getElementById('pesma2').play()">
+       <source src="pesme2/ize-heruvimi.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+<!-- ПЛЕЈЕР 16: Видовдан (Следећа је Косово памти -> pesma2) -->
+<div style="background: rgba(242, 230, 201, 0.88); border: 1px solid #8b6f47; 
+border-radius: 8px; padding: 5px 12px; 
+max-width: 440px; margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); display: flex; 
+align-items: center; justify-content: space-between;">
+    <h3 style="margin-top: 0; color: #4A3728; font-size: 18px; 
+margin-right: 10px; white-space: nowrap;">🎶 Плач Марије</h3>
+    <audio id="pesma1" controls preload="none" onended="document.getElementById('pesma2').play()">
+       <source src="pesme2/julija-slavjanska-plac-marije.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+<!-- ПЛЕЈЕР 17: Видовдан (Следећа је Косово памти -> pesma2) -->
+<div style="background: rgba(242, 230, 201, 0.88); border: 1px solid #8b6f47; 
+border-radius: 8px; padding: 5px 12px; 
+max-width: 440px; margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); display: flex; 
+align-items: center; justify-content: space-between;">
+    <h3 style="margin-top: 0; color: #4A3728; font-size: 18px; 
+margin-right: 10px; white-space: nowrap;">🎶 Бели анђео</h3>
+    <audio id="pesma1" controls preload="none" onended="document.getElementById('pesma2').play()">
+       <source src="pesme2/julija-slavjanska-beli-andjeo.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+<!-- ПЛЕЈЕР 18: Видовдан (Следећа је Косово памти -> pesma2) -->
+<div style="background: rgba(242, 230, 201, 0.88); border: 1px solid #8b6f47; 
+border-radius: 8px; padding: 5px 12px; 
+max-width: 440px; margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); display: flex; 
+align-items: center; justify-content: space-between;">
+    <h3 style="margin-top: 0; color: #4A3728; font-size: 18px; 
+margin-right: 10px; white-space: nowrap;">🎶 Ко има уши нека чује</h3>
+    <audio id="pesma1" controls preload="none" onended="document.getElementById('pesma2').play()">
+       <source src="pesme5/ko-ima-usi-neka-cuje.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+<!-- ПЛЕЈЕР 19: Видовдан (Следећа је Косово памти -> pesma2) -->
+<div style="background: rgba(242, 230, 201, 0.88); border: 1px solid #8b6f47; 
+border-radius: 8px; padding: 5px 12px; 
+max-width: 440px; margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); display: flex; 
+align-items: center; justify-content: space-between;">
+    <h3 style="margin-top: 0; color: #4A3728; font-size: 18px; 
+margin-right: 10px; white-space: nowrap;">🎶 Ко удара тако позно</h3>
+    <audio id="pesma1" controls preload="none" onended="document.getElementById('pesma2').play()">
+       <source src="pesme/ko-udara-tako-pozno.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+<!-- ПЛЕЈЕР 20: Видовдан (Следећа је Косово памти -> pesma2) -->
+<div style="background: rgba(242, 230, 201, 0.88); border: 1px solid #8b6f47; 
+border-radius: 8px; padding: 5px 12px; 
+max-width: 440px; margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); display: flex; 
+align-items: center; justify-content: space-between;">
+    <h3 style="margin-top: 0; color: #4A3728; font-size: 18px; 
+margin-right: 10px; white-space: nowrap;">🎶 Маријо славна</h3>
+    <audio id="pesma1" controls preload="none" onended="document.getElementById('pesma2').play()">
+       <source src="pesme1/marijo-slavna.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+<!-- ПЛЕЈЕР 21: Видовдан (Следећа је Косово памти -> pesma2) -->
+<div style="background: rgba(242, 230, 201, 0.88); border: 1px solid #8b6f47; 
+border-radius: 8px; padding: 5px 12px; 
+max-width: 440px; margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); display: flex; 
+align-items: center; justify-content: space-between;">
+    <h3 style="margin-top: 0; color: #4A3728; font-size: 18px; 
+margin-right: 10px; white-space: nowrap;">🎶 Монаси</h3>
+    <audio id="pesma1" controls preload="none" onended="document.getElementById('pesma2').play()">
+       <source src="pesme1/monasi.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+<!-- ПЛЕЈЕР 22: Видовдан (Следећа је Косово памти -> pesma2) -->
+<div style="background: rgba(242, 230, 201, 0.88); border: 1px solid #8b6f47; 
+border-radius: 8px; padding: 5px 12px; 
+max-width: 440px; margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); display: flex; 
+align-items: center; justify-content: space-between;">
+    <h3 style="margin-top: 0; color: #4A3728; font-size: 18px; 
+margin-right: 10px; white-space: nowrap;">🎶 Оче наш на арамејском</h3>
+    <audio id="pesma1" controls preload="none" onended="document.getElementById('pesma2').play()">
+       <source src="pesme1/oce-nas-na-aramejskom.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+<!-- ПЛЕЈЕР 23: Видовдан (Следећа је Косово памти -> pesma2) -->
+<div style="background: rgba(242, 230, 201, 0.88); border: 1px solid #8b6f47; 
+border-radius: 8px; padding: 5px 12px; 
+max-width: 440px; margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); display: flex; 
+align-items: center; justify-content: space-between;">
+    <h3 style="margin-top: 0; color: #4A3728; font-size: 18px; 
+margin-right: 10px; white-space: nowrap;">🎶 Псалам 117</h3>
+    <audio id="pesma1" controls preload="none" onended="document.getElementById('pesma2').play()">
+       <source src="pesme4/psalam-117.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+<!-- ПЛЕЈЕР 24: Видовдан (Следећа је Косово памти -> pesma2) -->
+<div style="background: rgba(242, 230, 201, 0.88); border: 1px solid #8b6f47; 
+border-radius: 8px; padding: 5px 12px; 
+max-width: 440px; margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); display: flex; 
+align-items: center; justify-content: space-between;">
+    <h3 style="margin-top: 0; color: #4A3728; font-size: 18px; 
+margin-right: 10px; white-space: nowrap;">🎶 Сини јарко сунце са Косова</h3>
+    <audio id="pesma1" controls preload="none" onended="document.getElementById('pesma2').play()">
+       <source src="pesme3/sini-jarko-sunce-sa-kosova.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+<!-- ПЛЕЈЕР 25: Видовдан (Следећа је Косово памти -> pesma2) -->
+<div style="background: rgba(242, 230, 201, 0.88); border: 1px solid #8b6f47; 
+border-radius: 8px; padding: 5px 12px; 
+max-width: 440px; margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); display: flex; 
+align-items: center; justify-content: space-between;">
+    <h3 style="margin-top: 0; color: #4A3728; font-size: 18px; 
+margin-right: 10px; white-space: nowrap;">🎶 Устани Боже устани</h3>
+    <audio id="pesma1" controls preload="none" onended="document.getElementById('pesma2').play()">
+       <source src="pesme3/ustani-boze-ustani.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+<!-- ПЛЕЈЕР 26: Видовдан (Следећа је Косово памти -> pesma2) -->
+<div style="background: rgba(242, 230, 201, 0.88); border: 1px solid #8b6f47; 
+border-radius: 8px; padding: 5px 12px; 
+max-width: 440px; margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); display: flex; 
+align-items: center; justify-content: space-between;">
+    <h3 style="margin-top: 0; color: #4A3728; font-size: 18px; 
+margin-right: 10px; white-space: nowrap;">🎶 Знаш ли ко те љуби силно</h3>
+    <audio id="pesma1" controls preload="none" onended="document.getElementById('pesma2').play()">
+       <source src="pesme4/znas-li-ko-te-ljubi-silno.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+<!-- ПЛЕЈЕР 27: Видовдан (Следећа је Косово памти -> pesma2) -->
+<div style="background: rgba(242, 230, 201, 0.88); border: 1px solid #8b6f47; 
+border-radius: 8px; padding: 5px 12px; 
+max-width: 440px; margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); display: flex; 
+align-items: center; justify-content: space-between;">
+    <h3 style="margin-top: 0; color: #4A3728; font-size: 18px; 
+margin-right: 10px; white-space: nowrap;">🎶 Благословен јеси Господи</h3>
+    <audio id="pesma1" controls preload="none" onended="document.getElementById('pesma2').play()">
+       <source src="pesme/blagosloven-jesi-gospodi.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+<!-- ПЛЕЈЕР 28: Видовдан (Следећа је Косово памти -> pesma2) -->
+<div style="background: rgba(242, 230, 201, 0.88); border: 1px solid #8b6f47; 
+border-radius: 8px; padding: 5px 12px; 
+max-width: 440px; margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); display: flex; 
+align-items: center; justify-content: space-between;">
+    <h3 style="margin-top: 0; color: #4A3728; font-size: 18px; 
+margin-right: 10px; white-space: nowrap;">🎶 90 Псалам</h3>
+    <audio id="pesma1" controls preload="none" onended="document.getElementById('pesma2').play()">
+       <source src="pesme/90-psalam.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+<!-- ПЛЕЈЕР 29: Видовдан (Следећа је Косово памти -> pesma2) -->
+<div style="background: rgba(242, 230, 201, 0.88); border: 1px solid #8b6f47; 
+border-radius: 8px; padding: 5px 12px; 
+max-width: 440px; margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); display: flex; 
+align-items: center; justify-content: space-between;">
+    <h3 style="margin-top: 0; color: #4A3728; font-size: 18px; 
+margin-right: 10px; white-space: nowrap;">📖 Молитва покајника</h3>
+    <audio id="pesma1" controls preload="none" onended="document.getElementById('pesma2').play()">
+       <source src="pesme1/molitva-pokajnika.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+<!-- ПЛЕЈЕР 30: Видовдан (Следећа је Косово памти -> pesma2) -->
+<div style="background: rgba(242, 230, 201, 0.88); border: 1px solid #8b6f47; 
+border-radius: 8px; padding: 5px 12px; 
+max-width: 440px; margin: 8px auto; box-shadow: 0 2px 6px rgba(0,0,0,0.1); display: flex; 
+align-items: center; justify-content: space-between;">
+    <h3 style="margin-top: 0; color: #4A3728; font-size: 18px; 
+margin-right: 10px; white-space: nowrap;">🎶 136-135 Псалам</h3>
+    <audio id="pesma1" controls preload="none" onended="document.getElementById('pesma2').play()">
+       <source src="pesme/136-135-psalam.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+
+
+
+ <!-- Дугме за повратак на врх странице када има пуно плејера -->
+    <a href="#" class="fiksni-vrh">▲</a>
+
+
+
+</body>
+</html>
