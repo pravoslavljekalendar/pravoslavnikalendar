@@ -1,0 +1,230 @@
+<!DOCTYPE html> 
+<html lang="sr"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Акатист Светој Марији Гатчинској</title> 
+    <style> 
+      
+        body { 
+            margin: 0; 
+            background-image: url("papir.png"); 
+            background-size: cover; 
+            background-attachment: fixed; 
+            font-family: "Times New Roman", serif; 
+            color: #4A3728; /* Твоја тамнобраон */ 
+            text-align: center; 
+            padding: 20px;
+        }
+
+.container {
+            max-width: 700px;
+            margin: auto;
+            padding: 20px;
+            padding-top: 60px; /* Razmak da naslov ne udara u vrh ekrana */
+            background: rgba(252, 245, 229, 0.6); /* Blaga providnost da se tekst bolje vidi preko papira */
+            min-height: 100vh;
+        }
+ 
+        .home-dugme { 
+            position: fixed; 
+            top: 15px; 
+            left: 15px; 
+            background: rgba(242, 230, 201, 0.9); 
+            padding: 10px 15px; 
+            border-radius: 8px; 
+            border: 1px solid #2E1B08; 
+            text-decoration: none; 
+            color: #2E1B08; 
+            font-size: 21px; 
+            z-index: 1000; 
+        } 
+        .fiksni-vrh { 
+            position: fixed; 
+            bottom: 25px; 
+            right: 20px; 
+            background: rgba(242, 230, 201, 0.95); 
+            border: 1px solid #8b6f47; 
+            border-radius: 50%; 
+            width: 50px; 
+            height: 50px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            text-decoration: none; 
+            color: #8b6f47; 
+            font-size: 24px; 
+            font-weight: bold; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3); 
+            z-index: 9999; 
+            transition: 0.3s; 
+        } 
+        .fiksni-vrh:hover { 
+            transform: scale(1.1); 
+        } 
+
+ html {
+    scroll-behavior: smooth; /* Ово омогућава оно нежно, "клизеће" скроловање */
+} 
+        
+        /* СТИЛОВИ ЗА ТЕКСТ АКАТИСТА */
+        .sadrzaj-akatista {
+            max-width: 600px;
+            margin: 80px auto 40px auto; /* Размак због иконице на врху */
+            text-align: justify; /* Равно поравнање за лакше читање */
+            line-height: 1.6;
+            padding: 0 15px;
+        }
+        h1 {
+            font-size: 26px;
+            text-align: center;
+            margin-bottom: 5px;
+            color: #2E1B08;
+        }
+        h2 {
+            font-size: 20px;
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: #8b6f47;
+            font-style: italic;
+        }
+
+ h3 {
+            font-size: 26px;
+            color: #8b0000; /* Crvena boja za naslove katizmi */
+            font-variant: small-caps;
+            border-top: 1px solid #8b6f47;
+            border-bottom: 1px solid #8b6f47;
+            padding-top: 20px;
+text-align: center;
+        }
+
+        p {
+            font-size: 19px;
+            margin-bottom: 15px;
+            text-indent: 20px; /* Почетак пасуса увучен */
+        }
+        .raduj-se-lista {
+            margin: 15px 0;
+            padding-left: 20px;
+            font-size: 19px;
+            color: #3A2A1D;
+            font-weight: bold;
+margin-bottom: 50px;
+    border-radius: 10px;
+    border-bottom: 3px solid #8b6f47; /* Deblja linija na dnu katizme */
+        }
+        .raduj-se-red {
+            margin-bottom: 8px;
+            display: block;
+        }
+        .aliluja {
+            text-align: center;
+            font-weight: bold;
+            font-size: 20px;
+            margin: 20px 0;
+            color: #8b6f47;
+        }
+
+.uputstvo-crveno {
+    color: #8b0000; /* Твоја прелепа бордо/црвена боја */
+    font-size: 18px; /* Мало мања слова, пошто је то упутство */
+    font-style: italic; /* Користимо твој омиљени италик */
+    display: block; /* Ово ставља цео текст у посебан ред */
+    text-align: center; /* Да буде на средини екрана */
+    margin: 15px 0; /* Леп размак изнад и испод упутства */
+}
+
+ .molitva { 
+    text-align: justify; /* Poravnato kao u knjizi */ 
+    line-height: 1.6; 
+    font-size: 21px; 
+    padding: 0; /* Izbačen padding */ 
+    margin-bottom: 60px; /* Malo smo povećali razmak na dnu */
+    border-radius: 10px; 
+    border-bottom: 3px solid #8b6f47; /* Deblja linija na dnu katizme */
+    display: block; /* Prisiljava pretraživač da nacrta ceo blok */
+    overflow: visible; /* Osigurava da se donja linija nikada ne sakrije */
+}
+
+.tekst-crвени-inline {
+    color: #8b0000; /* Ваша прелепа бордо/црвена */
+    font-weight: bold; /* Подебљано као и остатак молитве */
+    font-style: italic; /* Обична усправна слова, да прати ритам молитве */
+}
+
+
+.knjiska-linija {
+    border: none;
+    border-bottom: 2px solid #8b6f47;
+    margin: 40px auto;
+    width: 100%;
+}
+
+.aliluja-inline {
+    color: #8b6f47; /* Златно-браон боја као за кондаке */
+    font-weight: bold; /* Подебљано */
+    font-style: italic; /* Обична усправна слова */
+    margin-left: 5px; /* Мали размак од претходне речи */
+}
+.stiker-vladika {
+    width: 160px; /* Ili veličina koja ti odgovara */
+    border-radius: 15px; /* Blago zaobljene ivice, kao nalepnica */
+    padding: 8px;
+    background: white; /* Bela ivica stikera */
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.3); /* Senka koja daje dubinu */
+    border: 1px solid #ddd; /* Tanki sivi okvir da se bela ivica ne stopi sa pozadinom */
+    display: block;
+    margin: 20px auto;
+    transform: rotate(-3deg); /* Blago je "nakriviš" da izgleda kao da je zalepljena rukom */
+    transition: 0.3s;
+}
+
+.stiker-vladika:hover {
+    transform: rotate(0deg) scale(1.05); /* Ispravi se i poveća kad prođeš mišem */
+}
+.ikona-svetitelja {
+            max-width: 220px;       /* Максимална ширина иконе на екрану */
+            width: 100%;            /* Прилагођава се аутоматски мањим телефонима */
+            height: auto;           /* Чува пропорције слике */
+            display: block;         /* Смешта је у засебан ред */
+            margin: 15px auto;      /* Центрира слику и одваја је од текста изнад и испод */
+            border-radius: 12px;    /* Благо заобљене ивице за лепши изглед */
+            border: 2px solid #8b6f47; /* Танки златно-браон оквир који се слаже са дугмићима */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* Блага сенка која икони даје дубину */
+        } 
+		
+
+    </style> 
+</head> 
+<body> 
+
+     <!-- Дугме води назад на листу свих акатаста -->
+     <a href="index.html" class="home-dugme">🏠</a> 
+
+
+	
+
+
+<div class="container">
+    <!-- Твој стикер: Бог на облаку (за највећи благослов) -->
+    <img src="snaga.png" class="stiker-vrh" style="width: 150px; margin: 0 auto 30px auto; display: block;">
+
+    <div class="sadrzaj-akatista"> 
+       
+        <h3>О НАМА</h3>
+       
+        <div class="sadrzaj-akatista">
+
+<h2>Добродошли на интернет презентацију „Ljubav Pravoslavlje“ (ljubavpravoslavlje.rs / ljubavpravoslavlje.com). 
+Овај пројекат је настао из чисте духовне потребе, вере и жеље да се традиција, молитвени дух и лепота
+православља приближе модерном човеку кроз савремена дигитална решења. Поред нашег редовног црквеног календара
+и одабраних дховних текстова, наш циљ је понуда потпуно уникатног садржаја - ауторски православни стикери
+и пратеће мобилне апликације које смо сами развили како бисмо олакшали праћење светих дана и празника у свакодневном
+животу. Посебно место у нашем срцу заузима наша прва ауторска духовна песма „Помози ми Боже“, која је настала
+као искрени крик душе и првенац нашег музичког стваралаштва. 
+Сваки сегмент овог пројекта рађен је са пажњом, љубављу и жељом да донесе мир, радост и благослов
+у сваки дом.
+Хвала вам што посећујете наше домене и што заједно са нама чувате и ширите нашу веру и традицију.</h2>
+
