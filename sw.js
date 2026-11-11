@@ -1,4 +1,4 @@
-const CACHE_NAME ='pravoslavna-riznica-final-v76';
+const CACHE_NAME ='pravoslavna-riznica-final-v77';
 const OFFLINE_ASSETS = [
   './',
   './index.html',
@@ -260,8 +260,11 @@ const OFFLINE_ASSETS = [
   './akatist-presvetoj-bogorodici.html',
   './akatist-svetom-nektariju-eginskom.html',
   './akatist-svetoj-kseniji-petrogradskoj.html',
-
- 
+  './akatist-svemogucem-bogu.html',
+  './akatist-svetoj-petki.html',
+  './akatist-svetom-vasiliju-ostroskom.html',
+  './akatist-mariji-gatcinskoj.html',
+  
   './jednom-za-ceo-zivot.html',
   './sedam-znakova-novog-rodjenja.html',
   './boziji-promisao.html',
