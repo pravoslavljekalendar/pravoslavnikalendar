@@ -1,4 +1,4 @@
-const CACHE_NAME ='pravoslavna-riznica-final-v78';
+const CACHE_NAME ='pravoslavna-riznica-final-v79';
 const OFFLINE_ASSETS = [
   './',
   './index.html',
@@ -13,6 +13,8 @@ const OFFLINE_ASSETS = [
   './vaskrsnji-kalendar.html',
  './pojas-presvete-bogorodice.jpg',
   './audio-psaltir-katizme.html',
+  './o-nama.html',
+  
   './psaltir1/001.mp3',
   './psaltir1/002.mp3',
   './psaltir1/003.mp3',
