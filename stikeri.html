@@ -1,0 +1,206 @@
+<!DOCTYPE html> 
+<html lang="sr"> 
+<head> 
+<meta charset="UTF-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> 
+<meta name="apple-mobile-web-app-capable" content="yes"> 
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"> 
+<title>ДУХОВНИ СТИКЕРИ - ЉУБАВ ПРАВОСЛАВЉЕ</title> 
+<style> 
+body { 
+  margin: 0; 
+  background-image: url("papir.png"); 
+  background-size: cover; 
+  background-attachment: fixed; 
+  font-family: "Times New Roman", serif; 
+  color: #4A3728; 
+  text-align: center; 
+} 
+
+html { 
+  scroll-behavior: smooth; 
+} 
+
+.container { 
+  max-width: 700px; 
+  margin: auto; 
+  padding: 20px; 
+  padding-top: 60px; 
+  background: rgba(252, 245, 229, 0.6); 
+  min-height: 100vh; 
+} 
+
+h1 { 
+  margin-top: 20px; 
+  font-size: 30px; 
+  color: #8b0000; /* Tvoja bordo */
+  margin-bottom: 5px; 
+} 
+
+.podnaslov {
+  font-style: italic;
+  font-size: 16px;
+  margin-bottom: 30px;
+  color: #6e553f;
+}
+
+/* 📱 MREŽA ZA STIKERE - AUTOMATSKI SE PAKUJU U DVE KOLONE NA TELEFONU */
+.stiker-mreza {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Dve kolone sličica */
+  gap: 20px;
+  padding: 10px;
+  margin-bottom: 50px;
+}
+
+/* Okvir oko svakog stikera */
+.stiker-kartica {
+  background: rgba(242, 230, 201, 0.8);
+  border: 1px solid #8b6f47;
+  border-radius: 8px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+
+.stiker-kartica:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+/* Stil za PNG sličicu */
+.stiker-slika {
+  max-width: 130px;
+  height: auto;
+  margin-bottom: 15px;
+  /* Blaga senka iza same providne sličice da se bolje istakne */
+  filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.15)); 
+}
+
+/* Tvoja prelepa bordo dugmad za skidanje stikera */
+.skini-dugme { 
+  background-color: #8b0000; 
+  color: white; 
+  border: none; 
+  padding: 8px 14px; 
+  text-decoration: none;
+  font-weight: bold; 
+  font-size: 14px;
+  border-radius: 4px; 
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  transition: background-color 0.3s;
+  display: inline-block;
+  width: 80%; /* Širina dugmeta prati karticu */
+} 
+
+.skini-dugme:hover { 
+  background-color: #5f0606; 
+} 
+
+/* Home dugme u ćošku */
+.home-dugme { 
+  position: fixed; 
+  top: 15px; 
+  left: 15px; 
+  background: rgba(242, 230, 201, 0.9); 
+  padding: 10px 15px; 
+  border-radius: 8px; 
+  border: 1px solid #8b6f47; 
+  text-decoration: none; 
+  color: #4A3728; 
+  font-size: 20px; 
+  z-index: 1000; 
+} 
+</style> 
+</head> 
+<body> 
+
+<a href="index.html" class="home-dugme">🏠</a> 
+
+<div class="container"> 
+  <h1>ПРАВОСЛАВНИ СТИКЕРИ</h1>
+  <p class="podnaslov">Задржите прст на стикеру да га поделите или кликните на дугме испод да га преузмете у галерију телефона.</p>
+
+  <div class="stiker-mreza">
+
+    <!-- СТИКЕР 1 -->
+    <div class="stiker-kartica">
+      <img src="stiker-bog.png" alt="Стикер Бог" class="stiker-slika">
+      <a href="stiker-bog.png" download="stiker-bog.png" class="skini-dugme">💾 Преузми</a>
+    </div>
+
+    <!-- СТИКЕР 2 -->
+    <div class="stiker-kartica">
+      <img src="svako-dobro.png" alt="Стикер Свако добро" class="stiker-slika">
+      <a href="svako-dobro.png" download="svako-dobro.png" class="skini-dugme">💾 Преузми</a>
+    </div>
+
+    <!-- СТИКЕР 3 -->
+    <div class="stiker-kartica">
+      <img src="sve-primi-mirno.png" alt="Стикер Све прими мирно" class="stiker-slika">
+      <a href="sve-primi-mirno.png" download="sve-primi-mirno.png" class="skini-dugme">💾 Преузми</a>
+    </div>
+
+    <!-- СТИКЕР 4 -->
+    <div class="stiker-kartica">
+      <img src="prastaj-i-ljubi.png" alt="Стикер Праштај и љуби" class="stiker-slika">
+      <a href="prastaj-i-ljubi.png" download="prastaj-i-ljubi.png" class="skini-dugme">💾 Преузми</a>
+    </div>
+
+	 <!-- СТИКЕР 5 -->
+    <div class="stiker-kartica">
+      <img src="andjeo.png" alt="Стикер Анђео" class="stiker-slika">
+      <a href="andjeo.png" download="andjeo.png" class="skini-dugme">💾 Преузми</a>
+    </div>  
+
+	 <!-- СТИКЕР 6 -->
+    <div class="stiker-kartica">
+      <img src="bog-cuti.png" alt="Стикер Бог ћути" class="stiker-slika">
+      <a href="bog-cuti.png" download="bog-cuti.png" class="skini-dugme">💾 Преузми</a>
+    </div>   
+
+	   <!-- СТИКЕР 7 -->
+    <div class="stiker-kartica">
+      <img src="bozija-volja.png" alt="Стикер Божија воља" class="stiker-slika">
+      <a href="bozija-volja.png" download="bozija-volja.png" class="skini-dugme">💾 Преузми</a>
+    </div>  
+
+	     <!-- СТИКЕР 8 -->
+    <div class="stiker-kartica">
+      <img src="gospode-oprosti-i-osvetli-mi-put.png" alt="Стикер Господе опрости и осветли ми пут" class="stiker-slika">
+      <a href="gospode-oprosti-i-osvetli-mi-put.png" download="gospode-oprosti-i-osvetli-mi-put.png" class="skini-dugme">💾 Преузми</a>
+    </div>  
+
+	      <!-- СТИКЕР 9 -->
+    <div class="stiker-kartica">
+      <img src="hram.png" alt="Стикер Храм" class="stiker-slika">
+      <a href="hram.png" download="hram.png" class="skini-dugme">💾 Преузми</a>
+    </div>  
+
+	        <!-- СТИКЕР 10 -->
+    <div class="stiker-kartica">
+      <img src="krst.png" alt="Стикер Крст" class="stiker-slika">
+      <a href="krst.png" download="krst.png" class="skini-dugme">💾 Преузми</a>
+    </div>  
+
+	          <!-- СТИКЕР 11 -->
+    <div class="stiker-kartica">
+      <img src="ljubi-i-prastaj.png" alt="Стикер Љуби и праштај" class="stiker-slika">
+      <a href="ljubi-i-prastaj.png" download="ljubi-i-prastaj.png" class="skini-dugme">💾 Преузми</a>
+    </div>  
+
+	            <!-- СТИКЕР 12 -->
+    <div class="stiker-kartica">
+      <img src="mojstiker.png" alt="Стикер Мој стикер" class="stiker-slika">
+      <a href="mojstiker.png" download="mojstiker.png" class="skini-dugme">💾 Преузми</a>
+    </div> 
+	  
+  </div> 
+</div> 
+
+</body> 
+</html>
