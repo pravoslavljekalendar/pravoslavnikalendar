@@ -1219,7 +1219,17 @@ async function prikaziSve() {
                     if (postEl && document.getElementById('post-tip')) {
                         document.getElementById('post-tip').innerHTML = 
                             "<div style='margin-top:10px; font-size:15px;'><b>Пост:</b> " + postEl.innerHTML + "</div>";
-						  const mDana = (d.getTime() - Date.UTC(2000, 0, 6, 18, 14, 0)) / 86400000; const mInd = Math.floor((((mDana % 29.53058867) + 29.53058867) % 29.53058867) / 29.53058867 * 8 + 0.5) % 8; const mNazivi = ['Млад месец', 'Растући срп', 'Прва четврт', 'Растући месец', 'Пун месец', 'Опадајући месец', 'Последња четврт', 'Опадајући срп']; const mSlike = ['background:#3e2723;', 'background:radial-gradient(circle at 25% 50%, #3e2723 55%, #f4c430 58%);', 'background:linear-gradient(to right, #3e2723 50%, #f4c430 50%);','background:radial-gradient(circle at 75% 50%, #f4c430 55%, #3e2723 58%);','background:#f4c430;', 'background:radial-gradient(circle at 25% 50%, #f4c430 55%, #3e2723 58%);', 'background:linear-gradient(to left, #3e2723 50%, #f4c430 50%);', 'background:radial-gradient(circle at 75% 50%, #3e2723 55%, #f4c430 58%);' ]; if (document.getElementById('post-tip')) { document.getElementById('post-tip').innerHTML += '<div style="margin-top:5px; font-size:14px; color:#5c4033;"><b>Месечева мена:</b> <span style="display:inline-block; width:13px; height:13px; border-radius:50%; 
+						  const mDana = (d.getTime() - Date.UTC(2000, 0, 6, 18, 14, 0)) / 86400000; 
+						const mInd = Math.floor((((mDana % 29.53058867) + 29.53058867) % 29.53058867) / 29.53058867 * 8 + 0.5) % 8; 
+						const mNazivi = ['Млад месец', 'Растући срп', 'Прва четврт', 'Растући месец', 'Пун месец', 'Опадајући месец', 'Последња четврт', 
+										 'Опадајући срп']; const mSlike = ['background:#3e2723;', 
+																		   'background:radial-gradient(circle at 25% 50%, #3e2723 55%, #f4c430 58%);', 
+																		   'background:linear-gradient(to right, #3e2723 50%, #f4c430 50%);',
+																		   'background:radial-gradient(circle at 75% 50%, #f4c430 55%, #3e2723 58%);',
+																		   'background:#f4c430;', 'background:radial-gradient(circle at 25% 50%, #f4c430 55%, 
+																		   #3e2723 58%);', 'background:linear-gradient(to left, #3e2723 50%, #f4c430 50%);', 
+							'background:radial-gradient(circle at 75% 50%, #3e2723 55%, #f4c430 58%);' ]; if (document.getElementById('post-tip')) 
+						{ document.getElementById('post-tip').innerHTML += '<div style="margin-top:5px; font-size:14px; color:#5c4033;"><b></b> <span style="display:inline-block; width:13px; height:13px; border-radius:50%; 
 							  border:1px solid #5c4033; vertical-align:-2px; margin:0 3px; ' + mSlike[mInd] + '"></span>' + mNazivi[mInd] + '</div>'; }
                     }
                 }
