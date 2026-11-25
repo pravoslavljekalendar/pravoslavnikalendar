@@ -1,4 +1,4 @@
-const CACHE_NAME ='pravoslavna-riznica-final-v84';
+const CACHE_NAME ='pravoslavna-riznica-final-v85';
 const OFFLINE_ASSETS = [
   './',
   './index.html',
@@ -273,6 +273,7 @@ const OFFLINE_ASSETS = [
   './jednom-za-ceo-zivot.html',
   './sedam-znakova-novog-rodjenja.html',
   './boziji-promisao.html',
+  './sveti-oci-o-depresiji.html',
   
   './januar-2026.html',
   './februar-2026.html',
