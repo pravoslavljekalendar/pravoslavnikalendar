@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Православни календар поста и празника</title>
+<style>
+    body {
+        margin: 0;
+        padding: 15px;
+        background-image: url("papir.png");
+        background-size: cover;
+        background-attachment: fixed;
+        font-family: "Times New Roman", serif;
+        color: #3e2723;
+        text-align: center;
+    }
+    .okvir {
+        max-width: 950px;
+        margin: auto;
+        background: rgba(242, 230, 201, 0.88);
+        border: 2px solid #8b6f47;
+        border-radius: 16px;
+        padding: 20px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+    }
+    .gornja-traka {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    .nazad-dugme {
+        display: inline-block;
+        background-color: #8b0000;
+        color: #ffffff;
+        padding: 8px 16px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 15px;
+        border: none;
+        cursor: pointer;
+    }
+    h1 { color: #8b0000; margin-top: 10px; margin-bottom: 14px; }
+    .kontrole { margin-bottom: 16px; }
+    select, .danas-btn {
+        padding: 8px 14px;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 8px;
+        border: 1px solid #8b6f47;
+        background: #fdfaf2;
+        color: #3e2723;
+        margin: 3px;
+        cursor: pointer;
+    }
+    .danas-btn { background: #8b0000; color: #fff; border-color: #8b0000; }
+
+    .kartica-dana {
+        background: rgba(255, 255, 255, 0.65);
+        border: 1px solid #8b6f47;
+        border-bottom: 3px solid #8b6f47;
+        border-radius: 12px;
+        padding: 12px 16px;
+        margin-bottom: 16px;
+        text-align: left;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+    }
+    .datum-glavni { font-size: 20px; font-weight: bold; color: #8b0000; }
+    .datum-stari { font-size: 15px; font-style: italic; color: #5c4033; }
+    .praznik-tekst { font-size: 17px; font-weight: bold; color: #3e2723; margin-top: 4px; }
+    .post-bedz {
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-weight: bold;
+        font-size: 15px;
+        border: 1px solid #8b6f47;
+        background: #fdfaf2;
+    }
+
+    table {
+        width: 100%;
+        table-layout: fixed;
+        border-collapse: collapse;
+        background: rgba(255,255,255,0.55);
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    th {
+        background: #8b6f47;
+        color: #fff;
+        padding: 10px 2px;
+        font-size: 15px;
+    }
+    th.nedelja { background: #8b0000; }
+    td {
+        border: 1px solid #cbb894;
+        padding: 6px 2px;
+        height: 54px;
+        vertical-align: top;
+        cursor: pointer;
+    }
+    td:hover { background-color: rgba(139, 0, 0, 0.08); }
+    .broj-dana { font-size: 18px; font-weight: bold; display: block; }
+    .post-oznaka { font-size: 11px; display: block; margin-top: 2px; }
+
+    .crveno-slovo { color: #c60000; font-weight: bold; }
+    .bozic-vaskrs { background: #2b6cb0; color: #fff !important; border-radius: 6px; }
+    .vaskrs-polje { background: #9b1c1c; color: #fff !important; border-radius: 6px; }
+    .post-voda { background: rgba(66, 153, 225, 0.22); }
+    .post-ulje { background: rgba(113, 128, 150, 0.22); }
+    .post-riba { background: rgba(214, 158, 46, 0.28); }
+    .beli-mrs { background: rgba(236, 201, 75, 0.22); }
+    .strogi-post { background: rgba(74, 85, 104, 0.35); font-weight: bold; }
+    .zadusnice-polje { outline: 2px dashed #555; outline-offset: -3px; }
+    .danas { outline: 3px solid #8b0000 !important; outline-offset: -2px; }
+
+    .legenda {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 16px;
+        font-size: 13px;
+    }
+    .legenda span {
+        padding: 4px 9px;
+        border-radius: 6px;
+        border: 1px solid #8b6f47;
+    }
+
+ .home-dugme {
+            position: fixed; top: 15px; left: 15px;
+            background: rgba(242, 230, 201, 0.9);
+            padding: 10px 15px; border-radius: 8px;
+            border: 1px solid #8b6f47; text-decoration: none; color: #4A3728;
+            font-size: 20px; z-index: 100;
+        }	
+</style>
+</head>
+<body>
+ <a href="index.html" class="home-dugme">🏠</a>
+<div class="okvir">
+    <div class="gornja-traka">
+        <a href="index.html" class="nazad-dugme"></a>
+        <button class="nazad-dugme" id="pismo-btn" onclick="promeniPismo()">Ћирилица / Latinica</button>
+    </div>
+
+    <h1>Православни календар поста и празника</h1>
+
+    <div class="kontrole">
+        <button class="danas-btn" onclick="idiNaDanas()">Данас</button>
+        <button class="danas-btn" onclick="pomeriDan(-1)">◀</button>
+        <select id="godina" onchange="osveziKalendar()">
+            <option value="2026" selected>2026</option>
+            <option value="2027">2027</option>
+            <option value="2028">2028</option>
+            <option value="2029">2029</option>
+            <option value="2030">2030</option>
+        </select>
+        <select id="mesec" onchange="osveziKalendar()">
+            <option value="0">Јануар</option>
+            <option value="1">Фебруар</option>
+            <option value="2">Март</option>
+            <option value="3">Април</option>
+            <option value="4">Мај</option>
+            <option value="5">Јун</option>
+            <option value="6">Јул</option>
+            <option value="7">Август</option>
+            <option value="8">Септембар</option>
+            <option value="9">Октобар</option>
+            <option value="10" selected>Новембар</option>
+            <option value="11">Децембар</option>
+        </select>
+        <button class="danas-btn" onclick="pomeriDan(1)">▶</button>
+    </div>
+
+    <div class="kartica-dana" id="kartica-dana"></div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Пн</th><th>Ут</th><th>Ср</th><th>Чт</th><th>Пт</th><th>Сб</th><th class="nedelja">Не</th>
+            </tr>
+        </thead>
+        <tbody id="telo-kalendara"></tbody>
+    </table>
+
+    <div class="legenda">
+        <span class="strogi-post">Не једе се / Сухоједење</span>
+        <span class="post-voda">Вода</span>
+        <span class="post-ulje">Уље (Вино)</span>
+        <span class="post-riba">Риба</span>
+        <span class="beli-mrs">Бели мрс</span>
+        <span>Мрс</span>
+        <span class="crveno-slovo">Црвено слово</span>
+        <span class="zadusnice-polje">Задушнице</span>
+    </div>
+
+    <div id="info-praznici" style="margin-top: 15px; font-size: 16px; color: #4A3728; font-weight: bold;"></div>
+</div>
+
+
+<script>
+const meseciGenitiv = ["јануара","фебруара","марта","априла","маја","јуна","јула","августа","септембра","октобра","новембра","децембра"];
+const daniNazivi = ["Недеља","Понедељак","Уторак","Среда","Четвртак","Петак","Субота"];
+
+function dodajDane(d, n) {
+return new Date(d.getFullYear(), d.getMonth(), d.getDate() + n);
+}
+
+function istiDan(a, b) {
+return a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate();
+}
+
+function pravoslavniVaskrs(godina) {
+const a = godina % 4, b = godina % 7, c = godina % 19;
+const d = (19 * c + 15) % 30;
+const e = (2 * a + 4 * b - d + 34) % 7;
+const mesec = Math.floor((d + e + 114) / 31) - 1;
+const dan = ((d + e + 114) % 31) + 1;
+const off = Math.floor(godina / 100) - Math.floor(godina / 400) - 2;
+return new Date(godina, mesec, dan + off);
+}
+
+const fiksniPraznici = {
+"1-7": { naziv: "Рождество Христово – Божић", crveno: true },
+"1-14": { naziv: "Обрезање Господње; Св. Василије Велики", crveno: true },
+"1-19": { naziv: "Богојављење", crveno: true },
+"1-20": { naziv: "Сабор Св. Јована Крститеља", crveno: true },
+"1-27": { naziv: "Свети Сава, први Архиепископ српски", crveno: true },
+"2-15": { naziv: "Сретење Господње", crveno: true },
+"4-7": { naziv: "Благовести", crveno: true },
+"5-6": { naziv: "Св. великомученик Георгије – Ђурђевдан", crveno: true },
+"5-12": { naziv: "Св. Василије Острошки Чудотворац", crveno: true },
+"6-28": { naziv: "Св. кнез Лазар – Видовдан", crveno: true },
+"7-7": { naziv: "Рођење Св. Јована Претече – Ивањдан", crveno: true },
+"7-12": { naziv: "Свети апостоли Петар и Павле – Петровдан", crveno: true },
+"8-2": { naziv: "Свети пророк Илија", crveno: true },
+"8-19": { naziv: "Преображење Господње", crveno: true },
+"8-28": { naziv: "Успење Пресвете Богородице – Велика Госпојина", crveno: true },
+"9-11": { naziv: "Усековање главе Св. Јована Крститеља", crveno: true },
+"9-21": { naziv: "Рођење Пресвете Богородице – Мала Госпојина", crveno: true },
+"9-27": { naziv: "Воздвижење Часног Крста – Крстовдан", crveno: true },
+"10-27": { naziv: "Преподобна мати Параскева – Света Петка", crveno: true },
+"11-8": { naziv: "Св. великомученик Димитрије – Митровдан", crveno: true },
+"11-21": { naziv: "Сабор Св. Архангела Михаила – Аранђеловдан", crveno: true },
+"12-4": { naziv: "Ваведење Пресвете Богородице", crveno: true },
+"12-19": { naziv: "Св. Николај Мирликијски – Никољдан", crveno: true }
+};
+
+function izracunajZadusniceIDetinjce(godina, vaskrs) {
+const lista = [];
+const mesnePoklade = dodajDane(vaskrs, -56);
+const sretenje = new Date(godina, 1, 15);
+const zimske = istiDan(sretenje, mesnePoklade) ? dodajDane(mesnePoklade, -8) : dodajDane(mesnePoklade, -1);
+lista.push({ datum: zimske, naziv: "Задушнице (Зимске / Месопусне)", zadusnice: true });
+
+const duhovi = dodajDane(vaskrs, 49);
+lista.push({ datum: dodajDane(duhovi, -1), naziv: "Задушнице (Летње / Духовске)", zadusnice: true });
+
+const miholjdan = new Date(godina, 9, 12);
+const wM = miholjdan.getDay();
+lista.push({ datum: dodajDane(miholjdan, (wM === 6) ? -7 : -(wM + 1)), naziv: "Задушнице (Михољске)", zadusnice: true });
+
+const mitrovdan = new Date(godina, 10, 8);
+const wD = mitrovdan.getDay();
+lista.push({ datum: dodajDane(mitrovdan, (wD === 6) ? -7 : -(wD + 1)), naziv: "Задушнице (Митровске)", zadusnice: true });
+
+const bozic = new Date(godina, 0, 7);
+const wB = bozic.getDay();
+const oci = dodajDane(bozic, (wB === 0) ? -7 : -wB);
+lista.push({ datum: oci, naziv: "Оци (Недеља пред Божић)", zadusnice: false });
+lista.push({ datum: dodajDane(oci, -7), naziv: "Материце", zadusnice: false });
+lista.push({ datum: dodajDane(oci, -14), naziv: "Детињци", zadusnice: false });
+
+return lista;
+}
+
+function praviloDana(datum, vaskrs, posebniDani) {
+const m = datum.getMonth() + 1;
+const d = datum.getDate();
+const danUNedelji = datum.getDay();
+const kljuc = m + "-" + d;
+const diff = Math.round((Date.UTC(datum.getFullYear(), datum.getMonth(), datum.getDate()) - Date.UTC(vaskrs.getFullYear(), vaskrs.getMonth(), vaskrs.getDate())) / 86400000);
+
+let post = "Мрс";
+let klasa = "";
+let crveno = (danUNedelji === 0 || (fiksniPraznici[kljuc] && fiksniPraznici[kljuc].crveno));
+let nazivi = [];
+let zadusnice = false;
+
+if (fiksniPraznici[kljuc]) nazivi.push(fiksniPraznici[kljuc].naziv);
+
+const pokretni = {
+"-70": { n: "Недеља о Митару и Фарисеју", c: false },
+"-63": { n: "Недеља о Блудном Сину", c: false },
+"-56": { n: "Месне покладе", c: false },
+"-49": { n: "Беле покладе", c: false },
+"-48": { n: "Чисти понедељак – Почетак Часног поста", c: false },
+"-43": { n: "Теодорова субота", c: false },
+"-42": { n: "Недеља Чиста – Православља", c: false },
+"-8": { n: "Лазарева субота – Врбица", c: false },
+"-7": { n: "Улазак Господа Исуса Христа у Јерусалим – Цвети", c: true },
+"-3": { n: "Велики четвртак", c: false },
+"-2": { n: "Велики петак", c: true },
+"-1": { n: "Велика субота", c: false },
+"0": { n: "Васкрсење Господње – ВАСКРС", c: true },
+"1": { n: "Васкрсни понедељак", c: true },
+"2": { n: "Васкрсни уторак", c: true },
+"7": { n: "Томина недеља", c: false },
+"39": { n: "Вазнесење Господње – Спасовдан", c: true },
+"49": { n: "Силазак Светог Духа – Духови (Педесетница)", c: true },
+"50": { n: "Духовски понедељак", c: true },
+"51": { n: "Духовски уторак", c: true }
+};
+if (pokretni[diff]) {
+nazivi.push(pokretni[diff].n);
+if (pokretni[diff].c) crveno = true;
+}
+
+posebniDani.forEach(function(p) {
+if (istiDan(datum, p.datum)) {
+nazivi.push(p.naziv);
+if (p.zadusnice) zadusnice = true;
+}
+});
+
+if (diff >= -48 && diff <= -1) {
+if (diff === -48 || diff === -2) { post = "Не једе се"; klasa = "strogi-post"; }
+else if (diff === -7 || kljuc === "4-7") { post = "Риба"; klasa = "post-riba"; }
+else if (danUNedelji === 0 || danUNedelji === 6) { post = "Уље"; klasa = "post-ulje"; }
+else { post = "Вода"; klasa = "post-voda"; }
+} else if (diff >= -55 && diff <= -49) {
+post = "Бели мрс"; klasa = "beli-mrs";
+} else if (diff >= 57 && (m < 7 || (m === 7 && d <= 11))) {
+if (danUNedelji === 1 || danUNedelji === 3 || danUNedelji === 5) { post = "Вода"; klasa = "post-voda"; }
+else if (danUNedelji === 2 || danUNedelji === 4) { post = "Уље"; klasa = "post-ulje"; }
+else { post = "Риба"; klasa = "post-riba"; }
+} else if (m === 8 && d >= 14 && d <= 27) {
+if (kljuc === "8-19") { post = "Риба"; klasa = "post-riba"; }
+else if (danUNedelji === 0 || danUNedelji === 6) { post = "Уље"; klasa = "post-ulje"; }
+else { post = "Вода"; klasa = "post-voda"; }
+} else if ((m === 11 && d >= 28) || m === 12 || (m === 1 && d <= 6)) {
+if (kljuc === "1-6") { post = "Вода"; klasa = "post-voda"; }
+else if (m === 1 && d >= 2 && d <= 5) {
+post = (danUNedelji === 0 || danUNedelji === 6) ? "Уље" : "Вода";
+klasa = (danUNedelji === 0 || danUNedelji === 6) ? "post-ulje" : "post-voda";
+} else if (danUNedelji === 0 || danUNedelji === 6 || fiksniPraznici[kljuc]) {
+post = "Риба"; klasa = "post-riba";
+} else if (danUNedelji === 2 || danUNedelji === 4) {
+post = "Уље"; klasa = "post-ulje";
+} else {
+post = "Вода"; klasa = "post-voda";
+}
+} else if ((m === 1 && d >= 7 && d <= 17) || (diff >= 1 && diff <= 6) || (diff >= 50 && diff <= 55) || (diff >= -69 && diff <= -64)) {
+post = "Мрс"; klasa = "";
+} else if (kljuc === "1-18" || kljuc === "9-11" || kljuc === "9-27") {
+post = "Вода"; klasa = "post-voda";
+} else if (danUNedelji === 3 || danUNedelji === 5) {
+if (fiksniPraznici[kljuc]) { post = "Риба"; klasa = "post-riba"; }
+else { post = "Вода"; klasa = "post-voda"; }
+}
+
+if (kljuc === "1-7") klasa = "bozic-vaskrs";
+if (diff === 0) klasa = "vaskrs-polje";
+
+return { post: post, klasa: klasa, crveno: crveno, nazivPraznika: nazivi.join("; "), zadusnice: zadusnice };
+}
+
+function prikaziKarticuDana(datum, info) {
+const stari = dodajDane(datum, -13);
+const noviTekst = daniNazivi[datum.getDay()] + ", " + datum.getDate() + ". " + meseciGenitiv[datum.getMonth()] + " " + datum.getFullYear() + ".";
+const stariTekst = "По старом календару: " + stari.getDate() + ". " + meseciGenitiv[stari.getMonth()] + " " + stari.getFullYear() + ".";
+const praznikHtml = info.nazivPraznika ? '<div class="praznik-tekst">' + info.nazivPraznika + '</div>' : "";
+
+document.getElementById("kartica-dana").innerHTML =
+'<div>' +
+'<div class="datum-glavni">' + noviTekst + '</div>' +
+'<div class="datum-stari">' + stariTekst + '</div>' +
+praznikHtml +
+'</div>' +
+'<div class="post-bedz">Начин поста: ' + info.post + '</div>';
+}
+
+let izabraniDatum = new Date();
+
+function idiNaDanas() {
+izabraniDatum = new Date();
+document.getElementById("godina").value = izabraniDatum.getFullYear();
+document.getElementById("mesec").value = izabraniDatum.getMonth();
+osveziKalendar();
+}
+
+function pomeriDan(korak) {
+izabraniDatum = dodajDane(izabraniDatum, korak);
+document.getElementById("godina").value = izabraniDatum.getFullYear();
+document.getElementById("mesec").value = izabraniDatum.getMonth();
+osveziKalendar();
+}
+
+function osveziKalendar() { 
+const godina = parseInt(document.getElementById("godina").value);
+const mesec = parseInt(document.getElementById("mesec").value); 
+const vaskrs = pravoslavniVaskrs(godina); const posebniDani = izracunajZadusniceIDetinjce(godina, vaskrs);
+const prviDan = new Date(godina, mesec, 1).getDay(); 
+const start = (prviDan === 0) ? 6 : prviDan - 1; 
+const brojDana = new Date(godina, mesec + 1, 0).getDate(); 
+let html = "<tr>";
+for (let i = 0; i < start; i++) { 
+html += "<td></td>"; 
+} 
+let kol = start; 
+let listaPraznika = []; 
+for (let d = 1; d <= brojDana; d++) { 
+const datum = new Date(godina, mesec, d); 
+const info = praviloDana(datum, vaskrs, posebniDani); 
+const jeIzabran = istiDan(datum, izabraniDatum); 
+if (jeIzabran) { 
+prikaziKarticuDana(datum, info); 
+} 
+if (info.nazivPraznika) { 
+listaPraznika.push(d + "." + (mesec + 1) + ". – " + info.nazivPraznika); 
+} 
+const klasePolja = info.klasa + 
+(info.zadusnice ? " zadusnice-polje" : "") + 
+(jeIzabran ? " danas" : ""); 
+const klasaBroja = (info.crveno && 
+info.klasa !== "vaskrs-polje" && 
+info.klasa !== "bozic-vaskrs") ? "crveno-slovo" : ""; 
+html += '<td class="' + klasePolja + 
+'" onclick="izaberiDan(' + godina + ',' + mesec + ',' + d + ')">' + 
+'<span class="broj-dana ' + klasaBroja + '">' + d + '</span>' + 
+'<span class="post-oznaka">' + info.post + '</span>' + '</td>'; 
+kol++; 
+if (kol === 7 && d < brojDana) { 
+html += "</tr><tr>"; 
+kol = 0; 
+} 
+} 
+html += "</tr>"; 
+document.getElementById("telo-kalendara").innerHTML = html; 
+if (izabraniDatum.getFullYear() !== godina || izabraniDatum.getMonth() !== mesec) { 
+const prviUMesecu = new Date(godina, mesec, 1); 
+prikaziKarticuDana(prviUMesecu, praviloDana(prviUMesecu, vaskrs, posebniDani)); 
+}
+const vaskrsTekst = "Васкрс " + godina + ". пада " + 
+vaskrs.getDate() + "." + (vaskrs.getMonth() + 1) + "." + godina + "."; 
+const prazniciTekst = listaPraznika.length 
+? '<div>Празници и задушнице у овом месецу: ' + listaPraznika.join(" • ") + '</div>' : ""; 
+document.getElementById("info-praznici").innerHTML = 
+'<div style="color:#8b0000; margin-bottom:6px;">' + vaskrsTekst + '</div>' + 
+prazniciTekst; 
+if (latinicaAktivna) { 
+primeniLatinicu(true); 
+} 
+} function izaberiDan(g, m, d) { 
+izabraniDatum = new Date(g, m, d); 
+osveziKalendar(); 
+} 
+const cir = "абвгдђежзијклљмнњопрстћуфхцчџшАБВГДЂЕЖЗИЈКЛЉМНЊОПРСТЋУФХЦЧЏШ".split(""); 
+const lat = ["a","b","v","g","d","đ","e","ž","z","i","j","k","l","lj","m","n","nj","o","p","r","s","t","ć","u","f","h","c","č","dž","š","A","B","V","G","D","Đ","E","Ž","Z","I","J","K","L","Lj","M","N","Nj","O","P","R","S","T","Ć","U","F","H","C","Č","Dž","Š"];
+let latinicaAktivna = false; 
+const originalniTekstovi = new Map(); 
+function uLatinicu(str) {
+return str.split("").map(function(c) { 
+const idx = cir.indexOf(c); 
+return idx > -1 ? lat[idx] : c; 
+}).join(""); 
+} 
+function primeniLatinicu(aktiviraj) { 
+latinicaAktivna = aktiviraj; 
+const walker = document.createTreeWalker(document.querySelector(".okvir"), NodeFilter.SHOW_TEXT, null); 
+let node; 
+while ((node = walker.nextNode())) { 
+if (node.parentElement && (node.parentElement.tagName === "SCRIPT" || node.parentElement.tagName === "STYLE")) {
+continue; 
+} 
+if (aktiviraj) {
+if (!originalniTekstovi.has(node)) {
+originalniTekstovi.set(node, node.nodeValue);
+}
+node.nodeValue = uLatinicu(originalniTekstovi.get(node));
+} else if (originalniTekstovi.has(node)) {
+node.nodeValue = originalniTekstovi.get(node);
+}
+}
+}
+function promeniPismo() { 
+originalniTekstovi.clear(); 
+primeniLatinicu(!latinicaAktivna); 
+} osveziKalendar(); 
+</script> 
+</body> 
+</html>
