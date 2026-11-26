@@ -1,4 +1,4 @@
-const CACHE_NAME ='pravoslavna-riznica-final-v85';
+const CACHE_NAME ='pravoslavna-riznica-final-v86';
 const OFFLINE_ASSETS = [
   './',
   './index.html',
@@ -420,7 +420,8 @@ const OFFLINE_ASSETS = [
   './andjeo.png',
   './trojerucica.png',
   './tisina-snaga.png',
-  
+  './donate1.png',
+  './stari-zavet/sadrzaj.htm',
    './jovan-1.html', './jovan-2.html', './jovan-3.html', './jovan-4.html', './jovan-5.html',
   './jovan-6.html', './jovan-7.html', './jovan-8.html', './jovan-9.html', './jovan-10.html',
   './jovan-11.html', './jovan-12.html', './jovan-13.html', './jovan-14.html', './jovan-15.html',
